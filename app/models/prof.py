@@ -15,5 +15,13 @@ class Prof(db.Model):
 
     reviews = db.relationship('Review', back_populates='prof')
     user = db.relationship('User', back_populates='profs')
-
     courses = db.relationship('Course', secondary=prof_courses, back_populates='profs')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "creator_id": self.creator_id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "field": self.field
+        }

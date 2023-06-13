@@ -1,0 +1,19 @@
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+
+
+class Debate(db.Model):
+    __tablename__= 'debates'
+
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    creator_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    topic_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('debate_topics.id')), nullable=False)
+    prof1_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('profs.id')), nullable=False)
+    prof2_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('profs.id')), nullable=False)
+    field = db.Column(db.String(50), nullable=False)
+
+    user = db.relationship('User', back_populates='debates')
+    topic = db.relationship('Topic', back_populates='debates')
+    

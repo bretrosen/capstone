@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship('Review', back_populates='user')
     profs = db.relationship('Prof', back_populates='user')
     courses = db.relationship('Course', back_populates='user')
+    debates = db.relationship('Debate', back_populates='user')
 
     @property
     def password(self):

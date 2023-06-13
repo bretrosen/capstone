@@ -10,7 +10,7 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     creator_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     prof_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('profs.id')), nullable=False)
-    # course_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    course_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     intelligence = db.Column(db.Integer, nullable=False)
     wisdom = db.Column(db.Integer, nullable=False)
     charisma = db.Column(db.Integer, nullable=False)
@@ -24,7 +24,7 @@ class Review(db.Model):
 
     user = db.relationship('User', back_populates='reviews')
     prof = db.relationship('Prof', back_populates='reviews')
-    # course = db.relationship('Course', back_populates='reviews')
+    course = db.relationship('Course', back_populates='reviews')
 
     def to_dict(self):
         return {
