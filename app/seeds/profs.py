@@ -24,6 +24,7 @@ def seed_profs():
     all_profs = [shakespeare, marx, newton]
     [db.session.add(prof) for prof in all_profs]
     db.session.commit()
+    return all_profs
 
 def undo_profs():
     if environment == "production":

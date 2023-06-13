@@ -29,9 +29,8 @@ def seed():
         undo_users()
     seed_users()
     seed_reviews()
-    seed_profs()
-    seed_prof_courses()
-    seed_courses()
+    profs = seed_profs()
+    seed_courses(profs)
     seed_departments()
     # Add other seed functions here
 
