@@ -29,6 +29,6 @@ def undo_profs():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.profs RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM profs]"))
+        db.session.execute(text("DELETE FROM profs"))
 
     db.session.commit()

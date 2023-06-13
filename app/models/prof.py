@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from .prof_courses import prof_courses
 
 class Prof(db.Model):
     __tablename__ = "profs"
@@ -15,3 +15,5 @@ class Prof(db.Model):
 
     reviews = db.relationship('Review', back_populates='prof')
     user = db.relationship('User', back_populates='profs')
+
+    courses = db.relationship('Course', secondary=prof_courses, back_populates='profs')
