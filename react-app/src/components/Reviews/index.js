@@ -17,9 +17,41 @@ export const ReviewList = () => {
         <div className='reviews-list-wrapper'>
             {reviews.map((review) => (
                 <div className='reviews-list-item' key={review.id}>
-                    <p>Review: {review.review}</p>
-                    <p>Respect: {review.respect}</p>
-                    <p>Would Recommend: {review.would_recommend}</p>
+                    <div className='reviews-list-attributes'>
+                        <div>Intelligence: {review.intelligence}</div>
+                        <div>Wisdom: {review.wisdom}</div>
+                        <div>Charisma: {review.charisma}</div>
+                        <div>Knowledge: {review.knowledge}</div>
+                        <div>Preparation: {review.preparation}</div>
+                        <div>Respect: {review.respect}</div>
+                    </div>
+                    <div className='reviews-list-item-summary'>
+                        <div>
+                            <div>Course: {review.course_id}</div>
+                            <div>Prof: {review.prof_id}</div>
+                            <div>{review.time_stamp}</div>
+                        </div>
+                        <div>
+                            <div>For Credit:
+                                {review.for_credit && `Yes`}
+                                {!review.for_credit && `No`}
+                            </div>
+                            <div>Attendance:
+                                {review.attendance && `Mandatory`}
+                                {!review.attendance && `Optional`}
+                            </div>
+                            <div>Would Take Again:
+                                {review.would_recommend && `Yes`}
+                                {!review.would_recommend && `No`}
+                            </div>
+                            <div>Textbook:
+                                {review.textbook && `Yes`}
+                                {!review.textbook && `No`}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='reviews-list-item-review'>{review.review}</div>
+
                 </div>
             ))}
         </div>
