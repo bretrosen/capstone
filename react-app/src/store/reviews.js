@@ -53,8 +53,25 @@ export const getAllReviewsThunk = () => async (dispatch) => {
 
     if (response.ok) {
         const reviews = await response.json()
-        console.log('returning all review thunks', reviews)
+        console.log('returning all reviews thunk', reviews)
         dispatch(getAllReviews(reviews))
+        return reviews
+    }
+}
+
+export const createReviewThunk = (review) => async (dispatch) => {
+    const response = await fetch('/api/reviews/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(review)
+    })
+    console.log('sending create review thunk', response)
+
+    if (response.ok) {
+        const newReview = await response.json()
+        console.log('returning create review thunk', newReview)
+        dispatch(createReview(review))
+        return newReview
     }
 }
 
@@ -69,6 +86,10 @@ const reviewsReducer = (state = initialState, action) => {
             action.reviews.reviews.forEach((review) => {
                 newState.allReviews[review.id] = review
             })
+            return newState
+        }
+        case CREATE_REVIEW: {
+            const newState = {...state, allReviews: {...action.review}, singleReview: {}}
             return newState
         }
         default:
