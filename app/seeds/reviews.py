@@ -1,5 +1,6 @@
 from app.models import db, Review, environment, SCHEMA
 from sqlalchemy.sql import text
+from datetime import datetime, timedelta
 
 def seed_reviews():
     first = Review(
@@ -15,7 +16,9 @@ def seed_reviews():
         for_credit=True,
         attendance=False,
         would_recommend=True,
-        textbook=False
+        textbook=False,
+        review='None of it made sense',
+        time_stamp=datetime.now() - timedelta(days = 1)
     )
     second = Review(
         creator_id=2,
@@ -30,7 +33,9 @@ def seed_reviews():
         for_credit=True,
         attendance=True,
         would_recommend=False,
-        textbook=True
+        textbook=True,
+        review='A lot of cool numbers',
+        time_stamp=datetime.now() - timedelta(days = 3)
     )
     third = Review(
         creator_id=3,
@@ -45,7 +50,9 @@ def seed_reviews():
         for_credit=False,
         attendance=False,
         would_recommend=True,
-        textbook=False
+        textbook=False,
+        review='This class is super dope',
+        time_stamp=datetime.now()
     )
 
     all_reviews = [first, second, third]
