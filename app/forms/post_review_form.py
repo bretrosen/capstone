@@ -9,6 +9,8 @@ from app.models import Prof, Course
 # COURSES = [course.name for course in all_courses]
 
 # FIX THIS
+# OR MAYBE IT DOESN'T NEED TO BE A SELECT FIELD?
+# COULD JUST HAVE A VALIDATION IF USER INPUT DOESN'T MATCH EXISTING PROF OR COURSE
 PROFS = ['Shakespeare', 'Marx', 'Newton']
 COURSES = ['Market Economies', 'Anthropology of the Unknown', 'Postmodern American Literature']
 
