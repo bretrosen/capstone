@@ -15,6 +15,8 @@ class Prof(db.Model):
 
     reviews = db.relationship('Review', back_populates='prof')
     user = db.relationship('User', back_populates='profs')
+    debates = db.relationship('Debate', back_populates='prof')
+
     courses = db.relationship('Course', secondary=prof_courses, back_populates='profs')
 
     def to_dict(self):

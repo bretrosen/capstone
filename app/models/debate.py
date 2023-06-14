@@ -16,4 +16,14 @@ class Debate(db.Model):
 
     user = db.relationship('User', back_populates='debates')
     topic = db.relationship('Topic', back_populates='debates')
-    
+    prof = db.relationship('Prof', back_populates='debates')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'creator_id': self.creator_id,
+            'topic_id': self.topic_id,
+            'prof1_id': self.prof1_id,
+            'prof2_id': self.prof2_id,
+            'field': self.field
+        }
