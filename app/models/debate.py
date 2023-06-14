@@ -16,8 +16,8 @@ class Debate(db.Model):
 
     user = db.relationship('User', back_populates='debates')
     topic = db.relationship('DebateTopic', back_populates='debates')
-    prof1 = db.relationship('Prof', backref ='debates1', foreign_keys=[prof1_id])
-    prof2 = db.relationship('Prof', backref='debates2', foreign_keys=[prof2_id])
+    prof1 = db.relationship('Prof', back_populates='debates1', uselist=False, foreign_keys=[prof1_id])
+    prof2 = db.relationship('Prof', back_populates='debates2', uselist=False, foreign_keys=[prof2_id])
 
     def to_dict(self):
         return {

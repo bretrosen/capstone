@@ -21,7 +21,7 @@ def seed_debates():
         topic_id=3,
         prof1_id=2,
         prof2_id=3,
-        field="Economics"
+        field="Physics"
     )
 
     all_debates = [first, second, third]

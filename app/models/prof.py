@@ -15,8 +15,8 @@ class Prof(db.Model):
 
     reviews = db.relationship('Review', back_populates='prof')
     user = db.relationship('User', back_populates='profs')
-    debates1 = db.relationship('Debate', backref='prof1', foreign_keys=[id])
-    debates2 = db.relationship('Debate', backref='prof2', foreign_keys=[id])
+    debates1 = db.relationship('Debate', foreign_keys='Debate.prof1_id', back_populates='prof1')
+    debates2 = db.relationship('Debate', foreign_keys='Debate.prof2_id', back_populates='prof2')
 
     courses = db.relationship('Course', secondary=prof_courses, back_populates='profs')
 

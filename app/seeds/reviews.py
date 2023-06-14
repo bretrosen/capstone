@@ -5,6 +5,7 @@ def seed_reviews():
     first = Review(
         creator_id=1,
         prof_id=1,
+        course_id=1,
         intelligence=10,
         wisdom=10,
         charisma=10,
@@ -19,6 +20,7 @@ def seed_reviews():
     second = Review(
         creator_id=2,
         prof_id=2,
+        course_id=2,
         intelligence=10,
         wisdom=10,
         charisma=10,
@@ -33,6 +35,7 @@ def seed_reviews():
     third = Review(
         creator_id=3,
         prof_id=3,
+        course_id=3,
         intelligence=10,
         wisdom=10,
         charisma=10,
