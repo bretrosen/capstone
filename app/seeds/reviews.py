@@ -19,6 +19,7 @@ def seed_reviews():
         would_recommend=True,
         textbook=False,
         review='None of it made sense',
+        # might want to reconsider how review datetime seeding is done
         time_stamp=datetime.now() - timedelta(days = 1)
     )
     second = Review(

@@ -1,5 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
+# join table for profs and courses
+# better named as class_assignments or something?
 prof_courses = db.Table(
     "prof_courses",
     db.Model.metadata,

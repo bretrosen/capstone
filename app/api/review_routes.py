@@ -7,6 +7,12 @@ from app.forms.post_review_form import PostReviewForm
 
 review_routes = Blueprint('reviews', __name__)
 
+# helper function for averages
+def mean(*args):
+    sum = 0
+    for arg in args:
+        sum += arg
+    return sum / len(args)
 
 @review_routes.route('/')
 def all_reviews():
@@ -17,8 +23,7 @@ def all_reviews():
     all_reviews = Review.query.order_by(Review.time_stamp.desc()).all()
     reviews_dict = [review.to_dict() for review in all_reviews]
     for review in reviews_dict:
-        review['quality'] = sum([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']]) / 6
-
+        review['quality'] = mean(review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect'])
     return {'reviews': reviews_dict}
 
 
@@ -29,8 +34,10 @@ def single_review(id):
     '''
     review = Review.query.get(id)
     review_data = review.to_dict()
-    attribute_avg = sum([review_data['intelligence'], review_data['wisdom'], review_data['charisma'], review_data['knowledge'], review_data['preparation'], review_data['respect']]) / 6
-    review_data['quality'] = attribute_avg
+
+    attribute_mean = mean(review_data['intelligence'], review_data['wisdom'], review_data['charisma'], review_data['knowledge'], review_data['preparation'], review_data['respect'])
+    review_data['quality'] = attribute_mean
+
     return review_data
 
 
@@ -70,6 +77,7 @@ def post_review():
             knowledge=form.data['knowledge'],
             preparation=form.data['preparation'],
             respect=form.data['respect'],
+            difficulty=form.data['difficulty'],
             for_credit=form.data['for_credit'],
             attendance=form.data['attendance'],
             would_recommend=form.data['would_recommend'],
@@ -102,6 +110,7 @@ def put_delete_review(id):
         updated_review.knowledge = data['knowledge']
         updated_review.preparation = data['preparation']
         updated_review.respect = data['respect']
+        updated_review.difficulty = data['difficulty']
         updated_review.for_credit = data['for_credit']
         updated_review.attendance = data['attendance']
         updated_review.would_recommend = data['would_recommend']

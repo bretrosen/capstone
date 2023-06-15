@@ -14,6 +14,7 @@ from app.models import Prof, Course
 PROFS = ['Shakespeare', 'Marx', 'Newton']
 COURSES = ['Market Economies', 'Anthropology of the Unknown', 'Postmodern American Literature']
 
+# maybe change numerical attributes to be 1 to 5 to match target site?
 class PostReviewForm(FlaskForm):
     prof = SelectField("Prof Last Name", choices=PROFS)
     course = SelectField("Course", choices=COURSES)
