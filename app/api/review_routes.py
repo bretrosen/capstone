@@ -70,7 +70,9 @@ def post_review():
     # db_course = Course.query.filter(Course.name == form_course_name).first()
     # course_id = db_course.id
 
-
+    # this form info gets added to db
+    # need ids for prof_id and course_id here
+    # should be sending ids from the frontend
 
     if form.validate_on_submit():
         new_review = Review(

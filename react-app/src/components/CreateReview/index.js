@@ -35,9 +35,13 @@ export const ReviewForm = ({ review, formType }) => {
         setHasSubmitted(true)
 
         // object to match request to backend create review route
+        // need to send ids for prof and course here
+        // need to add all profs and all courses to store
+        // via a new route
+
         const formInfo = {
-            "prof": prof,
-            "course": course,
+            // "prof": prof,
+            // "course": course,
             "review": reviewText,
             "intelligence": intelligence,
             "wisdom": wisdom,

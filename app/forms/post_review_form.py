@@ -18,8 +18,8 @@ COURSES = ['Market Economies', 'Anthropology of the Unknown', 'Postmodern Americ
 class PostReviewForm(FlaskForm):
     # prof = SelectField("Prof Last Name", choices=PROFS)
     # course = SelectField("Course", choices=COURSES)
-    prof = StringField("Prof", validators=[DataRequired()])
-    course = StringField("Course", validators=[DataRequired()])
+    # prof = StringField("Prof", validators=[DataRequired()])
+    # course = StringField("Course", validators=[DataRequired()])
     review = StringField('Review', validators=[DataRequired(), Length(min=10, max=350, message='Reviews must be between 10 and 350 characters')])
     intelligence = IntegerField('Intelligence', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])
     wisdom = IntegerField('Wisdom', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])
