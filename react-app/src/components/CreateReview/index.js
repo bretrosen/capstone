@@ -6,7 +6,7 @@ import { createReviewThunk } from '../../store/reviews'
 export const ReviewForm = ({ review, formType }) => {
     const history = useHistory()
     const dispatch = useDispatch()
-    
+
     const [review, setReview] = useState(review?.review || '')
     const [intelligence, setIntelligence] = useState(review?.intelligence || 1)
     const [wisdom, setWisdom] = useState(review?.wisdom || 1)
@@ -21,10 +21,29 @@ export const ReviewForm = ({ review, formType }) => {
     const [errors, setErrors] = useState({})
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    // error handling
-    useEffect(() => {
-        const newErrors = {}
+    // ERROR HANDLING HERE AND WITH wtforms.validators?
+    // useEffect(() => {
+    //     const newErrors = {}
+    // })
 
+    const handleSubmit = async (event) => {
+        event.preventDefault()
 
-    })
+        setHasSubmitted(true)
+
+        // object to match request to backend create review route
+        const formInfo = {
+            "review": review,
+            "intelligence": intelligence,
+            "wisdom": wisdom,
+            "charisma": charisma,
+            "knowledge": knowledge,
+            "preparation": preparation,
+            "respect": respect,
+            "for_credit": forCredit,
+            "attendance": attendance,
+            "would_recommend": wouldRecommend,
+            "textbook": textbook,
+        }
+    }
 }
