@@ -59,6 +59,18 @@ export const getAllReviewsThunk = () => async (dispatch) => {
     }
 }
 
+export const getSingleReviewThunk = (reviewId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${reviewId}`)
+    console.log('sending single review thunk', response)
+
+    if (response.ok) {
+        const review = await response.json()
+        console.log('returning single review thunk', review)
+        dispatch(getSingleReview(review))
+        return review
+    }
+}
+
 export const createReviewThunk = (review) => async (dispatch) => {
     const response = await fetch('/api/reviews/new', {
         method: 'POST',
@@ -87,6 +99,9 @@ const reviewsReducer = (state = initialState, action) => {
                 newState.allReviews[review.id] = review
             })
             return newState
+        }
+        case GET_SINGLE_REVIEW: {
+            return {...state, allReviews: {}, singleReview: {...action.review}}
         }
         case CREATE_REVIEW: {
             const newState = {...state, allReviews: {...action.review}, singleReview: {}}

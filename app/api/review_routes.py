@@ -11,23 +11,27 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/')
 def all_reviews():
     '''
-    Query for all reviews for the display all review page. Order descending by datetime, so newest reviews appear first. Return results in a dictionary.
+    Query for all reviews for the display all review page. Order descending by datetime, so newest reviews appear first. Add an average of numeric ratings. Return results in a dictionary.
     '''
 
-    print("current user", current_user)
-
     all_reviews = Review.query.order_by(Review.time_stamp.desc()).all()
-    return {'reviews': [review.to_dict() for review in all_reviews]}
+    reviews_dict = [review.to_dict() for review in all_reviews]
+    for review in reviews_dict:
+        review['quality'] = sum([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']]) / 6
+
+    return {'reviews': reviews_dict}
 
 
 @review_routes.route('/<int:id>')
 def single_review(id):
     '''
-    Query for a single review by id and return it in a dictionary.
+    Query for a single review by id, add an average of numeric ratings, and return it in a dictionary.
     '''
-
     review = Review.query.get(id)
-    return review.to_dict()
+    review_data = review.to_dict()
+    attribute_avg = sum([review_data['intelligence'], review_data['wisdom'], review_data['charisma'], review_data['knowledge'], review_data['preparation'], review_data['respect']]) / 6
+    review_data['quality'] = attribute_avg
+    return review_data
 
 
 @review_routes.route('/new', methods = ['GET', 'POST'])
