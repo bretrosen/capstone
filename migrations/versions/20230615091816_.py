@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 93fd53b88e6c
+Revision ID: 13b648fd90a6
 Revises:
-Create Date: 2023-06-14 06:08:55.703619
+Create Date: 2023-06-15 09:18:16.461269
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = '93fd53b88e6c'
+revision = '13b648fd90a6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -73,16 +74,19 @@ def upgrade():
     sa.Column('creator_id', sa.Integer(), nullable=False),
     sa.Column('prof_id', sa.Integer(), nullable=False),
     sa.Column('course_id', sa.Integer(), nullable=False),
+    sa.Column('review', sa.Text(), nullable=False),
     sa.Column('intelligence', sa.Integer(), nullable=False),
     sa.Column('wisdom', sa.Integer(), nullable=False),
     sa.Column('charisma', sa.Integer(), nullable=False),
     sa.Column('knowledge', sa.Integer(), nullable=False),
     sa.Column('preparation', sa.Integer(), nullable=False),
     sa.Column('respect', sa.Integer(), nullable=False),
+    sa.Column('difficulty', sa.Integer(), nullable=False),
     sa.Column('for_credit', sa.Boolean(), nullable=False),
     sa.Column('attendance', sa.Boolean(), nullable=False),
     sa.Column('would_recommend', sa.Boolean(), nullable=False),
     sa.Column('textbook', sa.Boolean(), nullable=False),
+    sa.Column('time_stamp', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['course_id'], ['courses.id'], ),
     sa.ForeignKeyConstraint(['creator_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['prof_id'], ['profs.id'], ),
@@ -101,7 +105,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['topic_id'], ['debate_topics.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
 
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
