@@ -10,13 +10,13 @@ export const ReviewForm = ({ review, formType }) => {
     const [prof, setProf] = useState(review?.prof || '')
     const [course, setCourse] = useState(review?.prof || '')
     const [reviewText, setReviewText] = useState(review?.reviewText || '')
-    const [intelligence, setIntelligence] = useState(review?.intelligence || 1)
-    const [wisdom, setWisdom] = useState(review?.wisdom || 1)
-    const [charisma, setCharisma] = useState(review?.charisma || 1)
-    const [knowledge, setKnowledge] = useState(review?.knowledge || 1)
-    const [preparation, setPreparation] = useState(review?.preparation || 1)
-    const [respect, setRespect] = useState(review?.respect || 1)
-    const [difficulty, setDifficulty] = useState(review?.difficulty || 1)
+    const [intelligence, setIntelligence] = useState(review?.intelligence || '')
+    const [wisdom, setWisdom] = useState(review?.wisdom || '')
+    const [charisma, setCharisma] = useState(review?.charisma || '')
+    const [knowledge, setKnowledge] = useState(review?.knowledge || '')
+    const [preparation, setPreparation] = useState(review?.preparation || '')
+    const [respect, setRespect] = useState(review?.respect || '')
+    const [difficulty, setDifficulty] = useState(review?.difficulty || '')
     const [forCredit, setForCredit] = useState(review?.forCredit || false)
     const [attendance, setAttendance] = useState(review?.attendance || false)
     const [wouldRecommend, setWouldRecommend] = useState(review?.wouldRecommend || false)
@@ -36,7 +36,9 @@ export const ReviewForm = ({ review, formType }) => {
 
         // object to match request to backend create review route
         const formInfo = {
-            "review": review,
+            "prof": prof,
+            "course": course,
+            "review": reviewText,
             "intelligence": intelligence,
             "wisdom": wisdom,
             "charisma": charisma,
@@ -51,7 +53,8 @@ export const ReviewForm = ({ review, formType }) => {
         }
 
         const newReview = await dispatch(createReviewThunk(formInfo))
-        history.push(`/reviews/${newReview.id}`)
+        history.push('/reviews')
+        // history.push(`/reviews/${newReview.id}`)
     }
 
     const checkForCredit = () => {
@@ -73,7 +76,7 @@ export const ReviewForm = ({ review, formType }) => {
 
     // Fix form so it's grabbing profs and courses for select fields
     return (
-        <div classname='create-review-wrapper'>
+        <div className='create-review-wrapper'>
             <div>Rate A Professor</div>
             <form className='create-review-form' onSubmit={handleSubmit}>
 

@@ -24,11 +24,11 @@ function App() {
           <Route exact path='/reviews'>
             <ReviewList />
           </Route>
-          <Route path='/reviews/:reviewId'>
-            <SingleReview />
-          </Route>
           <Route path='/reviews/new'>
             <ReviewForm />
+          </Route>
+          <Route path='/reviews/:reviewId'>
+            <SingleReview />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
