@@ -1,6 +1,5 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import login_required, current_user
-from sqlalchemy import desc
 from datetime import datetime
 from app.models import db, Review, Prof, Course
 from app.forms.post_review_form import PostReviewForm
@@ -17,27 +16,40 @@ def mean(*args):
 @review_routes.route('/')
 def all_reviews():
     '''
-    Query for all reviews for the display all review page. Order descending by datetime, so newest reviews appear first. Add an average of numeric ratings. Return results in a dictionary.
+    Query for all reviews for the display all review page. Order descending by datetime, so newest reviews appear first. Get the associated professor's name and the associated course for each review. Add an average of numeric ratings. Return results in a dictionary.
     '''
+
+    # add prof and course name here?
+    # would just need to append those two fields to each review
 
     all_reviews = Review.query.order_by(Review.time_stamp.desc()).all()
     reviews_dict = [review.to_dict() for review in all_reviews]
     for review in reviews_dict:
         review['quality'] = mean(review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect'])
+        prof = (Prof.query.filter(Prof.id == review['prof_id']).one()).to_dict()
+        course = (Course.query.filter(Course.id == review['course_id']).one()).to_dict()
+        review['prof_first_name'] = prof['first_name']
+        review['prof_last_name'] = prof['last_name']
+        review['course_name'] = course['name']
     return {'reviews': reviews_dict}
 
 
 @review_routes.route('/<int:id>')
 def single_review(id):
     '''
-    Query for a single review by id, add an average of numeric ratings, and return it in a dictionary.
+    Query for a single review by id. Add the associated professor's name and the associated course name. Add an average of numeric ratings. Return it in a dictionary.
     '''
     review = Review.query.get(id)
     review_data = review.to_dict()
+    prof = Prof.query.filter(Prof.id == review.prof_id).one()
+    course = Course.query.filter(Course.id == review.course_id).one()
+
 
     attribute_mean = mean(review_data['intelligence'], review_data['wisdom'], review_data['charisma'], review_data['knowledge'], review_data['preparation'], review_data['respect'])
     review_data['quality'] = attribute_mean
-
+    review_data['prof_first_name'] = prof.first_name
+    review_data['prof_last_name'] = prof.last_name
+    review_data['course_name'] = course.name
     return review_data
 
 
@@ -72,7 +84,7 @@ def post_review():
 
     # this form info gets added to db
     # need ids for prof_id and course_id here
-    # should be sending ids from the frontend
+    # should be getting ids from the frontend
 
     if form.validate_on_submit():
         new_review = Review(
