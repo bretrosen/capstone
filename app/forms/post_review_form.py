@@ -24,6 +24,7 @@ class PostReviewForm(FlaskForm):
     knowledge = IntegerField('Knowledge', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])
     preparation = IntegerField('Preparation', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])
     respect = IntegerField('Respect', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])
+    difficulty = IntegerField('Difficulty', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])
     for_credit = BooleanField('For Credit')
     attendance = BooleanField('Attendance')
     would_recommend = BooleanField("Would Recommend")

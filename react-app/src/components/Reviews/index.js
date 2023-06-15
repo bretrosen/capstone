@@ -17,13 +17,9 @@ export const ReviewList = () => {
         <div className='reviews-list-wrapper'>
             {reviews.map((review) => (
                 <div className='reviews-list-item' key={review.id}>
-                    <div className='reviews-list-attributes'>
-                        <div>Intelligence: {review.intelligence}</div>
-                        <div>Wisdom: {review.wisdom}</div>
-                        <div>Charisma: {review.charisma}</div>
-                        <div>Knowledge: {review.knowledge}</div>
-                        <div>Preparation: {review.preparation}</div>
-                        <div>Respect: {review.respect}</div>
+                    <div className='reviews-list-ratings'>
+                        <div>Overall: {review.quality}</div>
+                        <div>Difficulty: {review.difficulty}</div>
                     </div>
                     <div className='reviews-list-item-summary'>
                         <div>
@@ -51,7 +47,7 @@ export const ReviewList = () => {
                         </div>
                     </div>
                     <div className='reviews-list-item-review'>{review.review}</div>
-
+                    <br></br>
                 </div>
             ))}
         </div>

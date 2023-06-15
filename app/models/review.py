@@ -18,6 +18,7 @@ class Review(db.Model):
     knowledge = db.Column(db.Integer, nullable=False)
     preparation = db.Column(db.Integer, nullable=False)
     respect = db.Column(db.Integer, nullable=False)
+    difficulty = db.Column(db.Integer, nullable=False)
     for_credit = db.Column(db.Boolean, nullable=False)
     attendance = db.Column(db.Boolean, nullable=False)
     would_recommend = db.Column(db.Boolean, nullable=False)
@@ -41,6 +42,7 @@ class Review(db.Model):
             'knowledge': self.knowledge,
             'preparation': self.preparation,
             'respect': self.respect,
+            'difficulty': self.difficulty,
             'for_credit': self.for_credit,
             'attendance': self.attendance,
             'would_recommend': self.would_recommend,
