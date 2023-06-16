@@ -26,7 +26,7 @@ export const ReviewList = () => {
                 <div className='reviews-list-item' key={review.id}>
 
                     <div className='reviews-list-ratings'>
-                        <div>Quality: {review.quality}</div>
+                        <div>Quality: {review.quality.toFixed(1)}</div>
                         <div>Difficulty: {review.difficulty}</div>
                     </div>
                     <div className='reviews-list-right'>

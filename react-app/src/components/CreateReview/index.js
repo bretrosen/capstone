@@ -88,9 +88,11 @@ export const ReviewForm = ({ review, formType }) => {
             "textbook": textbook,
         }
 
-        await dispatch(createReviewThunk(formInfo))
-        history.push('/reviews')
-        // history.push(`/reviews/${newReview.id}`)
+        if (!Object.values(errors).length) {
+            const newReview = await dispatch(createReviewThunk(formInfo))
+            // history.push('/reviews')
+            history.push(`/reviews/${newReview.id}`)
+        }
     }
 
     const checkForCredit = () => {
@@ -109,202 +111,210 @@ export const ReviewForm = ({ review, formType }) => {
         setTextbook(!textbook)
     }
 
-
-    // Fix form so it's grabbing profs and courses for select fields
     return (
         <div className='create-review-wrapper'>
             <div className='create-review-heading'>Rate A Professor</div>
-                <form className='create-review-form' onSubmit={handleSubmit}>
+            <form className='create-review-form' onSubmit={handleSubmit}>
 
+                <div className='create-review-errors'>
+                    {hasSubmitted && errors.prof && (
+                        <p>{errors.prof}</p>
+                    )}</div>
+                <div className='create-review-input'>
+                    <label>
+                        Select Professor &nbsp;
+                        <select
+                            value={prof}
+                            onChange={e => setProf(e.target.value)}
+                        >
+                            <option selected='selected'> -- select a professor -- </option>
+                            {PROFS.map(prof => (
+                                <option
+                                    key={prof.id}
+                                    value={prof.id}>{prof.first_name} {prof.last_name}</option>
+                            ))}
+                        </select>
+                    </label>
+                </div>
+
+                <div className='create-review-errors'>
+                    {hasSubmitted && errors.course && (
+                        <p>{errors.course}</p>
+                    )}</div>
+                <div className='create-review-input'>
+                    <label>
+                        Select Course &nbsp;
+                        <select
+                            value={course}
+                            onChange={e => setCourse(e.target.value)}
+                        >
+                            <option selected='selected'> -- select a course -- </option>
+                            {COURSES.map(course => (
+                                <option
+                                    key={course.id}
+                                    value={course.id}>{course.name}</option>
+                            ))}
+                        </select>
+                    </label>
+                </div>
+
+                <div className='create-review-input'>
                     <div className='create-review-errors'>
-                        {hasSubmitted && errors.prof && (
-                            <p>{errors.prof}</p>
+                        {hasSubmitted && errors.intelligence && (
+                            <p>{errors.intelligence}</p>
                         )}</div>
-                    <div className='create-review-input'>
-                        <label>
-                            Select Professor &nbsp;
-                            <select
-                                value={prof}
-                                onChange={e => setProf(e.target.value)}
-                            >
-                                <option selected='selected'> -- select a professor -- </option>
-                                {PROFS.map(prof => (
-                                    <option
-                                        key={prof.id}
-                                        value={prof.id}>{prof.first_name} {prof.last_name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
+                    How intelligent was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={intelligence}
+                        onChange={e => setIntelligence(e.target.value)} />
+                </div>
 
+                <div className='create-review-input'>
                     <div className='create-review-errors'>
-                        {hasSubmitted && errors.course && (
-                            <p>{errors.course}</p>
+                        {hasSubmitted && errors.wisdom && (
+                            <p>{errors.wisdom}</p>
                         )}</div>
-                    <div className='create-review-input'>
-                        <label>
-                            Select Course &nbsp;
-                            <select
-                                value={course}
-                                onChange={e => setCourse(e.target.value)}
-                            >
-                                <option selected='selected'> -- select a course -- </option>
-                                {COURSES.map(course => (
-                                    <option
-                                        key={course.id}
-                                        value={course.id}>{course.name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
+                    How wise was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={wisdom}
+                        onChange={e => setWisdom(e.target.value)} />
+                </div>
 
-                    <div className='create-review-input'>
-                        <div className='create-review-errors'>
-                            {hasSubmitted && errors.intelligence && (
-                                <p>{errors.intelligence}</p>
-                            )}</div>
-                        How intelligent was this professor?
-                        <input
-                            className='create-review-number'
-                            type='number'
-                            value={intelligence}
-                            onChange={e => setIntelligence(e.target.value)} />
-                    </div>
-
-                    <div className='create-review-input'>
-                        <div className='create-review-errors'>
-                            {hasSubmitted && errors.wisdom && (
-                                <p>{errors.wisdom}</p>
-                            )}</div>
-                        How wise was this professor?
-                        <input
-                            className='create-review-number'
-                            type='number'
-                            value={wisdom}
-                            onChange={e => setWisdom(e.target.value)} />
-                    </div>
-
-                    <div className='create-review-input'>
-                        <div className='create-review-errors'>
-                            {hasSubmitted && errors.charisma && (
-                                <p>{errors.charisma}</p>
-                            )}</div>
-                        How charismatic was this professor?
-                        <input
-                            className='create-review-number'
-                            type='number'
-                            value={charisma}
-                            onChange={e => setCharisma(e.target.value)} />
-                    </div>
-
-                    <div className='create-review-input'>
-                        <div className='create-review-errors'>
-                            {hasSubmitted && errors.knowledge && (
-                                <p>{errors.knowledge}</p>
-                            )}</div>
-                        How knowledgeable was this professor about the subject?
-                        <input
-                            className='create-review-number'
-                            type='number'
-                            value={knowledge}
-                            onChange={e => setKnowledge(e.target.value)} />
-                    </div>
-
-                    <div className='create-review-input'>
-                        <div className='create-review-errors'>
-                            {hasSubmitted && errors.preparation && (
-                                <p>{errors.preparation}</p>
-                            )}</div>
-                        How well did this professor prepare?
-                        <input
-                            className='create-review-number'
-                            type='number'
-                            value={preparation}
-                            onChange={e => setPreparation(e.target.value)} />
-                    </div>
-
-                    <div className='create-review-input'>
-                        <div className='create-review-errors'>
-                            {hasSubmitted && errors.respect && (
-                                <p>{errors.respect}</p>
-                            )}</div>
-                        How respectful was this professor?
-                        <input
-                            className='create-review-number'
-                            type='number'
-                            placeholder='Respect'
-                            value={respect}
-                            onChange={e => setRespect(e.target.value)} />
-                    </div>
-
-                    <div className='create-review-input'>
-                        <div className='create-review-errors'>
-                            {hasSubmitted && errors.difficulty && (
-                                <p>{errors.difficulty}</p>
-                            )}</div>
-                        How difficult was this professor?
-                        <input
-                            className='create-review-number'
-                            type='number'
-                            placeholder='Difficulty'
-                            value={difficulty}
-                            onChange={e => setDifficulty(e.target.value)} />
-                    </div>
-
-                    <div className='create-review-input'>
-                        <label>
-                            Would you take this professor again?
-                            <input
-                                type='checkbox'
-                                checked={wouldRecommend}
-                                onChange={checkWouldRecommend} />
-                        </label>
-                    </div>
-
-                    <div className='create-review-input'>
-                        <label>
-                            Was this class taken for credit?
-                            <input
-                                type='checkbox'
-                                checked={forCredit}
-                                onChange={checkForCredit} />
-                        </label>
-                    </div>
-
-                    <div className='create-review-input'>
-                        <label>
-                            Did this professor use textbooks?
-                            <input
-                                type='checkbox'
-                                checked={textbook}
-                                onChange={checkTextbook} />
-                        </label>
-                    </div>
-
-                    <div className='create-review-input'>
-                        <label>
-                            Was attendance mandatory?
-                            <input
-                                type='checkbox'
-                                checked={attendance}
-                                onChange={checkAttendance} />
-                        </label>
-                    </div>
-
+                <div className='create-review-input'>
                     <div className='create-review-errors'>
-                        {hasSubmitted && errors.text && (
-                            <p>{errors.text}</p>
+                        {hasSubmitted && errors.charisma && (
+                            <p>{errors.charisma}</p>
                         )}</div>
+                    How charismatic was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={charisma}
+                        onChange={e => setCharisma(e.target.value)} />
+                </div>
+
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.knowledge && (
+                            <p>{errors.knowledge}</p>
+                        )}</div>
+                    How knowledgeable was this professor about the subject? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={knowledge}
+                        onChange={e => setKnowledge(e.target.value)} />
+                </div>
+
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.preparation && (
+                            <p>{errors.preparation}</p>
+                        )}</div>
+                    How well did this professor prepare? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={preparation}
+                        onChange={e => setPreparation(e.target.value)} />
+                </div>
+
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.respect && (
+                            <p>{errors.respect}</p>
+                        )}</div>
+                    How respectful was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={respect}
+                        onChange={e => setRespect(e.target.value)} />
+                </div>
+
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.difficulty && (
+                            <p>{errors.difficulty}</p>
+                        )}</div>
+                    How difficult was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={difficulty}
+                        onChange={e => setDifficulty(e.target.value)} />
+                </div>
+
+                <div className='create-review-input'>
+                    <label>
+                        Would you take this professor again? &nbsp;
+                        <input
+                            type='checkbox'
+                            checked={wouldRecommend}
+                            onChange={checkWouldRecommend} />
+                    </label>
+                </div>
+
+                <div className='create-review-input'>
+                    <label>
+                        Was this class taken for credit? &nbsp;
+                        <input
+                            type='checkbox'
+                            checked={forCredit}
+                            onChange={checkForCredit} />
+                    </label>
+                </div>
+
+                <div className='create-review-input'>
+                    <label>
+                        Did this professor use textbooks? &nbsp;
+                        <input
+                            type='checkbox'
+                            checked={textbook}
+                            onChange={checkTextbook} />
+                    </label>
+                </div>
+
+                <div className='create-review-input'>
+                    <label>
+                        Was attendance mandatory? &nbsp;
+                        <input
+                            type='checkbox'
+                            checked={attendance}
+                            onChange={checkAttendance} />
+                    </label>
+                </div>
+
+                <div className='create-review-errors'>
+                    {hasSubmitted && errors.text && (
+                        <p>{errors.text}</p>
+                    )}</div>
+                <div className='create-review-input'>
                     <textarea className='review-text'
                         placeholder='What do you want other students to know about this professor?'
                         value={reviewText}
                         onChange={e => setReviewText(e.target.value)} />
+                </div>
 
-                    <button className='submit-review-button' type='submit'>
-                        Submit Your Review
+                <div className='create-review-input' id='review-box'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && Object.values(errors).length > 0 && (
+                            <p>Oops! There were errors in your submission.</p>
+                        )}
+                    </div>
+                    <div className='review-terms'>
+                        By clicking the "Submit" button, I acknowledge that I have read and agreed to no Site Guidelines, Terms of Use, or Privacy Policy whatsoever. Submitted data becomes copper through the magic of SQLAlchemy. IP addresses are flogged.
+                    </div>
+                    <button className='regular-button' type='submit'>
+                        Submit Rating
                     </button>
 
-                </form>
+                </div>
+            </form>
 
         </div>
     )

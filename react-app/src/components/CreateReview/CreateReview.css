@@ -1,3 +1,7 @@
+.create-review-errors {
+    color: red;
+}
+
 .create-review-form {
     display: flex;
     flex-direction: column;
@@ -6,12 +10,33 @@
 .create-review-heading {
     margin: 1rem;
     width: 1024px;
+    font-size: 32px;
+    font-weight: 600;
 }
 
 .create-review-input {
     margin: 1rem;
     padding: 1rem;
-    height: 5rem;
-    border: 1px solid grey;
+    height: 10rem;
+    border: 1px solid lightgrey;
     border-radius: 5px;
+    box-shadow: 0 2px 3px grey;
+}
+
+.review-terms {
+    width: 90%;
+    font-size: 13px;
+    text-align: center;
+}
+.review-text {
+    width: 100%;
+    height: 100%;
+}
+
+#review-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
 }
