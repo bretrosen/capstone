@@ -1,7 +1,22 @@
+import React, { useEffect } from 'react'
 import { NavLink } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllReviewsThunk } from '../../store/reviews'
+import { getAllProfsThunk } from '../../store/profs'
+import { getAllCoursesThunk } from '../../store/courses'
 import "./LandingPage.css"
 
 export const LandingPage = () => {
+    const sessionUser = useSelector(state => state.session.user)
+    const dispatch = useDispatch()
+
+    // load everything into the store
+	useEffect(() => {
+		dispatch(getAllReviewsThunk())
+		dispatch(getAllProfsThunk())
+		dispatch(getAllCoursesThunk())
+		console.log("useEffect on landing page ran")
+	}, [sessionUser])
 
     return (
         <div className='landing-page'>

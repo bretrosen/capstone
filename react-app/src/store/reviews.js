@@ -91,7 +91,7 @@ export const createReviewThunk = (review) => async (dispatch) => {
 const initialState = {allReviews: {}, singleReview: {}}
 
 // reducer
-const reviewsReducer = (state = initialState, action) => {
+export default function reviewsReducer(state = initialState, action)  {
     switch (action.type) {
         case GET_ALL_REVIEWS: {
             const newState = {...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview}}
@@ -105,13 +105,20 @@ const reviewsReducer = (state = initialState, action) => {
         case GET_SINGLE_REVIEW: {
             return {...state, allReviews: {...state.allReviews}, singleReview: {...action.review}}
         }
+
         case CREATE_REVIEW: {
-            const newState = {...state, allReviews: {...action.review}, singleReview: {}}
-            return newState
+            const id = action.review.id
+            const newState = {...state.allReviews}
+            newState[id] = action.review
+            return {...state, reviews: newState}
         }
+
+        // case CREATE_REVIEW: {
+        //     const newReview = action.review
+        //     const updatedReviews = [...state.allReviews, newReview]
+        //     return {...state, reviews: {...state.reviews, allReviews: updatedReviews}}
+        // }
         default:
             return state
     }
 }
-
-export default reviewsReducer;

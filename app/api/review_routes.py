@@ -23,6 +23,7 @@ def all_reviews():
     # would just need to append those two fields to each review
 
     all_reviews = Review.query.order_by(Review.time_stamp.desc()).all()
+    print("We should be ordering reviews in reverse time order")
     reviews_dict = [review.to_dict() for review in all_reviews]
     for review in reviews_dict:
         review['quality'] = mean(review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect'])

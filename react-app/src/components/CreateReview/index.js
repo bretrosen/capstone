@@ -1,17 +1,31 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { getAllReviewsThunk } from '../../store/reviews'
+import { getAllProfsThunk } from '../../store/profs'
+import { getAllCoursesThunk } from '../../store/courses'
 import { createReviewThunk } from '../../store/reviews'
 
 export const ReviewForm = ({ review, formType }) => {
     const history = useHistory()
     const dispatch = useDispatch()
+    const sessionUser = useSelector(state => state.session.user)
 
-    const COURSES = []
+    // load everything into the store
+    useEffect(() => {
+        dispatch(getAllReviewsThunk())
+        dispatch(getAllProfsThunk())
+        dispatch(getAllCoursesThunk())
+        console.log("useEffect in nav ran")
+    }, [sessionUser])
+
+
     const coursesObj = useSelector(state => state.courses.allCourses)
-    for (let i = 1; i <= Object.values(coursesObj).length; i++) {
-        COURSES.push(coursesObj[i].name)
-    }
+    // for (let i = 1; i <= Object.values(coursesObj).length; i++) {
+    //     COURSES.push(coursesObj[i].name)
+    // }
+
+    const COURSES = Object.values(coursesObj)
     console.log("courses", COURSES)
 
     const PROFS = []
@@ -141,8 +155,8 @@ export const ReviewForm = ({ review, formType }) => {
                         >
                             {COURSES.map(course => (
                                 <option
-                                    key={course}
-                                    value={course}>{course}</option>
+                                    key={course.id}
+                                    value={course.id}>{course.name}</option>
                             ))}
                         </select>
                     </label>
