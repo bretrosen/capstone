@@ -9,9 +9,9 @@ export const ReviewList = () => {
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
 
-    useEffect(() => {
-        dispatch(getAllReviewsThunk())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getAllReviewsThunk())
+    // }, [dispatch])
 
     return (
         <div className='reviews-list-wrapper'>

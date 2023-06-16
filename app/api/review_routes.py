@@ -144,3 +144,23 @@ def put_delete_review(id):
     db.session.delete(review_to_delete)
     db.session.commit()
     return review_to_delete.to_dict()
+
+@review_routes.route('/get_profs')
+def get_profs():
+    '''
+    Queries for and returns all the profs in the database.
+    '''
+    profs = Prof.query.all()
+    profs_dict = [(prof.to_dict())['first_name'] + ' ' + (prof.to_dict())['last_name'] for prof in profs]
+
+    return profs_dict
+
+@review_routes.route('/get_courses')
+def get_courses():
+    '''
+    Queries for and returns all the courses in the database.
+    '''
+    courses = Course.query.all()
+    courses_dict = [(course.to_dict())['name'] for course in courses]
+
+    return courses_dict

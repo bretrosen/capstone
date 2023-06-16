@@ -8,13 +8,11 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
 	const dispatch = useDispatch()
 	const sessionUser = useSelector(state => state.session.user)
-	const { user } = useSelector(state => state)
 
-
+	// load all reviews for every page with a nav bar
 	useEffect(() => {
-		dispatch(getAllReviewsThunk)
-		console.log("get all reviews thunk in nav ran")
-	}, [dispatch, sessionUser])
+		dispatch(getAllReviewsThunk())
+	}, [dispatch])
 
 	return (
 		<ul>

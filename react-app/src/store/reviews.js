@@ -92,30 +92,27 @@ const initialState = {allReviews: {}, singleReview: {}}
 
 // reducer
 const reviewsReducer = (state = initialState, action) => {
-
-    let reviewState;
-
     switch (action.type) {
-        // case GET_ALL_REVIEWS: {
-        //     const newState = {...state, allReviews: {}, singleReview: {}}
-        //     action.reviews.reviews.forEach((review) => {
-        //         newState.allReviews[review.id] = review
-        //     })
-        //     return newState
-        // }
         case GET_ALL_REVIEWS: {
-            const reviews = action.reviews.reviews
-
-            reviewState = {...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview}}
-
-            reviews.forEach((review) => {
-                reviewState.allReviews[review.id] = review
+            const newState = {...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview}}
+            action.reviews.reviews.forEach((review) => {
+                newState.allReviews[review.id] = review
             })
-
-            return reviewState
+            return newState
         }
+        // case GET_ALL_REVIEWS: {
+        //     const reviews = action.reviews.reviews
+
+        //     reviewState = {...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview}}
+
+        //     reviews.forEach((review) => {
+        //         reviewState.allReviews[review.id] = review
+        //     })
+
+        //     return reviewState
+        // }
         case GET_SINGLE_REVIEW: {
-            return {...state, allReviews: {}, singleReview: {...action.review}}
+            return {...state, allReviews: {...state.allReviews}, singleReview: {...action.review}}
         }
         case CREATE_REVIEW: {
             const newState = {...state, allReviews: {...action.review}, singleReview: {}}

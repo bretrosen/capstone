@@ -1,13 +1,46 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { createReviewThunk } from '../../store/reviews'
 
 export const ReviewForm = ({ review, formType }) => {
     const history = useHistory()
     const dispatch = useDispatch()
+    // const [profs, setProfs] = useState([])
+    // const [courses, setCourses] = useState([])
 
-    
+    // gets unique values for all professors and courses in the store
+    const reviews = useSelector(state => state.reviews.allReviews)
+
+    const SET_PROFS = new Set()
+    const SET_COURSES = new Set()
+    for (let i = 1; i <= Object.values(reviews).length; i++) {
+        SET_PROFS.add(reviews[i].prof_first_name + " " + reviews[i].prof_last_name)
+        SET_COURSES.add(reviews[i].course_name)
+    }
+
+    const PROFS = [...SET_PROFS]
+    const COURSES = [...SET_COURSES]
+    console.log("PROFS", PROFS)
+    console.log("COURSES", COURSES)
+
+    // get profs and courses by fetching from db
+    // would be the preferable way to do this rather than accessing the store
+    // not sure how to handle these aysnc requests properly
+    // const getProfs = async () => {
+    //     const response = await fetch(`/api/reviews/get_profs`)
+    //     const allProfs = await response.json()
+    //     setProfs(...allProfs)
+    //     return allProfs
+    // }
+
+    // const getCourses = async () => {
+    //     const response = await fetch(`/api/reviews/get_courses`)
+    //     const allCourses = await response.json()
+    //     console.log("all courses", allCourses)
+    //     setCourses(...allCourses)
+    //     return allCourses
+    // }
 
     const [prof, setProf] = useState(review?.prof || '')
     const [course, setCourse] = useState(review?.prof || '')
@@ -58,7 +91,7 @@ export const ReviewForm = ({ review, formType }) => {
             "textbook": textbook,
         }
 
-        const newReview = await dispatch(createReviewThunk(formInfo))
+        await dispatch(createReviewThunk(formInfo))
         history.push('/reviews')
         // history.push(`/reviews/${newReview.id}`)
     }
@@ -93,9 +126,11 @@ export const ReviewForm = ({ review, formType }) => {
                             value={prof}
                             onChange={e => setProf(e.target.value)}
                         >
-                            <option value='Shakespeare'>Shakespeare</option>
-                            <option value='Marx'>Marx</option>
-                            <option value='Newton'>Newton</option>
+                            {PROFS.map(prof => (
+                                <option
+                                    key={prof}
+                                    value={prof}>{prof}</option>
+                            ))}
                         </select>
                     </label>
                 </div>
@@ -107,9 +142,11 @@ export const ReviewForm = ({ review, formType }) => {
                             value={course}
                             onChange={e => setCourse(e.target.value)}
                         >
-                            <option value='Market Economies'>Market Economies</option>
-                            <option value='Anthropology of the Unknown'>Anthropology of the Unknown</option>
-                            <option value='Postmodern American Literature'>Postmodern American Literature</option>
+                            {COURSES.map(course => (
+                                <option
+                                    key={course}
+                                    value={course}>{course}</option>
+                            ))}
                         </select>
                     </label>
                 </div>
