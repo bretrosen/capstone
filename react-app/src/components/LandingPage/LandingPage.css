@@ -1,0 +1,22 @@
+.enter {
+    color: white;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.get-started {
+    background-image: url('./man-reading-book.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 640px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-page {
+    margin: 1rem
+}

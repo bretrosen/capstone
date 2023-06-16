@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import { ReviewList } from './components/Reviews'
 import { SingleReview } from './components/SingleReview'
 import { ReviewForm } from './components/CreateReview'
+import { LandingPage } from './components/LandingPage'
 
 function App() {
   const dispatch = useDispatch();
@@ -21,14 +22,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path='/reviews'>
-            <ReviewList />
+          <Route exact path='/'>
+            <LandingPage />
           </Route>
           <Route path='/reviews/new'>
             <ReviewForm />
           </Route>
           <Route path='/reviews/:reviewId'>
             <SingleReview />
+          </Route>
+          <Route path='/reviews'>
+            <ReviewList />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
