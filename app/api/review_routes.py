@@ -23,6 +23,7 @@ def all_reviews():
     # would just need to append those two fields to each review
 
     all_reviews = Review.query.order_by(Review.time_stamp.desc()).all()
+    print("We should be ordering reviews in reverse time order")
     reviews_dict = [review.to_dict() for review in all_reviews]
     for review in reviews_dict:
         review['quality'] = mean(review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect'])
@@ -68,29 +69,11 @@ def post_review():
 
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
 
-    # refactor this for more refined query than last name
-    # form_prof_last_name = form.data['prof']
-    # db_prof = Prof.query.filter(Prof.last_name == form_prof_last_name).first()
-    # print('prof last name from form', form_prof_last_name)
-    # print("prof from backend query?", db_prof)
-    # print('intelligence from form', form.data['intelligence'])
-    # print('review text from form', form.data['review'])
-    # prof_id = db_prof.id
-
-
-    # form_course_name = form.data['course']
-    # db_course = Course.query.filter(Course.name == form_course_name).first()
-    # course_id = db_course.id
-
-    # this form info gets added to db
-    # need ids for prof_id and course_id here
-    # should be getting ids from the frontend
-
     if form.validate_on_submit():
         new_review = Review(
             creator_id=creator_id,
-            prof_id=1,
-            course_id=1,
+            prof_id=form.data['prof'],
+            course_id=form.data['course'],
             review=form.data['review'],
             intelligence=form.data['intelligence'],
             wisdom=form.data['wisdom'],

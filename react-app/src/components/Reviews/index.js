@@ -10,14 +10,19 @@ export const ReviewList = () => {
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
 
-    // useEffect(() => {
-    //     dispatch(getAllReviewsThunk())
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(getAllReviewsThunk())
+        console.log("useEffect in get reviews ran")
+    }, [dispatch])
+
+    if (!reviews) {
+        return <h1>Loading...</h1>
+    }
 
     return (
         <div className='reviews-list-wrapper'>
             {reviews.map((review) => (
-                <Link to={`/reviews/${review.id}`}>
+                <Link to={`/reviews/${review.id}`} key={review.id}>
                 <div className='reviews-list-item' key={review.id}>
 
                     <div className='reviews-list-ratings'>

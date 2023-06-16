@@ -1,65 +1,69 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { getAllReviewsThunk } from '../../store/reviews'
+import { getAllProfsThunk } from '../../store/profs'
+import { getAllCoursesThunk } from '../../store/courses'
 import { createReviewThunk } from '../../store/reviews'
+import './CreateReview.css'
 
 export const ReviewForm = ({ review, formType }) => {
     const history = useHistory()
     const dispatch = useDispatch()
+    const sessionUser = useSelector(state => state.session.user)
 
-    const COURSES = []
+    // load everything into the store so select fields can be populated
+    useEffect(() => {
+        dispatch(getAllReviewsThunk())
+        dispatch(getAllProfsThunk())
+        dispatch(getAllCoursesThunk())
+        console.log("useEffect in create review form ran")
+    }, [sessionUser])
+
+    // get all courses from store to use as select field for form
     const coursesObj = useSelector(state => state.courses.allCourses)
-    for (let i = 1; i <= Object.values(coursesObj).length; i++) {
-        COURSES.push(coursesObj[i].name)
-    }
+    const COURSES = Object.values(coursesObj)
     console.log("courses", COURSES)
 
-    const PROFS = []
+    // get all profs from store to use as select field for form
     const profsObj = useSelector(state => state.profs.allProfs)
-    for (let i = 1; i <= Object.values(profsObj).length; i++) {
-        PROFS.push(profsObj[i].first_name + ' ' + profsObj[i].last_name)
-    }
+    const PROFS = Object.values(profsObj)
     console.log("profs", PROFS)
 
-    // get profs and courses by fetching from db
-    // would be the preferable way to do this rather than accessing the store
-    // not sure how to handle these aysnc requests properly
-    // const getProfs = async () => {
-    //     const response = await fetch(`/api/reviews/get_profs`)
-    //     const allProfs = await response.json()
-    //     setProfs(...allProfs)
-    //     return allProfs
-    // }
-
-    // const getCourses = async () => {
-    //     const response = await fetch(`/api/reviews/get_courses`)
-    //     const allCourses = await response.json()
-    //     console.log("all courses", allCourses)
-    //     setCourses(...allCourses)
-    //     return allCourses
-    // }
-
-    const [prof, setProf] = useState(review?.prof || '')
-    const [course, setCourse] = useState(review?.prof || '')
-    const [reviewText, setReviewText] = useState(review?.reviewText || '')
-    const [intelligence, setIntelligence] = useState(review?.intelligence || '')
-    const [wisdom, setWisdom] = useState(review?.wisdom || '')
-    const [charisma, setCharisma] = useState(review?.charisma || '')
-    const [knowledge, setKnowledge] = useState(review?.knowledge || '')
-    const [preparation, setPreparation] = useState(review?.preparation || '')
-    const [respect, setRespect] = useState(review?.respect || '')
-    const [difficulty, setDifficulty] = useState(review?.difficulty || '')
-    const [forCredit, setForCredit] = useState(review?.forCredit || false)
-    const [attendance, setAttendance] = useState(review?.attendance || false)
-    const [wouldRecommend, setWouldRecommend] = useState(review?.wouldRecommend || false)
-    const [textbook, setTextbook] = useState(review?.textbook || false)
+    const [prof, setProf] = useState('')
+    const [course, setCourse] = useState('')
+    const [intelligence, setIntelligence] = useState('')
+    const [wisdom, setWisdom] = useState('')
+    const [charisma, setCharisma] = useState('')
+    const [knowledge, setKnowledge] = useState('')
+    const [preparation, setPreparation] = useState('')
+    const [respect, setRespect] = useState('')
+    const [difficulty, setDifficulty] = useState('')
+    const [forCredit, setForCredit] = useState(false)
+    const [attendance, setAttendance] = useState(false)
+    const [wouldRecommend, setWouldRecommend] = useState(false)
+    const [textbook, setTextbook] = useState(false)
+    const [reviewText, setReviewText] = useState('')
     const [errors, setErrors] = useState({})
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    // ERROR HANDLING HERE AND WITH wtforms.validators?
-    // useEffect(() => {
-    //     const newErrors = {}
-    // })
+    // error handling
+    useEffect(() => {
+        const newErrors = {}
+
+        if (!prof.length || prof[0] === '-') newErrors['prof'] = "Please select a professor"
+        if (!course.length || course[0] === '-') newErrors['course'] = "Please select a course"
+        if (intelligence < 1 || intelligence > 20) newErrors['intelligence'] = "Intelligence must be an integer between 1 and 20"
+        if (wisdom < 1 || wisdom > 20) newErrors['wisdom'] = "Wisdom must be an integer between 1 and 20"
+        if (charisma < 1 || charisma > 20) newErrors['charisma'] = "Charisma must be an integer between 1 and 20"
+        if (knowledge < 1 || knowledge > 20) newErrors['knowledge'] = "Knowledge must be an integer between 1 and 20"
+        if (preparation < 1 || preparation > 20) newErrors['preparation'] = "Preparation must be an integer between 1 and 20"
+        if (respect < 1 || respect > 20) newErrors['respect'] = "Respect must be an integer between 1 and 20"
+        if (difficulty < 1 || difficulty > 20) newErrors['difficulty'] = "Difficulty must be an integer between 1 and 20"
+        if (reviewText.trim().length < 10 || reviewText.length > 350) newErrors['text'] = "Reviews must be between 10 and 350 characters"
+
+        setErrors(newErrors)
+    }, [prof, course, intelligence, wisdom, charisma, knowledge, preparation, respect, difficulty, reviewText])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -67,13 +71,9 @@ export const ReviewForm = ({ review, formType }) => {
         setHasSubmitted(true)
 
         // object to match request to backend create review route
-        // need to send ids for prof and course here
-        // need to add all profs and all courses to store
-        // via a new route
-
         const formInfo = {
-            // "prof": prof,
-            // "course": course,
+            "prof": prof,
+            "course": course,
             "review": reviewText,
             "intelligence": intelligence,
             "wisdom": wisdom,
@@ -88,9 +88,11 @@ export const ReviewForm = ({ review, formType }) => {
             "textbook": textbook,
         }
 
-        await dispatch(createReviewThunk(formInfo))
-        history.push('/reviews')
-        // history.push(`/reviews/${newReview.id}`)
+        if (!Object.values(errors).length) {
+            const newReview = await dispatch(createReviewThunk(formInfo))
+            // history.push('/reviews')
+            history.push(`/reviews/${newReview.id}`)
+        }
     }
 
     const checkForCredit = () => {
@@ -109,13 +111,15 @@ export const ReviewForm = ({ review, formType }) => {
         setTextbook(!textbook)
     }
 
-
-    // Fix form so it's grabbing profs and courses for select fields
     return (
         <div className='create-review-wrapper'>
-            <div>Rate A Professor</div>
+            <div className='create-review-heading'>Rate A Professor</div>
             <form className='create-review-form' onSubmit={handleSubmit}>
 
+                <div className='create-review-errors'>
+                    {hasSubmitted && errors.prof && (
+                        <p>{errors.prof}</p>
+                    )}</div>
                 <div className='create-review-input'>
                     <label>
                         Select Professor &nbsp;
@@ -123,15 +127,20 @@ export const ReviewForm = ({ review, formType }) => {
                             value={prof}
                             onChange={e => setProf(e.target.value)}
                         >
+                            <option selected='selected'> -- select a professor -- </option>
                             {PROFS.map(prof => (
                                 <option
-                                    key={prof}
-                                    value={prof}>{prof}</option>
+                                    key={prof.id}
+                                    value={prof.id}>{prof.first_name} {prof.last_name}</option>
                             ))}
                         </select>
                     </label>
                 </div>
 
+                <div className='create-review-errors'>
+                    {hasSubmitted && errors.course && (
+                        <p>{errors.course}</p>
+                    )}</div>
                 <div className='create-review-input'>
                     <label>
                         Select Course &nbsp;
@@ -139,67 +148,110 @@ export const ReviewForm = ({ review, formType }) => {
                             value={course}
                             onChange={e => setCourse(e.target.value)}
                         >
+                            <option selected='selected'> -- select a course -- </option>
                             {COURSES.map(course => (
                                 <option
-                                    key={course}
-                                    value={course}>{course}</option>
+                                    key={course.id}
+                                    value={course.id}>{course.name}</option>
                             ))}
                         </select>
                     </label>
                 </div>
 
-                <input
-                    className='create-review-input'
-                    type='number'
-                    placeholder='Intelligence'
-                    value={intelligence}
-                    onChange={e => setIntelligence(e.target.value)} />
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.intelligence && (
+                            <p>{errors.intelligence}</p>
+                        )}</div>
+                    How intelligent was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={intelligence}
+                        onChange={e => setIntelligence(e.target.value)} />
+                </div>
 
-                <input
-                    className='create-review-input'
-                    type='number'
-                    placeholder='Wisdom'
-                    value={wisdom}
-                    onChange={e => setWisdom(e.target.value)} />
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.wisdom && (
+                            <p>{errors.wisdom}</p>
+                        )}</div>
+                    How wise was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={wisdom}
+                        onChange={e => setWisdom(e.target.value)} />
+                </div>
 
-                <input
-                    className='create-review-input'
-                    type='number'
-                    placeholder='Charisma'
-                    value={charisma}
-                    onChange={e => setCharisma(e.target.value)} />
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.charisma && (
+                            <p>{errors.charisma}</p>
+                        )}</div>
+                    How charismatic was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={charisma}
+                        onChange={e => setCharisma(e.target.value)} />
+                </div>
 
-                <input
-                    className='create-review-input'
-                    type='number'
-                    placeholder='Knowledge'
-                    value={knowledge}
-                    onChange={e => setKnowledge(e.target.value)} />
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.knowledge && (
+                            <p>{errors.knowledge}</p>
+                        )}</div>
+                    How knowledgeable was this professor about the subject? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={knowledge}
+                        onChange={e => setKnowledge(e.target.value)} />
+                </div>
 
-                <input
-                    className='create-review-input'
-                    type='number'
-                    placeholder='Preparation'
-                    value={preparation}
-                    onChange={e => setPreparation(e.target.value)} />
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.preparation && (
+                            <p>{errors.preparation}</p>
+                        )}</div>
+                    How well did this professor prepare? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={preparation}
+                        onChange={e => setPreparation(e.target.value)} />
+                </div>
 
-                <input
-                    className='create-review-input'
-                    type='number'
-                    placeholder='Respect'
-                    value={respect}
-                    onChange={e => setRespect(e.target.value)} />
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.respect && (
+                            <p>{errors.respect}</p>
+                        )}</div>
+                    How respectful was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={respect}
+                        onChange={e => setRespect(e.target.value)} />
+                </div>
 
-                <input
-                    className='create-review-input'
-                    type='number'
-                    placeholder='Difficulty'
-                    value={difficulty}
-                    onChange={e => setDifficulty(e.target.value)} />
+                <div className='create-review-input'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && errors.difficulty && (
+                            <p>{errors.difficulty}</p>
+                        )}</div>
+                    How difficult was this professor? &nbsp;
+                    <input
+                        className='create-review-number'
+                        type='number'
+                        value={difficulty}
+                        onChange={e => setDifficulty(e.target.value)} />
+                </div>
 
-                <div>
+                <div className='create-review-input'>
                     <label>
-                        Would you take this professor again?
+                        Would you take this professor again? &nbsp;
                         <input
                             type='checkbox'
                             checked={wouldRecommend}
@@ -207,9 +259,9 @@ export const ReviewForm = ({ review, formType }) => {
                     </label>
                 </div>
 
-                <div>
+                <div className='create-review-input'>
                     <label>
-                        Was this class taken for credit?
+                        Was this class taken for credit? &nbsp;
                         <input
                             type='checkbox'
                             checked={forCredit}
@@ -217,9 +269,9 @@ export const ReviewForm = ({ review, formType }) => {
                     </label>
                 </div>
 
-                <div>
+                <div className='create-review-input'>
                     <label>
-                        Did this professor use textbooks?
+                        Did this professor use textbooks? &nbsp;
                         <input
                             type='checkbox'
                             checked={textbook}
@@ -227,9 +279,9 @@ export const ReviewForm = ({ review, formType }) => {
                     </label>
                 </div>
 
-                <div>
+                <div className='create-review-input'>
                     <label>
-                        Was attendance mandatory?
+                        Was attendance mandatory? &nbsp;
                         <input
                             type='checkbox'
                             checked={attendance}
@@ -237,16 +289,33 @@ export const ReviewForm = ({ review, formType }) => {
                     </label>
                 </div>
 
-                <textarea
-                    placeholder='What do you want other students to know about this professor?'
-                    value={reviewText}
-                    onChange={e => setReviewText(e.target.value)} />
+                <div className='create-review-errors'>
+                    {hasSubmitted && errors.text && (
+                        <p>{errors.text}</p>
+                    )}</div>
+                <div className='create-review-input'>
+                    <textarea className='review-text'
+                        placeholder='What do you want other students to know about this professor?'
+                        value={reviewText}
+                        onChange={e => setReviewText(e.target.value)} />
+                </div>
 
-                <button className='submit-review-button' type='submit'>
-                    Submit Your Review
-                </button>
+                <div className='create-review-input' id='review-box'>
+                    <div className='create-review-errors'>
+                        {hasSubmitted && Object.values(errors).length > 0 && (
+                            <p>Oops! There were errors in your submission.</p>
+                        )}
+                    </div>
+                    <div className='review-terms'>
+                        By clicking the "Submit" button, I acknowledge that I have read and agreed to no Site Guidelines, Terms of Use, or Privacy Policy whatsoever. Submitted data becomes copper through the magic of SQLAlchemy. IP addresses are flogged.
+                    </div>
+                    <button className='regular-button' type='submit'>
+                        Submit Rating
+                    </button>
 
+                </div>
             </form>
+
         </div>
     )
 }
