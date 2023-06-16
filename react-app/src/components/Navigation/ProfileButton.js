@@ -6,7 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 
-function ProfileButton() {
+function ProfileButton({user}) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
@@ -50,7 +50,7 @@ function ProfileButton() {
       <ul className={ulClassName} ref={ulRef}>
 
 
-
+        {user ? (
         <>
           <li className="user-menu">{sessionUser.first_name} {sessionUser.last_name}</li>
           <li className="user-menu user-menu-nav"><NavLink exact to="/reviews/current" className="user-menu-nav" onClick={closeMenu} id="dropdown-links-">Your Ratings</NavLink>
@@ -61,7 +61,25 @@ function ProfileButton() {
             <button onClick={handleLogout} className="nav-button">Log Out</button>
           </li>
         </>
+        ) : (
+          <>
+        <li className='profile-button-link'>
+          <OpenModalButton
+            itemText="Sign Up"
+            onItemClick={closeMenu}
+            modalComponent={<SignupFormModal />}
+          />
+        </li>
+        <li className='profile-button-link'>
+          <OpenModalButton
+            itemText='Log In'
+            onItemClick={closeMenu}
+            modalComponent={<LoginFormModal />}
+          />
+        </li>
+        </>
 
+        )}
       </ul>
     </>
   );
