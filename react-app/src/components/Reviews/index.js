@@ -14,6 +14,10 @@ export const ReviewList = () => {
     //     dispatch(getAllReviewsThunk())
     // }, [dispatch])
 
+    if (!reviews) {
+        return <h1>Loading...</h1>
+    }
+
     return (
         <div className='reviews-list-wrapper'>
             {reviews.map((review) => (
@@ -21,7 +25,7 @@ export const ReviewList = () => {
                 <div className='reviews-list-item' key={review.id}>
 
                     <div className='reviews-list-ratings'>
-                        <div>Quality: {review.quality.toFixed(1)}</div>
+                        <div>Quality: {review.quality}</div>
                         <div>Difficulty: {review.difficulty}</div>
                     </div>
                     <div className='reviews-list-right'>
