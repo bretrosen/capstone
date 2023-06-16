@@ -21,18 +21,10 @@ export const SingleReview = () => {
 
     return (
         <div className='review-wrapper'>
-            <div className='review-attributes'>
-                <div>Intelligence: {review.intelligence}</div>
-                <div>Wisdom: {review.wisdom}</div>
-                <div>Charisma: {review.charisma}</div>
-                <div>Knowledge: {review.knowledge}</div>
-                <div>Preparation: {review.preparation}</div>
-                <div>Respect: {review.respect}</div>
-            </div>
             <div className='review-summary'>
                 <div>
-                    <div>Course: {review.course_id}</div>
-                    <div>Prof: {review.prof_id}</div>
+                    <div>{review.course_name}</div>
+                    <div>Prof: {review.prof_first_name} {review.prof_last_name}</div>
                     <div>{review.time_stamp}</div>
                 </div>
                 <div>
@@ -53,6 +45,14 @@ export const SingleReview = () => {
                         {!review.textbook && `No`}
                     </div>
                 </div>
+            </div>
+            <div className='review-attributes'>
+                <div>Intelligence: {review.intelligence}</div>
+                <div>Wisdom: {review.wisdom}</div>
+                <div>Charisma: {review.charisma}</div>
+                <div>Knowledge: {review.knowledge}</div>
+                <div>Preparation: {review.preparation}</div>
+                <div>Respect: {review.respect}</div>
             </div>
             <div className='review-text'>{review.review}</div>
         </div>

@@ -2,6 +2,8 @@ from app.models import db, Course, environment, SCHEMA
 from sqlalchemy.sql import text
 from random import choice, sample, randint
 
+# currently randomly assigning professors to courses
+# could change this...?
 def seed_courses(all_profs):
     postmodern_lit = Course(
         creator_id=1,

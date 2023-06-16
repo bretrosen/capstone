@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllReviewsThunk } from '../../store/reviews'
+import './Reviews.css'
 
 export const ReviewList = () => {
     const dispatch = useDispatch()
@@ -9,46 +10,48 @@ export const ReviewList = () => {
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
 
-    useEffect(() => {
-        dispatch(getAllReviewsThunk())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getAllReviewsThunk())
+    // }, [dispatch])
 
     return (
         <div className='reviews-list-wrapper'>
             {reviews.map((review) => (
+                <Link to={`/reviews/${review.id}`}>
                 <div className='reviews-list-item' key={review.id}>
+
                     <div className='reviews-list-ratings'>
-                        <div>Overall: {review.quality}</div>
+                        <div>Quality: {review.quality.toFixed(1)}</div>
                         <div>Difficulty: {review.difficulty}</div>
                     </div>
-                    <div className='reviews-list-item-summary'>
-                        <div>
-                            <div>Course: {review.course_id}</div>
-                            <div>Prof: {review.prof_id}</div>
+                    <div className='reviews-list-right'>
+                        <div className='reviews-right-top'>
+                            <div className='review-item'>{review.course_name}</div>
+                            <div className='review-item'>Prof: {review.prof_first_name} {review.prof_last_name}</div>
                             <div>{review.time_stamp}</div>
                         </div>
-                        <div>
-                            <div>For Credit:
+                        <div className='reviews-right-middle'>
+                            <div className='review-item'>For Credit:
                                 {review.for_credit && `Yes`}
                                 {!review.for_credit && `No`}
                             </div>
-                            <div>Attendance:
+                            <div className='review-item'>Attendance:
                                 {review.attendance && `Mandatory`}
                                 {!review.attendance && `Optional`}
                             </div>
-                            <div>Would Take Again:
+                            <div className='review-item'>Would Take Again:
                                 {review.would_recommend && `Yes`}
                                 {!review.would_recommend && `No`}
                             </div>
-                            <div>Textbook:
+                            <div className='review-item'>Textbook:
                                 {review.textbook && `Yes`}
                                 {!review.textbook && `No`}
                             </div>
                         </div>
+                        <div className='reviews-right-bottom'>{review.review}</div>
                     </div>
-                    <div className='reviews-list-item-review'>{review.review}</div>
-                    <br></br>
                 </div>
+                </Link>
             ))}
         </div>
     )

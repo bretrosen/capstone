@@ -1,0 +1,29 @@
+.review-item {
+    margin: 0 5px 5px 0;
+}
+
+.reviews-list-item {
+    display: flex;
+    margin: 2rem;
+}
+
+.reviews-list-ratings {
+    margin-right: 1rem;
+}
+
+.reviews-list-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews-list-wrapper {
+    margin: 1rem;
+}
+
+.reviews-right-middle {
+    display: flex;
+}
+
+.reviews-right-top {
+    display: flex;
+}
