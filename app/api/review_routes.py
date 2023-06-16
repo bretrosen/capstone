@@ -115,6 +115,7 @@ def post_review():
 
 
 @review_routes.route('/<int:id>', methods = ['DELETE', 'PUT'])
+@login_required
 def put_delete_review(id):
     '''
     Queries for the review to update or delete, performs the update or delete, updates the database, and returns the updated/deleted review in a dictionary.
