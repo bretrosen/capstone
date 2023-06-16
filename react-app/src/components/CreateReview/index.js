@@ -113,7 +113,7 @@ export const ReviewForm = ({ review, formType }) => {
     // Fix form so it's grabbing profs and courses for select fields
     return (
         <div className='create-review-wrapper'>
-            <div className='create-review-heading'>Rate A Professor
+            <div className='create-review-heading'>Rate A Professor</div>
                 <form className='create-review-form' onSubmit={handleSubmit}>
 
                     <div className='create-review-errors'>
@@ -121,7 +121,7 @@ export const ReviewForm = ({ review, formType }) => {
                             <p>{errors.prof}</p>
                         )}</div>
                     <div className='create-review-input'>
-                        <label className='create-review-input'>
+                        <label>
                             Select Professor &nbsp;
                             <select
                                 value={prof}
@@ -305,7 +305,7 @@ export const ReviewForm = ({ review, formType }) => {
                     </button>
 
                 </form>
-            </div>
+
         </div>
     )
 }
