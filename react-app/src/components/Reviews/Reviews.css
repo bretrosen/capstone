@@ -1,0 +1,13 @@
+
+.reviews-list-item {
+    display: flex;
+    margin: 1rem;
+}
+
+.reviews-list-ratings {
+    margin-right: 1rem;
+}
+
+.reviews-list-wrapper {
+    margin: 1rem;
+}

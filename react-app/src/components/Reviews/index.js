@@ -2,12 +2,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllReviewsThunk } from '../../store/reviews'
+import './Reviews.css'
 
 export const ReviewList = () => {
     const dispatch = useDispatch()
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
+
 
     // useEffect(() => {
     //     dispatch(getAllReviewsThunk())
@@ -18,13 +20,13 @@ export const ReviewList = () => {
             {reviews.map((review) => (
                 <div className='reviews-list-item' key={review.id}>
                     <div className='reviews-list-ratings'>
-                        <div>Overall: {review.quality}</div>
+                        <div>Quality: {review.quality.toFixed(1)}</div>
                         <div>Difficulty: {review.difficulty}</div>
                     </div>
                     <div className='reviews-list-item-summary'>
                         <div>
-                            <div>Course: {review.course_id}</div>
-                            <div>Prof: {review.prof_id}</div>
+                            <div>{review.course_name}</div>
+                            <div>Prof: {review.prof_first_name} {review.prof_last_name}</div>
                             <div>{review.time_stamp}</div>
                         </div>
                         <div>

@@ -6,23 +6,20 @@ import { createReviewThunk } from '../../store/reviews'
 export const ReviewForm = ({ review, formType }) => {
     const history = useHistory()
     const dispatch = useDispatch()
-    // const [profs, setProfs] = useState([])
-    // const [courses, setCourses] = useState([])
 
-    // gets unique values for all professors and courses in the store
-    const reviews = useSelector(state => state.reviews.allReviews)
-
-    const SET_PROFS = new Set()
-    const SET_COURSES = new Set()
-    for (let i = 1; i <= Object.values(reviews).length; i++) {
-        SET_PROFS.add(reviews[i].prof_first_name + " " + reviews[i].prof_last_name)
-        SET_COURSES.add(reviews[i].course_name)
+    const COURSES = []
+    const coursesObj = useSelector(state => state.courses.allCourses)
+    for (let i = 1; i <= Object.values(coursesObj).length; i++) {
+        COURSES.push(coursesObj[i].name)
     }
+    console.log("courses", COURSES)
 
-    const PROFS = [...SET_PROFS]
-    const COURSES = [...SET_COURSES]
-    console.log("PROFS", PROFS)
-    console.log("COURSES", COURSES)
+    const PROFS = []
+    const profsObj = useSelector(state => state.profs.allProfs)
+    for (let i = 1; i <= Object.values(profsObj).length; i++) {
+        PROFS.push(profsObj[i].first_name + ' ' + profsObj[i].last_name)
+    }
+    console.log("profs", PROFS)
 
     // get profs and courses by fetching from db
     // would be the preferable way to do this rather than accessing the store
