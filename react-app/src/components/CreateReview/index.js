@@ -28,11 +28,12 @@ export const ReviewForm = ({ review, formType }) => {
     const COURSES = Object.values(coursesObj)
     console.log("courses", COURSES)
 
-    const PROFS = []
+
     const profsObj = useSelector(state => state.profs.allProfs)
-    for (let i = 1; i <= Object.values(profsObj).length; i++) {
-        PROFS.push(profsObj[i].first_name + ' ' + profsObj[i].last_name)
-    }
+    // for (let i = 1; i <= Object.values(profsObj).length; i++) {
+    //     PROFS.push(profsObj[i].first_name + ' ' + profsObj[i].last_name)
+    // }
+    const PROFS = Object.values(profsObj)
     console.log("profs", PROFS)
 
     // get profs and courses by fetching from db
@@ -53,20 +54,20 @@ export const ReviewForm = ({ review, formType }) => {
     //     return allCourses
     // }
 
-    const [prof, setProf] = useState(review?.prof || '')
-    const [course, setCourse] = useState(review?.prof || '')
-    const [reviewText, setReviewText] = useState(review?.reviewText || '')
-    const [intelligence, setIntelligence] = useState(review?.intelligence || '')
-    const [wisdom, setWisdom] = useState(review?.wisdom || '')
-    const [charisma, setCharisma] = useState(review?.charisma || '')
-    const [knowledge, setKnowledge] = useState(review?.knowledge || '')
-    const [preparation, setPreparation] = useState(review?.preparation || '')
-    const [respect, setRespect] = useState(review?.respect || '')
-    const [difficulty, setDifficulty] = useState(review?.difficulty || '')
-    const [forCredit, setForCredit] = useState(review?.forCredit || false)
-    const [attendance, setAttendance] = useState(review?.attendance || false)
-    const [wouldRecommend, setWouldRecommend] = useState(review?.wouldRecommend || false)
-    const [textbook, setTextbook] = useState(review?.textbook || false)
+    const [prof, setProf] = useState('')
+    const [course, setCourse] = useState('')
+    const [reviewText, setReviewText] = useState('')
+    const [intelligence, setIntelligence] = useState('')
+    const [wisdom, setWisdom] = useState('')
+    const [charisma, setCharisma] = useState('')
+    const [knowledge, setKnowledge] = useState('')
+    const [preparation, setPreparation] = useState('')
+    const [respect, setRespect] = useState('')
+    const [difficulty, setDifficulty] = useState('')
+    const [forCredit, setForCredit] = useState(false)
+    const [attendance, setAttendance] = useState( false)
+    const [wouldRecommend, setWouldRecommend] = useState(false)
+    const [textbook, setTextbook] = useState(false)
     const [errors, setErrors] = useState({})
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -86,8 +87,8 @@ export const ReviewForm = ({ review, formType }) => {
         // via a new route
 
         const formInfo = {
-            // "prof": prof,
-            // "course": course,
+            "prof": prof,
+            "course": course,
             "review": reviewText,
             "intelligence": intelligence,
             "wisdom": wisdom,
@@ -137,10 +138,11 @@ export const ReviewForm = ({ review, formType }) => {
                             value={prof}
                             onChange={e => setProf(e.target.value)}
                         >
+                            <option selected='selected'> -- select a professor -- </option>
                             {PROFS.map(prof => (
                                 <option
-                                    key={prof}
-                                    value={prof}>{prof}</option>
+                                    key={prof.id}
+                                    value={prof.id}>{prof.first_name} {prof.last_name}</option>
                             ))}
                         </select>
                     </label>
@@ -153,6 +155,7 @@ export const ReviewForm = ({ review, formType }) => {
                             value={course}
                             onChange={e => setCourse(e.target.value)}
                         >
+                            <option selected='selected'> -- select a course -- </option>
                             {COURSES.map(course => (
                                 <option
                                     key={course.id}

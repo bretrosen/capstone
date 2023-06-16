@@ -22,12 +22,10 @@ const getSingleReview = (review) => {
     }
 }
 
-const createReview = (review) => {
-    return {
+const createReview = (review) => ({
         type: CREATE_REVIEW,
         review
-    }
-}
+})
 
 const updateReview = (review, id) => {
     return {
@@ -82,7 +80,7 @@ export const createReviewThunk = (review) => async (dispatch) => {
     if (response.ok) {
         const newReview = await response.json()
         console.log('returning create review thunk', newReview)
-        dispatch(createReview(review))
+        dispatch(createReview(newReview))
         return newReview
     }
 }
@@ -110,7 +108,7 @@ export default function reviewsReducer(state = initialState, action)  {
             const id = action.review.id
             const newState = {...state.allReviews}
             newState[id] = action.review
-            return {...state, reviews: newState}
+            return {...state, allReviews: newState}
         }
 
         // case CREATE_REVIEW: {

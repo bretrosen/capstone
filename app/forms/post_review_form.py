@@ -11,15 +11,13 @@ from app.models import Prof, Course
 # FIX THIS
 # OR MAYBE IT DOESN'T NEED TO BE A SELECT FIELD?
 # COULD JUST HAVE A VALIDATION IF USER INPUT DOESN'T MATCH EXISTING PROF OR COURSE
-PROFS = ['Shakespeare', 'Marx', 'Newton']
-COURSES = ['Market Economies', 'Anthropology of the Unknown', 'Postmodern American Literature']
+# PROFS = ['Shakespeare', 'Marx', 'Newton']
+# COURSES = ['Market Economies', 'Anthropology of the Unknown', 'Postmodern American Literature']
 
 # maybe change numerical attributes to be 1 to 5 to match target site?
 class PostReviewForm(FlaskForm):
-    # prof = SelectField("Prof Last Name", choices=PROFS)
-    # course = SelectField("Course", choices=COURSES)
-    # prof = StringField("Prof", validators=[DataRequired()])
-    # course = StringField("Course", validators=[DataRequired()])
+    prof = IntegerField("Prof", validators=[DataRequired()])
+    course = IntegerField("Course", validators=[DataRequired()])
     review = StringField('Review', validators=[DataRequired(), Length(min=10, max=350, message='Reviews must be between 10 and 350 characters')])
     intelligence = IntegerField('Intelligence', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])
     wisdom = IntegerField('Wisdom', validators=[DataRequired(), NumberRange(min=1, max=20, message='Attributes must be integers between 1 and 20')])

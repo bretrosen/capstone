@@ -90,8 +90,8 @@ def post_review():
     if form.validate_on_submit():
         new_review = Review(
             creator_id=creator_id,
-            prof_id=1,
-            course_id=1,
+            prof_id=form.data['prof'],
+            course_id=form.data['course'],
             review=form.data['review'],
             intelligence=form.data['intelligence'],
             wisdom=form.data['wisdom'],
