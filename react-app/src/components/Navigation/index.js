@@ -8,19 +8,38 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user)
 
 	return (
-		<div className='nav-wrapper'>
-			<NavLink className='nav-logo' to='/'>
-				<i className="fa-solid fa-book-atlas" />
-				&nbsp; bookfairBnb
-			</NavLink>
-			<div>
-				{isLoaded && (
-					<li>
-						<ProfileButton user={sessionUser} />
-					</li>
-				)}
-			</div>
-		</div>
+		<>
+			{!sessionUser && <ul className='nav-bar'>
+				<li>
+					<NavLink exact to="/" id="nav-logo">FOXTROT
+
+					</NavLink>
+				</li>
+				<div className='nav-login-signup'>
+					<li className='remove-dot'>
+						<NavLink to="/login" className='login-signup' id='nav-login'>Log in</NavLink></li>
+					<li className='remove-dot'>
+						<NavLink to="signup" className='login-signup' id='sign-up'>Sign up</NavLink></li>
+				</div>
+			</ul>
+			}
+
+			{sessionUser &&
+				<div className='nav-bar'>
+					<div className='search-home'>
+						<NavLink exact to="/" id="nav-logo">FOXTROT
+							<img src='/fox-logo.png' id='fox-image'></img>
+						</NavLink>
+
+
+					</div>
+					<ProfileButton user={sessionUser} />
+				</div>}
+
+
+
+		</>
+
 
 	);
 }

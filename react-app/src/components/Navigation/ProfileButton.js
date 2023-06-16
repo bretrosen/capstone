@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 
-function ProfileButton({ user }) {
+function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const sessionUser = useSelector(state => state.session.user);
   const ulRef = useRef();
   const history = useHistory();
 
@@ -38,48 +39,29 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const profileHighlight = "profile-highlight" + (showMenu ? "" : null);
   const closeMenu = () => setShowMenu(false);
 
   return (
     <>
-      <div className='nav-right-menu'>
-        <button onClick={openMenu}>
-        </button>
-      </div>
+      <button onClick={openMenu} className='nav-button account profile' id={profileHighlight}>
+        Account
+      </button>
       <ul className={ulClassName} ref={ulRef}>
 
-        {user ? (
-          <>
-            <li>Hello, {user.first_name}</li>
-            <li className='profile-user-reviews-link'>
-              <Link to='/reviews/current'>Your Ratings</Link>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-            <li>
-              <button className='profile-logout-button' onclick={logout}>Logout</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className='profile-button-link'>
-              <OpenModalButton
-                buttonText="Log In"
-                onItemClick={closeMenu}
-                modalComponent={<LoginFormModal />}
-              />
-            </li>
 
-            <li className='profile-button-link'>
-              <OpenModalButton
-                buttonText="Sign Up"
-                onItemClick={closeMenu}
-                modalComponent={<SignupFormModal />}
-              />
-            </li>
-          </>
-        )}
+
+        <>
+          <li className="user-menu">{sessionUser.first_name} {sessionUser.last_name}</li>
+          <li className="user-menu user-menu-nav"><NavLink exact to="/reviews/current" className="user-menu-nav" onClick={closeMenu} id="dropdown-links-">Your Ratings</NavLink>
+          </li>
+          <li className="user-menu user-border" onClick={closeMenu}></li>
+
+          <li className="user-menu">
+            <button onClick={handleLogout} className="nav-button">Log Out</button>
+          </li>
+        </>
+
       </ul>
     </>
   );
