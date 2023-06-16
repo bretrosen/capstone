@@ -11,7 +11,7 @@ function Navigation({ isLoaded }) {
 		<>
 			{!sessionUser && <ul className='nav-bar'>
 				<li>
-					<NavLink exact to="/" id="nav-logo">FOXTROT
+					<NavLink exact to="/" id="nav-logo">Home
 
 					</NavLink>
 				</li>
@@ -27,8 +27,7 @@ function Navigation({ isLoaded }) {
 			{sessionUser &&
 				<div className='nav-bar'>
 					<div className='search-home'>
-						<NavLink exact to="/" id="nav-logo">FOXTROT
-							<img src='/fox-logo.png' id='fox-image'></img>
+						<NavLink exact to="/" id="nav-logo">Home
 						</NavLink>
 
 

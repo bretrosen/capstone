@@ -56,7 +56,7 @@
   padding: 0px 24px;
   height: 65px;
   border-bottom: 3px solid var(--saffron);
-  background-color: black;
+  background-color: grey;
 }
 
 .nav-bar>li,
@@ -73,16 +73,18 @@ a {
 .login-signup:hover {
   cursor: pointer;
 }
+
 .login-signup {
   background-color: var(--saffron);
   padding: 14px 28px;
   border-radius: 27px;
   font-weight: 600;
+  color: white;
 }
 
 #sign-up {
   background-color: var(--saffron);
-  color: black;
+  color: white;
   font-size: 13px;
 }
 
@@ -136,70 +138,23 @@ a {
   cursor: pointer;
 }
 
-.stockSearch {
-  height: 3em;
-  width: 30em;
-  padding-left: 2.5em;
-  border: .25px solid lightgrey;
-  border-radius: 5px;
-  font-weight: 600;
-}
 
-.stockSearch:focus {
-  outline: none;
-  border: .5px rgb(145, 145, 145) solid;
-}
 
 #hidden-dropdownshow {
   display: none
 }
 
-.stock-dropdownshow {
-  top: 3.5em;
-  background-color: white;
-  padding: 1.5em 1em 1.5em 1em;
-  border-radius: 10px;
-  position: fixed;
-  left: 12.1em;
-  width: 25.2em;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  gap: 20px;
-  cursor: default;
-  z-index: 1000000;
-}
-
-.search-home {
-  display: flex;
-  align-items: center;
-  gap: 5em;
-}
-
-.make-greenshow::first-letter {
-  color: var(--light-green);
-  font-weight: 600;
-}
 
 .res-text {
   color: black;
 }
 
-.search-res {
-  display: flex;
-  justify-content: space-between;
-}
+
 
 #itemshidden {
   display: none;
 }
 
-.fa-search {
-  position: relative;
-  left: 1.5em;
-  top: 1px;
-  color: rgb(118 , 118, 118);
-}
 
 .user-menu-nav {
   color: black;
@@ -210,26 +165,23 @@ a {
   display: flex;
   justify-content: right;
   gap: 1em;
+  color: white;
 }
 
 .remove-dot {
   list-style-type: none;
 }
+
 #nav-logo{
-  color: var(--saffron) !important;
+  color: white;
   font-weight: 500;
   position: relative;
 }
 
-#fox-image{
-  width: 30px;
-  position: absolute;
-  bottom: -5px;
-  right: -40px;
-}
+
 
 #nav-login{
-  color: var(--saffron) !important;
+  color: white;
   background-color: transparent;
   border: 1px solid var(--saffron);
   font-size: 13px;
