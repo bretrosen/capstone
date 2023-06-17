@@ -5,13 +5,49 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='JohnSmith', first_name='John', last_name='Smith',email='john316@hms.gov', password='password')
+        username="JohnSmith",
+        first_name="John",
+        last_name="Smith",
+        email="john316@hms.gov",
+        password="password",
+    )
     harry = User(
-        username='NotMuggle', first_name='Harry', last_name='Potter', email='harry@hogwarts.edu', password='password')
+        username="NotMuggle",
+        first_name="Harry",
+        last_name="Potter",
+        email="harry@hogwarts.edu",
+        password="password",
+    )
     watson = User(
-        username='DrWatson', first_name='John', last_name='Watson',email='johnHW@md.com', password='password')
+        username="DrWatson",
+        first_name="John",
+        last_name="Watson",
+        email="johnHW@md.com",
+        password="password",
+    )
+    aristotle = User(
+        username="Aristotle",
+        first_name="Aristotle",
+        last_name="of Stagira",
+        email="aristotle@classics.gr",
+        password="password",
+    )
+    shaq = User(
+        username="Shaw",
+        first_name="Aristotle",
+        last_name="of Stagira",
+        email="bigAristotle@nba.com",
+        password="password",
+    )
+    plato = User(
+        username="Plato",
+        first_name="Plato",
+        last_name="of Athens",
+        email="plato@academy.gr",
+        password="password",
+    )
 
-    all_users = [demo, harry, watson]
+    all_users = [demo, harry, watson, aristotle, shaq, plato]
     [db.session.add(user) for user in all_users]
     db.session.commit()
 
