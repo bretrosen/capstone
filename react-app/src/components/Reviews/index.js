@@ -81,7 +81,7 @@ export const ReviewList = () => {
 
                     {user && review.creator_id === user.id &&
                         <button className='regular-button' onClick={() => history.push(`/reviews/${review.id}/edit`)}>Update Rating</button>}
-
+                    &nbsp;&nbsp;
                     {user && review.creator_id === user.id &&
                         <OpenModalButton
                             className='regular-button'
