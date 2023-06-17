@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviewsThunk } from '../../store/reviews'
 import { getAllProfsThunk } from '../../store/profs'
 import { getAllCoursesThunk } from '../../store/courses'
-import { createReviewThunk } from '../../store/reviews'
+import { createReviewThunk, updateReviewThunk } from '../../store/reviews'
 import './CreateReview.css'
 
 export const ReviewForm = ({ review, formType }) => {
@@ -30,20 +30,20 @@ export const ReviewForm = ({ review, formType }) => {
     const PROFS = Object.values(profsObj)
     console.log("profs", PROFS)
 
-    const [prof, setProf] = useState('')
-    const [course, setCourse] = useState('')
-    const [intelligence, setIntelligence] = useState('')
-    const [wisdom, setWisdom] = useState('')
-    const [charisma, setCharisma] = useState('')
-    const [knowledge, setKnowledge] = useState('')
-    const [preparation, setPreparation] = useState('')
-    const [respect, setRespect] = useState('')
-    const [difficulty, setDifficulty] = useState('')
+    const [prof, setProf] = useState(review?.prof || '')
+    const [course, setCourse] = useState(review?.course || '')
+    const [intelligence, setIntelligence] = useState(review?.intelligence || '')
+    const [wisdom, setWisdom] = useState(review?.wisdom || '')
+    const [charisma, setCharisma] = useState(review?.charisma || '')
+    const [knowledge, setKnowledge] = useState(review?.knowledge || '')
+    const [preparation, setPreparation] = useState(review?.preparation || '')
+    const [respect, setRespect] = useState(review?.respect || '')
+    const [difficulty, setDifficulty] = useState(review?.difficulty || '')
     const [forCredit, setForCredit] = useState(false)
     const [attendance, setAttendance] = useState(false)
     const [wouldRecommend, setWouldRecommend] = useState(false)
     const [textbook, setTextbook] = useState(false)
-    const [reviewText, setReviewText] = useState('')
+    const [reviewText, setReviewText] = useState(review?.review || '')
     const [errors, setErrors] = useState({})
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -88,10 +88,19 @@ export const ReviewForm = ({ review, formType }) => {
             "textbook": textbook,
         }
 
+        // dispatch thunk if form has no errors
         if (!Object.values(errors).length) {
+            // dispatch update thunk for update form
+            if (formType === 'Update') {
+                const updatedReview = await dispatch(updateReviewThunk(review.id, formInfo))
+                // redirect to updated spot
+                history.push(`/reviews/${updatedReview.id}`)
+                // dispatch create thunk for create form
+            } else {
             const newReview = await dispatch(createReviewThunk(formInfo))
-            // history.push('/reviews')
+            // redirect to newly created review
             history.push(`/reviews/${newReview.id}`)
+            }
         }
     }
 
@@ -310,7 +319,8 @@ export const ReviewForm = ({ review, formType }) => {
                         By clicking the "Submit" button, I acknowledge that I have read and agreed to no Site Guidelines, Terms of Use, or Privacy Policy whatsoever. Submitted data becomes copper through the magic of SQLAlchemy. IP addresses are flogged.
                     </div>
                     <button className='regular-button' type='submit'>
-                        Submit Rating
+                        {formType && 'Update Rating'}
+                        {!formType && 'Submit Rating'}
                     </button>
 
                 </div>

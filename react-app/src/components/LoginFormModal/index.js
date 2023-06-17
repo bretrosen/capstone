@@ -11,14 +11,22 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
+  let canSubmit = false;
+  if (email.length > 3 && password.length > 5) canSubmit = true;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
+  };
+
+  const demoUserLogin = async () => {
+    return dispatch(login({ email: "john316@hms.gov", password: "password" }))
+      .then(closeModal)
   };
 
   return (
@@ -49,6 +57,13 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit">Log In</button>
+
+        <button
+          className='demo-user'
+          onClick={() => demoUserLogin()}>
+          Demo User
+        </button>
+
       </form>
     </>
   );

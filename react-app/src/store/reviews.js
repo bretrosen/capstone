@@ -3,7 +3,6 @@
 const GET_ALL_REVIEWS = 'reviews/getAllReviews'
 const GET_SINGLE_REVIEW = 'reviews/getSingleReview'
 const CREATE_REVIEW = 'reviews/createReview'
-const UPDATE_REVIEW = 'reviews/updateReview'
 const DELETE_REVIEW = 'reviews/deleteReview'
 
 // action creators
@@ -27,21 +26,10 @@ const createReview = (review) => ({
         review
 })
 
-const updateReview = (review, id) => {
-    return {
-        type: UPDATE_REVIEW,
-        review,
-        id
-    }
-}
-
-const deleteReview = (review, id) => {
-    return {
+const deleteReview = (reviewId) => ({
         type: DELETE_REVIEW,
-        review,
-        id
-    }
-}
+        reviewId
+})
 
 // Thunks
 
@@ -85,6 +73,36 @@ export const createReviewThunk = (review) => async (dispatch) => {
     }
 }
 
+export const updateReviewThunk = (reviewId, review) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(review)
+    })
+    console.log('sending update review thunk', response)
+
+    if (response.ok) {
+        const updatedReview = await response.json()
+        console.log('returning update review thunk', updatedReview)
+        dispatch(createReview(updatedReview))
+        return updatedReview
+    }
+}
+
+export const deleteReviewThunk = (reviewId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    console.log("sending delete review thunk")
+
+    if (response.ok) {
+        await response.json()
+        console.log("returning delete review thunk")
+        dispatch(deleteReview(reviewId))
+        return
+    }
+}
 
 const initialState = {allReviews: {}, singleReview: {}}
 
@@ -103,12 +121,18 @@ export default function reviewsReducer(state = initialState, action)  {
         case GET_SINGLE_REVIEW: {
             return {...state, allReviews: {...state.allReviews}, singleReview: {...action.review}}
         }
-
         case CREATE_REVIEW: {
             const id = action.review.id
             const newState = {...state.allReviews}
             newState[id] = action.review
             return {...state, allReviews: newState}
+        }
+        case DELETE_REVIEW: {
+            const reviewToDelete = action.reviewId
+            const allUserReviews = state.allReviews
+            const updatedReviews = {...allUserReviews}
+            delete updatedReviews[reviewToDelete]
+            return {...state, allReviews: updatedReviews}
         }
         default:
             return state
