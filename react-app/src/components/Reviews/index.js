@@ -28,6 +28,7 @@ export const ReviewList = () => {
     return (
         <div className='reviews-list-wrapper'>
             {reviews.map((review) => (
+                <>
                 <Link to={`/reviews/${review.id}`} key={review.id}>
                     <div className='reviews-list-item' >
 
@@ -63,21 +64,19 @@ export const ReviewList = () => {
                         </div>
                     </div>
 
+                    </Link>
+
                     {user && review.creator_id === user.id &&
                         <button className='regular-button' onClick={() => history.push(`/reviews/${review.id}/edit`)}>Update Rating</button>}
 
                     {user && review.creator_id === user.id &&
                         <OpenModalButton
                             buttonText='Delete'
-                            className='delete-button'
                             modalComponent={<DeleteReview reviewId={review.id} />}
                         />
                     }
 
-                </Link>
-
-
-
+                </>
 
             ))}
         </div>
