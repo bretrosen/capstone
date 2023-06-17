@@ -9,10 +9,13 @@ import { ReviewList } from './components/Reviews'
 import { SingleReview } from './components/SingleReview'
 import { ReviewForm } from './components/CreateReview'
 import { LandingPage } from './components/LandingPage'
+import { UpdateReviewForm } from './components/UpdateReview'
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
+  // retains session user info after a refresh
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -24,6 +27,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <LandingPage />
+          </Route>
+          <Route path='/reviews/:reviewId/edit'>
+            <UpdateReviewForm />
           </Route>
           <Route path='/reviews/new'>
             <ReviewForm />
