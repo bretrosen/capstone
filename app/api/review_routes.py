@@ -109,6 +109,7 @@ def put_delete_review(id):
         data = request.get_json()
         updated_review.prof_id = data['prof']
         updated_review.course_id = data['course']
+        updated_review.review = data['review']
         updated_review.intelligence = data['intelligence']
         updated_review.wisdom = data['wisdom']
         updated_review.charisma = data['charisma']
