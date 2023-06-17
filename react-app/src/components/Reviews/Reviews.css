@@ -1,19 +1,56 @@
+.rating-heading {
+    font-weight: 600;
+}
+
+.rating-number-difficulty {
+    background: rgb(230, 230, 230);
+    font-size: 36px;
+    font-weight: 760;
+    padding: 10px;
+}
+
+.rating-number {
+    font-size: 36px;
+    font-weight: 760;
+    padding: 10px;
+}
+
+.review-course-name {
+    margin-right: 12px;
+    font-weight: 600;
+}
+
 .review-item {
-    margin: 0 5px 5px 0;
+    margin: 12px 12px 12px 0;
+}
+
+.review-prof-name {
+    margin-right: 12px;
 }
 
 .reviews-list-item {
     display: flex;
     margin: 2rem;
+    background: rgba(230, 230, 230, 0.2);
+    height: 15rem;
 }
 
 .reviews-list-ratings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     margin-right: 1rem;
+    width: 5rem;
+
 }
 
 .reviews-list-right {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+    width: auto;
 }
 
 .reviews-list-wrapper {
@@ -26,4 +63,18 @@
 
 .reviews-right-top {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#high {
+    background: rgb(127, 246, 195);
+}
+
+#low {
+    background: rgb(255, 156, 156);
+}
+
+#medium {
+    background: rgb(230, 230, 230);
 }
