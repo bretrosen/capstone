@@ -15,6 +15,10 @@
     padding: 10px;
 }
 
+.review-boolean {
+    font-weight: 700;
+}
+
 .review-course-name {
     margin-right: 12px;
     font-weight: 600;
@@ -28,6 +32,10 @@
     margin-right: 12px;
 }
 
+.review-time {
+    font-size: 14px;
+    font-weight: 700;
+}
 .reviews-list-item {
     display: flex;
     margin: 2rem;
@@ -58,6 +66,7 @@
 }
 
 .reviews-right-middle {
+
     display: flex;
 }
 

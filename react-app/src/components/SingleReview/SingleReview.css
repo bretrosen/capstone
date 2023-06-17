@@ -1,0 +1,23 @@
+.single-review-attributes {
+    width: 50%;
+    text-align: center;
+}
+
+.single-review-heading {
+    text-align: center;
+}
+
+.single-review-container {
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.single-review-summary {
+    width: 50%;
+    text-align: center;
+}
+
+.single-review-wrapper {
+    margin: 1rem;
+}

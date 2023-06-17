@@ -6,6 +6,11 @@ import { getAllReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'
 import DeleteReview from '../DeleteReview'
 import './Reviews.css'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
+const dayjs = require('dayjs')
+dayjs.extend(advancedFormat)
+
+
 
 export const ReviewList = () => {
     const dispatch = useDispatch()
@@ -24,9 +29,6 @@ export const ReviewList = () => {
     if (!reviews) {
         return <h1>Loading...</h1>
     }
-
-    // classNames for variable colors in review data
-
 
     return (
         <div className='reviews-list-wrapper'>
@@ -49,25 +51,26 @@ export const ReviewList = () => {
                             <div className='reviews-list-right'>
                                 <div className='reviews-right-top'>
                                     <div className='review-course-name'>{review.course_name}</div>
-                                    <div className='review-prof-name'>Professor: {review.prof_first_name} {review.prof_last_name}</div>
-                                    <div className='review-time'>{review.time_stamp}</div>
+
+                                    <div className='review-time'>{dayjs(review.time_stamp).format("MMMM Do, YYYY")}</div>
                                 </div>
+                                <div className='review-prof-name'>Professor: {review.prof_first_name} {review.prof_last_name}</div>
                                 <div className='reviews-right-middle'>
                                     <div className='review-item'>For Credit:&nbsp;
-                                        {review.for_credit && `Yes`}
-                                        {!review.for_credit && `No`}
+                                        {review.for_credit && <span className='review-boolean'>Yes</span>}
+                                        {!review.for_credit && <span className='review-boolean'>No</span>}
                                     </div>
                                     <div className='review-item'>Attendance:&nbsp;
-                                        {review.attendance && `Mandatory`}
-                                        {!review.attendance && `Optional`}
+                                        {review.attendance && <span className='review-boolean'>Mandatory</span>}
+                                        {!review.attendance && <span className='review-boolean'>Optional</span>}
                                     </div>
                                     <div className='review-item'>Would Take Again:&nbsp;
-                                        {review.would_recommend && `Yes`}
-                                        {!review.would_recommend && `No`}
+                                        {review.would_recommend && <span className='review-boolean'>Yes</span>}
+                                        {!review.would_recommend && <span className='review-boolean'>No</span>}
                                     </div>
                                     <div className='review-item'>Textbook:&nbsp;
-                                        {review.textbook && `Yes`}
-                                        {!review.textbook && `No`}
+                                        {review.textbook && <span className='review-boolean'>Yes</span>}
+                                        {!review.textbook && <span className='review-boolean'>No</span>}
                                     </div>
                                 </div>
                                 <div className='reviews-right-bottom'>{review.review}</div>
@@ -81,6 +84,7 @@ export const ReviewList = () => {
 
                     {user && review.creator_id === user.id &&
                         <OpenModalButton
+                            className='regular-button'
                             buttonText='Delete'
                             modalComponent={<DeleteReview reviewId={review.id} />}
                         />
