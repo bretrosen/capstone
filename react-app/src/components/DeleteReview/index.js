@@ -17,7 +17,7 @@ const DeleteReview = ({ reviewId }) => {
             <h2>Confirm Delete</h2>
             <p>Are you sure you want to remove this rating?</p>
             <button className='regular-button' onClick={handleDelete}>Yes (Delete Rating)</button>
-            <button className='regular-button' onClick={closeModal}>No (Keep Rating</button>
+            <button className='regular-button' onClick={closeModal}>No (Keep Rating)</button>
         </div>
     )
 }

@@ -62,15 +62,23 @@ export const ReviewList = () => {
                             <div className='reviews-right-bottom'>{review.review}</div>
                         </div>
                     </div>
+
                     {user && review.creator_id === user.id &&
                         <button className='regular-button' onClick={() => history.push(`/reviews/${review.id}/edit`)}>Update Rating</button>}
+
                     {user && review.creator_id === user.id &&
                         <OpenModalButton
                             buttonText='Delete'
+                            className='delete-button'
                             modalComponent={<DeleteReview reviewId={review.id} />}
                         />
                     }
+
                 </Link>
+
+
+
+
             ))}
         </div>
     )

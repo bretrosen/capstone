@@ -94,9 +94,11 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     })
+    console.log("sending delete review thunk")
 
     if (response.ok) {
         await response.json()
+        console.log("returning delete review thunk")
         dispatch(deleteReview(reviewId))
         return
     }
