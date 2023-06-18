@@ -45,6 +45,7 @@ def seed_profs():
         last_name='van Rijn',
         field='Art'
     )
+
     fossey = Prof(
         creator_id=randint(1, 6),
         first_name='Dian',
@@ -112,7 +113,60 @@ def seed_profs():
         field='Biology'
     )
 
-
+    dalton = Prof(
+        creator_id=randint(1, 6),
+        first_name='John',
+        last_name='Dalton',
+        field='Chemistry'
+    )
+    lavoisier = Prof(
+        creator_id=randint(1, 6),
+        first_name='Antoine',
+        last_name='Lavoisier',
+        field='Chemistry'
+    )
+    mendeleev = Prof(
+        creator_id=randint(1, 6),
+        first_name='Dmitri',
+        last_name='Mendeleev',
+        field='Chemistry'
+    )
+    avogadro = Prof(
+        creator_id=randint(1, 6),
+        first_name='Amedeo',
+        last_name='Avogadro',
+        field='Chemistry'
+    )
+    nobel = Prof(
+        creator_id=randint(1, 6),
+        first_name='Alfred',
+        last_name='Nobel',
+        field='Chemistry'
+    )
+    rutherford = Prof(
+        creator_id=randint(1, 6),
+        first_name='Ernest',
+        last_name='Rutherford',
+        field='Chemistry'
+    )
+    cavendish = Prof(
+        creator_id=randint(1, 6),
+        first_name='Henry',
+        last_name='Cavendish',
+        field='Chemistry'
+    )
+    white = Prof(
+        creator_id=randint(1, 6),
+        first_name='Walter',
+        last_name='White',
+        field='Chemistry'
+    )
+    holmes = Prof(
+        creator_id=randint(1, 6),
+        first_name='Sherlock',
+        last_name='Holmes',
+        field='Chemistry'
+    )
 
 
     shakespeare = Prof(
@@ -134,7 +188,7 @@ def seed_profs():
         field='Physics'
     )
 
-    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, shakespeare, marx, newton]
+    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes, shakespeare, marx, newton]
     [db.session.add(prof) for prof in all_profs]
     db.session.commit()
     return all_profs
