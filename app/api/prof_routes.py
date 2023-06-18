@@ -39,6 +39,15 @@ def all_profs():
             if (review['prof_id'] == prof['id']):
                 prof['qualities'][review['id']] = review['quality']
 
+    # iterate through profs and average their ratings from all reviews
+    for prof in profs_dict:
+        sum = 0
+        for prof_quality in profs_dict['qualities']:
+             sum += prof_quality
+        prof['quality'] = sum / len(profs_dict['qualities'])
+
+
+
     print("profs in backend route", profs_dict)
 
     return {'profs': profs_dict}
