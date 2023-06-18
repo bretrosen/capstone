@@ -28,7 +28,7 @@ def all_profs():
     profs_dict = [prof.to_dict() for prof in all_profs]
 
     for prof in profs_dict:
-        prof['qualities'] = {}
+        prof['qualities'] = []
 
     # nested for loop
     # iterate through prof then reviews
@@ -37,14 +37,16 @@ def all_profs():
     for prof in profs_dict:
         for review in reviews_dict:
             if (review['prof_id'] == prof['id']):
-                prof['qualities'][review['id']] = review['quality']
+                # prof['qualities'][review['id']] = (review['quality'])
+                prof['qualities'].append(review['quality'])
+        # for prof['qualities'][id] in prof['qualities']:
+        #     sum += prof['qualities'][id]
 
     # iterate through profs and average their ratings from all reviews
-    for prof in profs_dict:
-        sum = 0
-        for prof_quality in profs_dict['qualities']:
-             sum += prof_quality
-        prof['quality'] = sum / len(profs_dict['qualities'])
+    # for prof in profs_dict:
+    #     sum = 0
+    #     for prof['qualities'] in prof:
+    #         prof['quality'] = sum / len(prof['qualities'])
 
 
 
