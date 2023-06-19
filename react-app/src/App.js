@@ -10,6 +10,7 @@ import { SingleReview } from './components/SingleReview'
 import { ReviewForm } from './components/CreateReview'
 import { LandingPage } from './components/LandingPage'
 import { UpdateReviewForm } from './components/UpdateReview'
+import { ProfList } from './components/Profs'
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path='/reviews'>
             <ReviewList />
+          </Route>
+          <Route path='/profs'>
+            <ProfList />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

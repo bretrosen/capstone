@@ -26,6 +26,8 @@ export const LandingPage = () => {
                         <NavLink to='/reviews'>All Reviews</NavLink>
                         <br></br>
                         <NavLink to='/reviews/new'>New Review</NavLink>
+                        <br></br>
+                        <NavLink to='/profs'>All Professors</NavLink>
                     </div>
 
 
