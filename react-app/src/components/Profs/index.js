@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import { getAllProfsThunk } from '../../store/profs'
+import OpenModalButton from '../OpenModalButton'
+import DeleteProf from '../DeleteProf'
 import './Profs.css'
 import '../Reviews/Reviews.css'
 
@@ -56,6 +58,15 @@ export const ProfList = () => {
 
                         </div>
                     </Link>
+
+                    {user && prof.creator_id === user.id &&
+                        <button className='regular-button' onClick={() => history.push(`/profs/${prof.id}/edit`)}>Update Professor</button>}
+                        &nbsp;&nbsp;
+                    {user && prof.creator_id === user.id &&
+                    <OpenModalButton
+                        buttonText='Delete Professor'
+                        modalComponent={<DeleteProf profId={prof.id} />}
+                    />}
 
                 </>
             ))}

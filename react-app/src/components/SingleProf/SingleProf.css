@@ -1,0 +1,76 @@
+.difficulty-number {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.difficulty-text {
+    font-size: 14px;
+}
+
+.quality-label {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 1rem 0 1rem 0;
+}
+
+.quality-out-of {
+    padding: 10px 0 0 10px;
+    font-size: 18px;
+    color: grey;
+}
+
+.recommends-number {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.recommends-text {
+    font-size: 14px;
+}
+
+.single-prof-aggregates {
+    display: flex;
+    margin: 2rem 0 2rem 0;
+}
+
+.single-prof-difficulty {
+    padding-left: 0.5rem;
+    text-align: center;
+}
+
+.single-prof-name {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.single-prof-quality {
+    display: flex;
+    flex-direction: row;
+}
+
+.single-prof-quality-number {
+    font-size: 72px;
+    font-weight: 700;
+}
+
+.single-prof-recommends {
+    padding-right: 0.5rem;
+    border-right: 1px solid black;
+    text-align: center;
+}
+
+.single-prof-top {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+    height: 25rem;
+}
+
+.single-prof-top-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-prof-wrapper {
+    margin: 1rem;
+}

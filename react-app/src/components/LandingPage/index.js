@@ -28,6 +28,8 @@ export const LandingPage = () => {
                         <NavLink to='/reviews/new'>New Review</NavLink>
                         <br></br>
                         <NavLink to='/profs'>All Professors</NavLink>
+                        <br></br>
+                        <NavLink to='/profs/new'>New Professor</NavLink>
                     </div>
 
 
