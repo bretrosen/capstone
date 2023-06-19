@@ -13,6 +13,7 @@ import { UpdateReviewForm } from './components/UpdateReview'
 import { ProfList } from './components/Profs'
 import { SingleProf } from './components/SingleProf'
 import { ProfForm } from './components/CreateProf'
+import { UpdateProfForm } from './components/UpdateProf'
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path='/reviews'>
             <ReviewList />
+          </Route>
+          <Route path='/profs/:profId/edit'>
+            <UpdateProfForm />
           </Route>
           <Route path='/profs/new'>
             <ProfForm />

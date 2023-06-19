@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { createProfThunk } from '../../store/profs'
+import { createProfThunk, updateProfThunk } from '../../store/profs'
 import './CreateProf.css'
 
 export const ProfForm = ({ prof, formType }) => {
@@ -40,12 +40,18 @@ export const ProfForm = ({ prof, formType }) => {
         // dispatch thunk if form has no errors
         if (!Object.values(errors).length) {
             // dispatch update thunk for update form here
-
+            if (formType === 'Update') {
+                const updatedProf = await dispatch(updateProfThunk(prof.id, formInfo))
+                //redirect to updated spot
+                history.push(`/profs/${updatedProf.id}`)
+            }
+            else {
             // dispatch create thunk for create form
             const newProf = await dispatch(createProfThunk(formInfo))
             // dispatch to newly created prof
             history.push(`/profs/${newProf.id}`)
             // history.push(`/profs`)
+            }
         }
     }
 
@@ -93,7 +99,8 @@ export const ProfForm = ({ prof, formType }) => {
                 </div>
 
                 <button className='regular-button' type='submit'>
-                    Submit Professor
+                    {formType && 'Update Professor'}
+                    {!formType && 'Submit Professor'}
                 </button>
             </form>
         </div>

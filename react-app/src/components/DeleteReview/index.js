@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useModal } from "../../context/Modal";
+import { useModal } from "../../context/Modal"
 import { deleteReviewThunk } from '../../store/reviews'
 
 const DeleteReview = ({ reviewId }) => {

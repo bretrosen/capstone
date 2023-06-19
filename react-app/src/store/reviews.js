@@ -31,7 +31,7 @@ const deleteReview = (reviewId) => ({
         reviewId
 })
 
-// Thunks
+// thunks
 
 export const getAllReviewsThunk = () => async (dispatch) => {
     const response = await fetch('/api/reviews')

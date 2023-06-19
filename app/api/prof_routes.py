@@ -109,3 +109,26 @@ def post_prof():
 
     else:
         return form.errors
+
+
+@prof_routes.route('/<int:id>', methods = ['DELETE', 'PUT'])
+@login_required
+def put_delete_prof(id):
+    '''
+    Queries for the prof to update or delete, performs the update/delte, updates the database, and returns the updated/deleted prof in a dictionary.
+    '''
+
+    if request.method == 'PUT':
+        updated_prof = Prof.query.get(id)
+        data = request.get_json()
+        updated_prof.first_name = data['first_name']
+        updated_prof.last_name = data['last_name']
+        updated_prof.field = data['field']
+        db.session.commit()
+        return updated_prof.to_dict()
+
+    # else, method must be DELETE
+    prof_to_delete = Prof.query.get(id)
+    db.session.delete(prof_to_delete)
+    db.session.commit()
+    return prof_to_delete.to_dict()
