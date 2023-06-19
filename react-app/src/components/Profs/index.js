@@ -49,9 +49,9 @@ export const ProfList = () => {
                                 <div>{prof.first_name} {prof.last_name}</div>
                                 <div>{prof.field}</div>
                                 {prof.recommendations.length > 0 &&
-                                <div>{prof.recommended}% would take again</div>}
+                                <div>{prof.recommended.toFixed(0)}% would take again</div>}
                                 {prof.difficulties.length > 0 &&
-                                <div>{prof.difficulty} level of difficulty</div>}
+                                <div>{prof.difficulty.toFixed(1)} level of difficulty</div>}
                             </div>
 
                         </div>
