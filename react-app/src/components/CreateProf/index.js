@@ -41,6 +41,8 @@ export const ProfForm = ({ prof, formType }) => {
         if (!Object.values(errors).length) {
             // dispatch update thunk for update form here
             if (formType === 'Update') {
+                console.log('just before sending update prof thunk!!!!!')
+                console.log('id to update', prof.id)
                 const updatedProf = await dispatch(updateProfThunk(prof.id, formInfo))
                 //redirect to updated spot
                 history.push(`/profs/${updatedProf.id}`)

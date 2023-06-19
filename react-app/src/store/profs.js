@@ -91,7 +91,7 @@ export const updateProfThunk = (profId, prof) => async (dispatch) => {
 }
 
 export const deleteProfThunk = (profId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${profId}`, {
+    const response = await fetch(`/api/profs/${profId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     })
