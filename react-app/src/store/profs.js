@@ -1,7 +1,7 @@
 // action type constants
 
 const GET_ALL_PROFS = 'profs/getAllProfs'
-
+const GET_SINGLE_PROF = 'profs/getSingleProf'
 
 
 // action creators
@@ -13,6 +13,12 @@ const getAllProfs = (profs) => {
     }
 }
 
+const getSingleProf = (prof) => {
+    return {
+        type: GET_SINGLE_PROF,
+        prof
+    }
+}
 
 
 // thunks
@@ -26,6 +32,18 @@ export const getAllProfsThunk = () => async (dispatch) => {
         console.log('returning all profs thunk', profs)
         dispatch(getAllProfs(profs))
         return profs
+    }
+}
+
+export const getSingleProfThunk = (profId) => async (dispatch) => {
+    const response = await fetch(`/api/profs/${profId}`)
+    console.log('sending single prof thunk', response)
+
+    if (response.ok) {
+        const prof = await response.json()
+        console.log('returning single prof thunk', prof)
+        dispatch(getSingleProf(prof))
+        return prof
     }
 }
 
@@ -45,6 +63,9 @@ const profsReducer = (state = initialState, action) => {
             })
 
             return newState
+        }
+        case GET_SINGLE_PROF: {
+            return {...state, allProfs: {...state.allProfs}, singleProf: {...action.prof}}
         }
         default:
             return state

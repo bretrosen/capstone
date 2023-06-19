@@ -70,7 +70,10 @@ def single_prof(id):
     prof_data = prof.to_dict()
     reviews = Review.query.filter(Review.prof_id == prof.id).all()
     reviews_dict = [review.to_dict() for review in reviews]
+    prof_data['reviews'] = reviews_dict
+
+    
 
     print("all reviews associated with prof", reviews_dict)
 
-    return reviews_dict
+    return prof_data
