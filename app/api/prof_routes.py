@@ -17,7 +17,7 @@ def percent_true(boolean_lst):
 @prof_routes.route('/')
 def all_profs():
     '''
-    First, query for all reviews, and get the average rating score for each prof. Query for all profs for the display all profs page. Return results in a dictionary.
+    First, query for all reviews, and get the average rating score for each prof. Query for all profs for the display all profs page. Add their aggregate data to the prof dictionary. Return a dictionary with all the profs; attributes and aggregate data included for each prof.
     '''
     all_reviews = Review.query.all()
     reviews_dict = [review.to_dict() for review in all_reviews]
@@ -35,7 +35,7 @@ def all_profs():
         prof['difficulties'] = []
         prof['recommendations'] = []
 
-    # nested for loop
+    # nested for loop: let's refactor for more efficient querying
     # iterate through prof then reviews
     # if a prof id in a review matches the prof's id:
     # append the quality, difficulty, and would_recommend field to the prof's list
@@ -54,14 +54,23 @@ def all_profs():
         if (len(prof['recommendations']) > 0):
             prof['recommended'] = percent_true(prof['recommendations'])
 
-    # iterate through profs and average their ratings from all reviews
-    # for prof in profs_dict:
-    #     sum = 0
-    #     for prof['qualities'] in prof:
-    #         prof['quality'] = sum / len(prof['qualities'])
-
-
-
     print("profs in backend route", profs_dict)
 
     return {'profs': profs_dict}
+
+
+@prof_routes.route('/<int:id>')
+def single_prof(id):
+    '''
+    Query for a single prof by id. Query for all the reviews for that prof.
+    Return a dictionary with the prof's attributes, all reviews, and aggregate data.
+    '''
+
+    prof = Prof.query.get(id)
+    prof_data = prof.to_dict()
+    reviews = Review.query.filter(Review.prof_id == prof.id).all()
+    reviews_dict = [review.to_dict() for review in reviews]
+
+    print("all reviews associated with prof", reviews_dict)
+
+    return reviews_dict

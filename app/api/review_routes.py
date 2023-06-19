@@ -1,17 +1,18 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from datetime import datetime
+from statistics import mean
 from app.models import db, Review, Prof, Course
 from app.forms.post_review_form import PostReviewForm
 
 review_routes = Blueprint('reviews', __name__)
 
 # helper function for averages
-def mean(*args):
-    sum = 0
-    for arg in args:
-        sum += arg
-    return sum / len(args)
+# def mean(*args):
+#     sum = 0
+#     for arg in args:
+#         sum += arg
+#     return sum / len(args)
 
 @review_routes.route('/')
 def all_reviews():
@@ -23,7 +24,7 @@ def all_reviews():
     print("We should be ordering reviews in reverse time order")
     reviews_dict = [review.to_dict() for review in all_reviews]
     for review in reviews_dict:
-        review['quality'] = mean(review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect'])
+        review['quality'] = mean([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']])
         prof = (Prof.query.filter(Prof.id == review['prof_id']).one()).to_dict()
         course = (Course.query.filter(Course.id == review['course_id']).one()).to_dict()
         review['prof_first_name'] = prof['first_name']
@@ -43,7 +44,7 @@ def single_review(id):
     course = Course.query.filter(Course.id == review.course_id).one()
 
 
-    attribute_mean = mean(review_data['intelligence'], review_data['wisdom'], review_data['charisma'], review_data['knowledge'], review_data['preparation'], review_data['respect'])
+    attribute_mean = mean([review_data['intelligence'], review_data['wisdom'], review_data['charisma'], review_data['knowledge'], review_data['preparation'], review_data['respect']])
     review_data['quality'] = attribute_mean
     review_data['prof_first_name'] = prof.first_name
     review_data['prof_last_name'] = prof.last_name
