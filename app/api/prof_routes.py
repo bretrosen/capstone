@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from datetime import datetime
 from statistics import mean
 from app.models import db, Review, Prof, Course
+from app.forms.post_prof_form import PostProfForm
 
 prof_routes = Blueprint('profs', __name__)
 
@@ -70,9 +71,41 @@ def single_prof(id):
     prof_data = prof.to_dict()
     reviews = Review.query.filter(Review.prof_id == prof.id).all()
     reviews_dict = [review.to_dict() for review in reviews]
+    # attach the reviews for each prof to the prof dictionary
     prof_data['reviews'] = reviews_dict
-    
+
 
     print("all reviews associated with prof", reviews_dict)
 
     return prof_data
+
+
+@prof_routes.route('/new', methods = ['GET', 'POST'])
+@login_required
+def post_prof():
+    '''
+    Renders an empty form for the GET request. Validates the form and creaes a new prof for the POST request.
+    '''
+
+    user = current_user
+    creator_id = user.id
+    form = PostProfForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
+
+    if form.validate_on_submit():
+        new_prof = Prof(
+            creator_id=creator_id,
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
+            field=form.data['field']
+        )
+
+        print('new prof to add to db =====>', new_prof)
+
+        db.session.add(new_prof)
+        db.session.commit()
+        return new_prof.to_dict()
+
+    else:
+        return form.errors

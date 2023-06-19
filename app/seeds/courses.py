@@ -133,7 +133,7 @@ def seed_courses(all_profs):
     tattoos = Course(
         creator_id=randint(1, 6),
         department_id=6,
-        name='A History of Unforunate Tattoos',
+        name='A History of Unfortunate Tattoos',
         profs= sample(all_profs, randint(0, len(all_profs)))
     )
     world_war_1 = Course(

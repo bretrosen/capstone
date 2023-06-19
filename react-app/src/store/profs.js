@@ -2,6 +2,7 @@
 
 const GET_ALL_PROFS = 'profs/getAllProfs'
 const GET_SINGLE_PROF = 'profs/getSingleProf'
+const CREATE_PROF = 'profs/createProf'
 
 
 // action creators
@@ -19,6 +20,11 @@ const getSingleProf = (prof) => {
         prof
     }
 }
+
+const createProf = (prof) => ({
+    type: CREATE_PROF,
+    prof
+})
 
 
 // thunks
@@ -47,6 +53,21 @@ export const getSingleProfThunk = (profId) => async (dispatch) => {
     }
 }
 
+export const createProfThunk = (prof) => async (dispatch) => {
+    const response = await fetch('/api/profs/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(prof)
+    })
+    console.log('sending create prof thunk', response)
+
+    if (response.ok) {
+        const newProf = await response.json()
+        console.log('returning create prof thunk', newProf)
+        dispatch(createProf(newProf))
+        return newProf
+    }
+}
 
 
 const initialState = {allProfs: {}, singleProf: {}}
@@ -66,6 +87,12 @@ const profsReducer = (state = initialState, action) => {
         }
         case GET_SINGLE_PROF: {
             return {...state, allProfs: {...state.allProfs}, singleProf: {...action.prof}}
+        }
+        case CREATE_PROF: {
+            const id = action.prof.id
+            const newState = {...state.allProfs}
+            newState[id] = action.prof
+            return {...state, allProfs: newState}
         }
         default:
             return state
