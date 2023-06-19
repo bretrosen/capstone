@@ -1,0 +1,14 @@
+.profs-list-item {
+    display: flex;
+    margin: 2rem;
+    background: rgba(230, 230, 230, 0.2);
+    height: 10rem;
+}
+
+.profs-list-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+    width: auto;
+}

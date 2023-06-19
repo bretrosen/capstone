@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import { getAllProfsThunk } from '../../store/profs'
 import './Profs.css'
+import '../Reviews/Reviews.css'
 
 
 export const ProfList = () => {
@@ -25,13 +26,37 @@ export const ProfList = () => {
     }
 
     return (
-        <div className='reviews-list-wrapper'>
-            List of Professors
-            <br></br>
-            <br></br>
+        <div className='profs-list-wrapper'>
+            <div className='profs-list-heading'>
+            {profs.length} Professors at The University of Life
+            </div>
             {profs.map((prof) => (
                 <>
-                <div>{prof.first_name} {prof.last_name}</div>
+                    <Link to={`/profs/${prof.id}`} key={prof.id}>
+                        <div className='profs-list-item' >
+
+                            <div className='reviews-list-ratings'>
+                                <div className='rating-heading'>Quality</div>
+                                {prof.quality > 0 && prof.quality < 6.7 &&
+                                    <div className='rating-number' id='low'>{prof.quality.toFixed(1)}</div>}
+                                {prof.quality >= 6.7 && prof.quality < 13.4 &&
+                                    <div className='rating-number' id='medium'>{prof.quality.toFixed(1)}</div>}
+                                {prof.quality >= 13.4 && prof.quality <= 20 &&
+                                    <div className='rating-number' id='high'>{prof.quality.toFixed(1)}</div>}
+                            </div>
+
+                            <div className='profs-list-right'>
+                                <div>{prof.first_name} {prof.last_name}</div>
+                                <div>{prof.field}</div>
+                                {prof.recommendations.length > 0 &&
+                                <div>{prof.recommended}% would take again</div>}
+                                {prof.difficulties.length > 0 &&
+                                <div>{prof.difficulty} level of difficulty</div>}
+                            </div>
+
+                        </div>
+                    </Link>
+
                 </>
             ))}
         </div>
