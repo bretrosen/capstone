@@ -71,7 +71,6 @@ def single_prof(id):
     reviews = Review.query.filter(Review.prof_id == prof.id).all()
     reviews_dict = [review.to_dict() for review in reviews]
     prof_data['reviews'] = reviews_dict
-
     
 
     print("all reviews associated with prof", reviews_dict)
