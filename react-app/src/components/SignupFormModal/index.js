@@ -8,6 +8,8 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
+	const [first_name, setFirstName] = useState('');
+	const [last_name, setLastName] = useState('');
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -16,7 +18,7 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+			const data = await dispatch(signUp(username, email, password, first_name, last_name));
 			if (data) {
 				setErrors(data);
 			} else {
@@ -30,53 +32,68 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
+		<div className='signup-form-wrapper'>
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
-				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
-				<label>
-					Email
-					<input
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Username
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Password
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Confirm Password
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<button type="submit">Sign Up</button>
+				<div className='signup-form'>
+					<ul className='signup-errors'>
+						{errors.map((error, idx) => (
+							<li key={idx}>{error}</li>
+						))}
+					</ul>
+						<input
+							className='signup-form-input'
+							type="text"
+							placeholder='First Name'
+							value={first_name}
+							onChange={(e) => setFirstName(e.target.value)}
+							required
+						/>
+						<input
+							className='signup-form-input'
+							type="text"
+							placeholder='Last Name'
+							value={last_name}
+							onChange={(e) => setLastName(e.target.value)}
+							required
+						/>
+						<input
+							className='signup-form-input'
+							type="text"
+							placeholder='Email'
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+						<input
+							className='signup-form-input'
+							type="text"
+							placeholder='Username'
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+							required
+						/>
+						<input
+							className='signup-form-input'
+							type="password"
+							placeholder='Password'
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+						<input
+							className='signup-form-input'
+							type="password"
+							placeholder='Confirm Password'
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+							required
+						/>
+
+					<button className='regular-button' type="submit">Sign Up</button>
+				</div>
 			</form>
-		</>
+		</div>
 	);
 }
 

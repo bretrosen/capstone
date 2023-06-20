@@ -1,0 +1,43 @@
+input::placeholder {
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+.signup-errors {
+    color: red;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 25rem;
+}
+
+.signup-form-input {
+    background-color: rgb(177, 211, 255);
+    padding: 0.2rem;
+    margin: 0.5rem;
+    width: 90%;
+    border: 2px solid black;
+}
+
+.signup-form-wrapper {
+    text-align: center;
+    width: 30rem;
+    height: 32rem;
+}
+
+.submit-signup-button {
+    background: lightcoral;
+    color: white;
+    height: 3rem;
+    width: 92.5%;
+    margin: 1rem;
+    border: 2px solid black;
+    box-shadow: 2px 3px black;
+}
+
+.submit-signup-button:hover {
+    cursor: pointer;
+}
