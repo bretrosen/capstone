@@ -297,13 +297,92 @@ def seed_profs():
         field='History'
     )
 
-
     shakespeare = Prof(
         creator_id=randint(1, 6),
         first_name='William',
         last_name='Shakespeare',
         field='Literature'
     )
+    dickens = Prof(
+        creator_id=randint(1, 6),
+        first_name='Charles',
+        last_name='Dickens',
+        field='Literature'
+    )
+    woolf = Prof(
+        creator_id=randint(1, 6),
+        first_name='Virginia',
+        last_name='Woolf',
+        field='Literature'
+    )
+    joyce = Prof(
+        creator_id=randint(1, 6),
+        first_name='James',
+        last_name='Joyce',
+        field='Literature'
+    )
+    hemingway = Prof(
+        creator_id=randint(1, 6),
+        first_name='Ernest',
+        last_name='Hemingway',
+        field='Literature'
+    )
+    dostoevsky = Prof(
+        creator_id=randint(1, 6),
+        first_name='Fyodor',
+        last_name='Dostoevsky',
+        field='Literature'
+    )
+    chaucer = Prof(
+        creator_id=randint(1, 6),
+        first_name='Geoffrey',
+        last_name='Chaucer',
+        field='Literature'
+    )
+    thompson = Prof(
+        creator_id=randint(1, 6),
+        first_name='Hunter S.',
+        last_name='Thompson',
+        field='Literature'
+    )
+    burns = Prof(
+        creator_id=randint(1, 6),
+        first_name='Robert',
+        last_name='Burns',
+        field='Literature'
+    )
+    dickinson = Prof(
+        creator_id=randint(1, 6),
+        first_name='Emily',
+        last_name='Dickinson',
+        field='Literature'
+    )
+    garp = Prof(
+        creator_id=randint(1, 6),
+        first_name='T.S.',
+        last_name='Garp',
+        field='Literature'
+    )
+    cummings = Prof(
+        creator_id=randint(1, 6),
+        first_name='E.E.',
+        last_name='Cummings',
+        field='Literature'
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     newton = Prof(
         creator_id=randint(1, 6),
