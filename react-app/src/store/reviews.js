@@ -158,10 +158,13 @@ export default function reviewsReducer(state = initialState, action)  {
         }
         case DELETE_REVIEW: {
             const reviewToDelete = action.reviewId
-            const allUserReviews = state.allReviews
-            const updatedReviews = {...allUserReviews}
-            delete updatedReviews[reviewToDelete]
-            return {...state, allReviews: updatedReviews}
+            const userReviews = state.userReviews
+            const allReviews = state.allReviews
+            const updatedUserReviews = {...userReviews}
+            const updatedAllReviews = {...allReviews}
+            delete updatedUserReviews[reviewToDelete]
+            delete updatedAllReviews[reviewToDelete]
+            return {...state, allReviews: updatedAllReviews, userReviews: updatedUserReviews}
         }
         default:
             return state
