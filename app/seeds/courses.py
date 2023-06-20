@@ -330,7 +330,12 @@ def seed_courses(all_profs):
         profs= sample(all_profs, randint(0, len(all_profs)))
     )
 
-    all_courses = [studio_art, landscapes, ceramic_food, street_art, doritos, marine_bio, cat_bio, monty_python, p_chem, bio_chem, laser_chem, chem_stuff, mach_learning, algos, python, comp_vision, the_hand, pringles, game_theory, bookkeeping, tattoos, world_war_1, animal_sounds, neanderthals, bird_noses, footnotes, shakespeare, bookmarks, familiar, tax_returns, dark_arts, sorcerers, geometry, knot, discreet, indiscreet, injustice, determinism, cat_phil, tv, yoga, bicycles, darts, bowling, toilet, astro, relativity, matter, animal_thinking, birds_real, html_feelings, clinical_psych]
+    # full course seeds
+    # all_courses = [studio_art, landscapes, ceramic_food, street_art, doritos, marine_bio, cat_bio, monty_python, p_chem, bio_chem, laser_chem, chem_stuff, mach_learning, algos, python, comp_vision, the_hand, pringles, game_theory, bookkeeping, tattoos, world_war_1, animal_sounds, neanderthals, bird_noses, footnotes, shakespeare, bookmarks, familiar, tax_returns, dark_arts, sorcerers, geometry, knot, discreet, indiscreet, injustice, determinism, cat_phil, tv, yoga, bicycles, darts, bowling, toilet, astro, relativity, matter, animal_thinking, birds_real, html_feelings, clinical_psych]
+
+    # reduced course seeds
+    all_courses = [studio_art, landscapes, ceramic_food, street_art, doritos, marine_bio, cat_bio, monty_python, p_chem, bio_chem, laser_chem, chem_stuff, mach_learning, algos, python, comp_vision]
+
     [db.session.add(course) for course in all_courses]
     db.session.commit()
 
