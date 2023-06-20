@@ -168,6 +168,135 @@ def seed_profs():
         field='Chemistry'
     )
 
+    turing = Prof(
+        creator_id=randint(1, 6),
+        first_name='Alan',
+        last_name='Turing',
+        field='Computer Science'
+    )
+    berners_lee = Prof(
+        creator_id=randint(1, 6),
+        first_name='Time',
+        last_name='Berners-Lee',
+        field='Computer Science'
+    )
+    shannon = Prof(
+        creator_id=randint(1, 6),
+        first_name='Claude',
+        last_name='Shannon',
+        field='Computer Science'
+    )
+    hopper = Prof(
+        creator_id=randint(1, 6),
+        first_name='Grace',
+        last_name='Hopper',
+        field='Computer Science'
+    )
+    lovelace = Prof(
+        creator_id=randint(1, 6),
+        first_name='Ada',
+        last_name='Lovelace',
+        field='Computer Science'
+    )
+    knuth = Prof(
+        creator_id=randint(1, 6),
+        first_name='Donald',
+        last_name='Knuth',
+        field='Computer Science'
+    )
+    dijkstra= Prof(
+        creator_id=randint(1, 6),
+        first_name='Edsger',
+        last_name='Dijkstra',
+        field='Computer Science'
+    )
+
+    marx = Prof(
+        creator_id=randint(1, 6),
+        first_name='Karl',
+        last_name='Marx',
+        field='Economics'
+    )
+    smith = Prof(
+        creator_id=randint(1, 6),
+        first_name='Adam',
+        last_name='Smith',
+        field='Economics'
+    )
+    friedman= Prof(
+        creator_id=randint(1, 6),
+        first_name='Milton',
+        last_name='Friedman',
+        field='Economics'
+    )
+    krugman = Prof(
+        creator_id=randint(1, 6),
+        first_name='Paul',
+        last_name='Krugman',
+        field='Economics'
+    )
+    keynes = Prof(
+        creator_id=randint(1, 6),
+        first_name='John',
+        last_name='Maynard Keynes',
+        field='Economics'
+    )
+    marshall = Prof(
+        creator_id=randint(1, 6),
+        first_name='Alfred',
+        last_name='Marshall',
+        field='Economics'
+    )
+
+    herodotus = Prof(
+        creator_id=randint(1, 6),
+        first_name='Herodotus',
+        last_name='of Halicarnassus',
+        field='History'
+    )
+    doris = Prof(
+        creator_id=randint(1, 6),
+        first_name='Doris',
+        last_name='Kearns Goodwin',
+        field='History'
+    )
+    mccullough = Prof(
+        creator_id=randint(1, 6),
+        first_name='David',
+        last_name='McCullough',
+        field='History'
+    )
+    william = Prof(
+        creator_id=randint(1, 6),
+        first_name='William',
+        last_name='of Ockham',
+        field='History'
+    )
+    zinn = Prof(
+        creator_id=randint(1, 6),
+        first_name='Howard',
+        last_name='Zinn',
+        field='History'
+    )
+    foote = Prof(
+        creator_id=randint(1, 6),
+        first_name='Shelby',
+        last_name='Foote',
+        field='History'
+    )
+    indy = Prof(
+        creator_id=randint(1, 6),
+        first_name='Indiana',
+        last_name='Jones',
+        field='History'
+    )
+    ross = Prof(
+        creator_id=randint(1, 6),
+        first_name='Ross',
+        last_name='Geller',
+        field='History'
+    )
+
 
     shakespeare = Prof(
         creator_id=randint(1, 6),
@@ -175,12 +304,7 @@ def seed_profs():
         last_name='Shakespeare',
         field='Literature'
     )
-    marx = Prof(
-        creator_id=randint(1, 6),
-        first_name='Karl',
-        last_name='Marx',
-        field='Economics'
-    )
+
     newton = Prof(
         creator_id=randint(1, 6),
         first_name='Isaac',
