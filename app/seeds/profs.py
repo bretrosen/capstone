@@ -622,10 +622,10 @@ def seed_profs():
     )
 
     # full prof seeds
-    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes, turing, berners_lee, shannon, hopper, lovelace, knuth, dijkstra, marx, smith, friedman, krugman, keynes, marshall, herodotus, doris, mccullough, william, zinn, foote, indy, ross, shakespeare, dickens, woolf, joyce, hemingway, dostoevsky, chaucer, thompson, burns, dickinson, garp, cummings, descartes, pascal, euclid, gauss, euler, neumann, fermat, napier, moriarty, socrates, chomsky, confucius, machiavelli, luther, kant, sartre, newton, einstein, galileo, curie, feynman, hawking, copernicus, jung, skinner, maslow, pavlov, freud, venkman, gandalf, dumbledore, palpatine, morgana, miracle_max, oz, copperfield, houdini, dr_strange, yoda, professor_x]
+    # all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes, turing, berners_lee, shannon, hopper, lovelace, knuth, dijkstra, marx, smith, friedman, krugman, keynes, marshall, herodotus, doris, mccullough, william, zinn, foote, indy, ross, shakespeare, dickens, woolf, joyce, hemingway, dostoevsky, chaucer, thompson, burns, dickinson, garp, cummings, descartes, pascal, euclid, gauss, euler, neumann, fermat, napier, moriarty, socrates, chomsky, confucius, machiavelli, luther, kant, sartre, newton, einstein, galileo, curie, feynman, hawking, copernicus, jung, skinner, maslow, pavlov, freud, venkman, gandalf, dumbledore, palpatine, morgana, miracle_max, oz, copperfield, houdini, dr_strange, yoda, professor_x]
 
     # reduced prof seeds
-    # all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes]
+    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes]
 
     [db.session.add(prof) for prof in all_profs]
     db.session.commit()

@@ -96,6 +96,7 @@ export const ProfForm = ({ prof, formType }) => {
                 <div className='create-review-input'>
                     <input
                         type='text'
+                        placeholder='Professor Field of Study'
                         value={field}
                         onChange={e => setField(e.target.value)} />
                 </div>
