@@ -109,8 +109,8 @@ def seed_reviews():
     for _ in range(1, 101):
         new_review = Review(
             creator_id = randint(1, 6),
-            prof_id = randint(1, 100),
-            course_id = randint(1, 52),
+            prof_id = randint(1, 27),
+            course_id = randint(1, 16),
             intelligence = randint(1, 20),
             wisdom = randint (1, 20),
             charisma = randint(1, 20),
