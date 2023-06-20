@@ -2,28 +2,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
-import { getAllReviewsThunk } from '../../store/reviews'
+import { getCurrentUserReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'
 import DeleteReview from '../DeleteReview'
-import './Reviews.css'
+import './UserReviews.css'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 const dayjs = require('dayjs')
 dayjs.extend(advancedFormat)
 
 
-
-export const ReviewList = () => {
+export const CurrentUserReviewList = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
     const user = useSelector(state => state.session.user)
-    console.log("user id in all reviews", user)
-
+    
     useEffect(() => {
-        dispatch(getAllReviewsThunk())
-        console.log("useEffect in get all reviews ran")
+        dispatch(getCurrentUserReviewsThunk())
+        console.log('useEffect in user reviews ran')
     }, [dispatch])
 
     if (!reviews) {

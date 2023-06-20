@@ -128,6 +128,18 @@ def put_delete_review(id):
     db.session.commit()
     return review_to_delete.to_dict()
 
+@review_routes.route('/current')
+def get_user_reviews():
+    '''
+    Queries for reviews belonging to the current user, and returns them in a dictionary.
+    '''
+
+    user = current_user
+    user_reviews = Review.query.filter(Review.creator_id == user.id).all()
+
+    user_reviews_to_dict = [review.to_dict() for review in user_reviews]
+    return {"reviews": user_reviews_to_dict}
+
 @review_routes.route('/get_profs')
 def get_profs():
     '''

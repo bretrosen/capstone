@@ -57,6 +57,18 @@ export const getSingleReviewThunk = (reviewId) => async (dispatch) => {
     }
 }
 
+export const getCurrentUserReviewsThunk = () => async (dispatch) => {
+    const response = await fetch('/api/reviews/current')
+    console.log('sending current user reviews thunk', response)
+
+    if (response.ok) {
+        const reviews = await response.json()
+        console.log('returning current user reviews thunk', reviews)
+        dispatch(getAllReviews(reviews))
+        return reviews
+    }
+}
+
 export const createReviewThunk = (review) => async (dispatch) => {
     const response = await fetch('/api/reviews/new', {
         method: 'POST',

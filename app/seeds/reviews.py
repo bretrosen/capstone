@@ -106,11 +106,11 @@ def seed_reviews():
         "There was no possibility of taking any other course than this one. It was truly enthralling and endlessly educational.",
         "Weird and unsettling but super interesting. This professor probably shouldn't teach this course, but it is a WILD RIDE if you just strap your brain seatbelt on."
     ]
-    for _ in range(1, 101):
+    for _ in range(1, 601):
         new_review = Review(
             creator_id = randint(1, 6),
-            prof_id = randint(1, 27),
-            course_id = randint(1, 16),
+            prof_id = randint(1, 100),
+            course_id = randint(1, 52),
             intelligence = randint(1, 20),
             wisdom = randint (1, 20),
             charisma = randint(1, 20),
