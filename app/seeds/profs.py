@@ -359,7 +359,7 @@ def seed_profs():
     )
     garp = Prof(
         creator_id=randint(1, 6),
-        first_name='T.S.',
+        first_name='Helen',
         last_name='Garp',
         field='Literature'
     )
@@ -370,19 +370,103 @@ def seed_profs():
         field='Literature'
     )
 
+    descartes = Prof(
+        creator_id=randint(1, 6),
+        first_name='Rene',
+        last_name='Descartes',
+        field='Mathematics'
+    )
+    pascal = Prof(
+        creator_id=randint(1, 6),
+        first_name='Blaise',
+        last_name='Pascal',
+        field='Mathematics'
+    )
+    euclid = Prof(
+        creator_id=randint(1, 6),
+        first_name='Euclid',
+        last_name='of Alexandria',
+        field='Mathematics'
+    )
+    gauss = Prof(
+        creator_id=randint(1, 6),
+        first_name='Carl Friedrich',
+        last_name='Gauss',
+        field='Mathematics'
+    )
+    euler= Prof(
+        creator_id=randint(1, 6),
+        first_name='Leonhard',
+        last_name='Euler',
+        field='Mathematics'
+    )
+    neumann = Prof(
+        creator_id=randint(1, 6),
+        first_name='John',
+        last_name='von Neumann',
+        field='Mathematics'
+    )
+    fermat= Prof(
+        creator_id=randint(1, 6),
+        first_name='Pierre',
+        last_name='de Fermat',
+        field='Mathematics'
+    )
+    napier = Prof(
+        creator_id=randint(1, 6),
+        first_name='John',
+        last_name='Napier',
+        field='Mathematics'
+    )
+    moriarty = Prof(
+        creator_id=randint(1, 6),
+        first_name='James',
+        last_name='Moriarty',
+        field='Mathematics'
+    )
 
-
-
-
-
-
-
-
-
-
-
-
-
+    socrates = Prof(
+        creator_id=randint(1, 6),
+        first_name='Socrates',
+        last_name='of Athens',
+        field='Philosophy'
+    )
+    chomsky = Prof(
+        creator_id=randint(1, 6),
+        first_name='Noam',
+        last_name='Chomsky',
+        field='Philosophy'
+    )
+    confucius = Prof(
+        creator_id=randint(1, 6),
+        first_name='Confucius',
+        last_name='of Lu',
+        field='Philosophy'
+    )
+    machiavelli = Prof(
+        creator_id=randint(1, 6),
+        first_name='Niccolo',
+        last_name='Machiavelli',
+        field='Philosophy'
+    )
+    luther = Prof(
+        creator_id=randint(1, 6),
+        first_name='Martin',
+        last_name='Luther',
+        field='Philosophy'
+    )
+    kant = Prof(
+        creator_id=randint(1, 6),
+        first_name='Immanuel',
+        last_name='Kant',
+        field='Philosophy'
+    )
+    sartre = Prof(
+        creator_id=randint(1, 6),
+        first_name='Jean-Paul',
+        last_name='Sartre',
+        field='Philosophy'
+    )
 
     newton = Prof(
         creator_id=randint(1, 6),
@@ -390,8 +474,154 @@ def seed_profs():
         last_name='Newton',
         field='Physics'
     )
+    einstein = Prof(
+        creator_id=randint(1, 6),
+        first_name='Albert',
+        last_name='Einstein',
+        field='Physics'
+    )
+    galileo = Prof(
+        creator_id=randint(1, 6),
+        first_name='Galileo',
+        last_name='Galilei',
+        field='Physics'
+    )
+    curie = Prof(
+        creator_id=randint(1, 6),
+        first_name='Marie',
+        last_name='Curie',
+        field='Physics'
+    )
+    feynman = Prof(
+        creator_id=randint(1, 6),
+        first_name='Richard',
+        last_name='Feynman',
+        field='Physics'
+    )
+    hawking = Prof(
+        creator_id=randint(1, 6),
+        first_name='Stephen',
+        last_name='Hawking',
+        field='Physics'
+    )
+    copernicus = Prof(
+        creator_id=randint(1, 6),
+        first_name='Nicolas',
+        last_name='Copernicus',
+        field='Physics'
+    )
 
-    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes, shakespeare, marx, newton]
+    jung = Prof(
+        creator_id=randint(1, 6),
+        first_name='Carl',
+        last_name='Jung',
+        field='Psychology'
+    )
+    skinner = Prof(
+        creator_id=randint(1, 6),
+        first_name='B.F.',
+        last_name='Skinner',
+        field='Psychology'
+    )
+    maslow = Prof(
+        creator_id=randint(1, 6),
+        first_name='Abraham',
+        last_name='Maslow',
+        field='Psychology'
+    )
+    pavlov = Prof(
+        creator_id=randint(1, 6),
+        first_name='Ivan',
+        last_name='Pavlov',
+        field='Psychology'
+    )
+    freud = Prof(
+        creator_id=randint(1, 6),
+        first_name='Sigmund',
+        last_name='Freud',
+        field='Psychology'
+    )
+    venkman = Prof(
+        creator_id=randint(1, 6),
+        first_name='Peter',
+        last_name='Venkman',
+        field='Psychology'
+    )
+
+    gandalf = Prof(
+        creator_id=randint(1, 6),
+        first_name='Gandalf',
+        last_name='the Grey',
+        field='Magic'
+    )
+    dumbledore = Prof(
+        creator_id=randint(1, 6),
+        first_name='Albus',
+        last_name='Dumbledore',
+        field='Magic'
+    )
+    palpatine = Prof(
+        creator_id=randint(1, 6),
+        first_name='Emperor',
+        last_name='Palpatine',
+        field='Magic'
+    )
+    morgana = Prof(
+        creator_id=randint(1, 6),
+        first_name='Morgana',
+        last_name='Le Fay',
+        field='Magic'
+    )
+    miracle_max = Prof(
+        creator_id=randint(1, 6),
+        first_name='Miracle',
+        last_name='Max',
+        field='Magic'
+    )
+    gandalf = Prof(
+        creator_id=randint(1, 6),
+        first_name='Gandalf',
+        last_name='the Grey',
+        field='Magic'
+    )
+    oz = Prof(
+        creator_id=randint(1, 6),
+        first_name='The Wizard',
+        last_name='of Oz',
+        field='Magic'
+    )
+    copperfield = Prof(
+        creator_id=randint(1, 6),
+        first_name='David',
+        last_name='Copperfield',
+        field='Magic'
+    )
+    houdini = Prof(
+        creator_id=randint(1, 6),
+        first_name='Harry',
+        last_name='Houdini',
+        field='Magic'
+    )
+    dr_strange = Prof(
+        creator_id=randint(1, 6),
+        first_name='Stephen',
+        last_name='Strange',
+        field='Magic'
+    )
+    yoda = Prof(
+        creator_id=randint(1, 6),
+        first_name='Yoda',
+        last_name='of Dagobah',
+        field='Magic'
+    )
+    professor_x = Prof(
+        creator_id=randint(1, 6),
+        first_name='Charles',
+        last_name='Xavier',
+        field='Magic'
+    )
+
+    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes, turing, berners_lee, shannon, hopper, lovelace, knuth, dijkstra, marx, smith, friedman, krugman, keynes, marshall, herodotus, doris, mccullough, william, zinn, foote, indy, ross, shakespeare, dickens, woolf, joyce, hemingway, dostoevsky, chaucer, thompson, burns, dickinson, garp, cummings, descartes, pascal, euclid, gauss, euler, neumann, fermat, napier, moriarty, socrates, chomsky, confucius, machiavelli, luther, kant, sartre, newton, einstein, galileo, curie, feynman, hawking, copernicus, jung, skinner, maslow, pavlov, freud, venkman, gandalf, dumbledore, palpatine, morgana, miracle_max, oz, copperfield, houdini, dr_strange, yoda, professor_x]
     [db.session.add(prof) for prof in all_profs]
     db.session.commit()
     return all_profs
