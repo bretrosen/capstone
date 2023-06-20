@@ -15,10 +15,10 @@ export const CurrentUserReviewList = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const reviewsObj = useSelector(state => state.reviews.allReviews)
+    const reviewsObj = useSelector(state => state.reviews.userReviews)
     const reviews = Object.values(reviewsObj)
     const user = useSelector(state => state.session.user)
-    
+
     useEffect(() => {
         dispatch(getCurrentUserReviewsThunk())
         console.log('useEffect in user reviews ran')
