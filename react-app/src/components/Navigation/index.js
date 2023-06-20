@@ -11,9 +11,7 @@ function Navigation({ isLoaded }) {
 		<>
 			{!sessionUser && <ul className='nav-bar'>
 				<li>
-					<NavLink exact to="/" id="nav-logo">Home
-
-					</NavLink>
+					<NavLink exact to="/" id="nav-logo">Home</NavLink>
 				</li>
 				<div className='nav-login-signup'>
 					<li className='remove-dot'>
@@ -26,12 +24,11 @@ function Navigation({ isLoaded }) {
 
 			{sessionUser &&
 				<div className='nav-bar'>
-					<div className='search-home'>
-						<NavLink exact to="/" id="nav-logo">Home
-						</NavLink>
+
+						<NavLink exact to="/" id="nav-logo">Home</NavLink>
 
 
-					</div>
+
 					<ProfileButton user={sessionUser} />
 				</div>}
 
