@@ -2,6 +2,7 @@
 
 const GET_ALL_REVIEWS = 'reviews/getAllReviews'
 const GET_SINGLE_REVIEW = 'reviews/getSingleReview'
+const GET_USER_REVIEWS = 'reviews/getUserReviews'
 const CREATE_REVIEW = 'reviews/createReview'
 const DELETE_REVIEW = 'reviews/deleteReview'
 
@@ -18,6 +19,13 @@ const getSingleReview = (review) => {
     return {
         type: GET_SINGLE_REVIEW,
         review
+    }
+}
+
+const getUserReviews = (reviews) => {
+    return {
+        type: GET_USER_REVIEWS,
+        reviews
     }
 }
 
@@ -54,6 +62,18 @@ export const getSingleReviewThunk = (reviewId) => async (dispatch) => {
         console.log('returning single review thunk', review)
         dispatch(getSingleReview(review))
         return review
+    }
+}
+
+export const getCurrentUserReviewsThunk = () => async (dispatch) => {
+    const response = await fetch('/api/reviews/current')
+    console.log('sending current user reviews thunk', response)
+
+    if (response.ok) {
+        const reviews = await response.json()
+        console.log('returning current user reviews thunk', reviews)
+        dispatch(getUserReviews(reviews))
+        return reviews
     }
 }
 
@@ -104,13 +124,13 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
     }
 }
 
-const initialState = {allReviews: {}, singleReview: {}}
+const initialState = {allReviews: {}, singleReview: {}, userReviews: {}}
 
 // reducer
 export default function reviewsReducer(state = initialState, action)  {
     switch (action.type) {
         case GET_ALL_REVIEWS: {
-            const newState = {...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview}}
+            const newState = {...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview}, userReviews: {...state.userReviews}}
 
             action.reviews.reviews.forEach((review) => {
                 newState.allReviews[review.id] = review
@@ -118,8 +138,17 @@ export default function reviewsReducer(state = initialState, action)  {
 
             return newState
         }
+        case GET_USER_REVIEWS: {
+            const newState = {...state, allReviews: {...state.allReviews}, singleReview: {...state.singleReview}, userReviews: {...state.userReviews}}
+
+            action.reviews.reviews.forEach((review) => {
+                newState.userReviews[review.id] = review
+            })
+
+            return newState
+        }
         case GET_SINGLE_REVIEW: {
-            return {...state, allReviews: {...state.allReviews}, singleReview: {...action.review}}
+            return {...state, allReviews: {...state.allReviews}, userReviews: {...state.userReviews}, singleReview: {...action.review}}
         }
         case CREATE_REVIEW: {
             const id = action.review.id

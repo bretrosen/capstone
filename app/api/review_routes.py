@@ -128,6 +128,28 @@ def put_delete_review(id):
     db.session.commit()
     return review_to_delete.to_dict()
 
+@review_routes.route('/current')
+def get_user_reviews():
+    '''
+    Queries for reviews belonging to the current user. Adds quality aggregate, professor and course name, and returns them in a dictionary.
+    '''
+
+    user = current_user
+    user_reviews = Review.query.filter(Review.creator_id == user.id).all()
+    user_reviews_to_dict = [review.to_dict() for review in user_reviews]
+
+    for review in user_reviews_to_dict:
+        review['quality'] = mean([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']])
+        prof = (Prof.query.filter(Prof.id == review['prof_id']).one()).to_dict()
+        course = (Course.query.filter(Course.id == review['course_id']).one()).to_dict()
+        review['prof_first_name'] = prof['first_name']
+        review['prof_last_name'] = prof['last_name']
+        review['course_name'] = course['name']
+        print("single review from backend ============>", review)
+
+
+    return {"reviews": user_reviews_to_dict}
+
 @review_routes.route('/get_profs')
 def get_profs():
     '''
