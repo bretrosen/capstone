@@ -13,10 +13,10 @@ class Prof(db.Model):
     last_name = db.Column(db.String(20), nullable=False)
     field = db.Column(db.String(50), nullable=False)
 
-    reviews = db.relationship('Review', back_populates='prof')
+    reviews = db.relationship('Review', back_populates='prof', cascade='all, delete')
     user = db.relationship('User', back_populates='profs')
-    debates1 = db.relationship('Debate', foreign_keys='Debate.prof1_id', back_populates='prof1')
-    debates2 = db.relationship('Debate', foreign_keys='Debate.prof2_id', back_populates='prof2')
+    debates1 = db.relationship('Debate', foreign_keys='Debate.prof1_id', back_populates='prof1', cascade='all, delete')
+    debates2 = db.relationship('Debate', foreign_keys='Debate.prof2_id', back_populates='prof2', cascade='all, delete')
 
     courses = db.relationship('Course', secondary=prof_courses, back_populates='profs')
 
