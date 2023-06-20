@@ -24,9 +24,16 @@ function LoginFormModal() {
     }
   };
 
-  const demoUserLogin = async () => {
-    await dispatch(login({ email: "john316@hms.gov", password: "password" }))
+  const demoUserLogin = async (e) => {
+    e.preventDefault()
+    const email = 'john316@hms.gov'
+    const password = 'password'
+    const data = await dispatch(login(email, password))
+    if (data) {
+      setErrors(data)
+    } else {
     closeModal()
+    }
   };
 
   return (
@@ -64,7 +71,7 @@ function LoginFormModal() {
           </button>
           <button
             className='demo-user'
-            onClick={() => demoUserLogin()}>
+            onClick={demoUserLogin}>
             Demo User
           </button>
         </div>
