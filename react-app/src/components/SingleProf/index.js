@@ -64,7 +64,7 @@ export const SingleProf = () => {
                         <div className='single-prof-aggregates'>
                             <div className='single-prof-recommends'>
                                 <div className='recommends-number'>
-                                    {profs[profId - 1]?.recommended} %
+                                    {profs[profId - 1]?.recommended?.toFixed(1)} %
                                 </div>
                                 <div className='recommends-text'>
                                     Would take again

@@ -1,3 +1,9 @@
+.profs-list-heading {
+    margin: 2rem;
+    font-size: 24px;
+    font-weight: 700;
+}
+
 .profs-list-item {
     display: flex;
     margin: 2rem;
@@ -11,4 +17,8 @@
     justify-content: space-between;
     margin: 1rem;
     width: auto;
+}
+
+.profs-list-wrapper {
+    margin: 1rem;
 }

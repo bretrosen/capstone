@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
-import LoginFormPage from "./components/LoginFormPage";
+import LoginFormModal from "./components/LoginFormModal";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import { ReviewList } from './components/Reviews'
@@ -56,12 +56,12 @@ function App() {
           <Route path='/profs'>
             <ProfList />
           </Route>
-          <Route path="/login" >
-            <LoginFormPage />
+          {/* <Route path="/login" >
+            <LoginFormModal />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
+          </Route> */}
         </Switch>
       )}
     </>

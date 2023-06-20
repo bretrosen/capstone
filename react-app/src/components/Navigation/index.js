@@ -5,42 +5,40 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
-	const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector(state => state.session.user)
 
-	return (
-		<>
-			{!sessionUser && <ul className='nav-bar'>
-				<li>
-					<NavLink exact to="/" id="nav-logo">Home
+    return (
+        <>
+            <div className='nav-wrapper'>
+                <NavLink className='nav-logo' to='/'>
+                    Home
+                </NavLink>
+                <div className='nav-menu-center'>
+                    <NavLink to='/reviews' className='nav-link'>All Reviews</NavLink>
+                    <NavLink to='/profs' className='nav-link'>All Professors</NavLink>
+                    {sessionUser &&
+                        <>
+                            <NavLink to='/reviews/new' className='nav-link'>New Review</NavLink>
+                            <NavLink to='/profs/new' className='nav-link'>New Professor</NavLink>
+                        </>
+                    }
 
-					</NavLink>
-				</li>
-				<div className='nav-login-signup'>
-					<li className='remove-dot'>
-						<NavLink to="/login" className='login-signup' id='nav-login'>Log in</NavLink></li>
-					<li className='remove-dot'>
-						<NavLink to="signup" className='login-signup' id='sign-up'>Sign up</NavLink></li>
-				</div>
-			</ul>
-			}
+                </div>
+                <div className='nav-wrapper-right'>
 
-			{sessionUser &&
-				<div className='nav-bar'>
-					<div className='search-home'>
-						<NavLink exact to="/" id="nav-logo">Home
-						</NavLink>
+                    {isLoaded && (
 
+                        <ProfileButton user={sessionUser} />
 
-					</div>
-					<ProfileButton user={sessionUser} />
-				</div>}
+                    )}
 
+                </div>
+            </div>
 
-
-		</>
+        </>
 
 
-	);
+    );
 }
 
 export default Navigation;
