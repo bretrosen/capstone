@@ -9,30 +9,21 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<>
-			{!sessionUser && <ul className='nav-bar'>
-				<li>
-					<NavLink exact to="/" id="nav-logo">Home</NavLink>
-				</li>
-				<div className='nav-login-signup'>
-					<li className='remove-dot'>
-						<NavLink to="/login" className='login-signup' id='nav-login'>Log in</NavLink></li>
-					<li className='remove-dot'>
-						<NavLink to="signup" className='login-signup' id='sign-up'>Sign up</NavLink></li>
-				</div>
-			</ul>
-			}
-
-			{sessionUser &&
-				<div className='nav-bar'>
-
-						<NavLink exact to="/" id="nav-logo">Home</NavLink>
-
-
-
-					<ProfileButton user={sessionUser} />
-				</div>}
-
-
+        <div className='nav-wrapper'>
+            <NavLink className='nav-logo' to='/'>
+            </NavLink>
+            <div className='nav-menu-center'>
+            </div>
+            <div className='nav-wrapper-right'>
+                <div>
+                    {isLoaded && (
+                        <li>
+                            <ProfileButton user={sessionUser} />
+                        </li>
+                    )}
+                </div>
+            </div>
+        </div>
 
 		</>
 

@@ -1,3 +1,8 @@
+input::placeholder {
+    font-weight: bold;
+    opacity: 0.5;
+}
+
 .demo-user {
     background: none;
     border: none;
@@ -9,4 +14,62 @@
 
 .demo-user:hover {
     cursor: pointer;
+}
+
+.login-errors {
+    color: red;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    height: 14rem;
+}
+
+.login-form-input {
+    background-color: rgb(177, 211, 255);
+    padding: 0.2rem;
+    margin: 0.5rem;
+    width: 90%;
+    border: 2px solid black;
+}
+
+.modal-button {
+    margin: 0.3rem 1.1rem 0.3rem;
+    height: 3rem;
+    width: 92%;
+    margin-bottom: 2rem;
+    color: black;
+    background-color: white;
+    box-shadow: 3px 4px grey;
+}
+
+.submit-login-button {
+    background: lightcoral;
+    color: white;
+    height: 3rem;
+    width: 92.5%;
+    margin: 1rem;
+    border: 2px solid black;
+    box-shadow: 2px 3px black;
+}
+
+.submit-login-button:hover {
+    cursor: pointer;
+}
+
+.submit-login-button-disabled {
+    background: whitesmoke;
+    color: gray;
+    height: 3rem;
+    width: 92.5%;
+    margin: 1rem;
+    border: 2px solid black;
+    box-shadow: 2px 3px black;
+}
+
+.wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 30rem;
 }
