@@ -22,7 +22,7 @@ function SignupFormModal() {
 		if (username.trim().length < 10 || username.length > 40) newErrors['username'] = 'Username must be between 4 and 40 characters'
 		if (first_name.length > 20) newErrors['first_name'] = 'First name must be 20 or fewer characters'
 		if (last_name.length > 20) newErrors['last_name'] = 'Last name must be 20 or fewer characters'
-		if (password.length < 6 || password.length > 40) newErrors['password'] = 'Password must be between 6 and 40 characters'
+		if (password.trim().length < 6 || password.length > 40) newErrors['password'] = 'Password must be between 6 and 40 characters'
 
 		setErrors(newErrors)
 	}, [username, first_name, last_name, password])
