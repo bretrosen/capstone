@@ -11,28 +11,39 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  let canSubmit = false;
-  if (email.length > 3 && password.length > 5) canSubmit = true;
+  // let canSubmit = false;
+  // if (email.length > 3 && password.length > 5) canSubmit = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      console.log("data???", data)
       setErrors(data);
+      console.log("errors??", errors)
     } else {
       closeModal()
     }
   };
 
-  const demoUserLogin = async () => {
-    await dispatch(login({ email: "john316@hms.gov", password: "password" }))
-    closeModal()
+  const demoUserLogin = async (e) => {
+    e.preventDefault()
+    const email = 'john316@hms.gov'
+    const password = 'password'
+    const data = await dispatch(login(email, password))
+    if (data) {
+      setErrors(data)
+    } else {
+      closeModal()
+    }
   };
 
   return (
     <div className='wrapper'>
+
       <h1>Log In</h1>
-      {errors.email && <p className='login-errors'>{errors.email}</p>}
+      {errors[0] && <p className='login-errors'>{errors[0]}</p>}
+      {errors[1] && <p className='login-errors'>{errors[1]}</p>}
       <form onSubmit={handleSubmit}>
         <div className='login-form'>
           <label  >
@@ -55,16 +66,14 @@ function LoginFormModal() {
               required
             />
           </label>
-          <button className=
-            {canSubmit ? 'submit-login-button' :
-              'submit-login-button-disabled'}
+          <button className='submit-login-button'
             type='submit'
-            disabled={!canSubmit}
+          // disabled={!canSubmit}
           >Log In
           </button>
           <button
             className='demo-user'
-            onClick={() => demoUserLogin()}>
+            onClick={demoUserLogin}>
             Demo User
           </button>
         </div>
