@@ -11,17 +11,18 @@ function Navigation({ isLoaded }) {
 		<>
         <div className='nav-wrapper'>
             <NavLink className='nav-logo' to='/'>
+                Home
             </NavLink>
             <div className='nav-menu-center'>
             </div>
             <div className='nav-wrapper-right'>
-                <div>
+
                     {isLoaded && (
-                        <li>
+                        
                             <ProfileButton user={sessionUser} />
-                        </li>
+
                     )}
-                </div>
+
             </div>
         </div>
 

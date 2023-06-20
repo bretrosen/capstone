@@ -25,7 +25,7 @@ function LoginFormModal() {
   };
 
   const demoUserLogin = () => {
-    return dispatch(login({ email: "john316@hms.gov", password: "password" }))
+     dispatch(login({ email: "john316@hms.gov", password: "password" }))
       .then(closeModal)
   };
 
