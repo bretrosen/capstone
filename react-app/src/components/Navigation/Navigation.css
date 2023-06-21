@@ -51,6 +51,10 @@ a {
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
+.nav-debate-pic {
+  width: 20%;
+}
+
 .nav-link {
   margin-right: 1rem;
 }
@@ -58,7 +62,8 @@ a {
 .nav-logo {
   color: white;
   font-size: 20px;
-  text-align: center;
+  text-align: left;
+  margin-left: 2rem;
 }
 
 /* .nav-menu-center {
@@ -99,7 +104,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  /* padding: 1rem; */
   /* margin: 0 3rem 0 1.5rem; */
   font-size: 15px;
   font-weight: 500;
