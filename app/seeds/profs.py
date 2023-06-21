@@ -176,7 +176,7 @@ def seed_profs():
     )
     berners_lee = Prof(
         creator_id=randint(1, 6),
-        first_name='Time',
+        first_name='Tim',
         last_name='Berners-Lee',
         field='Computer Science'
     )

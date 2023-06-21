@@ -87,7 +87,7 @@ export const SingleProf = () => {
                     <div className='distribution-heading'>
                         Rating Distribution
                         <br></br>
-                        GRAPH HERE
+                        <RatingDistribution />
                     </div>
 
                 </div>
