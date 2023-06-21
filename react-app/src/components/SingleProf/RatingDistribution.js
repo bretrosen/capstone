@@ -66,7 +66,7 @@ const RatingDistribution = () => {
         indexAxis: 'y',
         elements: {
             bar: {
-                borderWidth: 2,
+                borderWidth: 6,
             },
         },
         responsive: true,
@@ -99,7 +99,7 @@ const RatingDistribution = () => {
                 labels: dataValues,
                 position: 'right',
                 ticks: {
-                    display: true,
+                    display: false,
                     font: {
                         size: 15,
                         weight: 700

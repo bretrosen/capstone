@@ -60,8 +60,8 @@ function ProfileButton({ user }) {
               </li>
               <li className="user-menu user-border" onClick={closeMenu}></li>
 
-              <li className="user-menu">
-                <button onClick={handleLogout} className="nav-button">Log Out</button>
+              <li className="user-menu log-out">
+                <button onClick={handleLogout}>Log Out</button>
               </li>
             </>
           </ul>
