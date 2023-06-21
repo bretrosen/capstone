@@ -6,6 +6,7 @@ import { getSingleProfThunk, getAllProfsThunk } from '../../store/profs'
 import { getAllReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'
 import DeleteReview from '../DeleteReview'
+import RatingDistribution from './RatingDistribution'
 import './SingleProf.css'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 const dayjs = require('dayjs')
