@@ -44,14 +44,16 @@ function LoginFormModal() {
       <h1>Log In</h1>
       {errors[0] && <p className='login-errors'>{errors[0]}</p>}
       {errors[1] && <p className='login-errors'>{errors[1]}</p>}
+      {errors[2] && <p className='login-errors'>{errors[2]}</p>}
+      {errors[3] && <p className='login-errors'>{errors[3]}</p>}
       <form onSubmit={handleSubmit}>
         <div className='login-form'>
-          <label  >
+          <label>
             <input
               className='login-form-input'
               type='text'
-              placeholder='Email'
               value={email}
+              placeholder='Email'
               onChange={e => setEmail(e.target.value)}
               required
             />
