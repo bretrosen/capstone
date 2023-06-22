@@ -34,6 +34,7 @@ a {
 
 .login-signup-buttons {
   display: flex;
+  font-size: 16px;
 }
 
 .log-out:hover {
@@ -42,6 +43,14 @@ a {
 }
 
 .nav-button {
+  height: 1.5rem;
+  width: 6rem;
+  margin: 1rem;
+  border-radius: 25px;
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: 700;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
@@ -119,8 +128,20 @@ a {
   align-items: center;
 }
 
-.profile-button-link:hover {
+.login-button {
+  height: 2rem;
+  width: 7rem;
+  margin: 1rem 0 1rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  background: white;
+  color: black;
+  font-weight: 700;
+}
+
+.login-button-link:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .profile-dropdown {
@@ -175,6 +196,28 @@ a {
 
 .profile-menu:hover {
   cursor: pointer;
+}
+
+.signup-button {
+  height: 2rem;
+  width: 7rem;
+  margin: 1rem 1rem 1rem 0;
+  border-radius: 1rem;
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: 700;
+}
+
+.signup-button:hover {
+  height: 2rem;
+  width: 7rem;
+  margin: 1rem 1rem 1rem 0;
+  border-radius: 1rem;
+  text-align: center;
+  background: rgb(40, 40, 40);
+  color: white;
+  font-weight: 700;
 }
 
 .user-menu {

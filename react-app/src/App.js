@@ -27,47 +27,54 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path='/'>
-            <LandingPage />
-          </Route>
-          <Route path='/reviews/:reviewId/edit'>
-            <UpdateReviewForm />
-          </Route>
-          <Route path='/reviews/new'>
-            <ReviewForm />
-          </Route>
-          <Route path='/reviews/current'>
-            <CurrentUserReviewList />
-          </Route>
-          <Route path='/reviews/:reviewId'>
-            <SingleReview />
-          </Route>
-          <Route path='/reviews'>
-            <ReviewList />
-          </Route>
-          <Route path='/profs/:profId/edit'>
-            <UpdateProfForm />
-          </Route>
-          <Route path='/profs/new'>
-            <ProfForm />
-          </Route>
-          <Route path='/profs/:profId'>
-            <SingleProf />
-          </Route>
-          <Route path='/profs'>
-            <ProfList />
-          </Route>
-          {/* <Route path="/login" >
+      <Route exact path='/'>
+        <LandingPage />
+      </Route>
+      <Switch>
+        <Route path='/reviews/:reviewId/edit'>
+          <Navigation isLoaded={isLoaded} />
+          <UpdateReviewForm />
+        </Route>
+        <Route path='/reviews/new'>
+          <Navigation isLoaded={isLoaded} />
+          <ReviewForm />
+        </Route>
+        <Route path='/reviews/current'>
+          <Navigation isLoaded={isLoaded} />
+          <CurrentUserReviewList />
+        </Route>
+        <Route path='/reviews/:reviewId'>
+          <Navigation isLoaded={isLoaded} />
+          <SingleReview />
+        </Route>
+        <Route path='/reviews'>
+          <Navigation isLoaded={isLoaded} />
+          <ReviewList />
+        </Route>
+        <Route path='/profs/:profId/edit'>
+          <Navigation isLoaded={isLoaded} />
+          <UpdateProfForm />
+        </Route>
+        <Route path='/profs/new'>
+          <Navigation isLoaded={isLoaded} />
+          <ProfForm />
+        </Route>
+        <Route path='/profs/:profId'>
+          <Navigation isLoaded={isLoaded} />
+          <SingleProf />
+        </Route>
+        <Route path='/profs'>
+          <Navigation isLoaded={isLoaded} />
+          <ProfList />
+        </Route>
+        {/* <Route path="/login" >
             <LoginFormModal />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route> */}
-        </Switch>
-      )}
+      </Switch>
+
     </>
   );
 }
