@@ -99,7 +99,7 @@ const RatingDistribution = () => {
                 labels: dataValues,
                 position: 'right',
                 ticks: {
-                    display: false,
+                    display: true,
                     font: {
                         size: 15,
                         weight: 700
