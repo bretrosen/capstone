@@ -49,8 +49,8 @@ function ProfileButton({ user }) {
 
       {user ? (
         <div>
-          <button onClick={openMenu} className='nav-button account profile' id={profileHighlight}>
-            Hey, {sessionUser?.first_name}
+          <button onClick={openMenu} className='nav-button' id={profileHighlight}>
+            HEY, {sessionUser?.first_name.toUpperCase()}
           </button>
           <ul className={ulClassName} ref={ulRef}>
 
@@ -68,20 +68,25 @@ function ProfileButton({ user }) {
         </div>
       ) : (
         <div className='login-signup-buttons'>
+
           <li className='profile-button-link'>
             <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </li>
-          <li className='profile-button-link'>
-            <OpenModalButton
+              className='login-button'
               buttonText='Log In'
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
           </li>
+
+          <li className='profile-button-link'>
+            <OpenModalButton
+              className='signup-button'
+              buttonText="Sign Up"
+              onItemClick={closeMenu}
+              modalComponent={<SignupFormModal />}
+            />
+          </li>
+
         </div>
 
       )}

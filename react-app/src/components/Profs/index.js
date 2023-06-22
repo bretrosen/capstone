@@ -64,6 +64,7 @@ export const ProfList = () => {
                         &nbsp;&nbsp;
                     {user && prof.creator_id === user.id &&
                     <OpenModalButton
+                        className='regular-button'
                         buttonText='Delete Professor'
                         modalComponent={<DeleteProf profId={prof.id} />}
                     />}
