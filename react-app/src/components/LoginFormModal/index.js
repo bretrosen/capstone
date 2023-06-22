@@ -42,12 +42,20 @@ function LoginFormModal() {
     <div className='wrapper'>
 
       <h1>Log In</h1>
-      {errors[0] && <p className='login-errors'>{errors[0]}</p>}
+      {/* {errors[0] && <p className='login-errors'>{errors[0]}</p>}
       {errors[1] && <p className='login-errors'>{errors[1]}</p>}
       {errors[2] && <p className='login-errors'>{errors[2]}</p>}
-      {errors[3] && <p className='login-errors'>{errors[3]}</p>}
+      {errors[3] && <p className='login-errors'>{errors[3]}</p>} */}
       <form onSubmit={handleSubmit}>
         <div className='login-form'>
+        <ul className='login-errors'>
+          {/* {errors[0] && <li>{errors[0]}</li>}
+          {errors[1] && <li>{errors[1]}</li>}
+          {errors[2] && <li>{errors[2]}</li>} */}
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
           <label>
             <input
               className='login-form-input'

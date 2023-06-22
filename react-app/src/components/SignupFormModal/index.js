@@ -102,7 +102,7 @@ function SignupFormModal() {
 							required
 						/>
 
-					<button className='regular-button' type="submit">Sign Up</button>
+					<button className='submit-signup-button' type="submit">Sign Up</button>
 				</div>
 			</form>
 		</div>
