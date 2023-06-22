@@ -19,7 +19,7 @@ function SignupFormModal() {
 	useEffect(() => {
 		const newErrors = []
 
-		if (username.trim().length < 10 || username.length > 40) newErrors['username'] = 'Username must be between 4 and 40 characters'
+		if (username.trim().length < 4 || username.length > 40) newErrors['username'] = 'Username must be between 4 and 40 characters'
 		if (first_name.length > 20) newErrors['first_name'] = 'First name must be 20 or fewer characters'
 		if (last_name.length > 20) newErrors['last_name'] = 'Last name must be 20 or fewer characters'
 		if (password.trim().length < 6 || password.length > 40) newErrors['password'] = 'Password must be between 6 and 40 characters'
@@ -32,7 +32,9 @@ function SignupFormModal() {
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password, first_name, last_name));
 			if (data) {
+				console.log("data???", data)
 				setErrors(data);
+				console.log("errors??", errors)
 			} else {
 				closeModal();
 			}
