@@ -49,8 +49,8 @@ function ProfileButton({ user }) {
 
       {user ? (
         <div>
-          <button onClick={openMenu} className='nav-button account profile' id={profileHighlight}>
-            Hey, {sessionUser?.first_name}
+          <button onClick={openMenu} className='nav-button' id={profileHighlight}>
+            HEY, {sessionUser?.first_name.toUpperCase()}
           </button>
           <ul className={ulClassName} ref={ulRef}>
 
@@ -71,7 +71,7 @@ function ProfileButton({ user }) {
 
           <li className='profile-button-link'>
             <OpenModalButton
-              className='profile-button'
+              className='login-button'
               buttonText='Log In'
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
