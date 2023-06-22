@@ -11,7 +11,7 @@ function SignupFormModal() {
 	const [first_name, setFirstName] = useState('');
 	const [last_name, setLastName] = useState('');
 	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
+	const [confirm_password, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
@@ -19,7 +19,7 @@ function SignupFormModal() {
 	useEffect(() => {
 		const newErrors = []
 
-		if (username.trim().length < 10 || username.length > 40) newErrors['username'] = 'Username must be between 4 and 40 characters'
+		if (username.trim().length < 4 || username.length > 40) newErrors['username'] = 'Username must be between 4 and 40 characters'
 		if (first_name.length > 20) newErrors['first_name'] = 'First name must be 20 or fewer characters'
 		if (last_name.length > 20) newErrors['last_name'] = 'Last name must be 20 or fewer characters'
 		if (password.trim().length < 6 || password.length > 40) newErrors['password'] = 'Password must be between 6 and 40 characters'
@@ -29,18 +29,20 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password, first_name, last_name));
+		// if (password === confirm_password) {
+			const data = await dispatch(signUp(username, email, password, confirm_password, first_name, last_name));
 			if (data) {
+				console.log("data???", data)
 				setErrors(data);
+				console.log("errors??", errors)
 			} else {
 				closeModal();
 			}
-		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
-		}
+		// } else {
+		// 	setErrors([
+		// 		"Confirm Password field must be the same as the Password field",
+		// 	]);
+		// }
 	};
 
 	return (
@@ -97,7 +99,7 @@ function SignupFormModal() {
 							className='signup-form-input'
 							type="password"
 							placeholder='Confirm Password'
-							value={confirmPassword}
+							value={confirm_password}
 							onChange={(e) => setConfirmPassword(e.target.value)}
 							required
 						/>
