@@ -11,7 +11,7 @@ function SignupFormModal() {
 	const [first_name, setFirstName] = useState('');
 	const [last_name, setLastName] = useState('');
 	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
+	const [confirm_password, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
@@ -29,8 +29,8 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password, first_name, last_name));
+		// if (password === confirm_password) {
+			const data = await dispatch(signUp(username, email, password, confirm_password, first_name, last_name));
 			if (data) {
 				console.log("data???", data)
 				setErrors(data);
@@ -38,11 +38,11 @@ function SignupFormModal() {
 			} else {
 				closeModal();
 			}
-		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
-		}
+		// } else {
+		// 	setErrors([
+		// 		"Confirm Password field must be the same as the Password field",
+		// 	]);
+		// }
 	};
 
 	return (
@@ -99,7 +99,7 @@ function SignupFormModal() {
 							className='signup-form-input'
 							type="password"
 							placeholder='Confirm Password'
-							value={confirmPassword}
+							value={confirm_password}
 							onChange={(e) => setConfirmPassword(e.target.value)}
 							required
 						/>
