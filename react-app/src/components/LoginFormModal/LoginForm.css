@@ -9,7 +9,7 @@ input::placeholder {
     padding: 0;
     font-size: 18px;
     text-decoration: underline;
-    color:  rgb(107, 149, 204)
+    color: blue;
 }
 
 .demo-user:hover {
@@ -23,7 +23,7 @@ input::placeholder {
 .login-form {
     display: flex;
     flex-direction: column;
-    height: 14rem;
+    height: 18rem;
 }
 
 
@@ -51,8 +51,8 @@ input::placeholder {
     height: 3rem;
     width: 92.5%;
     margin: 1rem;
-    border: 2px solid black;
-    box-shadow: 2px 3px black;
+    border: 1px solid blue;
+    border-radius: 25px;
 }
 
 .submit-login-button:hover {
