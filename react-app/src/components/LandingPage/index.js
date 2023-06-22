@@ -5,6 +5,7 @@ import { getAllReviewsThunk } from '../../store/reviews'
 import { getAllProfsThunk } from '../../store/profs'
 import { getAllCoursesThunk } from '../../store/courses'
 import ProfileButton from '../Navigation/ProfileButton.js';
+import Footer from '../Footer'
 import "./LandingPage.css"
 
 export const LandingPage = () => {
@@ -62,6 +63,7 @@ export const LandingPage = () => {
 
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

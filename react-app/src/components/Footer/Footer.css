@@ -1,0 +1,28 @@
+.footer {
+    padding: 2rem 0 2rem 2rem;
+    display: flex;
+    flex-direction: row;
+    background: black;
+    color: white;
+}
+
+.footer-heading {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-link {
+    margin-bottom: 0.5rem;
+}
+.left-footer {
+    width: 15rem;
+}
+
+.middle-footer {
+    width: 15rem;
+}
+
+.right-footer {
+    display: flex;
+    flex-direction: column;
+}
