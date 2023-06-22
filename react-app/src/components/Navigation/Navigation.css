@@ -119,6 +119,16 @@ a {
   align-items: center;
 }
 
+.profile-button {
+  height: 2rem;
+  width: 7rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  background: white;
+  color: black;
+}
+
 .profile-button-link:hover {
   cursor: pointer;
 }
@@ -175,6 +185,17 @@ a {
 
 .profile-menu:hover {
   cursor: pointer;
+}
+
+.signup-button {
+  height: 2rem;
+  width: 6rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  background: white;
+  color: black;
+  font-weight: 700;
 }
 
 .user-menu {
