@@ -1,7 +1,7 @@
 // action type constants
 
 const GET_ALL_COURSES = 'courses/getAllCourses'
-
+const GET_SINGLE_COURSE = 'courses/getSingleCourse'
 
 
 // action creators
@@ -10,6 +10,13 @@ const getAllCourses = (courses) => {
     return {
         type: GET_ALL_COURSES,
         courses
+    }
+}
+
+const getSingleCourse = (course) => {
+    return {
+        type: GET_SINGLE_COURSE,
+        course
     }
 }
 
@@ -29,6 +36,17 @@ export const getAllCoursesThunk = () => async (dispatch) => {
     }
 }
 
+export const getSingleCourseThunk = (courseId) => async (dispatch) => {
+    const response = await fetch(`/api/courses/${courseId}`)
+    console.log('sending single course thunk', response)
+
+    if (response.ok) {
+        const course = await response.json()
+        console.log('returning single course thunk', course)
+        dispatch(getSingleCourseThunk(course))
+        return course
+    }
+}
 
 
 const initialState = {allCourses: {}, singleCourse: {}}
@@ -45,6 +63,9 @@ const coursesReducer = (state = initialState, action) => {
             })
 
             return newState
+        }
+        case GET_SINGLE_COURSE: {
+            return {...state, allCourses: {...state.allCourses}, singleCourse: {...action.course}}
         }
         default:
             return state

@@ -13,6 +13,7 @@ import { SingleProf } from './components/SingleProf'
 import { ProfForm } from './components/CreateProf'
 import { UpdateProfForm } from './components/UpdateProf'
 import { CurrentUserReviewList } from './components/UserReviews'
+import { CourseList } from './components/Courses'
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,10 @@ function App() {
         <Route path='/profs'>
           <Navigation isLoaded={isLoaded} />
           <ProfList />
+        </Route>
+        <Route path='/courses'>
+          <Navigation isLoaded={isLoaded} />
+          <CourseList />
         </Route>
         {/* <Route path="/login" >
             <LoginFormModal />

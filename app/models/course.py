@@ -14,7 +14,7 @@ class Course(db.Model):
 
     user = db.relationship('User', back_populates='courses')
     departments = db.relationship('Department', back_populates='course')
-    reviews = db.relationship('Review', back_populates='course')
+    reviews = db.relationship('Review', back_populates='course', cascade='all, delete')
 
     profs = db.relationship('Prof', secondary=prof_courses, back_populates='courses')
 
