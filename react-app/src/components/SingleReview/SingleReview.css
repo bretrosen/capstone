@@ -1,21 +1,102 @@
-.single-review-attributes {
-    width: 50%;
-    text-align: center;
+* {
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.single-review-heading {
-    text-align: center;
+.boolean-heading {
+    padding: 5px;
+    width: 12rem;
+    border: 1px solid black;
+    background: lightgrey;
 }
 
-.single-review-container {
-    margin: 1rem;
+.boolean-value {
+    padding: 5px;
+    width: 7rem;
+    border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.bottom-left {
+    width: 20rem;
+    margin-right: 5rem;
+}
+
+.bottom-right {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.info-heading {
+    padding: 5px;
+    width: 8rem;
+    border: 1px solid black;
+    background: lightgrey;
+}
+
+.info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-row {
     display: flex;
     flex-direction: row;
 }
 
-.single-review-summary {
-    width: 50%;
+.info-value {
+    padding: 5px;
+    width: 25rem;
+    border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.num-value {
+    padding: 5px;
+    width: 3.5rem;
+    border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.review-bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.review-date {
+    text-align: end;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.review-text {
+    border: 1px solid black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.review-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-review-h1 {
+    color: blue;
+}
+
+.single-review-h2 {
+    color: blue;
+}
+
+.single-review-h2-comments {
     text-align: center;
+    color: blue;
 }
 
 .single-review-wrapper {
