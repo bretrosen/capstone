@@ -19,7 +19,7 @@ export const ReviewList = () => {
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
     const user = useSelector(state => state.session.user)
-    console.log("user id in all reviews", user)
+    console.log("review length in get all reviews page ==========>", reviews.length)
 
     useEffect(() => {
         dispatch(getAllReviewsThunk())
