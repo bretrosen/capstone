@@ -11,7 +11,7 @@ function Navigation({ isLoaded }) {
         <>
             <div className='nav-wrapper'>
                 <NavLink className='nav-logo' to='/'>
-                    <img className='nav-debate-pic' src="/debate.png"></img>
+                    <img className='nav-debate-pic' src="/debate.png" alt='Two people debating'></img>
                 </NavLink>
                 <div className='nav-menu-center'>
                     <NavLink to='/reviews' className='nav-link'>All Reviews</NavLink>

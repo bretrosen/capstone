@@ -30,6 +30,9 @@ export const SingleProf = () => {
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
 
+    // ensure we start at the top of the screen
+    window.scrollTo(0,0)
+
     useEffect(() => {
         dispatch(getSingleProfThunk(profId))
         dispatch(getAllProfsThunk())

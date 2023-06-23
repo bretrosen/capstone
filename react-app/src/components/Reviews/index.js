@@ -16,15 +16,21 @@ export const ReviewList = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
+
+
+    useEffect( () => {
+        const fetchReviews = async () => {
+            dispatch(getAllReviewsThunk())
+            console.log("useEffect in get all reviews ran")
+        }
+        fetchReviews()
+    }, [dispatch])
+
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
     const user = useSelector(state => state.session.user)
-    console.log("user id in all reviews", user)
-
-    useEffect(() => {
-        dispatch(getAllReviewsThunk())
-        console.log("useEffect in get all reviews ran")
-    }, [dispatch])
+    console.log("reviews array in get all reviews page ==========>", reviews)
+    console.log("review length in get all reviews page ==========>", reviews.length)
 
     if (!reviews) {
         return <h1>Loading...</h1>
