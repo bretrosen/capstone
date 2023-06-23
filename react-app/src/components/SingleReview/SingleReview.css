@@ -1,21 +1,93 @@
-.single-review-attributes {
-    width: 50%;
-    text-align: center;
+.boolean-heading {
+    padding: 5px;
+    width: 12rem;
+    border: 1px solid black;
+    background: lightgrey;
 }
 
-.single-review-heading {
-    text-align: center;
+.boolean-value {
+    padding: 5px;
+    width: 6rem;
+    border: 1px solid black;
 }
 
-.single-review-container {
-    margin: 1rem;
+.bottom-left {
+    width: 20rem;
+    margin-right: 5rem;
+}
+
+.bottom-right {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.info-heading {
+    padding: 5px;
+    width: 8rem;
+    border: 1px solid black;
+    background: lightgrey;
+}
+
+.info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-row {
     display: flex;
     flex-direction: row;
 }
 
-.single-review-summary {
-    width: 50%;
+.info-value {
+    padding: 5px;
+    width: 20rem;
+    border: 1px solid black;
+}
+
+.num-value {
+    padding: 5px;
+    width: 3rem;
+    border: 1px solid black;
+}
+
+.review-bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.review-date {
+    text-align: end;
+}
+
+.review-text {
+    border: 1px solid black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-review-h1 {
+    color: blue;
+}
+
+.single-review-h2 {
+    color: blue;
+}
+
+.single-review-h2-comments {
     text-align: center;
+    color: blue;
 }
 
 .single-review-wrapper {
