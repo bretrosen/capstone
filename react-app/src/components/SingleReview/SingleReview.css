@@ -1,3 +1,7 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .boolean-heading {
     padding: 5px;
     width: 12rem;
@@ -7,8 +11,9 @@
 
 .boolean-value {
     padding: 5px;
-    width: 6rem;
+    width: 7rem;
     border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .bottom-left {
@@ -47,14 +52,16 @@
 
 .info-value {
     padding: 5px;
-    width: 20rem;
+    width: 25rem;
     border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .num-value {
     padding: 5px;
-    width: 3rem;
+    width: 3.5rem;
     border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .review-bottom {
@@ -64,12 +71,14 @@
 
 .review-date {
     text-align: end;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .review-text {
     border: 1px solid black;
     padding: 1rem;
     margin-bottom: 1rem;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .review-top {
