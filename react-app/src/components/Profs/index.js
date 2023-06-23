@@ -34,7 +34,7 @@ export const ProfList = () => {
             </div>
             {profs.map((prof) => (
                 <>
-                    <a href={`/profs/${prof.id}`} key={prof.id}>
+                    <Link to={`/profs/${prof.id}`} key={prof.id}>
                         <div className='profs-list-item' >
 
                             <div className='reviews-list-ratings'>
@@ -57,7 +57,7 @@ export const ProfList = () => {
                             </div>
 
                         </div>
-                    </a>
+                    </Link>
 
                     {user && prof.creator_id === user.id &&
                         <button className='regular-button' onClick={() => history.push(`/profs/${prof.id}/edit`)}>Update Professor</button>}
