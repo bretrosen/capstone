@@ -54,7 +54,7 @@ const RatingDistribution = () => {
         datasets: [
             {
                 label: '',
-                data: dataValues,
+                data: dataValues.reverse(),
                 backgroundColor: 'rgba(0,40,210,1)',
                 borderColor: 'rgba(0,40,210,1)',
                 borderWidth: 1,

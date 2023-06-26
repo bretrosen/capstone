@@ -25,6 +25,15 @@ export const SingleProf = () => {
     const profs = Object.values(profsObj)
     console.log("profs in single prof component", profs)
 
+    let profIdToKeyInto;
+    // find the right index in the profs array to access
+    for (let i = 0; i <= profs.length; i++) {
+        if (profs[i]?.id == profId) {
+            profIdToKeyInto = i;
+        }
+    }
+    // console.log("index of profs array to use ==========>", profIdToKeyInto)
+
     const profReviews = useSelector(state => state.profs.singleProf.reviews)
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
@@ -49,7 +58,7 @@ export const SingleProf = () => {
                 <div className='single-prof-top-left'>
                     <div className='single-prof-quality'>
                         <div className='single-prof-quality-number'>
-                            {profs[profId - 1]?.quality?.toFixed(1)}
+                            {profs[profIdToKeyInto]?.quality?.toFixed(1)}
                         </div>
                         <div className='quality-out-of'>
                             / 20
@@ -68,7 +77,7 @@ export const SingleProf = () => {
                         <div className='single-prof-aggregates'>
                             <div className='single-prof-recommends'>
                                 <div className='recommends-number'>
-                                    {profs[profId - 1]?.recommended?.toFixed(1)} %
+                                    {profs[profIdToKeyInto]?.recommended?.toFixed(1)} %
                                 </div>
                                 <div className='recommends-text'>
                                     Would take again
@@ -76,7 +85,7 @@ export const SingleProf = () => {
                             </div>
                             <div className='single-prof-difficulty'>
                                 <div className='difficulty-number'>
-                                    {profs[profId - 1]?.difficulty?.toFixed(1)}
+                                    {profs[profIdToKeyInto]?.difficulty?.toFixed(1)}
                                 </div>
                                 <div className='difficulty-text'>
                                     Level of difficulty
