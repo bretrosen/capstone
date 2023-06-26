@@ -75,7 +75,7 @@ def single_prof(id):
     prof_data['reviews'] = reviews_dict
 
 
-    print("all reviews associated with prof", reviews_dict)
+    print("all reviews associated with prof ============>", reviews_dict)
 
     return prof_data
 

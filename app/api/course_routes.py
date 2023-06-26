@@ -59,11 +59,17 @@ def all_courses():
 @course_routes.route('/<int:id>')
 def single_course(id):
     '''
-    Query for a single course by id. Return result in a dictionary.
+    Query for a single course by id. Query for all the reviews for that course. Return a dictionary with the course's attributes, aggregate data, and all reviews of the course.
     '''
 
     course = Course.query.get(id)
-    return course.to_dict()
+    course_data = course.to_dict()
+    reviews = Review.query.filter(Review.course_id == course.id).all()
+    reviews_dict = [review.to_dict() for review in reviews]
+    course_data['reviews'] = reviews_dict
+
+    print('all reviews associated with course ============>', reviews_dict)
+    return course_data
 
 @course_routes.route('/new', methods=['GET', 'POST'])
 @login_required
