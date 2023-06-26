@@ -1,23 +1,58 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from datetime import datetime
+from statistics import mean
 from app.models import db, Review, Prof, Course, Department
 from app.forms.post_course_form import PostCourseForm
 
 course_routes = Blueprint('courses', __name__)
 
+# helper function to return % of trues for Boolean input
+def percent_true(boolean_lst):
+    count = 0
+    for boolean in boolean_lst:
+        if boolean == True:
+            count += 1
+    return (count / len(boolean_lst)) * 100
 
 @course_routes.route('/')
 def all_courses():
     '''
-    Query for all courses. Get the department name for each course. Return results in a dictionary.
+    First, query for all reviews, and get the average rating score for each course. Query for all courses for the display all courses page. Add the aggregate data to the course dictionary. Get the department name for each course. Return results in a dictionary.
     '''
+
+    all_reviews = Review.query.all()
+    reviews_dict = [review.to_dict() for review in all_reviews]
+
+    # add a quality field to each review that is an average of all ratings
+    for review in reviews_dict:
+        review['quality'] = mean([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']])
 
     all_courses = Course.query.all()
     courses_dict = [course.to_dict() for course in all_courses]
+
+    # add department for each course and create empty lists for aggregate data
     for course in courses_dict:
         department = (Department.query.filter(Department.id == course['department_id']).one()).to_dict()
         course['department'] = department['name']
+        course['qualities'] = []
+        course['difficulties'] = []
+        course['recommendations'] = []
+
+    # copying logic from prof routes for now
+    # let's see about refactoring
+    for course in courses_dict:
+        for review in reviews_dict:
+            if (review['course_id'] == course['id']):
+                course['qualities'].append(review['quality'])
+                course['difficulties'].append(review['difficulty'])
+                course['recommendations'].append(review['would_recommend'])
+        # aggregate data for each course
+        course['quality'] = mean(course['qualities'])
+        course['difficulty'] = mean(course['difficulties'])
+        course['recommended'] = percent_true(course['recommendations'])
+
+    print("courses in backend route =========>", courses_dict)
 
     return {'courses': courses_dict}
 

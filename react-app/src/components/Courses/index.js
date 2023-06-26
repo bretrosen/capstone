@@ -3,7 +3,8 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import { getAllCoursesThunk } from '../../store/courses'
-
+import '../Profs/Profs.css'
+import '../Reviews/Reviews.css'
 
 
 export const CourseList = () => {
@@ -11,6 +12,8 @@ export const CourseList = () => {
 
     const coursesObj = useSelector(state => state.courses.allCourses)
     const courses = Object.values(coursesObj)
+    console.log('courses in all courses ======>', courses)
+    const user = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(getAllCoursesThunk())
@@ -22,23 +25,40 @@ export const CourseList = () => {
     }
 
     return (
-    <div className='course-list-wrapper'>
-        <div className='course-list-heading'>
-            {courses.length} Courses at The University of Life
+        <div className='profs-list-wrapper'>
+            <div className='profs-list-heading'>
+                {courses.length} Courses at The University of Life
+            </div>
+            {courses.map((course) => (
+                <>
+                    <Link to={`/courses/${course.id}`} key={course.id}>
+                        <div className='profs-list-item'>
+
+                            <div className='reviews-list-ratings'>
+                                <div className='rating-heading'>Quality</div>
+                                {course.quality > 0 && course.quality < 6.7 &&
+                                    <div className='rating-number' id='low'>{course.quality.toFixed(1)}</div>}
+                                {course.quality >= 6.7 && course.quality < 13.4 &&
+                                    <div className='rating-number' id='medium'>{course.quality.toFixed(1)}</div>}
+                                {course.quality >=13.4 && course.quality <= 20 &&
+                                    <div className='rating-number' id='high'>{course.quality.toFixed(1)}</div>}
+                            </div>
+
+                            <div className='profs-list-right'>
+                                <div>{course.name}</div>
+                                <div>{course.department}</div>
+                                {course.recommendations.length > 0 &&
+                                <div>{course.recommended.toFixed(0)}% would take again</div>}
+                                {course.difficulties.length > 0 &&
+                                <div>{course.difficulty.toFixed(1)} level of difficulty</div>}
+                            </div>
+                        </div>
+
+                    </Link>
+                </>
+            ))}
+
         </div>
-        {courses.map((course) => (
-            <>
-            <Link to={`/courses/${course.id}`} key={course.id}>
-                <div className='course-list-item'>
-                    <p>Course: {course.name}</p>
-                    <p>Department: {course.department}</p>
-                </div>
-
-            </Link>
-            </>
-        ))}
-
-    </div>
 
     )
 }

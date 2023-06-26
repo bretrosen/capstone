@@ -11,26 +11,22 @@ const dayjs = require('dayjs')
 dayjs.extend(advancedFormat)
 
 
-
 export const ReviewList = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-
-
-
-    useEffect( () => {
-        const fetchReviews = async () => {
-            dispatch(getAllReviewsThunk())
-            console.log("useEffect in get all reviews ran")
-        }
-        fetchReviews()
-    }, [dispatch])
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
     const user = useSelector(state => state.session.user)
     console.log("reviews array in get all reviews page ==========>", reviews)
     console.log("review length in get all reviews page ==========>", reviews.length)
+
+
+    useEffect(() => {
+        dispatch(getAllReviewsThunk())
+        console.log("useEffect in get all reviews ran")
+    }, [dispatch])
+
 
     if (!reviews) {
         return <h1>Loading...</h1>
