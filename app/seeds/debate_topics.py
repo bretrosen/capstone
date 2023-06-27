@@ -2,11 +2,18 @@ from app.models import db, DebateTopic, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_debate_topics():
-    first = DebateTopic(topic='Cats vs. dogs: which is better?')
-    second = DebateTopic(topic='How old is the Earth?')
-    third = DebateTopic(topic="What's my name again?")
+    first = DebateTopic(topic="Is a hot dog a sandwich?")
+    second = DebateTopic(topic="Does a straw have one hole or two?")
+    third = DebateTopic(topic="What button does the digital world need the most?")
+    fourth = DebateTopic(topic="Who would win in a fight: a duck-sized horse, or a horse-sized duck?")
+    fifth = DebateTopic(topic="Would you rather communicate using only emojis, or only animal sounds?")
+    sixth = DebateTopic(topic="Spaces or tabs?")
+    seventh = DebateTopic(topic="Which came first: the chicken, or the egg?")
+    eighth = DebateTopic(topic="Would you rather have a terrible neighbor or terrible co-worker?")
+    ninth = DebateTopic(topic="How many five year olds could you defeat in a fight?")
+    tenth = DebateTopic(topic="Does free will exist?")
 
-    all_topics = [first, second, third]
+    all_topics = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth]
     [db.session.add(topic) for topic in all_topics]
     db.session.commit()
 
