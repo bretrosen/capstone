@@ -8,7 +8,7 @@ export const CourseForm = ({ course, formType }) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    // get all departments to populate the store
+    const DEPARTMENTS = [ ]
 
     const [name, setName] = useState(course?.name || '')
     const [department, setDepartment] = useState(course?.department || '')

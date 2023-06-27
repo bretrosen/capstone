@@ -132,3 +132,15 @@ def put_delete_course(id):
     db.session.delete(course_to_delete)
     db.session.commit()
     return course_to_delete.to_dict()
+
+
+@course_routes.route('/departments')
+def get_departments():
+    '''
+    Queries for and returns all the department names.
+    '''
+
+    departments = Department.query.all()
+    departments_dict = [(department.to_dict())['name'] for department in departments]
+
+    return departments_dict
