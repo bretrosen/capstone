@@ -22,16 +22,15 @@ ChartJS.register(
 );
 
 const RatingDistribution = () => {
-    const { profId } = useParams()
-    const profsObj = useSelector(state => state.profs.allProfs)
-    const profQualityArray = profsObj[profId]?.qualities
-
+    const { courseId } = useParams()
+    const coursesObj = useSelector(state => state.courses.allCourses)
+    const courseQualityArray = coursesObj[courseId]?.qualities
 
     // object to keep track of rating distribution
     const dataObj = { "0-4": 0, "4-8": 0, "8-12": 0, "12-16": 0, "16-20": 0 }
     // iterate through quality array
     // increment the appropriate value in the data object for each element of the array
-    profQualityArray?.forEach(quality => {
+    courseQualityArray?.forEach(quality => {
         if (quality > 0 && quality <= 4) {
             dataObj["0-4"]++
         } else if (quality > 4 && quality <= 8) {
@@ -44,6 +43,7 @@ const RatingDistribution = () => {
             dataObj["16-20"]++
         }
     })
+
     // grab the values from the object and put them in an array for chartjs
     const dataValues = Object.values(dataObj)
     // labels for bar chart
@@ -123,19 +123,10 @@ const RatingDistribution = () => {
     };
 
     return (
-        <>
-            <div>
-                <Bar data={data} options={options} />
-            </div>
-            {/* <ul>
-            {profQualityArray.map((quality) => (
-                <li>Quality: {quality.toFixed(1)}</li>
-            ))}
-            <li>{dataValues}</li>
-        </ul> */}
-        </>
+        <div>
+            <Bar data={data} options={options} />
+        </div>
     )
-
 }
 
 export default RatingDistribution

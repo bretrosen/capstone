@@ -26,10 +26,12 @@ export const LandingPage = () => {
                 <div className='landing-center'>
                     <NavLink to='/reviews' className='landing-link'>All Reviews</NavLink>
                     <NavLink to='/profs' className='landing-link'>All Professors</NavLink>
+                    <NavLink to='/courses' className='landing-link'>All Courses</NavLink>
                     {sessionUser &&
                         <>
                             <NavLink to='/reviews/new' className='landing-link'>New Review</NavLink>
                             <NavLink to='/profs/new' className='landing-link'>New Professor</NavLink>
+                            <NavLink to='/courses/new' className='landing-link'>New Course</NavLink>
                         </>
                     }
 

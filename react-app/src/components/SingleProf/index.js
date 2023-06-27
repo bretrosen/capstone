@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom';
-import { useHistory, Link } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { getSingleProfThunk, getAllProfsThunk } from '../../store/profs'
 import { getAllReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'
@@ -25,10 +24,23 @@ export const SingleProf = () => {
     const profs = Object.values(profsObj)
     console.log("profs in single prof component", profs)
 
+    let profIdToKeyInto
+    // find the right index in the profs array to access
+    for (let i = 0; i <= profs.length; i++) {
+        if (profs[i]?.id == profId) {
+            profIdToKeyInto = i
+        }
+    }
+    // console.log("index of profs array to use ==========>", profIdToKeyInto)
+
     const profReviews = useSelector(state => state.profs.singleProf.reviews)
+
+    console.log("prof reviews in single prof =========>", profReviews)
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
+
+    // console.log("reviews array in single prof =========>", reviews)
 
     // ensure we start at the top of the screen
     window.scrollTo(0,0)
@@ -49,7 +61,7 @@ export const SingleProf = () => {
                 <div className='single-prof-top-left'>
                     <div className='single-prof-quality'>
                         <div className='single-prof-quality-number'>
-                            {profs[profId - 1]?.quality?.toFixed(1)}
+                            {profs[profIdToKeyInto]?.quality?.toFixed(1)}
                         </div>
                         <div className='quality-out-of'>
                             / 20
@@ -68,7 +80,7 @@ export const SingleProf = () => {
                         <div className='single-prof-aggregates'>
                             <div className='single-prof-recommends'>
                                 <div className='recommends-number'>
-                                    {profs[profId - 1]?.recommended?.toFixed(1)} %
+                                    {profs[profIdToKeyInto]?.recommended?.toFixed(1)} %
                                 </div>
                                 <div className='recommends-text'>
                                     Would take again
@@ -76,7 +88,7 @@ export const SingleProf = () => {
                             </div>
                             <div className='single-prof-difficulty'>
                                 <div className='difficulty-number'>
-                                    {profs[profId - 1]?.difficulty?.toFixed(1)}
+                                    {profs[profIdToKeyInto]?.difficulty?.toFixed(1)}
                                 </div>
                                 <div className='difficulty-text'>
                                     Level of difficulty
@@ -102,18 +114,18 @@ export const SingleProf = () => {
 
                             <div className='reviews-list-ratings'>
                                 <div className='rating-heading'>Quality</div>
-                                {reviews[review.id - 1]?.quality > 0 && reviews[review.id - 1]?.quality < 6.7 &&
-                                    <div className='rating-number' id='low'>{reviews[review.id - 1].quality?.toFixed(1)}</div>}
-                                {reviews[review.id - 1]?.quality >= 6.7 && reviews[review.id - 1]?.quality < 13.4 &&
+                                {review.quality > 0 && review.quality < 6.7 &&
+                                    <div className='rating-number' id='low'>{review.quality.toFixed(1)}</div>}
+                                {review.quality >= 6.7 && review.quality < 13.4 &&
                                     <div className='rating-number' id='medium'>{reviews[review.id - 1].quality?.toFixed(1)}</div>}
-                                {reviews[review.id - 1]?.quality >= 13.4 && reviews[review.id -  1]?.quality <= 20 &&
-                                    <div className='rating-number' id='high'>{reviews[review.id - 1].quality?.toFixed(1)}</div>}
+                                {review.quality >= 13.4 && review.quality <= 20 &&
+                                    <div className='rating-number' id='high'>{review.quality.toFixed(1)}</div>}
                                 <div className='rating-heading'>Difficulty</div>
                                 <div className='rating-number-difficulty'>{review.difficulty.toFixed(1)}</div>
                             </div>
                             <div className='reviews-list-right'>
                                 <div className='reviews-right-top'>
-                                    <div className='review-course-name'>{reviews[review.id - 1]?.course_name}</div>
+                                    <div className='review-course-name'>{review.course_name}</div>
 
                                     <div className='review-time'>{dayjs(review.time_stamp).format("MMMM Do, YYYY")}</div>
                                 </div>

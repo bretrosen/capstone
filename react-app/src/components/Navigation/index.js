@@ -16,10 +16,12 @@ function Navigation({ isLoaded }) {
                 <div className='nav-menu-center'>
                     <NavLink to='/reviews' className='nav-link'>All Reviews</NavLink>
                     <NavLink to='/profs' className='nav-link'>All Professors</NavLink>
+                    <NavLink to='/courses' className='landing-link'>All Courses</NavLink>
                     {sessionUser &&
                         <>
                             <NavLink to='/reviews/new' className='nav-link'>New Review</NavLink>
                             <NavLink to='/profs/new' className='nav-link'>New Professor</NavLink>
+                            <NavLink to='/courses/new' className='landing-link'>New Course</NavLink>
                         </>
                     }
 

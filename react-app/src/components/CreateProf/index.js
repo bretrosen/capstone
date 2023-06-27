@@ -69,7 +69,7 @@ export const ProfForm = ({ prof, formType }) => {
                 </div>
                 <div className='create-review-input'>
                     <label>
-                    Professor First Name
+                    Professor's First Name
                     <input className='create-prof-input-box'
                         type='text'
                         value={firstName}
@@ -84,7 +84,7 @@ export const ProfForm = ({ prof, formType }) => {
                 </div>
                 <div className='create-review-input'>
                     <label>
-                    Professor Last Name
+                    Professor's Last Name
                     <input className='create-prof-input-box'
                         type='text'
                         value={lastName}
@@ -99,7 +99,7 @@ export const ProfForm = ({ prof, formType }) => {
                 </div>
                 <div className='create-review-input'>
                     <label>
-                    Professor Field of Study
+                    Professor's Field of Study
                     <input className='create-prof-input-box'
                         type='text'
                         value={field}

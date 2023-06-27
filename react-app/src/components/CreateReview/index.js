@@ -172,7 +172,7 @@ export const ReviewForm = ({ review, formType }) => {
                         {hasSubmitted && errors.intelligence && (
                             <p>{errors.intelligence}</p>
                         )}</div>
-                    How intelligent was this professor (on a scale of 1 to 20)? &nbsp;
+                    How intelligent was this professor (on a scale of 1 to 20, with 20 being the best)? &nbsp;
                     <input
                         className='create-review-number'
                         type='number'
@@ -185,7 +185,7 @@ export const ReviewForm = ({ review, formType }) => {
                         {hasSubmitted && errors.wisdom && (
                             <p>{errors.wisdom}</p>
                         )}</div>
-                    How wise was this professor (on a scale of 1 to 20)? &nbsp;
+                    How wise was this professor (on a scale of 1 to 20, with 20 being the best)? &nbsp;
                     <input
                         className='create-review-number'
                         type='number'
@@ -198,7 +198,7 @@ export const ReviewForm = ({ review, formType }) => {
                         {hasSubmitted && errors.charisma && (
                             <p>{errors.charisma}</p>
                         )}</div>
-                    How charismatic was this professor (on a scale of 1 to 20)? &nbsp;
+                    How charismatic was this professor (on a scale of 1 to 20, with 20 being the best)? &nbsp;
                     <input
                         className='create-review-number'
                         type='number'
@@ -211,7 +211,7 @@ export const ReviewForm = ({ review, formType }) => {
                         {hasSubmitted && errors.knowledge && (
                             <p>{errors.knowledge}</p>
                         )}</div>
-                    How knowledgeable was this professor about the subject (on a scale of 1 to 20)? &nbsp;
+                    How knowledgeable was this professor about the subject (on a scale of 1 to 20, with 20 being the best)? &nbsp;
                     <input
                         className='create-review-number'
                         type='number'
@@ -224,7 +224,7 @@ export const ReviewForm = ({ review, formType }) => {
                         {hasSubmitted && errors.preparation && (
                             <p>{errors.preparation}</p>
                         )}</div>
-                    How well did this professor prepare (on a scale of 1 to 20)? &nbsp;
+                    How well did this professor prepare (on a scale of 1 to 20, with 20 being the best)? &nbsp;
                     <input
                         className='create-review-number'
                         type='number'
@@ -237,7 +237,7 @@ export const ReviewForm = ({ review, formType }) => {
                         {hasSubmitted && errors.respect && (
                             <p>{errors.respect}</p>
                         )}</div>
-                    How respectful was this professor (on a scale of 1 to 20)? &nbsp;
+                    How respectful was this professor (on a scale of 1 to 20, with 20 being the best)? &nbsp;
                     <input
                         className='create-review-number'
                         type='number'
@@ -250,7 +250,7 @@ export const ReviewForm = ({ review, formType }) => {
                         {hasSubmitted && errors.difficulty && (
                             <p>{errors.difficulty}</p>
                         )}</div>
-                    How difficult was this professor (on a scale of 1 to 20)? &nbsp;
+                    How difficult was this professor (on a scale of 1 to 20, with 20 being the most difficult)? &nbsp;
                     <input
                         className='create-review-number'
                         type='number'
