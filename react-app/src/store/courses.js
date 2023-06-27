@@ -43,7 +43,7 @@ export const getSingleCourseThunk = (courseId) => async (dispatch) => {
     if (response.ok) {
         const course = await response.json()
         console.log('returning single course thunk', course)
-        dispatch(getSingleCourseThunk(course))
+        dispatch(getSingleCourse(course))
         return course
     }
 }

@@ -68,6 +68,11 @@ def single_course(id):
     reviews_dict = [review.to_dict() for review in reviews]
     course_data['reviews'] = reviews_dict
 
+    # add department name
+    department = (Department.query.filter(Department.id == course_data['department_id']).one()).to_dict()
+    course_data['department'] = department['name']
+
+
     print('all reviews associated with course ============>', reviews_dict)
     return course_data
 

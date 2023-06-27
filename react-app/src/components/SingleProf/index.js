@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom';
-import { useHistory, Link } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { getSingleProfThunk, getAllProfsThunk } from '../../store/profs'
 import { getAllReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'
@@ -25,11 +24,11 @@ export const SingleProf = () => {
     const profs = Object.values(profsObj)
     console.log("profs in single prof component", profs)
 
-    let profIdToKeyInto;
+    let profIdToKeyInto
     // find the right index in the profs array to access
     for (let i = 0; i <= profs.length; i++) {
         if (profs[i]?.id == profId) {
-            profIdToKeyInto = i;
+            profIdToKeyInto = i
         }
     }
     // console.log("index of profs array to use ==========>", profIdToKeyInto)
