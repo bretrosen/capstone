@@ -50,7 +50,7 @@ export const ProfForm = ({ prof, formType }) => {
             else {
             // dispatch create thunk for create form
             const newProf = await dispatch(createProfThunk(formInfo))
-            // dispatch to newly created prof
+            // direct to newly created prof
             history.push(`/profs/${newProf.id}`)
             // history.push(`/profs`)
             }

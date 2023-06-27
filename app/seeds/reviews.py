@@ -116,7 +116,7 @@ def seed_reviews():
         "You will rejoice to hear that no disaster has accompanied the commencement of an enterprise which you have regarded with such evil forebodings. This prof is actually totally cool and the class is really chill.",
         "In my younger and more vulnerable years, my father gave me some advice that I’ve been turning over in my mind ever since. He told me not to take a class from this professor. I should have listened!",
         "This is my favorite class in all the world, though I have never taken it. I still got an A. It's that easy.",
-        "Whether this professor shall turn out to be the hero of my own life, or whether that station will be held by anybody else, this review must show."
+        "Whether this professor shall turn out to be the hero of my own life, or whether that station will be held by anybody else, this review must show. Only 178 characters left, I better choose my words carefully. Oh darn, now it's only 111 characters! I really need to stop and think about this."
     ]
     for _ in range(1, 1001):
         new_review = Review(

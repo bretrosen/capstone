@@ -2,7 +2,7 @@
 
 const GET_ALL_COURSES = 'courses/getAllCourses'
 const GET_SINGLE_COURSE = 'courses/getSingleCourse'
-
+const CREATE_COURSE = 'courses/createCourse'
 
 // action creators
 
@@ -20,6 +20,10 @@ const getSingleCourse = (course) => {
     }
 }
 
+const createCourse = (course) => ({
+    type: CREATE_COURSE,
+    course
+})
 
 
 // thunks
@@ -48,6 +52,22 @@ export const getSingleCourseThunk = (courseId) => async (dispatch) => {
     }
 }
 
+export const createCourseThunk = (course) => async (dispatch) => {
+    const response = await fetch('/api/courses/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(course)
+    })
+    console.log('sending create course thunk', response)
+
+    if (response.ok) {
+        const newCourse = await response.json()
+        console.log('returning create course thunk', newCourse)
+        dispatch(createCourse(newCourse))
+        return newCourse
+    }
+}
+
 
 const initialState = {allCourses: {}, singleCourse: {}}
 
@@ -66,6 +86,12 @@ const coursesReducer = (state = initialState, action) => {
         }
         case GET_SINGLE_COURSE: {
             return {...state, allCourses: {...state.allCourses}, singleCourse: {...action.course}}
+        }
+        case CREATE_COURSE: {
+            const id = action.course.id
+            const newState = {...state.allCourses}
+            newState[id] = action.course
+            return {...state, allCourses: newState}
         }
         default:
             return state
