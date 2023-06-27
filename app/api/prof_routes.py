@@ -75,6 +75,14 @@ def single_prof(id):
     prof_data['reviews'] = reviews_dict
 
 
+
+    # need to add quality, course name to reviews dictionary
+    for review in reviews_dict:
+        course = Course.query.filter(Course.id == review['course_id']).one()
+        review['course_name'] = course.to_dict()['name']
+        review['quality'] = mean([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']])
+
+
     print("all reviews associated with prof ============>", reviews_dict)
 
     return prof_data

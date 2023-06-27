@@ -68,6 +68,14 @@ def single_course(id):
     reviews_dict = [review.to_dict() for review in reviews]
     course_data['reviews'] = reviews_dict
 
+    # add quality and prof name to reviews dictionary
+    for review in reviews_dict:
+        prof = Prof.query.filter(Prof.id == review['prof_id']).one()
+        review['prof_name'] = prof.to_dict()['first_name']
+        review['prof_name'] += ' ' + prof.to_dict()['last_name']
+        review['quality'] = mean([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']])
+
+
     # add department name
     department = (Department.query.filter(Department.id == course_data['department_id']).one()).to_dict()
     course_data['department'] = department['name']

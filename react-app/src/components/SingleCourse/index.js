@@ -4,6 +4,7 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import { getSingleCourseThunk, getAllCoursesThunk } from '../../store/courses'
 import { getAllReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'
+import RatingDistribution from './RatingDistribution'
 import '../SingleProf/SingleProf.css'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 const dayjs = require('dayjs')
@@ -87,12 +88,12 @@ export const SingleCourse = () => {
                 </div>
                 {/* <button className='regular-button' onClick={() => history.push(`/reviews/new`)}>Rate Professor {prof.last_name}</button> */}
             </div>
-            {/* <div className='bar-chart'>
+            <div className='bar-chart'>
                 <div className='chart-heading'>
                     Rating Distribution
                 </div>
                     <RatingDistribution />
-            </div> */}
+            </div>
         </div>
         <div className='single-prof-reviews'>
 
@@ -103,18 +104,18 @@ export const SingleCourse = () => {
 
                         <div className='reviews-list-ratings'>
                             <div className='rating-heading'>Quality</div>
-                            {reviews[review.id - 1]?.quality > 0 && reviews[review.id - 1]?.quality < 6.7 &&
-                                <div className='rating-number' id='low'>{reviews[review.id - 1].quality?.toFixed(1)}</div>}
-                            {reviews[review.id - 1]?.quality >= 6.7 && reviews[review.id - 1]?.quality < 13.4 &&
-                                <div className='rating-number' id='medium'>{reviews[review.id - 1].quality?.toFixed(1)}</div>}
-                            {reviews[review.id - 1]?.quality >= 13.4 && reviews[review.id -  1]?.quality <= 20 &&
-                                <div className='rating-number' id='high'>{reviews[review.id - 1].quality?.toFixed(1)}</div>}
+                            {review.quality > 0 && review.quality < 6.7 &&
+                                <div className='rating-number' id='low'>{review.quality.toFixed(1)}</div>}
+                            {review.quality >= 6.7 && review.quality < 13.4 &&
+                                <div className='rating-number' id='medium'>{review.quality.toFixed(1)}</div>}
+                            {review.quality >= 13.4 && review.quality <= 20 &&
+                                <div className='rating-number' id='high'>{review.quality.toFixed(1)}</div>}
                             <div className='rating-heading'>Difficulty</div>
                             <div className='rating-number-difficulty'>{review.difficulty.toFixed(1)}</div>
                         </div>
                         <div className='reviews-list-right'>
                             <div className='reviews-right-top'>
-                                <div className='review-course-name'>{reviews[review.id - 1]?.course_name}</div>
+                                <div className='review-course-name'>Professor {review.prof_name}</div>
 
                                 <div className='review-time'>{dayjs(review.time_stamp).format("MMMM Do, YYYY")}</div>
                             </div>
