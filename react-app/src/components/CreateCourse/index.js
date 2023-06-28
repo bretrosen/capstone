@@ -1,14 +1,27 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { createCourseThunk } from '../../store/profs'
+import { createCourseThunk } from '../../store/courses'
 import '../CreateProf/CreateProf.css'
 
 export const CourseForm = ({ course, formType }) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const DEPARTMENTS = [ ]
+    const DEPARTMENTS = [{ "id": 1, "name": "Art" },
+    { "id": 2, "name": "Biology" },
+    { "id": 3, "name": "Chemistry" },
+    { "id": 4, "name": "Computer Science" },
+    { "id": 5, "name": "Economics" },
+    { "id": 6, "name": "History" },
+    { "id": 7, "name": "Literature" },
+    { "id": 8, "name": "Magic" },
+    { "id": 9, "name": "Mathematics" },
+    { "id": 10, "name": "Philosophy" },
+    { "id": 11, "name": "Physical Education" },
+    { "id": 12, "name": "Physics" },
+    { "id": 13, "name": "Psychology" }
+    ]
 
     const [name, setName] = useState(course?.name || '')
     const [department, setDepartment] = useState(course?.department || '')
@@ -81,9 +94,14 @@ export const CourseForm = ({ course, formType }) => {
                         Department &nbsp;
                         <select
                             value={department}
-                            onChange={e => setDepartment(e.target.value)} />
+                            onChange={e => setDepartment(e.target.value)} >
                             <option selected='selected'> -- select a department --</option>
-
+                            {DEPARTMENTS.map(department => (
+                                <option
+                                    key={department.id}
+                                    value={department.id}>{department.name}</option>
+                            ))}
+                        </select>
                     </label>
                 </div>
 
