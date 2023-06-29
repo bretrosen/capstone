@@ -48,6 +48,7 @@ def all_profs():
                 prof['difficulties'].append(review['difficulty'])
                 prof['recommendations'].append(review['would_recommend'])
         # get the aggregate data for each prof
+        # mean will throw an error with no data points
         if (len(prof['qualities']) > 0):
             prof['quality'] = mean(prof['qualities'])
         if (len(prof['difficulties']) > 0):

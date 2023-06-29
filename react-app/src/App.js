@@ -16,6 +16,7 @@ import { CurrentUserReviewList } from './components/UserReviews'
 import { CourseList } from './components/Courses'
 import { SingleCourse } from './components/SingleCourse'
 import { CourseForm } from './components/CreateCourse'
+import { UpdateCourseForm } from './components/UpdateCourse'
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +68,10 @@ function App() {
         <Route path='/profs'>
           <Navigation isLoaded={isLoaded} />
           <ProfList />
+        </Route>
+        <Route path='/courses/:courseId/edit'>
+          <Navigation isLoaded={isLoaded} />
+          <UpdateCourseForm />
         </Route>
         <Route path='/courses/new'>
           <Navigation isLoaded={isLoaded} />

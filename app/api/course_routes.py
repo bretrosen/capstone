@@ -48,9 +48,13 @@ def all_courses():
                 course['difficulties'].append(review['difficulty'])
                 course['recommendations'].append(review['would_recommend'])
         # aggregate data for each course
-        course['quality'] = mean(course['qualities'])
-        course['difficulty'] = mean(course['difficulties'])
-        course['recommended'] = percent_true(course['recommendations'])
+        # mean will throw an error with no data points
+        if (len(course['qualities']) > 0):
+            course['quality'] = mean(course['qualities'])
+        if (len(course['difficulties']) > 0):
+            course['difficulty'] = mean(course['difficulties'])
+        if (len(course['recommendations']) > 0):
+            course['recommended'] = percent_true(course['recommendations'])
 
     print("courses in backend route =========>", courses_dict)
 
@@ -106,7 +110,7 @@ def post_course():
 
         db.session.add(new_course)
         db.session.commit()
-        return new_course.to_dict
+        return new_course.to_dict()
 
     else:
         return form.errors

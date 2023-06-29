@@ -68,6 +68,22 @@ export const createCourseThunk = (course) => async (dispatch) => {
     }
 }
 
+export const updateCourseThunk = (courseId, course) => async (dispatch) => {
+    const response = await fetch(`/api/courses/${courseId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(course)
+    })
+    console.log('sending update course thunk', response)
+
+    if (response.ok) {
+        const updatedCourse = await response.json()
+        console.log('returning update course thunk', updatedCourse)
+        dispatch(createCourse(updatedCourse))
+        return updatedCourse
+    }
+}
+
 
 const initialState = {allCourses: {}, singleCourse: {}}
 

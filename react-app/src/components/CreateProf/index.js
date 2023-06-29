@@ -109,7 +109,7 @@ export const ProfForm = ({ prof, formType }) => {
 
                 <button className='regular-button' type='submit'>
                     {formType && 'Update Professor'}
-                    {!formType && 'Submit Professor'}
+                    {!formType && 'Create Professor'}
                 </button>
             </form>
         </div>

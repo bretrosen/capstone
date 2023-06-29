@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { createCourseThunk } from '../../store/courses'
+import { createCourseThunk, updateCourseThunk } from '../../store/courses'
 import '../CreateProf/CreateProf.css'
 
 export const CourseForm = ({ course, formType }) => {
@@ -53,7 +53,9 @@ export const CourseForm = ({ course, formType }) => {
         if (!Object.values(errors).length) {
             // dispatch update thunk for update course here
             if (formType === 'Update') {
-
+                const updatedCourse = await dispatch(updateCourseThunk(course.id, formInfo))
+                // redirect to updated course
+                history.push(`/courses/${updatedCourse.id}`)
             }
             else {
                 // dispatch thunk for create course
@@ -106,8 +108,8 @@ export const CourseForm = ({ course, formType }) => {
                 </div>
 
                 <button className='regular-button' type='submit'>
-                    {formType && 'Update Professor'}
-                    {!formType && 'Submit Professor'}
+                    {formType && 'Update Course'}
+                    {!formType && 'Create Course'}
                 </button>
             </form>
         </div>
