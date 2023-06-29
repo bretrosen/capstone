@@ -50,7 +50,7 @@ export const ProfForm = ({ prof, formType }) => {
             else {
             // dispatch create thunk for create form
             const newProf = await dispatch(createProfThunk(formInfo))
-            // dispatch to newly created prof
+            // direct to newly created prof
             history.push(`/profs/${newProf.id}`)
             // history.push(`/profs`)
             }
@@ -109,7 +109,7 @@ export const ProfForm = ({ prof, formType }) => {
 
                 <button className='regular-button' type='submit'>
                     {formType && 'Update Professor'}
-                    {!formType && 'Submit Professor'}
+                    {!formType && 'Create Professor'}
                 </button>
             </form>
         </div>

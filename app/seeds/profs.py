@@ -112,6 +112,18 @@ def seed_profs():
         last_name='Jenner',
         field='Biology'
     )
+    montessori = Prof(
+        creator_id=randint(1, 6),
+        first_name='Maria',
+        last_name='Montessori',
+        field='Biology'
+    )
+    nightingale = Prof(
+        creator_id=randint(1, 6),
+        first_name='Florence',
+        last_name='Nightingale',
+        field='Biology'
+    )
 
     dalton = Prof(
         creator_id=randint(1, 6),
@@ -247,6 +259,12 @@ def seed_profs():
         last_name='Marshall',
         field='Economics'
     )
+    chanel = Prof(
+        creator_id=randint(1, 6),
+        first_name='Coco',
+        last_name='Chanel',
+        field='Economics'
+    )
 
     herodotus = Prof(
         creator_id=randint(1, 6),
@@ -294,6 +312,24 @@ def seed_profs():
         creator_id=randint(1, 6),
         first_name='Ross',
         last_name='Geller',
+        field='History'
+    )
+    mead = Prof(
+        creator_id=randint(1, 6),
+        first_name='Margaret',
+        last_name='Mead',
+        field='History'
+    )
+    faust = Prof(
+        creator_id=randint(1, 6),
+        first_name='Drew',
+        last_name='Gilpin Faust',
+        field='History'
+    )
+    gates = Prof(
+        creator_id=randint(1, 6),
+        first_name='Henry Louis',
+        last_name='Gates Jr.',
         field='History'
     )
 
@@ -369,6 +405,24 @@ def seed_profs():
         last_name='Cummings',
         field='Literature'
     )
+    angelou = Prof(
+        creator_id=randint(1, 6),
+        first_name='Maya',
+        last_name='Angelou',
+        field='Literature'
+    )
+    oates = Prof(
+        creator_id=randint(1, 6),
+        first_name='Joyce',
+        last_name='Carol Oates',
+        field='Literature'
+    )
+    morrison = Prof(
+        creator_id=randint(1, 6),
+        first_name='Toni',
+        last_name='Morrison',
+        field='Literature'
+    )
 
     descartes = Prof(
         creator_id=randint(1, 6),
@@ -424,6 +478,12 @@ def seed_profs():
         last_name='Moriarty',
         field='Mathematics'
     )
+    johnson = Prof(
+        creator_id=randint(1, 6),
+        first_name='Katherine',
+        last_name='Johnson',
+        field='Mathematics'
+    )
 
     socrates = Prof(
         creator_id=randint(1, 6),
@@ -465,6 +525,30 @@ def seed_profs():
         creator_id=randint(1, 6),
         first_name='Jean-Paul',
         last_name='Sartre',
+        field='Philosophy'
+    )
+    grandin = Prof(
+        creator_id=randint(1, 6),
+        first_name='Temple',
+        last_name='Grandin',
+        field='Philosophy'
+    )
+    ginsburg = Prof(
+        creator_id=randint(1, 6),
+        first_name='Ruth',
+        last_name='Bader Ginsburg',
+        field='Philosophy'
+    )
+    west = Prof(
+        creator_id=randint(1, 6),
+        first_name='Cornel',
+        last_name='West',
+        field='Philosophy'
+    )
+    mlk = Prof(
+        creator_id=randint(1, 6),
+        first_name='Martin Luther',
+        last_name='King Jr.',
         field='Philosophy'
     )
 
@@ -510,6 +594,18 @@ def seed_profs():
         last_name='Copernicus',
         field='Physics'
     )
+    tyson = Prof(
+        creator_id=randint(1, 6),
+        first_name='Neil',
+        last_name='deGrasse Tyson',
+        field='Physics'
+    )
+    kaku = Prof(
+        creator_id=randint(1, 6),
+        first_name='Michio',
+        last_name='Kaku',
+        field='Physics'
+    )
 
     jung = Prof(
         creator_id=randint(1, 6),
@@ -545,6 +641,12 @@ def seed_profs():
         creator_id=randint(1, 6),
         first_name='Peter',
         last_name='Venkman',
+        field='Psychology'
+    )
+    kubler = Prof(
+        creator_id=randint(1, 6),
+        first_name='Elizabeth',
+        last_name='Kubler-Ross',
         field='Psychology'
     )
 
@@ -621,8 +723,8 @@ def seed_profs():
         field='Magic'
     )
 
-    # full prof seeds (100)
-    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes, turing, berners_lee, shannon, hopper, lovelace, knuth, dijkstra, marx, smith, friedman, krugman, keynes, marshall, herodotus, doris, mccullough, william, zinn, foote, indy, ross, shakespeare, dickens, woolf, joyce, hemingway, dostoevsky, chaucer, thompson, burns, dickinson, garp, cummings, descartes, pascal, euclid, gauss, euler, neumann, fermat, napier, moriarty, socrates, chomsky, confucius, machiavelli, luther, kant, sartre, newton, einstein, galileo, curie, feynman, hawking, copernicus, jung, skinner, maslow, pavlov, freud, venkman, gandalf, dumbledore, palpatine, morgana, miracle_max, oz, copperfield, houdini, dr_strange, yoda, professor_x]
+    # full prof seeds (117)
+    all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, montessori, nightingale, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes, turing, berners_lee, shannon, hopper, lovelace, knuth, dijkstra, marx, smith, friedman, krugman, keynes, marshall, chanel, herodotus, doris, mccullough, william, zinn, foote, indy, ross, mead, faust, gates, shakespeare, dickens, woolf, joyce, hemingway, dostoevsky, chaucer, thompson, burns, dickinson, garp, cummings, angelou, oates, morrison, descartes, pascal, euclid, gauss, euler, neumann, fermat, napier, moriarty, johnson, socrates, chomsky, confucius, machiavelli, luther, kant, sartre, grandin, ginsburg, west, mlk, newton, einstein, galileo, curie, feynman, hawking, copernicus, tyson, kaku, jung, skinner, maslow, pavlov, freud, venkman, kubler, gandalf, dumbledore, palpatine, morgana, miracle_max, oz, copperfield, houdini, dr_strange, yoda, professor_x]
 
     # reduced prof seeds (27)
     # all_profs = [picasso, dali, van_gogh, okeefe, monet, da_vinci, rembrandt, fossey, goodall, darwin, mendel, carson, linnaeus, pasteur, gould, franklin, lamarck, jenner, dalton, lavoisier, mendeleev, avogadro, nobel, rutherford, cavendish, white, holmes]

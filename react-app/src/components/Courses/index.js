@@ -9,6 +9,7 @@ import '../Reviews/Reviews.css'
 
 export const CourseList = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const coursesObj = useSelector(state => state.courses.allCourses)
     const courses = Object.values(coursesObj)
@@ -55,6 +56,10 @@ export const CourseList = () => {
                         </div>
 
                     </Link>
+
+                    {user && course.creator_id === user.id &&
+                    <button className='regular-button' onClick={() => history.push(`/courses/${course.id}/edit`)}>Update Course</button>}
+
                 </>
             ))}
 
