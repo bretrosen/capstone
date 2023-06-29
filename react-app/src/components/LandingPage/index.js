@@ -27,11 +27,13 @@ export const LandingPage = () => {
                     <NavLink to='/reviews' className='landing-link'>All Reviews</NavLink>
                     <NavLink to='/profs' className='landing-link'>All Professors</NavLink>
                     <NavLink to='/courses' className='landing-link'>All Courses</NavLink>
+                    <NavLink to='/debates' className='landing-link'>All Debates</NavLink>
                     {sessionUser &&
                         <>
                             <NavLink to='/reviews/new' className='landing-link'>New Review</NavLink>
                             <NavLink to='/profs/new' className='landing-link'>New Professor</NavLink>
                             <NavLink to='/courses/new' className='landing-link'>New Course</NavLink>
+                            {/* <NavLink to='/debates/new' className='landing-link'>New Debate</NavLink> */}
                         </>
                     }
 

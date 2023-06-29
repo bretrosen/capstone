@@ -1,32 +1,39 @@
 from app.models import db, Debate, environment, SCHEMA
 from sqlalchemy.sql import text
+from random import randint, choice
+
 
 def seed_debates():
-    first = Debate(
-        creator_id=1,
-        topic_id=1,
-        prof1_id=1,
-        prof2_id=2,
-        field="Literature"
-    )
-    second = Debate(
-        creator_id=2,
-        topic_id=2,
-        prof1_id=1,
-        prof2_id=3,
-        field="Economics"
-    )
-    third = Debate(
-        creator_id=3,
-        topic_id=3,
-        prof1_id=2,
-        prof2_id=3,
-        field="Physics"
-    )
+    debates = []
+    departments = [
+        "Art",
+        "Biology",
+        "Chemistry",
+        "Computer Science",
+        "Economics",
+        "History",
+        "Literature",
+        "Magic",
+        "Mathematics",
+        "Philosophy",
+        "Physical Education",
+        "Physics",
+        "Psychology",
+    ]
 
-    all_debates = [first, second, third]
-    [db.session.add(debate) for debate in all_debates]
+    for _ in range(1, 51):
+        new_debate = Debate(
+            creator_id=randint(1, 6),
+            topic_id=randint(1, 12),
+            prof1_id=randint(1, 117),
+            prof2_id=randint(1, 117),
+            field=choice(departments),
+        )
+        debates.append(new_debate)
+
+    [db.session.add(debate) for debate in debates]
     db.session.commit()
+
 
 def undo_debates():
     if environment == "production":
