@@ -46,14 +46,15 @@ export const LandingPage = () => {
                 <div className='get-started'>
                     <div className='enter-a-prof'>
                         <h1>Debate My Professors</h1>
-                        <p className='black small'>(Always wanted to make your professors debate each other?)</p>
+                        <p className='black small'>(They test you. Now test them.)</p>
                         <NavLink to='/debates' className='landing-link black'>
                             50 First Debates to Start
                         </NavLink>
                         {sessionUser &&
                             <>
-                                <NavLink to='debate/new' className='landing-link'>
-                                    <p className='black'>Create a New Debate</p>
+                                <NavLink to='debates/new' className='landing-link black'>
+                                    <br></br>
+                                    Create a New Debate
                                 </NavLink>
                             </>
                         }
