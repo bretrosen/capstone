@@ -18,6 +18,7 @@ import { SingleCourse } from './components/SingleCourse'
 import { CourseForm } from './components/CreateCourse'
 import { UpdateCourseForm } from './components/UpdateCourse'
 import { DebateList } from './components/Debates'
+import { SingleDebate } from './components/SingleDebate'
 
 function App() {
   const dispatch = useDispatch();
@@ -86,9 +87,13 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           <CourseList />
         </Route>
+        <Route path='/debates/:debateId'>
+          <Navigation isLoaded={isLoaded} />
+          <SingleDebate />
+        </Route>
         <Route path='/debates'>
-        <Navigation isLoaded={isLoaded} />
-        <DebateList />
+          <Navigation isLoaded={isLoaded} />
+          <DebateList />
         </Route>
         {/* <Route path="/login" >
             <LoginFormModal />

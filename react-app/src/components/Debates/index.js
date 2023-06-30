@@ -27,22 +27,26 @@ export const DebateList = () => {
                 {debates.length} First Debates
             </div>
             {debates.map((debate) => (
-                <div className='debate-list-item' key={debate.id}>
-                    <div className='debate-topic'>
-                    Debate Topic: {debate.topic}
-                    </div>
+                <>
+                    <Link to={`/debates/${debate.id}`} key={debate.id}>
+                        <div className='debate-list-item' key={debate.id}>
+                            <div className='debate-topic'>
+                                Debate Topic: {debate.topic}
+                            </div>
 
-                    <div className='debate-professors'>
-                    <div className='debate-professor'>
-                    Professor 1: {debate.prof1_first_name} {debate.prof1_last_name}
-                    </div>
-                    <div className='debate-professor'>
-                    Professor 2: {debate.prof2_first_name} {debate.prof2_last_name}
-                    </div>
+                            <div className='debate-professors'>
+                                <div className='debate-professor'>
+                                    Professor 1: {debate.prof1_first_name} {debate.prof1_last_name}
+                                </div>
+                                <div className='debate-professor'>
+                                    Professor 2: {debate.prof2_first_name} {debate.prof2_last_name}
+                                </div>
 
-                    </div>
+                            </div>
 
-                </div>
+                        </div>
+                    </Link>
+                </>
             ))}
         </div>
     )

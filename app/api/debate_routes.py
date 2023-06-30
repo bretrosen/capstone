@@ -30,14 +30,21 @@ def all_debates():
 @debate_routes.route('/<int:id>')
 def single_debate(id):
     '''
-    Query for a single debate by id.
+    Query for a single debate by id. Add the average for each attribute for both professors to the debate dictionary.
     '''
 
     raw_debate = Debate.query.get(id)
     debate = raw_debate.to_dict()
+    # get the topic name
+    topic = (DebateTopic.query.filter(DebateTopic.id == debate['topic_id']).one()).to_dict()
+    debate['topic'] = topic['topic']
 
     prof1 = (Prof.query.filter(Prof.id == debate['prof1_id']).one()).to_dict()
     prof2 = (Prof.query.filter(Prof.id == debate['prof2_id']).one()).to_dict()
+    debate['prof1_first_name'] = prof1['first_name']
+    debate['prof1_last_name'] = prof1['last_name']
+    debate['prof2_first_name'] = prof2['first_name']
+    debate['prof2_last_name'] = prof2['last_name']
     # get all the reviews for a professor so we can get an average for each attribute
     prof1_reviews = Review.query.filter(Review.prof_id == prof1['id']).all()
     prof1_reviews_dict = [review.to_dict() for review in prof1_reviews]
