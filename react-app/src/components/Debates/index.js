@@ -17,7 +17,7 @@ export const DebateList = () => {
         console.log('useEffect in get all debates ran')
     }, [dispatch])
 
-    if (!debates) {
+    if (debates.length === 0) {
         return <h1>Loading...</h1>
     }
 
