@@ -24,20 +24,24 @@ export const DebateList = () => {
     return (
         <div className='debate-list-wrapper'>
             <div className='debate-list-heading'>
-                <br></br>
                 {debates.length} Debates To Simulate
-
             </div>
             {debates.map((debate) => (
-
-                <div key={debate.id}>
-                    <br></br>
+                <div className='debate-list-item' key={debate.id}>
+                    <div className='debate-topic'>
                     Debate Topic: {debate.topic}
-                    <br></br>
+                    </div>
+
+                    <div className='debate-professors'>
+                    <div className='debate-professor'>
                     Professor 1: {debate.prof1_first_name} {debate.prof1_last_name}
-                    <br></br>
+                    </div>
+                    <div className='debate-professor'>
                     Professor 2: {debate.prof2_first_name} {debate.prof2_last_name}
-                    <br></br>
+                    </div>
+
+                    </div>
+
                 </div>
             ))}
         </div>

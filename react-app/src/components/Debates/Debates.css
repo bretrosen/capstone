@@ -1,0 +1,30 @@
+.debate-list-heading {
+    font-size: 36px;
+}
+
+.debate-list-item {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    margin: 2rem 0 4rem 0;
+    border: 4mm ridge rgba(211, 220, 50, 0.5);
+}
+
+.debate-list-wrapper {
+    padding: 3rem;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+.debate-professors {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem 1rem 1rem;
+}
+
+
+.debate-topic {
+    text-align: center;
+    text-decoration: underline;
+    margin: 1rem 0 1rem 0;
+}

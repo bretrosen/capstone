@@ -27,13 +27,12 @@ export const LandingPage = () => {
                     <NavLink to='/reviews' className='landing-link'>All Reviews</NavLink>
                     <NavLink to='/profs' className='landing-link'>All Professors</NavLink>
                     <NavLink to='/courses' className='landing-link'>All Courses</NavLink>
-                    <NavLink to='/debates' className='landing-link'>All Debates</NavLink>
                     {sessionUser &&
                         <>
                             <NavLink to='/reviews/new' className='landing-link'>New Review</NavLink>
                             <NavLink to='/profs/new' className='landing-link'>New Professor</NavLink>
                             <NavLink to='/courses/new' className='landing-link'>New Course</NavLink>
-                            {/* <NavLink to='/debates/new' className='landing-link'>New Debate</NavLink> */}
+
                         </>
                     }
 
@@ -45,11 +44,24 @@ export const LandingPage = () => {
 
             <div className='landing-page'>
                 <div className='get-started'>
-                    <div className='enter-a-prof'>Enter a professor to get started</div>
+                    <div className='enter-a-prof'>
+                        <h1>Debate My Professors</h1>
+                        <p className='black small'>(Always wanted to make your professors debate each other?)</p>
+                        <NavLink to='/debates' className='landing-link black'>
+                            50 First Debates to Start
+                        </NavLink>
+                        {sessionUser &&
+                            <>
+                                <NavLink to='debate/new' className='landing-link'>
+                                    <p className='black'>Create a New Debate</p>
+                                </NavLink>
+                            </>
+                        }
+                    </div>
                     <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
 
                         <i className="fas fa-graduation-cap fa-flip-horizontal"></i>&nbsp;&nbsp;
-                        <div className='search-placeholder'>Professor name</div>
+                        <div className='search-placeholder'>Search for a professor</div>
                     </button>
 
                     {/* <input className='search-bar-landing' placeholder='Professor Name'></input> */}
