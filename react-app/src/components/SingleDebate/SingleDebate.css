@@ -1,0 +1,72 @@
+.card-heading {
+    position: absolute;
+    top: 71rem;
+    right: 24rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 32px;
+    width: 20rem;
+    text-align: center;
+}
+
+.card-topic {
+    position: absolute;
+    top: 78rem;
+    right: 23rem;
+    font-size: 24px;
+    width: 20rem;
+    text-align: center;
+    margin: 1rem;
+}
+
+.debate-card-wrapper {
+    background-image: url('./tape2.png');
+    /* background-size: 2000px; */
+    height: 2000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.prof-name {
+    text-decoration: underline;
+    width: 12rem;
+}
+
+.prof-stat {
+    margin-bottom: 1.5rem;
+}
+
+.prof1-stats {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 85rem;
+    right: 42rem;
+    font-size: 32px;
+}
+
+.prof2-stats {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 85rem;
+    right: 25rem;
+    font-size: 32px;
+}
+
+
+.stat-heading {
+    /* margin-top: 0.5rem; */
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.stats-heading {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 85rem;
+    right: 29rem;
+    font-size: 32px;
+}
