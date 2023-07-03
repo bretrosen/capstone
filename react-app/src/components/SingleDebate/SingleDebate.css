@@ -21,9 +21,11 @@
 }
 
 .debate-card-wrapper {
-    background-image: url('./tape2.png');
+    background-image: url('./scroll2.png');
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
     /* background-size: 2000px; */
-    height: 2000px;
+    /* background-size: 2000px; */
     display: flex;
     flex-direction: column;
 }
