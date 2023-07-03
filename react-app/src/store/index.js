@@ -4,12 +4,14 @@ import session from './session'
 import reviews from './reviews'
 import profsReducer from './profs'
 import coursesReducer from './courses'
+import debates from './debates'
 
 const rootReducer = combineReducers({
   session,
   reviews,
   profs: profsReducer,
-  courses: coursesReducer
+  courses: coursesReducer,
+  debates
 });
 
 

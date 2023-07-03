@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom'
 import { getSingleProfThunk, getAllProfsThunk } from '../../store/profs'
 import { getAllReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'

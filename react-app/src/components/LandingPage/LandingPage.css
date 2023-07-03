@@ -1,3 +1,7 @@
+.black {
+    color: black;
+}
+
 .enter {
     color: white;
     font-size: 24px;
@@ -7,7 +11,11 @@
 
 .enter-a-prof {
     font-size: 32px;
+    font-weight: bold;
     color: white;
+    text-align: center;
+    opacity: 1;
+    margin-bottom: 1rem;
 }
 
 .fa-graduation-cap {
@@ -21,6 +29,11 @@
     background-image: url('./man-reading-book.jpeg');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 1500px;
+
+    /* background: linear-gradient(0deg, rgba(21, 21, 21, 0.7), rgba(21, 21, 21, 0.7)) 50% / cover, url('man-reading-book.jpeg'); */
+
+    opacity: 0.9;
     position: relative;
     width: 100%;
     height: 500px;
@@ -28,7 +41,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 11rem;
+    padding-bottom: 4rem;
 }
 
 .landing-center {
@@ -47,6 +60,13 @@
     margin: 0;
 }
 
+.landing-title {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
 .landing-top {
     height: 4rem;
     display: flex;
@@ -59,6 +79,7 @@
     font-weight: 500;
     color: black;
     background: white;
+    margin-bottom: 5rem;
 }
 
 .landing-top-right {
@@ -69,7 +90,7 @@
 }
 
 .search-bar-landing {
-    margin-top: 10rem;
+    margin-top: 12rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -85,4 +106,8 @@
 
 .search-placeholder {
     color: lightgray;
+}
+
+.small {
+    font-size: 22px;
 }

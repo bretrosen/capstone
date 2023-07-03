@@ -17,11 +17,13 @@ function Navigation({ isLoaded }) {
                     <NavLink to='/reviews' className='nav-link'>All Reviews</NavLink>
                     <NavLink to='/profs' className='nav-link'>All Professors</NavLink>
                     <NavLink to='/courses' className='landing-link'>All Courses</NavLink>
+                    <NavLink to='/debates' className='landing-link'>All Debates</NavLink>
                     {sessionUser &&
                         <>
                             <NavLink to='/reviews/new' className='nav-link'>New Review</NavLink>
                             <NavLink to='/profs/new' className='nav-link'>New Professor</NavLink>
                             <NavLink to='/courses/new' className='landing-link'>New Course</NavLink>
+                            {/* <NavLink to='/debates/new' className='landing-link'>New Debate</NavLink> */}
                         </>
                     }
 

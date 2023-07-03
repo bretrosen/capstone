@@ -32,6 +32,7 @@ export const LandingPage = () => {
                             <NavLink to='/reviews/new' className='landing-link'>New Review</NavLink>
                             <NavLink to='/profs/new' className='landing-link'>New Professor</NavLink>
                             <NavLink to='/courses/new' className='landing-link'>New Course</NavLink>
+
                         </>
                     }
 
@@ -42,12 +43,30 @@ export const LandingPage = () => {
             </div>
 
             <div className='landing-page'>
+                <div className='landing-title'>Debate My Professors</div>
                 <div className='get-started'>
-                    <div className='enter-a-prof'>Enter a professor to get started</div>
+
+                    <div className='enter-a-prof'>
+
+                        <p className='small'>They test you. Now test them.</p>
+                        <NavLink to='/debates' className='landing-link'>
+                            50 First Debates to Start
+                        </NavLink>
+                        {sessionUser &&
+                            <>
+                                <br />
+                                <br />
+                                <NavLink to='debates/new' className='landing-link'>
+                                    Create a New Debate
+                                </NavLink>
+
+                            </>
+                        }
+                    </div>
                     <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
 
                         <i className="fas fa-graduation-cap fa-flip-horizontal"></i>&nbsp;&nbsp;
-                        <div className='search-placeholder'>Professor name</div>
+                        <div className='search-placeholder'>Search for a professor</div>
                     </button>
 
                     {/* <input className='search-bar-landing' placeholder='Professor Name'></input> */}

@@ -12,8 +12,10 @@ def seed_debate_topics():
     eighth = DebateTopic(topic="Would you rather have a terrible neighbor or terrible co-worker?")
     ninth = DebateTopic(topic="How many five year olds could you defeat in a fight?")
     tenth = DebateTopic(topic="Does free will exist?")
+    eleventh = DebateTopic(topic='Do all dogs go to heaven?')
+    twelfth = DebateTopic(topic='Light mode or dark mode?')
 
-    all_topics = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth]
+    all_topics = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth]
     [db.session.add(topic) for topic in all_topics]
     db.session.commit()
 
