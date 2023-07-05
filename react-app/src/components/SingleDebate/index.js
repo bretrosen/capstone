@@ -24,6 +24,7 @@ export const SingleDebate = () => {
 
     return (
         <div className='debate-card-wrapper'>
+            <img className='debate-card-pic' src="/scroll2.png" alt='Old-timey scroll'></img>
             <div className='card-heading'>
                 <div className='prof-name'>
                     {debate.prof1_first_name} {debate.prof1_last_name}

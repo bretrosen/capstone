@@ -1,7 +1,7 @@
 .card-heading {
-    position: absolute;
-    top: 122%;
-    right: 9%;
+    position: relative;
+    top: 22%;
+    left: 32%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -11,21 +11,24 @@
 }
 
 .card-topic {
-    position: absolute;
-    top: 132%;
-    right: 8%;
+    position: relative;
+    top: 25%;
+    left: 32%;
     font-size: 24px;
     width: 20rem;
     text-align: center;
     margin: 1rem;
 }
 
+.debate-card-pic {
+    width: 100%;
+}
+
 .debate-card-wrapper {
-    background-image: url('./scroll2.png');
-    /* background-position: center; */
-    /* background-repeat: no-repeat; */
-    /* background-size: 2000px; */
-    /* background-size: 2000px; */
+    /* background-image: url('./scroll2.png');
+    height: 1400px;
+    background-position: center;
+    background-repeat: no-repeat; */
     display: flex;
     flex-direction: column;
 }
@@ -42,18 +45,18 @@
 .prof1-stats {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 148%;
-    right: 34%;
+    position: relative;
+    top: 28%;
+    left: 35%;
     font-size: 32px;
 }
 
 .prof2-stats {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 148%;
-    right: 9%;
+    position: relative;
+    top: 28%;
+    left: 39%;
     font-size: 32px;
 }
 
@@ -67,8 +70,8 @@
 .stats-heading {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 148%;
-    right: 16%;
+    position: relative;
+    top: 28%;
+    left: 36%;
     font-size: 32px;
 }
