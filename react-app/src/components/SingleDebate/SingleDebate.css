@@ -1,72 +1,115 @@
+
 .card-heading {
-    position: absolute;
-    top: 122%;
-    right: 9%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     font-size: 32px;
-    width: 20rem;
     text-align: center;
+    margin: 2rem 0 2rem 0;
+
+}
+
+.card-numbers {
+    display: flex;
+    flex-direction: row;
 }
 
 .card-topic {
-    position: absolute;
-    top: 132%;
-    right: 8%;
-    font-size: 24px;
-    width: 20rem;
+    font-size: 40px;
     text-align: center;
-    margin: 1rem;
+    font-family: cursive;
+    color: white;
+    background: red;
+    padding: 0.5rem;
+}
+
+.debate-button {
+    height: 3rem;
+    width: 10rem;
+    margin: 1rem 0rem;
+    padding: 0.5rem 1rem;
+    background: black;
+    color: maroon;
+    border-radius: 2.5rem;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px red;
+}
+
+.debate-button:hover {
+    height: 3rem;
+    width: 10rem;
+    margin: 1rem 0rem;
+    padding: 0.5rem 1rem;
+    background: black;
+    color: red;
+    border-radius: 2.5rem;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    /* text-shadow: 1px 1px 2px red; */
+}
+
+.debate-card-pic {
+    height: 1050px;
 }
 
 .debate-card-wrapper {
-    background-image: url('./tape2.png');
-    /* background-size: 2000px; */
-    height: 2000px;
+    background-image: url('./library2.jpeg');
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 760px;
 }
 
 .prof-name {
-    text-decoration: underline;
-    width: 12rem;
+    text-align: center;
+    text-shadow: 2px 2px 3px black;
+    font-size: 36px;
+    font-weight: 700;
 }
 
 .prof-stat {
-    margin-bottom: 1.5rem;
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 0.5rem 6rem 0.5rem 6rem;
+    background: black;
+    color: white;
 }
 
 .prof1-stats {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 148%;
-    right: 34%;
     font-size: 32px;
+    text-align: center;
 }
 
 .prof2-stats {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 148%;
-    right: 9%;
     font-size: 32px;
+    text-align: center;
 }
 
+.prof-vs {
+    margin: 0 2rem 0 2rem;
+    color: red;
+    font-size: 72px;
+    font-weight: 700;
+    text-shadow: 2px 2px 3px black;
+}
 
 .stat-heading {
-    /* margin-top: 0.5rem; */
-    margin-bottom: 1.5rem;
+    margin: 0.5rem 0 0.5rem 0;
     text-align: center;
+    background: red;
+    color: white;
+    padding: 0.5rem 2rem 0.5rem 2rem;
 }
 
 .stats-heading {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 148%;
-    right: 16%;
     font-size: 32px;
 }

@@ -1,14 +1,16 @@
 .debate-list-heading {
     font-size: 60px;
     /* font-weight: 700; */
-    color: rgba(50, 16, 114, 1);
+    color: rgb(200, 25, 25);
 }
 
 .debate-list-item {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     margin: 2rem 0 4rem 0;
-    border: 4mm ridge rgba(50, 16, 114, 0.548);
+    background: maroon;
+    color: white;
+    border: 4mm ridge rgba(255, 0, 0, 0.8);
 }
 
 .debate-list-wrapper {

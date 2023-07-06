@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllDebatesThunk } from '../../store/debates'
+import { getAllProfsThunk } from '../../store/profs'
 import './Debates.css'
 
 
@@ -14,6 +15,7 @@ export const DebateList = () => {
 
     useEffect(() => {
         dispatch(getAllDebatesThunk())
+        dispatch(getAllProfsThunk())
         console.log('useEffect in get all debates ran')
     }, [dispatch])
 

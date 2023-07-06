@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviewsThunk } from '../../store/reviews'
 import { getAllProfsThunk } from '../../store/profs'
 import { getAllCoursesThunk } from '../../store/courses'
+import { getAllDebatesThunk } from '../../store/debates'
 import ProfileButton from '../Navigation/ProfileButton.js';
 import Footer from '../Footer'
 import "./LandingPage.css"
@@ -17,6 +18,7 @@ export const LandingPage = () => {
         dispatch(getAllReviewsThunk())
         dispatch(getAllProfsThunk())
         dispatch(getAllCoursesThunk())
+        dispatch(getAllDebatesThunk())
         console.log("useEffect on landing page ran")
     }, [sessionUser])
 
@@ -52,7 +54,7 @@ export const LandingPage = () => {
                         <NavLink to='/debates' className='landing-link'>
                             50 First Debates to Start
                         </NavLink>
-                        {sessionUser &&
+                        {/* {sessionUser &&
                             <>
                                 <br />
                                 <br />
@@ -61,7 +63,7 @@ export const LandingPage = () => {
                                 </NavLink>
 
                             </>
-                        }
+                        } */}
                     </div>
                     <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
 
