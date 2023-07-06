@@ -23,20 +23,24 @@ export const SingleDebate = () => {
     }
 
     return (
-        <div className='debate-card-wrapper'>
-            <div className='card-container'>
+        <>
+            <div className='card-topic'>
+                {debate.topic}
+            </div>
+            <div className='debate-card-wrapper'>
+
                 <div className='card-heading'>
                     <div className='prof-name'>
-                        {debate.prof1_first_name} {debate.prof1_last_name}
+                        {debate.prof1_first_name.toUpperCase()} {debate.prof1_last_name.toUpperCase()}
                     </div>
-                    &nbsp;vs.&nbsp;
+                    <div className='prof-vs'>
+                        VS
+                    </div>
                     <div className='prof-name'>
-                        {debate.prof2_first_name} {debate.prof2_last_name}
+                        {debate.prof2_first_name.toUpperCase()} {debate.prof2_last_name.toUpperCase()}
                     </div>
                 </div>
-                <div className='card-topic'>
-                    {debate.topic}
-                </div>
+
                 <div className='card-numbers'>
                     <div className='prof1-stats'>
                         <div className='prof-stat'>
@@ -100,6 +104,6 @@ export const SingleDebate = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
