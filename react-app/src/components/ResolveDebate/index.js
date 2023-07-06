@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useModal } from "../../context/Modal"
 import './ResolveDebate.css'
 
-const ResolveDebate = ({prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1Knowledge, prof1Charisma, prof1Preparation, prof1Respect, prof2Intelligence, prof2Wisdom, prof2Knowledge, prof2Charisma, prof2Preparation, prof2Respect}) => {
+const ResolveDebate = ({ prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1Knowledge, prof1Charisma, prof1Preparation, prof1Respect, prof2Intelligence, prof2Wisdom, prof2Knowledge, prof2Charisma, prof2Preparation, prof2Respect }) => {
     const { closeModal } = useModal()
     const prof1 = useSelector(state => state.debates.singleDebate.prof1_first_name)
     const prof2 = useSelector(state => state.debates.singleDebate.prof2_first_name)
@@ -132,9 +132,43 @@ const ResolveDebate = ({prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1K
 
     return (
         <div className='resolve-debate-wrapper'>
-            <p>{prof1} rolled a {prof1Rolls['Intelligence'].toFixed(0)} for Intelligence.</p>
-            <p>{prof2} rolled a {prof2Rolls['Intelligence'].toFixed(0)} for Intelligence.</p>
-            <p>{prof1} rolled a {prof1Rolls['Knowledge'].toFixed(0)} for Knowledge.</p>
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Rolls['Intelligence'].toFixed(0)}</div>
+                <div className='resolve-heading'>Intelligence</div>
+                <div className='resolve-number'>{prof2Rolls['Intelligence'].toFixed(0)}</div>
+            </div>
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Rolls['Knowledge'].toFixed(0)}</div>
+                <div className='resolve-heading'>Knowledge</div>
+                <div className='resolve-number'>{prof2Rolls['Knowledge'].toFixed(0)}</div>
+            </div>
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Rolls['Wisdom'].toFixed(0)}</div>
+                <div className='resolve-heading'>Wisdom</div>
+                <div className='resolve-number'>{prof2Rolls['Wisdom'].toFixed(0)}</div>
+            </div>
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Rolls['Charisma'].toFixed(0)}</div>
+                <div className='resolve-heading'>Charisma</div>
+                <div className='resolve-number'>{prof2Rolls['Charisma'].toFixed(0)}</div>
+            </div>
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Rolls['Preparation'].toFixed(0)}</div>
+                <div className='resolve-heading'>Preparation</div>
+                <div className='resolve-number'>{prof2Rolls['Preparation'].toFixed(0)}</div>
+            </div>
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Rolls['Respect'].toFixed(0)}</div>
+                <div className='resolve-heading'>Respect</div>
+                <div className='resolve-number'>{prof2Rolls['Respect'].toFixed(0)}</div>
+            </div>
+
+            {/* <p>{prof1} rolled a {prof1Rolls['Knowledge'].toFixed(0)} for Knowledge.</p>
             <p>{prof2} rolled a {prof2Rolls['Knowledge'].toFixed(0)} for Knowledge.</p>
             <p>{prof1} rolled a {prof1Rolls['Wisdom'].toFixed(0)} for Wisdom.</p>
             <p>{prof2} rolled a {prof2Rolls['Wisdom'].toFixed(0)} for Wisdom.</p>
@@ -143,15 +177,19 @@ const ResolveDebate = ({prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1K
             <p>{prof1} rolled a {prof1Rolls['Preparation'].toFixed(0)} for Preparation.</p>
             <p>{prof2} rolled a {prof2Rolls['Preparation'].toFixed(0)} for Preparation.</p>
             <p>{prof1} rolled a {prof1Rolls['Respect'].toFixed(0)} for Respect.</p>
-            <p>{prof2} rolled a {prof2Rolls['Respect'].toFixed(0)} for Respect.</p>
-            <p>{prof1} rolled a total of {prof1Sum}.</p>
-            <p>{prof2} rolled a total of {prof2Sum}.</p>
+            <p>{prof2} rolled a {prof2Rolls['Respect'].toFixed(0)} for Respect.</p> */}
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Sum}</div>
+                <div className='resolve-heading'>Total</div>
+                <div className='resolve-number'>{prof2Sum}</div>
+            </div>
             {prof1Sum > prof2Sum &&
-            <p>{prof1} is the winner!</p>}
+                <div className='resolve-winner'>{prof1} is the winner!</div>}
             {prof1Sum < prof2Sum &&
-            <p>{prof2} is the winner!</p>}
+                <div className='resolve-winner'>{prof2} is the winner!</div>}
             {prof1Sum === prof2Sum &&
-            <p>Holy smokes! It was a tie!</p>}
+                <div className='resolve-tie'>Holy smokes! It was a tie!</div>}
         </div>
     )
 }

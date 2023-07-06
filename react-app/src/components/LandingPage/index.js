@@ -54,7 +54,7 @@ export const LandingPage = () => {
                         <NavLink to='/debates' className='landing-link'>
                             50 First Debates to Start
                         </NavLink>
-                        {sessionUser &&
+                        {/* {sessionUser &&
                             <>
                                 <br />
                                 <br />
@@ -63,7 +63,7 @@ export const LandingPage = () => {
                                 </NavLink>
 
                             </>
-                        }
+                        } */}
                     </div>
                     <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
 
