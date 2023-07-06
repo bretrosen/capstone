@@ -28,11 +28,12 @@
     height: 3rem;
     width: 10rem;
     margin: 1rem 0rem;
+    padding: 0.5rem 1rem;
     background: black;
     color: maroon;
-    border-radius: 1.5rem;
+    border-radius: 2.5rem;
     text-align: center;
-    font-size: 24px;
+    font-size: 36px;
     font-weight: 700;
     text-shadow: 1px 1px 2px red;
 }
@@ -41,11 +42,12 @@
     height: 3rem;
     width: 10rem;
     margin: 1rem 0rem;
+    padding: 0.5rem 1rem;
     background: black;
     color: red;
-    border-radius: 1.5rem;
+    border-radius: 2.5rem;
     text-align: center;
-    font-size: 24px;
+    font-size: 36px;
     font-weight: 700;
     /* text-shadow: 1px 1px 2px red; */
 }
