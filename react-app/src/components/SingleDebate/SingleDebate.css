@@ -13,11 +13,11 @@
 .card-numbers {
     display: flex;
     flex-direction: row;
-    /* padding: 9px; */
+    margin-left: 3rem;
 }
 
 .card-topic {
-    font-size: 36px;
+    font-size: 40px;
     text-align: center;
     font-family: cursive;
     color: white;
@@ -31,11 +31,8 @@
 
 .debate-card-wrapper {
     background-image: url('./library2.jpeg');
-    /* background-position: center; */
-    /* background-size: 1000px; */
     display: flex;
     flex-direction: column;
-    /* margin: 1rem; */
     align-items: center;
     height: 760px;
 }
@@ -43,9 +40,8 @@
 .prof-name {
     text-align: center;
     text-shadow: 2px 2px 3px black;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 700;
-    width: 20rem;
 }
 
 .prof-stat {
@@ -72,8 +68,8 @@
 .prof-vs {
     margin: 0 2rem 0 2rem;
     color: red;
-    font-size: 80px;
-    font-weight: 800;
+    font-size: 72px;
+    font-weight: 700;
     text-shadow: 2px 2px 3px black;
 }
 
@@ -88,7 +84,5 @@
 .stats-heading {
     display: flex;
     flex-direction: column;
-    /* margin: 0 2rem 0 2rem; */
     font-size: 32px;
-    /* padding: 0 1rem 0 1rem; */
 }
