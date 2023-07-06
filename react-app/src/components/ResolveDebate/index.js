@@ -7,6 +7,9 @@ const ResolveDebate = ({ prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1
     const { closeModal } = useModal()
     const prof1 = useSelector(state => state.debates.singleDebate.prof1_first_name)
     const prof2 = useSelector(state => state.debates.singleDebate.prof2_first_name)
+    const prof1Field = useSelector(state => state.debates.singleDebate.prof1_field)
+    const prof2Field = useSelector(state => state.debates.singleDebate.prof2_field)
+    const debateField = useSelector(state => state.debates.singleDebate.field)
 
     // to resolve debate
     // each prof rolls a rand 1-20 for each attribute
@@ -21,6 +24,8 @@ const ResolveDebate = ({ prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1
     const charDiff = Math.floor(prof1Charisma - prof2Charisma)
     const prepDiff = Math.floor(prof1Preparation - prof2Preparation)
     const resDiff = Math.floor(prof1Respect - prof2Respect)
+
+
 
     const prof1Rolls = {}
     const prof2Rolls = {}
@@ -127,27 +132,37 @@ const ResolveDebate = ({ prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1
         prof2Rolls['Respect'] = prof2ResRoll
     }
 
-    const prof1Sum = (prof1Rolls['Intelligence'] + prof1Rolls['Knowledge'] + prof1Rolls['Wisdom'] + prof1Rolls['Charisma'] + prof1Rolls['Preparation'] + prof1Rolls['Respect']).toFixed(0)
-    const prof2Sum = (prof2Rolls['Intelligence'] + prof2Rolls['Knowledge'] + prof2Rolls['Wisdom'] + prof2Rolls['Charisma'] + prof2Rolls['Preparation'] + prof2Rolls['Respect']).toFixed(0)
+    let prof1Sum = (prof1Rolls['Intelligence'] + prof1Rolls['Knowledge'] + prof1Rolls['Wisdom'] + prof1Rolls['Charisma'] + prof1Rolls['Preparation'] + prof1Rolls['Respect']).toFixed(0)
+    let prof2Sum = (prof2Rolls['Intelligence'] + prof2Rolls['Knowledge'] + prof2Rolls['Wisdom'] + prof2Rolls['Charisma'] + prof2Rolls['Preparation'] + prof2Rolls['Respect']).toFixed(0)
+
+    // bonus if prof field is the debate field
+    if (prof1Field === debateField) {
+        prof1Sum *= 2
+    }
+    if (prof2Field === debateField) {
+        prof2Sum *= 2
+    }
 
     return (
         <div className='resolve-debate-wrapper'>
             <div className='resolve-debate-row'>
                 <div className='resolve-number'>{prof1Rolls['Intelligence'].toFixed(0)}</div>
                 <div className='resolve-heading'>Intelligence</div>
-                <div className='resolve-number'>{prof2Rolls['Intelligence'].toFixed(0)}</div>
-            </div>
+                <div className='resolve-number'>{prof2Rolls['Intelligence'].toFixed(0)}
+                </div>
 
-            <div className='resolve-debate-row'>
-                <div className='resolve-number'>{prof1Rolls['Knowledge'].toFixed(0)}</div>
-                <div className='resolve-heading'>Knowledge</div>
-                <div className='resolve-number'>{prof2Rolls['Knowledge'].toFixed(0)}</div>
             </div>
 
             <div className='resolve-debate-row'>
                 <div className='resolve-number'>{prof1Rolls['Wisdom'].toFixed(0)}</div>
                 <div className='resolve-heading'>Wisdom</div>
                 <div className='resolve-number'>{prof2Rolls['Wisdom'].toFixed(0)}</div>
+            </div>
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Rolls['Knowledge'].toFixed(0)}</div>
+                <div className='resolve-heading'>Knowledge</div>
+                <div className='resolve-number'>{prof2Rolls['Knowledge'].toFixed(0)}</div>
             </div>
 
             <div className='resolve-debate-row'>
@@ -184,6 +199,14 @@ const ResolveDebate = ({ prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1
                 <div className='resolve-heading'>Total</div>
                 <div className='resolve-number'>{prof2Sum}</div>
             </div>
+
+            <div className='resolve-debate-row'>
+                <div className='resolve-number'>{prof1Field === debateField && 'Expert'}</div>
+                <div className='resolve-heading'>{debateField}</div>
+                <div className='resolve-number'>{prof2Field === debateField && 'Expert'}</div>
+            </div>
+
+
             {prof1Sum > prof2Sum &&
                 <div className='resolve-winner'>{prof1} is the winner!</div>}
             {prof1Sum < prof2Sum &&

@@ -19,6 +19,9 @@
     align-items: center;
 }
 
+.resolve-die {
+    width: 4rem;
+}
 .resolve-heading {
     margin: 0 1rem;
 }

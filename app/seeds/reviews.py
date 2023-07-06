@@ -118,7 +118,7 @@ def seed_reviews():
         "This is my favorite class in all the world, though I have never taken it. I still got an A. It's that easy.",
         "Whether this professor shall turn out to be the hero of my own life, or whether that station will be held by anybody else, this review must show. Only 178 characters left, I better choose my words carefully. Oh darn, now it's only 111 characters! I really need to stop and think about this."
     ]
-    for _ in range(1, 1001):
+    for _ in range(1, 788):
         new_review = Review(
             creator_id = randint(1, 6),
             prof_id = randint(1, 117),
