@@ -103,6 +103,11 @@ export const SingleDebate = () => {
                         </div>
                     </div>
                 </div>
+                <OpenModalButton
+                    className='debate-button'
+                    buttonText="DEBATE!"
+                    // modalComponent={<ResolveDebate prof1Intelligence={debate.prof1_intelligence} prof1Wisdom={debate.prof1_wisdom} prof1Knowledge={debate.prof1_knowledge} prof1Charisma={debate.prof1_charisma} prof1Preparation={debate.prof1_preparation} prof1Respect={debate.prof1_respect} prof2Intelligence={debate.prof2_intelligence} prof2Wisdom={debate.prof2_wisdom} prof2Knowledge={debate.prof2_knowledge} prof2Charisma={debate.prof2_charisma} prof2Preparation={debate.prof2_preparation} prof2Respect={debate.prof2_respect} />}
+                    />
             </div>
         </>
     )
