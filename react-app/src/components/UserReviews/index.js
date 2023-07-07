@@ -30,6 +30,9 @@ export const CurrentUserReviewList = () => {
 
     return (
         <div className='reviews-list-wrapper'>
+            <div className='profs-list-heading'>
+                You have {reviews.length} reviews of The University of Life
+            </div>
             {reviews.map((review) => (
                 <>
                     <Link to={`/reviews/${review.id}`} key={review.id}>
