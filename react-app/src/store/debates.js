@@ -2,6 +2,7 @@
 
 const GET_ALL_DEBATES ='debates/getAllDebates'
 const GET_SINGLE_DEBATE = 'debates/getSingleDebate'
+const CREATE_DEBATE = 'debates/createDebate'
 
 
 // action creators
@@ -19,6 +20,11 @@ const getSingleDebate = (debate) => {
         debate
     }
 }
+
+const createDebate = (debate) => ({
+    type: CREATE_DEBATE,
+    debate
+})
 
 
 // thunks
@@ -47,6 +53,22 @@ export const getSingleDebateThunk = (debateId) => async (dispatch) => {
     }
 }
 
+export const createDebateThunk = (debate) => async (dispatch) => {
+    const response = await fetch('/api/debates/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(debate)
+    })
+    console.log('sending create debate thunk', response)
+
+    if (response.ok) {
+        const newDebate = await response.json()
+        console.log('returning create debate thunk', newDebate)
+        dispatch(createDebate(newDebate))
+        return newDebate
+    }
+}
+
 
 const initialState = {allDebates: {}, singleDebate: {}, userDebates: {}}
 
@@ -64,6 +86,12 @@ export default function debatesReducer(state = initialState, action) {
         }
         case GET_SINGLE_DEBATE: {
             return {...state, allDebates: {...state.allDebates}, singleDebate: {...action.debate}, userDebates: {...state.userDebates}}
+        }
+        case CREATE_DEBATE: {
+            const id = action.debate.id
+            const newState = {...state.allDebates}
+            newState[id] = action.debate
+            return {...state, allDebates: newState}
         }
         default:
             return state

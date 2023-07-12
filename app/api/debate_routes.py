@@ -118,6 +118,16 @@ def post_debate():
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
 
     if form.validate_on_submit():
-        new_debate = Debate(
-            creator_id=creator_id,
+        new_topic = DebateTopic(
+            topic = form.data["topic"]
         )
+
+        db.session.add(new_topic)
+        db.session.commit()
+
+        # new_debate = Debate(
+        #     creator_id=creator_id,
+        # )
+
+    else:
+        return form.errors
