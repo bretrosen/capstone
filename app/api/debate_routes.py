@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, Debate, Prof, DebateTopic, Review
+from app.forms.post_debate_form import PostDebateForm
 
 debate_routes = Blueprint('debates', __name__)
 
@@ -102,3 +103,32 @@ def single_debate(id):
 
 
     return debate
+
+@debate_routes.route('/new', methods=['GET', 'POST'])
+@login_required
+def post_debate():
+    '''
+    Renders an empty form for the GET request. Validates the form and creates a new debate for the POST request.
+    '''
+
+    user = current_user
+    creator_id = user.id
+    form = PostDebateForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
+
+    if form.validate_on_submit():
+        new_debate = Debate(
+            creator_id = creator_id,
+            topic_id = form.data['topic'],
+            prof1_id = form.data['prof1'],
+            prof2_id = form.data['prof2'],
+            field = form.data['field']
+        )
+
+        db.session.add(new_debate)
+        db.session.commit()
+        return new_debate.to_dict()
+
+    else:
+        return form.errors

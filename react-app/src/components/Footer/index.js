@@ -17,8 +17,8 @@ export default function Footer() {
                 <div className='footer-heading'>
                     CREATOR
                 </div>
-                <a className='footer-link' href='https://www.linkedin.com/in/bret-rosen-147a281b7/'>My Linkedin</a>
-                <a className='footer-link' href='https://github.com/bretrosen'>My GitHub</a>
+                <a className='footer-link' href='https://www.linkedin.com/in/bret-rosen-147a281b7/' target='_blank'>My Linkedin</a>
+                <a className='footer-link' href='https://github.com/bretrosen' target='_blank'>My GitHub</a>
 
             </div>
         </div>

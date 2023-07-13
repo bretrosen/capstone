@@ -19,6 +19,7 @@ import { CourseForm } from './components/CreateCourse'
 import { UpdateCourseForm } from './components/UpdateCourse'
 import { DebateList } from './components/Debates'
 import { SingleDebate } from './components/SingleDebate'
+import { DebateForm } from './components/CreateDebate'
 
 function App() {
   const dispatch = useDispatch();
@@ -86,6 +87,10 @@ function App() {
         <Route path='/courses'>
           <Navigation isLoaded={isLoaded} />
           <CourseList />
+        </Route>
+        <Route path='/debates/new'>
+          <Navigation isLoaded={isLoaded} />
+          <DebateForm />
         </Route>
         <Route path='/debates/:debateId'>
           <Navigation isLoaded={isLoaded} />
