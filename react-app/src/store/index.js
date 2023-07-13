@@ -5,13 +5,15 @@ import reviews from './reviews'
 import profsReducer from './profs'
 import coursesReducer from './courses'
 import debates from './debates'
+import topics from './debate_topics'
 
 const rootReducer = combineReducers({
   session,
   reviews,
   profs: profsReducer,
   courses: coursesReducer,
-  debates
+  debates,
+  topics
 });
 
 

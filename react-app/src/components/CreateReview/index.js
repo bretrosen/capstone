@@ -18,7 +18,7 @@ export const ReviewForm = ({ review, formType }) => {
         dispatch(getAllProfsThunk())
         dispatch(getAllCoursesThunk())
         console.log("useEffect in create review form ran")
-    }, [sessionUser])
+    }, [dispatch, sessionUser])
 
     // get all courses from store to use as select field for form
     const coursesObj = useSelector(state => state.courses.allCourses)
