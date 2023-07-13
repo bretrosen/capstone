@@ -1,7 +1,7 @@
 // action type constants
 
 const GET_ALL_DEBATE_TOPICS = 'debate_topics/getAllDebateTopics'
-const CREATE_DEBATE_TOPIC = 'debates/createDebateTopic'
+const CREATE_DEBATE_TOPIC = 'debate_topics/createDebateTopic'
 
 
 // action creators
@@ -22,7 +22,7 @@ const createTopic = (topic) => ({
 // thunks
 
 export const getAllDebateTopicsThunk = () => async (dispatch) => {
-    const response = await fetch('api/debate_topics')
+    const response = await fetch('/api/debate_topics')
     console.log('sending all debate topics thunk', response)
 
     if (response.ok) {
@@ -59,7 +59,7 @@ export default function debateTopicsReducer(state = initialState, action) {
         case GET_ALL_DEBATE_TOPICS: {
             const newState = {...state, allDebateTopics: {...state.allDebateTopics}}
 
-            action.topics.topics.forEach((topic) => {
+            action.topics.debate_topics.forEach((topic) => {
                 newState.allDebateTopics[topic.id] = topic
             })
 

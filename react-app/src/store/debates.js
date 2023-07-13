@@ -57,7 +57,7 @@ export const getSingleDebateThunk = (debateId) => async (dispatch) => {
 }
 
 export const createDebateThunk = (debate) => async (dispatch) => {
-    const response = await fetch('/api/debates/new_debate', {
+    const response = await fetch('/api/debates/new', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(debate)

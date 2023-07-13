@@ -26,7 +26,7 @@ export const DebateForm = () => {
     // get all profs from the sotre for form select field
     const profsObj = useSelector(state => state.profs.allProfs)
     const PROFS = Object.values(profsObj)
-    console.log("profs", PROFS)
+    console.log("profs ====>", PROFS)
 
     const [topic, setTopic] = useState('')
     const [prof1, setProf1] = useState('')
@@ -85,11 +85,11 @@ export const DebateForm = () => {
                             value={topic}
                             onChange={e => setTopic(e.target.value)}>
                             <option selected='selected'> -- select a topic --</option>
-                            {TOPICS.map(topic => {
+                            {TOPICS.map(topic => (
                                 <option
                                     key={topic.id}
                                     value={topic.id}>{topic.topic}</option>
-                            })}
+                            ))}
                         </select>
                     </label>
                 </div>
