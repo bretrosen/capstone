@@ -104,7 +104,7 @@ def single_debate(id):
 
     return debate
 
-@debate_routes.route('/new', methods=['GET', 'POST'])
+@debate_routes.route('/new_debate', methods=['GET', 'POST'])
 @login_required
 def post_debate():
     '''
@@ -118,16 +118,20 @@ def post_debate():
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
 
     if form.validate_on_submit():
-        new_topic = DebateTopic(
-            topic = form.data["topic"]
+        new_debate = Debate(
+            creator_id = creator_id,
+            topic_id = form.data['topic'],
+            prof1_id = form.data['prof1'],
+            prof2_id = form.data['prof2'],
+            field = form.data['field']
         )
 
-        db.session.add(new_topic)
+        db.session.add(new_debate)
         db.session.commit()
-
-        # new_debate = Debate(
-        #     creator_id=creator_id,
-        # )
+        return new_debate.to_dict()
 
     else:
         return form.errors
+
+
+

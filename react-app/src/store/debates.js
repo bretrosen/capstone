@@ -5,6 +5,7 @@ const GET_SINGLE_DEBATE = 'debates/getSingleDebate'
 const CREATE_DEBATE = 'debates/createDebate'
 
 
+
 // action creators
 
 const getAllDebates = (debates) => {
@@ -25,6 +26,8 @@ const createDebate = (debate) => ({
     type: CREATE_DEBATE,
     debate
 })
+
+
 
 
 // thunks
@@ -54,7 +57,7 @@ export const getSingleDebateThunk = (debateId) => async (dispatch) => {
 }
 
 export const createDebateThunk = (debate) => async (dispatch) => {
-    const response = await fetch('/api/debates/new', {
+    const response = await fetch('/api/debates/new_debate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(debate)
@@ -68,6 +71,7 @@ export const createDebateThunk = (debate) => async (dispatch) => {
         return newDebate
     }
 }
+
 
 
 const initialState = {allDebates: {}, singleDebate: {}, userDebates: {}}
