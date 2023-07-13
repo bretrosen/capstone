@@ -104,7 +104,7 @@ def single_debate(id):
 
     return debate
 
-@debate_routes.route('/new_debate', methods=['GET', 'POST'])
+@debate_routes.route('/new', methods=['GET', 'POST'])
 @login_required
 def post_debate():
     '''
@@ -132,6 +132,3 @@ def post_debate():
 
     else:
         return form.errors
-
-
-

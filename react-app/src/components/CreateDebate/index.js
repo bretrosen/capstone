@@ -144,7 +144,7 @@ export const DebateForm = () => {
                     )}
                 </div>
                 <div className='create-review-input'>
-                    <textarea className='create-review-text'
+                    <textarea 
                         placeholder='Field'
                         value={field}
                         onChange={e => setField(e.target.value)} />
