@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { createCourseThunk, updateCourseThunk } from '../../store/courses'
 import '../CreateProf/CreateProf.css'
+import './CreateCourse.css'
 
 export const CourseForm = ({ course, formType }) => {
     const history = useHistory()
@@ -107,7 +108,7 @@ export const CourseForm = ({ course, formType }) => {
                     </label>
                 </div>
 
-                <button className='regular-button' type='submit'>
+                <button className='regular-button' id='create-course-button' type='submit'>
                     {formType && 'Update Course'}
                     {!formType && 'Create Course'}
                 </button>

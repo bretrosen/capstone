@@ -5,7 +5,7 @@ import { createDebateThunk } from '../../store/debates'
 import { getAllProfsThunk } from '../../store/profs'
 import { getAllDebateTopicsThunk } from '../../store/debate_topics'
 import '../CreateProf/CreateProf.css'
-
+import './CreateDebate.css'
 
 export const DebateForm = () => {
     const history = useHistory()
@@ -144,13 +144,15 @@ export const DebateForm = () => {
                     )}
                 </div>
                 <div className='create-review-input'>
-                    <textarea 
-                        placeholder='Field'
-                        value={field}
-                        onChange={e => setField(e.target.value)} />
+                    <label>Field of Debate&nbsp;
+                    <input type='text'
+                            className='field-text'
+                            value={field}
+                            onChange={e => setField(e.target.value)} />
+                        </label>
                 </div>
 
-                <button className='regular-button' type='submit'>
+                <button className='regular-button' id='create-debate-button' type='submit'>
                     Create Debate
                 </button>
 

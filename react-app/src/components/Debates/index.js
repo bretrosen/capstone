@@ -26,7 +26,7 @@ export const DebateList = () => {
     return (
         <div className='debate-list-wrapper'>
             <div className='debate-list-heading'>
-                {debates.length} First Debates
+                {debates.length} Debates to Simulate
             </div>
             {debates.map((debate) => (
                 <>

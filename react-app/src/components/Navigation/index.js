@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
                             <NavLink to='/reviews/new' className='nav-link'>New Review</NavLink>
                             <NavLink to='/profs/new' className='nav-link'>New Professor</NavLink>
                             <NavLink to='/courses/new' className='nav-link'>New Course</NavLink>
-                            {/* <NavLink to='/debates/new' className='landing-link'>New Debate</NavLink> */}
+                            <NavLink to='/debates/new' className='landing-link'>New Debate</NavLink>
                         </>
                     }
 
