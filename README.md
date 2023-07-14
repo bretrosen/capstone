@@ -21,6 +21,9 @@ Users of Debate My Professors can:
    * Delete professors they created
 * Create new courses
    * Update details of courses they created
+* Simulate the results of a debate
+* Create a new debate
+
 
 ## Screenshots
 ### Landing Page
@@ -38,9 +41,11 @@ The page for a single professor shows the aggregate data of all a professor's re
 ### All Debates Page
 The page for all debates lists all debates with the topic and professors.
 ![img04](screenshots/debate4.png)
+### DB Schema
+![img04](screenshots/debate5.png)
 
 
-The site is currently live at: https://debate-my-professors.onrender.com/.
+The site is currently live at: https://debate-my-professors.onrender.com/. You can also clone the repo and run the app locally by following the instructions below.
 
 ## Getting started
 1. Clone this repository (only this branch)
