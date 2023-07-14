@@ -107,7 +107,7 @@ export const ProfForm = ({ prof, formType }) => {
                         </label>
                 </div>
 
-                <button className='regular-button' type='submit'>
+                <button className='regular-button' id='create-prof-button' type='submit'>
                     {formType && 'Update Professor'}
                     {!formType && 'Create Professor'}
                 </button>

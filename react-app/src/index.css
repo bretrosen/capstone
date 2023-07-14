@@ -15,6 +15,16 @@ button {
     cursor: pointer;
 }
 
+.delete-button {
+    height: 3rem;
+    width: 12rem;
+    margin: 1rem 0rem;
+    background-color: red;
+    color: white;
+    border-radius: 1.5rem;
+    text-align: center;
+}
+
 .regular-button {
     height: 3rem;
     width: 12rem;
