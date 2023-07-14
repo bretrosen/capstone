@@ -40,6 +40,8 @@ def all_profs():
     # iterate through prof then reviews
     # if a prof id in a review matches the prof's id:
     # append the quality, difficulty, and would_recommend field to the prof's list
+
+    # QUERY ON THE JOIN YOU DUMMY
     for prof in profs_dict:
         for review in reviews_dict:
             if (review['prof_id'] == prof['id']):
