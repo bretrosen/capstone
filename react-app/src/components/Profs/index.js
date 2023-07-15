@@ -48,8 +48,8 @@ export const ProfList = () => {
                             </div>
 
                             <div className='profs-list-right'>
-                                <div>{prof.first_name} {prof.last_name}</div>
-                                <div>{prof.field}</div>
+                                <div className='prof-list-name'>{prof.first_name} {prof.last_name}</div>
+                                <div className='prof-list-field'>{prof.field}</div>
                                 {prof.recommendations.length > 0 &&
                                 <div>{prof.recommended.toFixed(0)}% would take again</div>}
                                 {prof.difficulties.length > 0 &&
