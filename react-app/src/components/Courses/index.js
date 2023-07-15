@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { getAllCoursesThunk } from '../../store/courses'
 import '../Profs/Profs.css'
 import '../Reviews/Reviews.css'
+import './Courses.css'
 
 
 export const CourseList = () => {
@@ -46,8 +47,8 @@ export const CourseList = () => {
                             </div>
 
                             <div className='profs-list-right'>
-                                <div>{course.name}</div>
-                                <div>{course.department}</div>
+                                <div className='course-list-name'>{course.name}</div>
+                                <div className='course-list-department'> {course.department}</div>
                                 {course.recommendations.length > 0 &&
                                 <div>{course.recommended.toFixed(0)}% would take again</div>}
                                 {course.difficulties.length > 0 &&
