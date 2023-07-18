@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createDebateThunk } from '../../store/debates'
 import { getAllProfsThunk } from '../../store/profs'
 import { getAllDebateTopicsThunk } from '../../store/debate_topics'
+import { DebateTopicForm } from '../CreateDebateTopic'
 import '../CreateProf/CreateProf.css'
 import './CreateDebate.css'
 
@@ -52,7 +53,7 @@ export const DebateForm = () => {
 
         setHasSubmitted(true)
 
-        // object to match requrest to backend create debate route
+        // object to match request to backend create debate route
         const formInfo = {
             "topic": topic,
             "prof1": prof1,
