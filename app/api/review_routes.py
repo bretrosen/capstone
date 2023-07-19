@@ -21,9 +21,9 @@ def all_reviews():
     Query for all reviews for the display all review page. Order descending by datetime, so newest reviews appear first. Get the associated professor's name and the associated course for each review. Add an average of numeric ratings. Return results in a dictionary.
     '''
 
-    # all_reviews = Review.query.all()
+    all_reviews = Review.query.all()
 
-    all_reviews = Review.query.order_by(desc(Review.time_stamp)).all()
+    # all_reviews = Review.query.order_by(desc(Review.time_stamp)).all()
 
     reviews_dict = [review.to_dict() for review in all_reviews]
     for review in reviews_dict:
