@@ -2,6 +2,10 @@ from app.models import db, Review, environment, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime, timedelta
 from random import randint, choice
+from faker import Faker
+
+fake = Faker()
+
 
 def generate_reviews():
     reviews = []
@@ -35,65 +39,6 @@ def generate_reviews():
 
 
 def seed_reviews():
-    # first = Review(
-    #     creator_id=1,
-    #     prof_id=1,
-    #     course_id=1,
-    #     intelligence=10,
-    #     wisdom=10,
-    #     charisma=10,
-    #     knowledge=10,
-    #     preparation=10,
-    #     respect=10,
-    #     difficulty=5,
-    #     for_credit=True,
-    #     attendance=False,
-    #     would_recommend=True,
-    #     textbook=False,
-    #     review='None of it made sense',
-    #     # might want to reconsider how review datetime seeding is done
-    #     time_stamp=datetime.now() - timedelta(days = 1)
-    # )
-    # second = Review(
-    #     creator_id=2,
-    #     prof_id=2,
-    #     course_id=2,
-    #     intelligence=10,
-    #     wisdom=10,
-    #     charisma=10,
-    #     knowledge=10,
-    #     preparation=10,
-    #     respect=10,
-    #     difficulty=4,
-    #     for_credit=True,
-    #     attendance=True,
-    #     would_recommend=False,
-    #     textbook=True,
-    #     review='A lot of cool numbers',
-    #     time_stamp=datetime.now() - timedelta(days = 3)
-    # )
-    # third = Review(
-    #     creator_id=3,
-    #     prof_id=3,
-    #     course_id=3,
-    #     intelligence=10,
-    #     wisdom=10,
-    #     charisma=10,
-    #     knowledge=10,
-    #     preparation=10,
-    #     respect=10,
-    #     difficulty=4,
-    #     for_credit=False,
-    #     attendance=False,
-    #     would_recommend=True,
-    #     textbook=False,
-    #     review='This class is super dope',
-    #     time_stamp=datetime.now()
-    # )
-
-    # all_reviews = [first, second, third]
-    # [db.session.add(review) for review in all_reviews]
-
     reviews = []
     review_texts = [
         "I had a farm in Africa at the foot of the Ngong Hills. That made it hard to attend this class, but I made the 5000 mile commute everyday anyway, and it was SUCH A WASTE OF TIME. Taking this course actively made me dumber.",
@@ -119,7 +64,16 @@ def seed_reviews():
         "Whether this professor shall turn out to be the hero of my own life, or whether that station will be held by anybody else, this review must show. Only 178 characters left, I better choose my words carefully. Oh darn, now it's only 111 characters! I really need to stop and think about this.",
         "The professor was an old man who spoke to the back of the lecture hall and he once went eighty-four days without knowing the name of any student in the class."
     ]
+
+    count = 1
+
     for _ in range(1, 788):
+
+        if count < 780:
+            oldest_date = '-30y'
+        else:
+            oldest_date = new_review.to_dict()['time_stamp']
+
         new_review = Review(
             creator_id = randint(1, 6),
             prof_id = randint(1, 117),
@@ -136,9 +90,16 @@ def seed_reviews():
             would_recommend = choice([True, False]),
             textbook = choice([True, False]),
             review = choice(review_texts),
-            time_stamp = datetime.now()
+            # time_stamp = fake.date_time_between(start_date='-25y', end_date='now')
+            time_stamp = fake.date_time_between(start_date=oldest_date, end_date='now')
+
         )
+
+        count += 1
         reviews.append(new_review)
+
+
+
 
     [db.session.add(review) for review in reviews]
     db.session.commit()
