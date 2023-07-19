@@ -16,7 +16,7 @@ export const CurrentUserReviewList = () => {
     const history = useHistory()
 
     const reviewsObj = useSelector(state => state.reviews.userReviews)
-    const reviews = Object.values(reviewsObj)
+    const reviews = Object.values(reviewsObj).reverse()
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
