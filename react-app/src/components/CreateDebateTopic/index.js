@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from "../../context/Modal"
 import { createDebateTopicThunk } from '../../store/debate_topics'
 import './CreateDebateTopic.css'
 
 export const DebateTopicForm = () => {
-    const history = useHistory()
     const dispatch = useDispatch()
     const { closeModal } = useModal()
 

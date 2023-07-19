@@ -24,15 +24,12 @@ def post_topic():
     Renders an empty form for the GET request. Validates the form and creates a new debate topic for the POST request.
     '''
 
-    user = current_user
-    creator_id = user.id
     form = PostDebateTopicForm()
 
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
 
     if form.validate_on_submit():
         new_topic = DebateTopic(
-            creator_id = creator_id,
             topic = form.data['topic']
         )
 
