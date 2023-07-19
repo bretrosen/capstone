@@ -3,6 +3,25 @@
     width: 20rem;
 }
 
+.topic-button {
+    height: 3rem;
+    width: 12rem;
+    background-color: hsla(240, 100%, 50%, 0.829);
+    color: white;
+    border-radius: 1.5rem;
+    text-align: center;
+}
+
 #create-debate-button {
     margin-left: 40%;
+}
+
+#create-debate-heading {
+    width: 25rem;
+}
+
+#debate-topic-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

@@ -6,6 +6,7 @@ import { getAllReviewsThunk } from '../../store/reviews'
 import OpenModalButton from '../OpenModalButton'
 import RatingDistribution from './RatingDistribution'
 import '../SingleProf/SingleProf.css'
+import './SingleCourse.css'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 const dayjs = require('dayjs')
 dayjs.extend(advancedFormat)
@@ -51,7 +52,7 @@ export const SingleCourse = () => {
     return (
         <div className='single-prof-wrapper'>
             <div className='single-prof-top'>
-                <div className='single-prof-top-left'>
+                <div className='single-course-top-left'>
                     <div className='single-prof-quality'>
                         <div className='single-prof-quality-number'>
                             {courses[courseIdToKeyInto]?.quality?.toFixed(1)}

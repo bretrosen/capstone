@@ -28,7 +28,7 @@ export const SingleReview = () => {
             <h1 className='single-review-h1'>Professor Performance Review</h1>
 
 
-            <div classname='review-top'>
+            <div className='review-top'>
                 <h2 className='single-review-h2'>Professor and Course Information</h2>
                 <div className='info-box'>
 

@@ -17,7 +17,7 @@ export const Guidelines = () => {
             <p>Debate My Professors has a team of raccoon moderators who read every rating submitted. We have defined site guidelines to help reinforce our mission and most importantly to ensure our decisions around moderation are 100% consistent, regardless of raccoon or professor. Our moderators are experts on our guidelines and will remove any comment that doesn't comply with Rocket's totally arbitrary rules.</p>
             <p>Did we miss something? If you feel an inappropriate comment should be removed from the site, we want to know. You can flag a comment for re-review and it will immediately be escalated to our moderators. Moderators will determine whether to remove the rating permanently or restore it to the website. Our moderators will never edit a rating to make it comply or remove a rating simply because it has a low score or negative review. That would be some DC Comics level basic behavior.</p>
             <p style={{fontWeight: "700"}}>GUIDELINES:</p>
-            <p>Raccoon Guidelines:</p>
+            <p style={{fontWeight: "700"}}>Raccoon Guidelines:</p>
             <ul>
                 <li className='guidelines-li'>Be honest in your reviews. You want to be able to trust these reviews when evaluating your course and garbage options so we ask that you contribute in the same spirit.</li>
                 <li className='guidelines-li'>When you are reviewing a class, dumpster, and/or professor, it’s often helpful to provide both pros and cons. This leads to much more credible and constructive feedback for your peers.</li>
@@ -29,6 +29,19 @@ export const Guidelines = () => {
                 <li className='guidelines-li'>Debate My Professors reserves the right to remove ratings that contain DC Comics content.</li>
                 <li className='guidelines-li'>We only allow one student to review a professor/dumpster one time per course. Spamming or dogpiling an account will lead to comment removal and the account being temporarily locked on the site.</li>
                 <li className='guidelines-li'>When reading your fellow raccoons' reviews, we encourage you to use your discretion and weigh every review amongst the others. Online reviews should be one of the many resources used when making a decision that affects your academic and nutritional future.</li>
+            </ul>
+            <p style={{fontWeight: "700"}}>Prohibited Content:</p>
+            <ul>
+                <li className='guidelines-li'>Profanity, name-calling, demonic summoning and/or vulgarity, derogatory remarks about religion, ethnicity or race, gender, physical appearance, age, mental and/or physical abilities/disabilities.</li>
+                <li className='guidelines-li'>Identifiable information about a professor or raccoon that would allow someone to contact the professor/raccoon outside of their school/den.</li>
+                <li className='guidelines-li'>References to a professor's or raccoon’s family, personal life and/or sex life, including sexual innuendos and disparaging remarks about genetic makeup.</li>
+                <li classname='guidelines-li'>Claims that a professor shows bias for or against a raccoon or a specific genus/species of organism.</li>
+                <li className='guidelines-li'>Claims about a professor's employment/SHIELD status, including previous employment.</li>
+                <li className='guidelines-li'>Claims that a professor or raccoon engages in or has engaged in illegal activities and/or engaged the services of Thanos.</li>
+                <li className='guidelines-li'>Direct references to other existing comments or comments that have been deleted by our moderators.</li>
+                <li className='guidelines-li'>Accusations that the professor is rating him/herself or his/her colleagues.</li>
+                <li className='guidelines-li'>A language other than English. Comments must be written in English only. Klingon and Dothraki are allowed with the understanding that everyone will make fun of you.</li>
+                <li className='guidelines-li'>Hyperlinks, URLs, and/or Dormammu.</li>
             </ul>
         </div>
         <Footer />

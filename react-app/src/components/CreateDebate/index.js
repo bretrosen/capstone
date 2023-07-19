@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import OpenModalButton from '../OpenModalButton'
 import { createDebateThunk } from '../../store/debates'
 import { getAllProfsThunk } from '../../store/profs'
 import { getAllDebateTopicsThunk } from '../../store/debate_topics'
+import { DebateTopicForm } from '../CreateDebateTopic'
 import '../CreateProf/CreateProf.css'
 import './CreateDebate.css'
 
@@ -47,12 +49,13 @@ export const DebateForm = () => {
         setErrors(newErrors)
     }, [topic, prof1, prof2, field])
 
+    // submit new debate
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         setHasSubmitted(true)
 
-        // object to match requrest to backend create debate route
+        // object to match request to backend create debate route
         const formInfo = {
             "topic": topic,
             "prof1": prof1,
@@ -70,15 +73,17 @@ export const DebateForm = () => {
 
     return (
         <div className='create-review-wrapper'>
-            <div className='create-review-heading'>Create a Debate</div>
+
+                <div className='create-review-heading' id='create-debate-heading'>Create a Debate</div>
+            
             <form className='create-prof-form' onSubmit={handleSubmit}>
 
                 <div className='create-review-errors'>
-                    {hasSubmitted && errors.topic &&(
+                    {hasSubmitted && errors.topic && (
                         <p>{errors.topic}</p>
                     )}
                 </div>
-                <div className='create-review-input'>
+                <div className='create-review-input' id='debate-topic-options'>
                     <label>
                         Select Debate Topic &nbsp;
                         <select
@@ -92,6 +97,11 @@ export const DebateForm = () => {
                             ))}
                         </select>
                     </label>
+                    <OpenModalButton
+                    className='topic-button'
+                    buttonText='Create Topic'
+                    modalComponent={<DebateTopicForm />}
+                />
                 </div>
 
 
@@ -145,11 +155,11 @@ export const DebateForm = () => {
                 </div>
                 <div className='create-review-input'>
                     <label>Field of Debate&nbsp;
-                    <input type='text'
+                        <input type='text'
                             className='field-text'
                             value={field}
                             onChange={e => setField(e.target.value)} />
-                        </label>
+                    </label>
                 </div>
 
                 <button className='regular-button' id='create-debate-button' type='submit'>

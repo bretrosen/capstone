@@ -88,15 +88,18 @@
 
 .single-review-h1 {
     color: blue;
+    font-size: 28px;
 }
 
 .single-review-h2 {
     color: blue;
+    font-size: 20px;
 }
 
 .single-review-h2-comments {
     text-align: center;
     color: blue;
+    font-size: 20px;
 }
 
 .single-review-wrapper {

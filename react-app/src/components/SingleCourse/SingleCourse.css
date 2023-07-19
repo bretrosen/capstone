@@ -1,0 +1,5 @@
+.single-course-top-left {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+}

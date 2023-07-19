@@ -85,7 +85,7 @@ export const CurrentUserReviewList = () => {
                     &nbsp;&nbsp;
                     {user && review.creator_id === user.id &&
                         <OpenModalButton
-                            className='regular-button'
+                            className='delete-button'
                             buttonText='Delete Rating'
                             modalComponent={<DeleteReview reviewId={review.id} />}
                         />
