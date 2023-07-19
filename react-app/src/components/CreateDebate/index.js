@@ -73,14 +73,9 @@ export const DebateForm = () => {
 
     return (
         <div className='create-review-wrapper'>
-            <div className='create-debate-top'>
+
                 <div className='create-review-heading' id='create-debate-heading'>Create a Debate</div>
-                <OpenModalButton
-                    className='regular-button'
-                    buttonText='Create Topic'
-                    modalComponent={<DebateTopicForm />}
-                />
-            </div>
+            
             <form className='create-prof-form' onSubmit={handleSubmit}>
 
                 <div className='create-review-errors'>
@@ -88,7 +83,7 @@ export const DebateForm = () => {
                         <p>{errors.topic}</p>
                     )}
                 </div>
-                <div className='create-review-input'>
+                <div className='create-review-input' id='debate-topic-options'>
                     <label>
                         Select Debate Topic &nbsp;
                         <select
@@ -102,6 +97,11 @@ export const DebateForm = () => {
                             ))}
                         </select>
                     </label>
+                    <OpenModalButton
+                    className='topic-button'
+                    buttonText='Create Topic'
+                    modalComponent={<DebateTopicForm />}
+                />
                 </div>
 
 
