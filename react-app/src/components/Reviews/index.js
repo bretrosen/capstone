@@ -59,7 +59,10 @@ export const ReviewList = () => {
 
                                     <div className='review-time'>{dayjs(review.time_stamp).format("MMMM Do, YYYY")}</div>
                                 </div>
-                                <div className='review-prof-name'>Professor: {review.prof_first_name} {review.prof_last_name}</div>
+                                <div className='review-prof-name-line'>
+                                    <div className='review-prof-name-heading'>Professor: </div>
+                                    <div className='review-prof-name'>{review.prof_first_name} {review.prof_last_name}</div>
+                                </div>
                                 <div className='reviews-right-middle'>
                                     <div className='review-item'>For Credit:&nbsp;
                                         {review.for_credit && <span className='review-boolean'>Yes</span>}

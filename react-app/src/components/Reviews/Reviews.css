@@ -21,7 +21,8 @@
 
 .review-course-name {
     margin-right: 12px;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 .review-item {
@@ -29,7 +30,16 @@
 }
 
 .review-prof-name {
-    margin-right: 12px;
+    font-weight: 600;
+}
+
+.review-prof-name-heading {
+    margin-right: 5px;
+}
+
+.review-prof-name-line {
+    display: flex;
+    flex-direction: row;
 }
 
 .review-time {
