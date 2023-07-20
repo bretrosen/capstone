@@ -16,6 +16,8 @@ export const LandingPage = () => {
     const profsObj = useSelector(state => state.profs.allProfs)
     const profs = Object.values(profsObj)
 
+    console.log("profs array on landing page ==========>", profs)
+
     const [search, setSearch] = useState('')
     const [lastName, setLastName] = useState('')
 
