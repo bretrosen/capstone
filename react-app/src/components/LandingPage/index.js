@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviewsThunk } from '../../store/reviews'
@@ -7,11 +7,21 @@ import { getAllCoursesThunk } from '../../store/courses'
 import { getAllDebatesThunk } from '../../store/debates'
 import ProfileButton from '../Navigation/ProfileButton.js';
 import Footer from '../Footer'
+import { ProfList } from './ProfList.js'
 import "./LandingPage.css"
 
 export const LandingPage = () => {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
+    const profsObj = useSelector(state => state.profs.allProfs)
+    const profs = Object.values(profsObj)
+
+    const [search, setSearch] = useState('')
+    const [lastName, setLastName] = useState('')
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+    }
 
     // load everything into the store
     useEffect(() => {
@@ -65,11 +75,35 @@ export const LandingPage = () => {
                             </>
                         }
                     </div>
+
                     <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
 
                         <i className="fas fa-graduation-cap fa-flip-horizontal"></i>&nbsp;&nbsp;
                         <div className='search-placeholder'>Search for a professor</div>
                     </button>
+
+                    <form onSubmit={handleSubmit}>
+                    <i className="fas fa-graduation-cap fa-flip-horizontal" />
+                    <input
+                        type='text'
+                        value={search}
+                        placeholder='Search for a professor'
+                        onChange={e => setSearch(e.target.value)}
+                    />
+                    <div>
+                        <ul>
+                            {profs.map((prof) => (
+                                <ProfList
+                                    prof={prof}
+                                    search={search}
+                                    setLastName={setLastName}
+                                    setSearch={setSearch}
+                                    key={prof.id}
+                                />
+                            ))}
+                        </ul>
+                    </div>
+                    </form>
 
                     {/* <input className='search-bar-landing' placeholder='Professor Name'></input> */}
                     {/* <img className='man-book' src='/static/man-reading-book.jpeg' alt='man reading book'></img> */}
