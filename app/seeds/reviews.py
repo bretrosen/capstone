@@ -69,6 +69,7 @@ def seed_reviews():
 
     for _ in range(1, 788):
 
+        # could refactor this, currently making only the last 8 review seeds in time order
         if count < 780:
             oldest_date = '-30y'
         else:

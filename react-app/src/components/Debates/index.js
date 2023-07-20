@@ -10,7 +10,8 @@ export const DebateList = () => {
     const dispatch = useDispatch()
 
     const debatesObj = useSelector(state => state.debates.allDebates)
-    const debates = Object.values(debatesObj)
+    // reverse the array so newly created debates show first
+    const debates = Object.values(debatesObj).reverse()
 
 
     useEffect(() => {

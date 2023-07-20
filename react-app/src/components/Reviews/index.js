@@ -16,6 +16,7 @@ export const ReviewList = () => {
     const history = useHistory()
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
+    // reverse the array so newest reviews are displayed first
     const reviews = Object.values(reviewsObj).reverse()
     const user = useSelector(state => state.session.user)
     console.log("reviews object in get all reviews page =========>", reviewsObj)
