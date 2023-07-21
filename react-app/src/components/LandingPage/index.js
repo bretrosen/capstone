@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviewsThunk } from '../../store/reviews'
@@ -7,11 +7,23 @@ import { getAllCoursesThunk } from '../../store/courses'
 import { getAllDebatesThunk } from '../../store/debates'
 import ProfileButton from '../Navigation/ProfileButton.js';
 import Footer from '../Footer'
+import { ProfList } from './ProfList.js'
 import "./LandingPage.css"
 
 export const LandingPage = () => {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
+    const profsObj = useSelector(state => state.profs.allProfs)
+    const profs = Object.values(profsObj)
+
+    console.log("profs array on landing page ==========>", profs)
+
+    const [search, setSearch] = useState('')
+    const [lastName, setLastName] = useState('')
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+    }
 
     // load everything into the store
     useEffect(() => {
@@ -21,6 +33,10 @@ export const LandingPage = () => {
         dispatch(getAllDebatesThunk())
         console.log("useEffect on landing page ran")
     }, [sessionUser])
+
+    const showProfClass = 'prof-dropdown' + (search.length > 0 ? 'show' : 'hidden')
+
+    const showNoItems = 'items' + (!lastName.toLowerCase().startsWith(search.toLowerCase()) ? 'show' : 'hidden')
 
     return (
         <>
@@ -65,11 +81,39 @@ export const LandingPage = () => {
                             </>
                         }
                     </div>
-                    <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
+
+                    {/* <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
 
                         <i className="fas fa-graduation-cap fa-flip-horizontal"></i>&nbsp;&nbsp;
                         <div className='search-placeholder'>Search for a professor</div>
-                    </button>
+                    </button> */}
+
+                    <form onSubmit={handleSubmit}>
+                    <i className="fas fa-graduation-cap fa-flip-horizontal" />
+                    <input
+                        className='prof-search'
+                        type='text'
+                        value={search}
+                        placeholder='Search for a professor'
+                        onChange={e => setSearch(e.target.value)}
+                    />
+                    <div className={showProfClass}>
+                        <ul className={showProfClass}>
+                            {profs.map((prof) => (
+                                <ProfList
+                                    prof={prof}
+                                    search={search}
+                                    setLastName={setLastName}
+                                    setSearch={setSearch}
+                                    key={prof.id}
+                                />
+                            ))}
+                            {
+                                <div id={showNoItems}>Sorry, no profs by that name...</div>
+                            }
+                        </ul>
+                    </div>
+                    </form>
 
                     {/* <input className='search-bar-landing' placeholder='Professor Name'></input> */}
                     {/* <img className='man-book' src='/static/man-reading-book.jpeg' alt='man reading book'></img> */}

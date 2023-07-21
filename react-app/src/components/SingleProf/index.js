@@ -96,7 +96,7 @@ export const SingleProf = () => {
                             </div>
                         </div>
                     </div>
-                    <button className='regular-button' onClick={() => history.push(`/reviews/new`)}>Rate Professor {prof.last_name}</button>
+                    <button className='regular-button' id='rate-prof-button' onClick={() => history.push(`/reviews/new`)}>Rate Professor {prof.last_name}</button>
                 </div>
                 <div className='bar-chart'>
                     <div className='chart-heading'>
