@@ -85,3 +85,7 @@
     margin: 1rem;
     flex-flow: column;
 }
+
+#rate-prof-button {
+    padding: 8px;
+}
