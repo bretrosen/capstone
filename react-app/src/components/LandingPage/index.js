@@ -20,6 +20,7 @@ export const LandingPage = () => {
 
     const [search, setSearch] = useState('')
     const [lastName, setLastName] = useState('')
+    const [firstName, setFirstName] = useState('')
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -34,9 +35,9 @@ export const LandingPage = () => {
         console.log("useEffect on landing page ran")
     }, [sessionUser])
 
-    const showProfClass = 'prof-dropdown' + (search.length > 0 ? 'show' : 'hidden')
+    const showProfClass = 'prof-dropdown' + '-' + (search.length > 1 ? 'show' : 'hidden')
 
-    const showNoItems = 'items' + (!lastName.toLowerCase().startsWith(search.toLowerCase()) ? 'show' : 'hidden')
+    const showNoItems = 'items' + '-' + ((!lastName.toLowerCase().startsWith(search.toLowerCase()) && !firstName.toLowerCase().startsWith(search.toLowerCase())) ? 'show' : 'hidden')
 
     return (
         <>
@@ -64,46 +65,24 @@ export const LandingPage = () => {
                 <div className='landing-title'>Debate My Professors</div>
                 <div className='get-started'>
 
-                    <div className='enter-a-prof'>
+                    <p className='small-landing-header'>They test you. Now test them.</p>
 
-                        <p className='small'>They test you. Now test them.</p>
-                        <NavLink to='/debates' className='landing-link'>
-                            50 First Debates to Start
-                        </NavLink>
-                        {sessionUser &&
-                            <>
-                                <br />
-                                <br />
-                                <NavLink to='debates/new' className='landing-link'>
-                                    Create a New Debate
-                                </NavLink>
-
-                            </>
-                        }
-                    </div>
-
-                    {/* <button className='search-bar-landing' onClick={() => { return alert('Feature coming soon...') }}>
-
-                        <i className="fas fa-graduation-cap fa-flip-horizontal"></i>&nbsp;&nbsp;
-                        <div className='search-placeholder'>Search for a professor</div>
-                    </button> */}
-
-                    <form onSubmit={handleSubmit}>
-                    <i className="fas fa-graduation-cap fa-flip-horizontal" />
-                    <input
-                        className='prof-search'
-                        type='text'
-                        value={search}
-                        placeholder='Search for a professor'
-                        onChange={e => setSearch(e.target.value)}
-                    />
-                    <div className={showProfClass}>
+                    <form className='search-form' onSubmit={handleSubmit}>
+                        <i className="fas fa-search" />
+                        <input
+                            className='prof-search'
+                            type='text'
+                            value={search}
+                            placeholder='Professor name'
+                            onChange={e => setSearch(e.target.value)}
+                        />
                         <ul className={showProfClass}>
                             {profs.map((prof) => (
                                 <ProfList
                                     prof={prof}
                                     search={search}
                                     setLastName={setLastName}
+                                    setFirstName={setFirstName}
                                     setSearch={setSearch}
                                     key={prof.id}
                                 />
@@ -112,22 +91,27 @@ export const LandingPage = () => {
                                 <div id={showNoItems}>Sorry, no profs by that name...</div>
                             }
                         </ul>
-                    </div>
                     </form>
 
-                    {/* <input className='search-bar-landing' placeholder='Professor Name'></input> */}
-                    {/* <img className='man-book' src='/static/man-reading-book.jpeg' alt='man reading book'></img> */}
-                    {/* <div className='enter'>
-                        <NavLink to='/reviews'>All Reviews</NavLink>
-                        <br></br>
-                        <NavLink to='/reviews/new'>New Review</NavLink>
-                        <br></br>
-                        <NavLink to='/profs'>All Professors</NavLink>
-                        <br></br>
-                        <NavLink to='/profs/new'>New Professor</NavLink>
-                    </div> */}
 
 
+                <div className='enter-a-prof'>
+
+
+                    <NavLink to='/debates' className='landing-link'>
+                        50 First Debates to Start
+                    </NavLink>
+                    {sessionUser &&
+                        <>
+                            <br />
+                            <br />
+                            <NavLink to='debates/new' className='landing-link'>
+                                Create a New Debate
+                            </NavLink>
+
+                        </>
+                    }
+                     </div>
                 </div>
             </div>
             <Footer />

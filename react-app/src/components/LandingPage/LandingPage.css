@@ -15,14 +15,14 @@
     color: white;
     text-align: center;
     opacity: 1;
-    margin-bottom: 1rem;
 }
 
-.fa-graduation-cap {
-    /* position: relative;
-    left: 2rem;
-    top: 0px; */
+.fa-search {
+    position: relative;
+    left: 3rem;
+    top: 0px;
     color: black;
+    margin-right: 8px;
   }
 
 .get-started {
@@ -39,7 +39,7 @@
     height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding-bottom: 4rem;
 }
@@ -93,34 +93,33 @@
     align-items: center;
 }
 
-.prof-dropdownshow {
-    top: 3.5em;
+.prof-dropdown-show {
     background-color: white;
-    padding: 1.5em 1em 1.5em 1em;
-    border-radius: 10px;
-    /* position: fixed;
-    left: 12.1em; */
-    width: 25.2em;
+    padding: 2rem;
+    border-radius: 2rem;
+    width: 35rem;
     display: flex;
     flex-direction: column;
     align-items: left;
-    gap: 20px;
+    /* gap: 20px; */
     cursor: default;
     z-index: 10;
 }
 
-.prof-dropdownhidden {
+.prof-dropdown-hidden {
     display: none;
+    padding: 2rem;
 }
 
 .prof-search {
-    height: 3em;
-    width: 30em;
-    padding-left: 2.5em;
+    height: 3.5rem;
+    width: 35rem;
+    padding-left: 3.5rem;
     border: .25px solid lightgrey;
-    border-radius: 5px;
-    font-weight: 600;
+    border-radius: 2rem;
+    font-size: 18px;
 }
+
 
 .search-bar-landing {
     margin-top: 12rem;
@@ -137,19 +136,35 @@
     background: white;
 }
 
+.search-form {
+    margin: 2rem 0 12rem 0;
+    text-align: left;
+}
+
 .search-placeholder {
     color: lightgray;
 }
 
-.search-results {
-    display: flex;
-    justify-content: space-between;
+.search-results-field {
+    font-weight: 400
 }
 
-.small {
+.search-results-name {
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.small-landing-header {
     font-size: 22px;
+    color: white;
+    text-align: center;
 }
 
-#itemshidden {
+#items-hidden {
     display: none;
+}
+
+#items-show {
+    position: relative;
+    left: 1rem;
 }
