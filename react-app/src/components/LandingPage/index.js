@@ -67,6 +67,24 @@ export const LandingPage = () => {
 
                     <p className='small-landing-header'>They test you. Now test them.</p>
 
+                    <div className='enter-a-prof'>
+
+
+                        <NavLink to='/debates' className='landing-link'>
+                            50 First Debates to Start
+                        </NavLink>
+                        {sessionUser &&
+                            <>
+                                <br />
+                                <br />
+                                <NavLink to='debates/new' className='landing-link'>
+                                    Create a New Debate
+                                </NavLink>
+
+                            </>
+                        }
+                    </div>
+
                     <form className='search-form' onSubmit={handleSubmit}>
                         <i className="fas fa-search" />
                         <input
@@ -95,23 +113,7 @@ export const LandingPage = () => {
 
 
 
-                <div className='enter-a-prof'>
 
-
-                    <NavLink to='/debates' className='landing-link'>
-                        50 First Debates to Start
-                    </NavLink>
-                    {sessionUser &&
-                        <>
-                            <br />
-                            <br />
-                            <NavLink to='debates/new' className='landing-link'>
-                                Create a New Debate
-                            </NavLink>
-
-                        </>
-                    }
-                     </div>
                 </div>
             </div>
             <Footer />
