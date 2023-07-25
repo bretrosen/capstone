@@ -6,6 +6,8 @@ a {
   text-decoration: none;
 }
 
+
+
 .hidden {
   display: none;
 }
@@ -62,6 +64,7 @@ a {
 .nav-link {
   margin-right: 1rem;
   text-align: center;
+  color: white;
 }
 
 .nav-logo {
@@ -114,6 +117,34 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.prof-dropdown-nav-show {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 15rem;
+  position: relative;
+  top: 11rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  cursor: default;
+  z-index: 10;
+}
+
+.prof-dropdown-nav-hidden {
+  display: none;
+  padding: 2rem;
+}
+
+.prof-search-nav {
+  height: 2.5rem;
+  width: 15rem;
+  padding-left: 3.5rem;
+  border: .25px solid lightgrey;
+  border-radius: 2rem;
+  font-size: 18px;
 }
 
 .profile-dropdown {
@@ -170,6 +201,10 @@ a {
   cursor: pointer;
 } */
 
+.search-form-nav {
+  color: white;
+}
+
 .signup-button {
   height: 2rem;
   width: 7rem;
@@ -201,4 +236,12 @@ a {
 .user-menu-nav:hover {
   background: hsla(240, 100%, 50%, 0.829);
   color: white;
+}
+
+#fas-nav {
+  position: absolute;
+  top: 2rem;
+  left: 46rem;
+  color: black;
+  z-index: 20;
 }

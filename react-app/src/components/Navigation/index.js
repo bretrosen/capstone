@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { ProfList } from '../LandingPage/ProfList.js'
+import '../LandingPage/LandingPage.css'
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user)
+    const profsObj = useSelector(state => state.profs.allProfs)
+    const profs = Object.values(profsObj)
+    const [search, setSearch] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [firstName, setFirstName] = useState('')
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+    }
+
+    // show search results for min 2 character searches
+    const showProfClass = 'prof-dropdown-nav' + '-' + (search.length > 1 ? 'show' : 'hidden')
+
+    // show nothing found if first or last name doesn't match search string
+    const showNoItems = 'items' + '-' + ((!lastName.toLowerCase().startsWith(search.toLowerCase()) && !firstName.toLowerCase().startsWith(search.toLowerCase())) ? 'show' : 'hidden')
+
 
     return (
         <>
@@ -27,9 +45,37 @@ function Navigation({ isLoaded }) {
                         </>
                     }
 
-                    
+
 
                 </div>
+
+                                    {/* form for search input */}
+                                    <form className='search-form-nav' onSubmit={handleSubmit}>
+                        <i className="fas fa-search" id='fas-nav' />
+                        <input
+                            className='prof-search-nav'
+                            type='text'
+                            value={search}
+                            placeholder='Professor name'
+                            onChange={e => setSearch(e.target.value)}
+                        />
+                        <ul className={showProfClass}>
+                            {profs.map((prof) => (
+                                <ProfList
+                                    prof={prof}
+                                    search={search}
+                                    setLastName={setLastName}
+                                    setFirstName={setFirstName}
+                                    setSearch={setSearch}
+                                    key={prof.id}
+                                />
+                            ))}
+                            {
+                                <div id={showNoItems}>Sorry, no profs by that name...</div>
+                            }
+                        </ul>
+                    </form>
+
                 <div className='nav-wrapper-right'>
 
                     {isLoaded && (
