@@ -22,16 +22,13 @@ export const ProfList = ({prof, search, setSearch, setLastName, setFirstName}) =
             {(prof.last_name.toLowerCase().startsWith(search.toLowerCase())  ||
              prof.first_name.toLowerCase().startsWith(search.toLowerCase()))
             &&
-
             <div className='search-results-name'>
                 <NavLink exact to={`/profs/${prof.id}`} onClick={closeMenu}>{prof.first_name} {prof.last_name}
                 <div className='search-results-field'>
                 {prof.field}
                 </div>
                 </NavLink>
-            </div>
-
-            }
+            </div>}
         </>
     )
 }

@@ -35,8 +35,10 @@ export const LandingPage = () => {
         console.log("useEffect on landing page ran")
     }, [sessionUser])
 
+    // show search results for min 2 character searches
     const showProfClass = 'prof-dropdown' + '-' + (search.length > 1 ? 'show' : 'hidden')
 
+    // show nothing found if first or last name doesn't match search string
     const showNoItems = 'items' + '-' + ((!lastName.toLowerCase().startsWith(search.toLowerCase()) && !firstName.toLowerCase().startsWith(search.toLowerCase())) ? 'show' : 'hidden')
 
     return (
@@ -68,8 +70,6 @@ export const LandingPage = () => {
                     <p className='small-landing-header'>They test you. Now test them.</p>
 
                     <div className='enter-a-prof'>
-
-
                         <NavLink to='/debates' className='landing-link'>
                             50 First Debates to Start
                         </NavLink>
@@ -85,13 +85,14 @@ export const LandingPage = () => {
                         }
                     </div>
 
+                    {/* form for search input */}
                     <form className='search-form' onSubmit={handleSubmit}>
                         <i className="fas fa-search" />
                         <input
                             className='prof-search'
                             type='text'
                             value={search}
-                            placeholder='Professor name'
+                            placeholder='Search for a professor'
                             onChange={e => setSearch(e.target.value)}
                         />
                         <ul className={showProfClass}>
@@ -110,9 +111,6 @@ export const LandingPage = () => {
                             }
                         </ul>
                     </form>
-
-
-
 
                 </div>
             </div>
