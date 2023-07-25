@@ -4,24 +4,8 @@
 
 a {
   text-decoration: none;
-  /* color: rgb(58, 141, 219); */
 }
 
-/* .center-1 {
-  margin: 5px;
-}
-
-.center-2 {
-  margin: 5px;
-  padding: 0 8px 0 8px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-}
-
-.center-3 {
-  margin: 5px;
-  color: gray;
-} */
 
 
 .hidden {
@@ -29,7 +13,19 @@ a {
 }
 
 .login-button {
-  background-color: red;
+  height: 2rem;
+  width: 7rem;
+  margin: 1rem 0 1rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  background: white;
+  color: black;
+  font-weight: 700;
+}
+
+.login-button-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .login-signup-buttons {
@@ -68,6 +64,7 @@ a {
 .nav-link {
   margin-right: 1rem;
   text-align: center;
+  color: white;
 }
 
 .nav-logo {
@@ -76,14 +73,6 @@ a {
   text-align: left;
   margin: 0 2rem 0 1rem;
 }
-
-/* .nav-menu-center {
-  display: flex;
-  padding: 9px;
-  border: 1px solid lightgray;
-  border-radius: 25px;
-  box-shadow: lightgray 0px 0.5px 0.5px 0.5px;
-} */
 
 .nav-menu-center {
   color: white;
@@ -130,20 +119,32 @@ a {
   align-items: center;
 }
 
-.login-button {
-  height: 2rem;
-  width: 7rem;
-  margin: 1rem 0 1rem 1rem;
-  border-radius: 1rem;
-  text-align: center;
-  background: white;
-  color: black;
-  font-weight: 700;
+.prof-dropdown-nav-show {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 15rem;
+  position: relative;
+  top: 11rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  cursor: default;
+  z-index: 10;
 }
 
-.login-button-link:hover {
-  cursor: pointer;
-  text-decoration: underline;
+.prof-dropdown-nav-hidden {
+  display: none;
+  padding: 2rem;
+}
+
+.prof-search-nav {
+  height: 2.5rem;
+  width: 15rem;
+  padding-left: 3.5rem;
+  border: .25px solid lightgrey;
+  border-radius: 2rem;
+  font-size: 18px;
 }
 
 .profile-dropdown {
@@ -175,7 +176,7 @@ a {
   cursor: pointer;
 }
 
-.profile-manage-spots-link {
+/* .profile-manage-spots-link {
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   padding: 0.5rem;
@@ -185,9 +186,9 @@ a {
 
 .profile-manage-spots-link-a {
   color: black;
-}
+} */
 
-.profile-menu {
+/* .profile-menu {
   width: 58px;
   display: flex;
   align-items: center;
@@ -198,6 +199,10 @@ a {
 
 .profile-menu:hover {
   cursor: pointer;
+} */
+
+.search-form-nav {
+  color: white;
 }
 
 .signup-button {
@@ -231,4 +236,12 @@ a {
 .user-menu-nav:hover {
   background: hsla(240, 100%, 50%, 0.829);
   color: white;
+}
+
+#fas-nav {
+  position: absolute;
+  top: 2rem;
+  left: 46rem;
+  color: black;
+  z-index: 20;
 }

@@ -122,7 +122,7 @@
 }
 
 
-.search-bar-landing {
+/* .search-bar-landing {
     margin-top: 12rem;
     display: flex;
     flex-direction: row;
@@ -130,12 +130,12 @@
     height: 3.5rem;
     width: 30rem;
     padding-left: 1rem;
-    /* border: .25px solid lightgrey; */
+    border: .25px solid lightgrey;
     border-radius: 30px;
     font-weight: 300;
     font-size: 20px;
     background: white;
-}
+} */
 
 .search-form {
     margin: 2rem 0 12rem 0;
@@ -153,6 +153,7 @@
 .search-results-name {
     margin-bottom: 1rem;
     font-weight: 700;
+    color: black;
 }
 
 .small-landing-header {
