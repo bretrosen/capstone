@@ -30,9 +30,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1500px;
-
-    /* background: linear-gradient(0deg, rgba(21, 21, 21, 0.7), rgba(21, 21, 21, 0.7)) 50% / cover, url('man-reading-book.jpeg'); */
-
     opacity: 0.9;
     position: relative;
     width: 100%;
@@ -77,8 +74,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* padding: 1rem; */
-    /* margin: 0 3rem 0 1.5rem; */
     font-size: 15px;
     font-weight: 500;
     color: black;
@@ -121,21 +116,9 @@
     font-size: 18px;
 }
 
-
-/* .search-bar-landing {
-    margin-top: 12rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 3.5rem;
-    width: 30rem;
-    padding-left: 1rem;
-    border: .25px solid lightgrey;
-    border-radius: 30px;
-    font-weight: 300;
-    font-size: 20px;
-    background: white;
-} */
+.prof-search:focus {
+    outline: none;
+}
 
 .search-form {
     margin: 2rem 0 12rem 0;

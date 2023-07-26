@@ -49,32 +49,32 @@ function Navigation({ isLoaded }) {
 
                 </div>
 
-                                    {/* form for search input */}
-                                    <form className='search-form-nav' onSubmit={handleSubmit}>
-                        <i className="fas fa-search" id='fas-nav' />
-                        <input
-                            className='prof-search-nav'
-                            type='text'
-                            value={search}
-                            placeholder='Professor name'
-                            onChange={e => setSearch(e.target.value)}
-                        />
-                        <ul className={showProfClass}>
-                            {profs.map((prof) => (
-                                <ProfList
-                                    prof={prof}
-                                    search={search}
-                                    setLastName={setLastName}
-                                    setFirstName={setFirstName}
-                                    setSearch={setSearch}
-                                    key={prof.id}
-                                />
-                            ))}
-                            {
-                                <div id={showNoItems}>Sorry, no profs by that name...</div>
-                            }
-                        </ul>
-                    </form>
+                {/* form for search input */}
+                <form className='search-form-nav' onSubmit={handleSubmit}>
+                    <i className="fas fa-search" id='fas-nav' />
+                    <input
+                        className='prof-search-nav'
+                        type='text'
+                        value={search}
+                        placeholder='Professor name'
+                        onChange={e => setSearch(e.target.value)}
+                    />
+                    <ul className={showProfClass}>
+                        {profs.map((prof) => (
+                            <ProfList
+                                prof={prof}
+                                search={search}
+                                setLastName={setLastName}
+                                setFirstName={setFirstName}
+                                setSearch={setSearch}
+                                key={prof.id}
+                            />
+                        ))}
+                        {
+                            <div id={showNoItems}>Sorry, no profs by that name...</div>
+                        }
+                    </ul>
+                </form>
 
                 <div className='nav-wrapper-right'>
 
