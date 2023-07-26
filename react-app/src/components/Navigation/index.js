@@ -50,7 +50,7 @@ function Navigation({ isLoaded }) {
                 </div>
 
                 {/* form for search input */}
-                <form className='search-form-nav' onSubmit={handleSubmit}>
+                {/* <form className='search-form-nav' onSubmit={handleSubmit}>
                     <i className="fas fa-search" id='fas-nav' />
                     <input
                         className='prof-search-nav'
@@ -74,7 +74,7 @@ function Navigation({ isLoaded }) {
                             <div id={showNoItems}>Sorry, no profs by that name...</div>
                         }
                     </ul>
-                </form>
+                </form> */}
 
                 <div className='nav-wrapper-right'>
 
