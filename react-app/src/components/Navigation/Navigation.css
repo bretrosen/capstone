@@ -6,8 +6,6 @@ a {
   text-decoration: none;
 }
 
-
-
 .hidden {
   display: none;
 }
@@ -40,7 +38,6 @@ a {
 
 .nav-button {
   height: 1.5rem;
-  /* width: 6rem; */
   margin: 1rem 0 1rem 0;
   border-radius: 25px;
   text-align: center;
@@ -104,8 +101,6 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* padding: 1rem; */
-  /* margin: 0 3rem 0 1.5rem; */
   font-size: 15px;
   font-weight: 500;
   color: white;
@@ -120,12 +115,12 @@ a {
 }
 
 .prof-dropdown-nav-show {
-  background-color: white;
+  background-color: lightgrey;
   padding: 2rem;
   border-radius: 2rem;
   width: 15rem;
   position: relative;
-  top: 11rem;
+  top: 9rem;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -145,6 +140,11 @@ a {
   border: .25px solid lightgrey;
   border-radius: 2rem;
   font-size: 18px;
+  background: white !important;
+}
+
+.prof-search-nav:focus {
+  outline: none;
 }
 
 .profile-dropdown {
@@ -176,34 +176,9 @@ a {
   cursor: pointer;
 }
 
-/* .profile-manage-spots-link {
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  color: black;
-}
-
-.profile-manage-spots-link-a {
-  color: black;
+/* .search-form-nav {
+  text-align: left;
 } */
-
-/* .profile-menu {
-  width: 58px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  border: none;
-}
-
-.profile-menu:hover {
-  cursor: pointer;
-} */
-
-.search-form-nav {
-  color: white;
-}
 
 .signup-button {
   height: 2rem;
