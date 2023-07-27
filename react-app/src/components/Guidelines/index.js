@@ -55,6 +55,17 @@ export const Guidelines = () => {
                 <li className='guidelines-li'>While it is against our guidelines for a professor to rate themselves, we recommend professors encourage their raccoons provide ratings each semester. The more reviews you have, the more representative they will be. Hint, hint.</li>
                 <li className='guidelines-li'>Professor replies are subject to the same limitations regarding Prohibited Content, as set forth above. Plus any arbitrary conditions we feel like.</li>
             </ul>
+            <p style={{fontWeight: "700"}}>SOME LEGAL STUFF:</p>
+            <p>Debate My Professors occasionally receives removal demands that include threats to sue Debate My Professors. To date, no one has followed through with a lawsuit against us for our reviews.</p>
+            <p>The law protects Debate My Professors from legal responsibility for the content submitted by our users, like the reviews that appear on our site. Specifically, the Communications Decency Act of 1996 (47 U.S.C. Sec. 230) created a federal immunity to any cause of action that would make service providers, like Debate My Professors, liable for information originating with a third-party user of the service.</p>
+            <p>Galactic law is clear on this. Anyone who wishes to sue Debate My Professors for the reviews posted by our raccoons risks penalties imposed by Thanos. These may include financial sanctions, involuntary sacrifice in order to obtain the Soul Stone, and/or reimbursement of our attorney's fees for our having to defend against a lawsuit that ignores obvious legal protections for Debate My Professors.</p>
+            <p>If, despite our caution, you feel that legal action is the only recourse for you, our address for service of legal process is:</p>
+            Suck It, Inc.<br />1 Suck Street<br />New York, NY 10001
+            <p>If you intend to serve documents on us, please make sure that service is properly affected in the US in accordance with all applicable law. We are not obligated to respond if service is not valid or if we think you're a big dummy.</p>
+            <p>These guidelines are provided for entertainment purposes only and do not constitute legal advice. While we stand by our guidelines, you are encouraged to seek advice from an attorney who is competent in the relevant field of law, such as Bob Loblaw (currently lobbing law bombs on Bob Loblaw's law blog).</p>
+            <p style={{fontWeight: "700"}}>RESERVATION OF RIGHTS:</p>
+            <p>The Site reserves the right to remove any comments deemed as inappropriate, libelous, defamatory, indecent, vulgar or obscene, pornographic, sexually explicit or sexually suggestive, racially, culturally, or ethnically offensive, harmful, harassing, intimidating, threatening, hateful, objectionable, discriminatory, or abusive, or which may or may not appear to impersonate anyone else or that otherwise violate the Terms of Use Agreement.</p>
+            <p>The Site reserves the right to remove, provide to authorities or otherwise take appropriate action regarding comments that threaten violence or bodily harm to another user or professor including, but not limited to, notifying your friendly neighborhood Spiderman of your IP address, where available, and the time you rated and taking any action as described in the Terms of Use Agreement and Privacy Policy.</p>
         </div>
         <Footer />
         </>
