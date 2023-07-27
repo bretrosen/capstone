@@ -35,13 +35,25 @@ export const Guidelines = () => {
                 <li className='guidelines-li'>Profanity, name-calling, demonic summoning and/or vulgarity, derogatory remarks about religion, ethnicity or race, gender, physical appearance, age, mental and/or physical abilities/disabilities.</li>
                 <li className='guidelines-li'>Identifiable information about a professor or raccoon that would allow someone to contact the professor/raccoon outside of their school/den.</li>
                 <li className='guidelines-li'>References to a professor's or raccoon’s family, personal life and/or sex life, including sexual innuendos and disparaging remarks about genetic makeup.</li>
-                <li classname='guidelines-li'>Claims that a professor shows bias for or against a raccoon or a specific genus/species of organism.</li>
+                <li className='guidelines-li'>Claims that a professor shows bias for or against a raccoon or a specific genus/species of organism.</li>
                 <li className='guidelines-li'>Claims about a professor's employment/SHIELD status, including previous employment.</li>
                 <li className='guidelines-li'>Claims that a professor or raccoon engages in or has engaged in illegal activities and/or engaged the services of Thanos.</li>
                 <li className='guidelines-li'>Direct references to other existing comments or comments that have been deleted by our moderators.</li>
                 <li className='guidelines-li'>Accusations that the professor is rating him/herself or his/her colleagues.</li>
                 <li className='guidelines-li'>A language other than English. Comments must be written in English only. Klingon and Dothraki are allowed with the understanding that everyone will make fun of you.</li>
                 <li className='guidelines-li'>Hyperlinks, URLs, and/or Dormammu.</li>
+            </ul>
+            <p style={{fontWeight: "700"}}>Professor Guidelines:</p>
+            <ul>
+                <li className='guidelines-li'>This is an anonymous website where raccoons can share their classroom and dumpster experiences. We are unable to provide any data or personal information about the submitter of a review. These aren't the raccoons you're looking for.</li>
+                <li className='guidelines-li'>We do not proactively add any professor, course or dumpster to our website: every profile was submitted by our raccoon community.</li>
+                <li className='guidelines-li'>We are unable to remove a comment simply because it is negative. It will only be removed if it doesn’t comply with our site guidelines.</li>
+                <li className='guidelines-li'>We encourage you to engage with raccoons on the site by creating a Debate My Professors account. With a Professor account, you will not have the ability to do anything and you will become increasingly angry at our site. You won't like yourself when you're angry!</li>
+                <li className='guidelines-li'>Replies fueled by anger/gamma rays do not reflect well on the author and can be removed for violations such as profanity/infringement on the Low-Level Radioactive Waste Policy Act. Take a minute to step back and make sure your reply/radioactive material will genuinely help others.</li>
+                <li className='guidelines-li'>Debate My Professors' moderation team is unable to prove or disprove allegations of rabies. We are not medical professionals. If you disagree with the details mentioned in a review, straight to jail. Right away.</li>
+                <li className='guidelines-li'>If you believe that your profile is being spammed or dogpiled, please tell us. We’re here to help ourselves and will tell you that we reviewed the comments in question.</li>
+                <li className='guidelines-li'>While it is against our guidelines for a professor to rate themselves, we recommend professors encourage their raccoons provide ratings each semester. The more reviews you have, the more representative they will be. Hint, hint.</li>
+                <li className='guidelines-li'>Professor replies are subject to the same limitations regarding Prohibited Content, as set forth above. Plus any arbitrary conditions we feel like.</li>
             </ul>
         </div>
         <Footer />
