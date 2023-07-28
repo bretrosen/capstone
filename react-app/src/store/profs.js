@@ -40,7 +40,7 @@ export const getAllProfsThunk = () => async (dispatch) => {
 
     if (response.ok) {
         const profs = await response.json()
-        console.log('returning all profs thunk', profs)
+        // console.log('returning all profs thunk', profs)
         dispatch(getAllProfs(profs))
         return profs
     }
