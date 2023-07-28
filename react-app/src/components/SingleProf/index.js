@@ -19,10 +19,10 @@ export const SingleProf = () => {
     const user = useSelector(state => state.session.user)
 
     const prof = useSelector(state => state.profs.singleProf)
-    console.log("prof from single prof component", prof)
+    // console.log("prof from single prof component", prof)
     const profsObj = useSelector(state => state.profs.allProfs)
     const profs = Object.values(profsObj)
-    console.log("profs in single prof component", profs)
+    // console.log("profs in single prof component", profs)
 
     let profIdToKeyInto
     // find the right index in the profs array to access

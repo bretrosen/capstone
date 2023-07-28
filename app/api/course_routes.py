@@ -56,7 +56,7 @@ def all_courses():
         if (len(course['recommendations']) > 0):
             course['recommended'] = percent_true(course['recommendations'])
 
-    print("courses in backend route =========>", courses_dict)
+    # print("courses in backend route =========>", courses_dict)
 
     return {'courses': courses_dict}
 
@@ -85,7 +85,7 @@ def single_course(id):
     course_data['department'] = department['name']
 
 
-    print('all reviews associated with course ============>', reviews_dict)
+    # print('all reviews associated with course ============>', reviews_dict)
     return course_data
 
 @course_routes.route('/new', methods=['GET', 'POST'])

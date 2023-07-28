@@ -6,8 +6,8 @@ export const UpdateProfForm = () => {
     const { profId } = useParams()
     const profs = Object.values(useSelector(state => state.profs.allProfs))
     const prof = profs.find(p => p.id === parseInt(profId))
-    console.log("prof to update from update form ======>", prof)
-    console.log("prof to update's id from update form ======>", prof.id)
+    // console.log("prof to update from update form ======>", prof)
+    // console.log("prof to update's id from update form ======>", prof.id)
 
     if (!prof) {
         return <h1>Loading...</h1>

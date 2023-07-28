@@ -43,11 +43,11 @@ const deleteReview = (reviewId) => ({
 
 export const getAllReviewsThunk = () => async (dispatch) => {
     const response = await fetch('/api/reviews')
-    console.log('sending all reviews thunk', response)
+    // console.log('sending all reviews thunk', response)
 
     if (response.ok) {
         const reviews = await response.json()
-        console.log('returning all reviews thunk', reviews)
+        // console.log('returning all reviews thunk', reviews)
         dispatch(getAllReviews(reviews))
         return reviews
     }
@@ -55,11 +55,11 @@ export const getAllReviewsThunk = () => async (dispatch) => {
 
 export const getSingleReviewThunk = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`)
-    console.log('sending single review thunk', response)
+    // console.log('sending single review thunk', response)
 
     if (response.ok) {
         const review = await response.json()
-        console.log('returning single review thunk', review)
+        // console.log('returning single review thunk', review)
         dispatch(getSingleReview(review))
         return review
     }
@@ -67,11 +67,11 @@ export const getSingleReviewThunk = (reviewId) => async (dispatch) => {
 
 export const getCurrentUserReviewsThunk = () => async (dispatch) => {
     const response = await fetch('/api/reviews/current')
-    console.log('sending current user reviews thunk', response)
+    // console.log('sending current user reviews thunk', response)
 
     if (response.ok) {
         const reviews = await response.json()
-        console.log('returning current user reviews thunk', reviews)
+        // console.log('returning current user reviews thunk', reviews)
         dispatch(getUserReviews(reviews))
         return reviews
     }
@@ -83,11 +83,11 @@ export const createReviewThunk = (review) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(review)
     })
-    console.log('sending create review thunk', response)
+    // console.log('sending create review thunk', response)
 
     if (response.ok) {
         const newReview = await response.json()
-        console.log('returning create review thunk', newReview)
+        // console.log('returning create review thunk', newReview)
         dispatch(createReview(newReview))
         return newReview
     }
@@ -99,11 +99,11 @@ export const updateReviewThunk = (reviewId, review) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(review)
     })
-    console.log('sending update review thunk', response)
+    // console.log('sending update review thunk', response)
 
     if (response.ok) {
         const updatedReview = await response.json()
-        console.log('returning update review thunk', updatedReview)
+        // console.log('returning update review thunk', updatedReview)
         dispatch(createReview(updatedReview))
         return updatedReview
     }
@@ -114,11 +114,11 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     })
-    console.log("sending delete review thunk")
+    // console.log("sending delete review thunk")
 
     if (response.ok) {
         await response.json()
-        console.log("returning delete review thunk")
+        // console.log("returning delete review thunk")
         dispatch(deleteReview(reviewId))
         return
     }

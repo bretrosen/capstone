@@ -21,7 +21,7 @@ export const CurrentUserReviewList = () => {
 
     useEffect(() => {
         dispatch(getCurrentUserReviewsThunk())
-        console.log('useEffect in user reviews ran')
+        // console.log('useEffect in user reviews ran')
     }, [dispatch])
 
     if (!reviews) {

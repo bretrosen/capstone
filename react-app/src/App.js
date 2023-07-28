@@ -21,6 +21,7 @@ import { DebateList } from './components/Debates'
 import { SingleDebate } from './components/SingleDebate'
 import { DebateForm } from './components/CreateDebate'
 import { Guidelines } from './components/Guidelines'
+import { Terms } from './components/Terms'
 
 function App() {
   const dispatch = useDispatch();
@@ -104,6 +105,10 @@ function App() {
         <Route path='/guidelines'>
           <Navigation isLoaded={isLoaded} />
           <Guidelines />
+        </Route>
+        <Route path='/terms'>
+          <Navigation isLoaded={isLoaded} />
+          <Terms />
         </Route>
         {/* <Route path="/login" >
             <LoginFormModal />
