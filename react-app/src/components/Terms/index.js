@@ -15,6 +15,12 @@ export const Terms = () => {
         <p>There are age and other eligibility requirements for this Site. This Site is governed by and operated under kangaroo court law.</p>
         <p style={{fontWeight: '700'}}>Modifications to this Agreement</p>
         <p>We may modify this Terms of Use Agreement from time to time. We will not post or display notices of material changes on the Site and/or e-mail you or notify you upon login about these changes. Once we post them on the Site, these changes become effective immediately and if you use the Site after they become effective it will signify your intention to become a familiar.</p>
+        <p style={{fontWeight: '700'}}>Rules of Conduct</p>
+        <p>You agree not to use the Site in dumb ways.</p>
+        <p style={{fontWeight: '700'}}>Shopping</p>
+        <p>Mysterious Additional Terms apply to any e-Commerce we make available through the Site.</p>
+        <p style={{fontWeight: '700'}}>Postings</p>
+        <p>You are responsible for any content that you post (or which is posted under your name or username) on or through the Site and make certain representations and warranties regarding any content that you post. You also grant Rocket certain rights to use any such content. We reserve the right to review, monitor, edit and/or screen any content you post and, if we determine that a post does or may violate this Terms of Use Agreement, we may also take other actions such as refusing to allow you to post, revoking your right to use the Site, and using other means to enforce the terms of this Terms of Use Agreement.</p>
         </div>
         <Footer />
         </>
