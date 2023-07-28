@@ -17,18 +17,18 @@ export const ReviewForm = ({ review, formType }) => {
         dispatch(getAllReviewsThunk())
         dispatch(getAllProfsThunk())
         dispatch(getAllCoursesThunk())
-        console.log("useEffect in create review form ran")
+        // console.log("useEffect in create review form ran")
     }, [dispatch, sessionUser])
 
     // get all courses from store to use as select field for form
     const coursesObj = useSelector(state => state.courses.allCourses)
     const COURSES = Object.values(coursesObj)
-    console.log("courses", COURSES)
+    // console.log("courses", COURSES)
 
     // get all profs from store to use as select field for form
     const profsObj = useSelector(state => state.profs.allProfs)
     const PROFS = Object.values(profsObj)
-    console.log("profs", PROFS)
+    // console.log("profs", PROFS)
 
     const [prof, setProf] = useState(review?.prof || '')
     const [course, setCourse] = useState(review?.course || '')

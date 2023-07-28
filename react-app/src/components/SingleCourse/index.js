@@ -17,7 +17,7 @@ export const SingleCourse = () => {
 
     const { courseId } = useParams()
     const user = useSelector(state => state.session.user)
-    console.log("course Id param in component ===========>", courseId)
+    // console.log("course Id param in component ===========>", courseId)
 
     const course = useSelector(state => state.courses.singleCourse)
     const coursesObj = useSelector(state => state.courses.allCourses)

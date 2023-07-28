@@ -30,11 +30,11 @@ const createCourse = (course) => ({
 
 export const getAllCoursesThunk = () => async (dispatch) => {
     const response = await fetch('/api/courses')
-    console.log('sending all courses thunk', response)
+    // console.log('sending all courses thunk', response)
 
     if (response.ok) {
         const courses = await response.json()
-        console.log('returning all courses thunk', courses)
+        // console.log('returning all courses thunk', courses)
         dispatch(getAllCourses(courses))
         return courses
     }
@@ -42,11 +42,11 @@ export const getAllCoursesThunk = () => async (dispatch) => {
 
 export const getSingleCourseThunk = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`)
-    console.log('sending single course thunk', response)
+    // console.log('sending single course thunk', response)
 
     if (response.ok) {
         const course = await response.json()
-        console.log('returning single course thunk', course)
+        // console.log('returning single course thunk', course)
         dispatch(getSingleCourse(course))
         return course
     }
@@ -62,7 +62,7 @@ export const createCourseThunk = (course) => async (dispatch) => {
 
     if (response.ok) {
         const newCourse = await response.json()
-        console.log('returning create course thunk', newCourse)
+        // console.log('returning create course thunk', newCourse)
         dispatch(createCourse(newCourse))
         return newCourse
     }
@@ -74,11 +74,11 @@ export const updateCourseThunk = (courseId, course) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(course)
     })
-    console.log('sending update course thunk', response)
+    // console.log('sending update course thunk', response)
 
     if (response.ok) {
         const updatedCourse = await response.json()
-        console.log('returning update course thunk', updatedCourse)
+        // console.log('returning update course thunk', updatedCourse)
         dispatch(createCourse(updatedCourse))
         return updatedCourse
     }

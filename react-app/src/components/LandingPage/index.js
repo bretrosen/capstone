@@ -16,7 +16,7 @@ export const LandingPage = () => {
     const profsObj = useSelector(state => state.profs.allProfs)
     const profs = Object.values(profsObj)
 
-    console.log("profs array on landing page ==========>", profs)
+    // console.log("profs array on landing page ==========>", profs)
 
     const [search, setSearch] = useState('')
     const [lastName, setLastName] = useState('')
@@ -32,7 +32,7 @@ export const LandingPage = () => {
         dispatch(getAllProfsThunk())
         dispatch(getAllCoursesThunk())
         dispatch(getAllDebatesThunk())
-        console.log("useEffect on landing page ran")
+        // console.log("useEffect on landing page ran")
     }, [sessionUser])
 
     // show search results for min 2 character searches

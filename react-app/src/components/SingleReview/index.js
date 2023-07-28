@@ -13,7 +13,7 @@ export const SingleReview = () => {
     const { reviewId } = useParams()
 
     const review = useSelector(state => state.reviews.singleReview)
-    console.log("review from single spot component", review)
+    // console.log("review from single spot component", review)
 
     useEffect(() => {
         dispatch(getSingleReviewThunk(reviewId))

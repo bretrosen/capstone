@@ -15,12 +15,12 @@ export const ProfList = () => {
 
     const profsObj = useSelector(state => state.profs.allProfs)
     const profs = Object.values(profsObj)
-    console.log("profs in all profs", profs)
+    // console.log("profs in all profs", profs)
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(getAllProfsThunk())
-        console.log('useEffect in get all profs ran')
+        // console.log('useEffect in get all profs ran')
     }, [dispatch])
 
     if (!profs) {

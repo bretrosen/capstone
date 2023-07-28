@@ -58,7 +58,7 @@ def all_profs():
         if (len(prof['recommendations']) > 0):
             prof['recommended'] = percent_true(prof['recommendations'])
 
-    print("profs in backend route", profs_dict)
+    # print("profs in backend route", profs_dict)
 
     return {'profs': profs_dict}
 
@@ -86,7 +86,7 @@ def single_prof(id):
         review['quality'] = mean([review['intelligence'], review['wisdom'], review['charisma'], review['knowledge'], review['preparation'], review['respect']])
 
 
-    print("all reviews associated with prof ============>", reviews_dict)
+    # print("all reviews associated with prof ============>", reviews_dict)
 
     return prof_data
 
@@ -112,7 +112,7 @@ def post_prof():
             field=form.data['field']
         )
 
-        print('new prof to add to db =====>', new_prof)
+        # print('new prof to add to db =====>', new_prof)
 
         db.session.add(new_prof)
         db.session.commit()

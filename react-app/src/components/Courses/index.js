@@ -14,12 +14,12 @@ export const CourseList = () => {
 
     const coursesObj = useSelector(state => state.courses.allCourses)
     const courses = Object.values(coursesObj)
-    console.log('courses in all courses ======>', courses)
+    // console.log('courses in all courses ======>', courses)
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(getAllCoursesThunk())
-        console.log('useEffect in get all courses ran')
+        // console.log('useEffect in get all courses ran')
     }, [dispatch])
 
     if (!courses) {

@@ -34,11 +34,11 @@ const createDebate = (debate) => ({
 
 export const getAllDebatesThunk = () => async (dispatch) => {
     const response = await fetch('/api/debates')
-    console.log('sending all debates thunk', response)
+    // console.log('sending all debates thunk', response)
 
     if (response.ok) {
         const debates = await response.json()
-        console.log('returning all debates thunk', debates)
+        // console.log('returning all debates thunk', debates)
         dispatch(getAllDebates(debates))
         return debates
     }
@@ -46,11 +46,11 @@ export const getAllDebatesThunk = () => async (dispatch) => {
 
 export const getSingleDebateThunk = (debateId) => async (dispatch) => {
     const response = await fetch(`/api/debates/${debateId}`)
-    console.log('sending single debate thunk', response)
+    // console.log('sending single debate thunk', response)
 
     if (response.ok) {
         const debate = await response.json()
-        console.log('returning single debate thunk', debate)
+        // console.log('returning single debate thunk', debate)
         dispatch(getSingleDebate(debate))
         return debate
     }
@@ -62,11 +62,11 @@ export const createDebateThunk = (debate) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(debate)
     })
-    console.log('sending create debate thunk', response)
+    // console.log('sending create debate thunk', response)
 
     if (response.ok) {
         const newDebate = await response.json()
-        console.log('returning create debate thunk', newDebate)
+        // console.log('returning create debate thunk', newDebate)
         dispatch(createDebate(newDebate))
         return newDebate
     }

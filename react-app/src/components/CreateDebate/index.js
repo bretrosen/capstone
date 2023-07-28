@@ -17,18 +17,18 @@ export const DebateForm = () => {
     useEffect(() => {
         dispatch(getAllDebateTopicsThunk())
         dispatch(getAllProfsThunk())
-        console.log('useEffect in create debate ran')
+        // console.log('useEffect in create debate ran')
     }, [dispatch])
 
     // get all topics from the store for form select field
     const topicsObj = useSelector(state => state.topics.allDebateTopics)
     const TOPICS = Object.values(topicsObj)
-    console.log("debate topics =====>", TOPICS)
+    // console.log("debate topics =====>", TOPICS)
 
     // get all profs from the sotre for form select field
     const profsObj = useSelector(state => state.profs.allProfs)
     const PROFS = Object.values(profsObj)
-    console.log("profs ====>", PROFS)
+    // console.log("profs ====>", PROFS)
 
     const [topic, setTopic] = useState('')
     const [prof1, setProf1] = useState('')
@@ -75,7 +75,7 @@ export const DebateForm = () => {
         <div className='create-review-wrapper'>
 
                 <div className='create-review-heading' id='create-debate-heading'>Create a Debate</div>
-            
+
             <form className='create-prof-form' onSubmit={handleSubmit}>
 
                 <div className='create-review-errors'>

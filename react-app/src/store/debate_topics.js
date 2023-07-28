@@ -23,11 +23,11 @@ const createTopic = (topic) => ({
 
 export const getAllDebateTopicsThunk = () => async (dispatch) => {
     const response = await fetch('/api/debate_topics')
-    console.log('sending all debate topics thunk', response)
+    // console.log('sending all debate topics thunk', response)
 
     if (response.ok) {
         const debateTopics = await response.json()
-        console.log('returning all debate topics thunk', debateTopics)
+        // console.log('returning all debate topics thunk', debateTopics)
         dispatch(getAllDebateTopics(debateTopics))
         return debateTopics
     }
@@ -39,11 +39,11 @@ export const createDebateTopicThunk = (topic) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(topic)
     })
-    console.log('sending create topic thunk', response)
+    // console.log('sending create topic thunk', response)
 
     if (response.ok) {
         const newDebateTopic = await response.json()
-        console.log('returning create topic thunk', newDebateTopic)
+        // console.log('returning create topic thunk', newDebateTopic)
         dispatch(createTopic(newDebateTopic))
         return newDebateTopic
     }

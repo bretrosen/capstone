@@ -36,7 +36,7 @@ const deleteProf = (profId) => ({
 
 export const getAllProfsThunk = () => async (dispatch) => {
     const response = await fetch('/api/profs')
-    console.log('sending all profs thunk', response)
+    // console.log('sending all profs thunk', response)
 
     if (response.ok) {
         const profs = await response.json()
@@ -48,11 +48,11 @@ export const getAllProfsThunk = () => async (dispatch) => {
 
 export const getSingleProfThunk = (profId) => async (dispatch) => {
     const response = await fetch(`/api/profs/${profId}`)
-    console.log('sending single prof thunk', response)
+    // console.log('sending single prof thunk', response)
 
     if (response.ok) {
         const prof = await response.json()
-        console.log('returning single prof thunk', prof)
+        // console.log('returning single prof thunk', prof)
         dispatch(getSingleProf(prof))
         return prof
     }
@@ -64,11 +64,11 @@ export const createProfThunk = (prof) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(prof)
     })
-    console.log('sending create prof thunk', response)
+    // console.log('sending create prof thunk', response)
 
     if (response.ok) {
         const newProf = await response.json()
-        console.log('returning create prof thunk', newProf)
+        // console.log('returning create prof thunk', newProf)
         dispatch(createProf(newProf))
         return newProf
     }
@@ -80,11 +80,11 @@ export const updateProfThunk = (profId, prof) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(prof)
     })
-    console.log('sending update prof thunk', response)
+    // console.log('sending update prof thunk', response)
 
     if (response.ok) {
         const updatedProf = await response.json()
-        console.log('returning update prof thunk', updatedProf)
+        // console.log('returning update prof thunk', updatedProf)
         dispatch(createProf(updatedProf))
         return updatedProf
     }
@@ -95,11 +95,11 @@ export const deleteProfThunk = (profId) => async (dispatch) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     })
-    console.log("sending delete prof thunk")
+    // console.log("sending delete prof thunk")
 
     if (response.ok) {
         await response.json()
-        console.log("returning delete prof thunk")
+        // console.log("returning delete prof thunk")
         dispatch(deleteProf(profId))
         return
     }

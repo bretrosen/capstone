@@ -62,7 +62,7 @@ def post_review():
     Renders an empty form for the GET request. Validates the form and creates a new review for the POST request.
     '''
 
-    print("current user", current_user)
+    # print("current user", current_user)
 
     user = current_user
     creator_id = user.id

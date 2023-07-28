@@ -19,14 +19,14 @@ export const ReviewList = () => {
     // reverse the array so newest reviews are displayed first
     const reviews = Object.values(reviewsObj).reverse()
     const user = useSelector(state => state.session.user)
-    console.log("reviews object in get all reviews page =========>", reviewsObj)
-    console.log("reviews array in get all reviews page ==========>", reviews)
-    console.log("review length in get all reviews page ==========>", reviews.length)
+    // console.log("reviews object in get all reviews page =========>", reviewsObj)
+    // console.log("reviews array in get all reviews page ==========>", reviews)
+    // console.log("review length in get all reviews page ==========>", reviews.length)
 
 
     useEffect(() => {
         dispatch(getAllReviewsThunk())
-        console.log("useEffect in get all reviews ran")
+        // console.log("useEffect in get all reviews ran")
     }, [dispatch])
 
 

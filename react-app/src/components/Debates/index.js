@@ -17,7 +17,7 @@ export const DebateList = () => {
     useEffect(() => {
         dispatch(getAllDebatesThunk())
         dispatch(getAllProfsThunk())
-        console.log('useEffect in get all debates ran')
+        // console.log('useEffect in get all debates ran')
     }, [dispatch])
 
     if (debates.length === 0) {
