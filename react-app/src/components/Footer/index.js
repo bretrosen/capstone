@@ -14,6 +14,7 @@ export default function Footer() {
                 <div className='footer-heading'>
                     LEGAL
                 </div>
+                <NavLink className='footer-link' to='/terms'>Terms & Conditions</NavLink>
             </div>
             <div className='right-footer'>
                 <div className='footer-heading'>
