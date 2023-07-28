@@ -148,7 +148,7 @@ def get_user_reviews():
         review['prof_first_name'] = prof['first_name']
         review['prof_last_name'] = prof['last_name']
         review['course_name'] = course['name']
-        print("single review from backend ============>", review)
+        # print("single review from backend ============>", review)
 
 
     return {"reviews": user_reviews_to_dict}
