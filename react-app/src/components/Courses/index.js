@@ -27,6 +27,7 @@ export const CourseList = () => {
     }
 
     return (
+
         <div className='profs-list-wrapper'>
             <div className='profs-list-heading'>
                 {courses.length} Courses at The University of Life
@@ -42,7 +43,7 @@ export const CourseList = () => {
                                     <div className='rating-number' id='low'>{course.quality.toFixed(1)}</div>}
                                 {course.quality >= 6.7 && course.quality < 13.4 &&
                                     <div className='rating-number' id='medium'>{course.quality.toFixed(1)}</div>}
-                                {course.quality >=13.4 && course.quality <= 20 &&
+                                {course.quality >= 13.4 && course.quality <= 20 &&
                                     <div className='rating-number' id='high'>{course.quality.toFixed(1)}</div>}
                             </div>
 
@@ -50,21 +51,22 @@ export const CourseList = () => {
                                 <div className='course-list-name'>{course.name}</div>
                                 <div className='course-list-department'> {course.department}</div>
                                 {course.recommendations.length > 0 &&
-                                <div>{course.recommended.toFixed(0)}% would take again</div>}
+                                    <div>{course.recommended.toFixed(0)}% would take again</div>}
                                 {course.difficulties.length > 0 &&
-                                <div>{course.difficulty.toFixed(1)} level of difficulty</div>}
+                                    <div>{course.difficulty.toFixed(1)} level of difficulty</div>}
                             </div>
                         </div>
 
                     </Link>
 
                     {user && course.creator_id === user.id &&
-                    <button className='regular-button' onClick={() => history.push(`/courses/${course.id}/edit`)}>Update Course</button>}
+                        <button className='regular-button' onClick={() => history.push(`/courses/${course.id}/edit`)}>Update Course</button>}
 
                 </>
             ))}
 
         </div>
+
 
     )
 }

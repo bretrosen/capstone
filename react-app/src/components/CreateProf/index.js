@@ -48,11 +48,11 @@ export const ProfForm = ({ prof, formType }) => {
                 history.push(`/profs/${updatedProf.id}`)
             }
             else {
-            // dispatch create thunk for create form
-            const newProf = await dispatch(createProfThunk(formInfo))
-            // direct to newly created prof
-            history.push(`/profs/${newProf.id}`)
-            // history.push(`/profs`)
+                // dispatch create thunk for create form
+                const newProf = await dispatch(createProfThunk(formInfo))
+                // direct to newly created prof
+                history.push(`/profs/${newProf.id}`)
+                // history.push(`/profs`)
             }
         }
     }
@@ -69,12 +69,12 @@ export const ProfForm = ({ prof, formType }) => {
                 </div>
                 <div className='create-review-input'>
                     <label>
-                    Professor's First Name
-                    <input className='create-prof-input-box'
-                        type='text'
-                        value={firstName}
-                        onChange={e => setFirstName(e.target.value)} />
-                        </label>
+                        Professor's First Name
+                        <input className='create-prof-input-box'
+                            type='text'
+                            value={firstName}
+                            onChange={e => setFirstName(e.target.value)} />
+                    </label>
                 </div>
 
                 <div className='create-review-errors'>
@@ -84,12 +84,12 @@ export const ProfForm = ({ prof, formType }) => {
                 </div>
                 <div className='create-review-input'>
                     <label>
-                    Professor's Last Name
-                    <input className='create-prof-input-box'
-                        type='text'
-                        value={lastName}
-                        onChange={e => setLastName(e.target.value)} />
-                        </label>
+                        Professor's Last Name
+                        <input className='create-prof-input-box'
+                            type='text'
+                            value={lastName}
+                            onChange={e => setLastName(e.target.value)} />
+                    </label>
                 </div>
 
                 <div className='create-review-errors'>
@@ -99,12 +99,12 @@ export const ProfForm = ({ prof, formType }) => {
                 </div>
                 <div className='create-review-input'>
                     <label>
-                    Professor's Field of Study
-                    <input className='create-prof-input-box'
-                        type='text'
-                        value={field}
-                        onChange={e => setField(e.target.value)} />
-                        </label>
+                        Professor's Field of Study
+                        <input className='create-prof-input-box'
+                            type='text'
+                            value={field}
+                            onChange={e => setField(e.target.value)} />
+                    </label>
                 </div>
 
                 <button className='regular-button' id='create-prof-button' type='submit'>
