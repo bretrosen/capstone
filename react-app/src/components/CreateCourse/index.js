@@ -115,5 +115,4 @@ export const CourseForm = ({ course, formType }) => {
             </form>
         </div>
     )
-
 }

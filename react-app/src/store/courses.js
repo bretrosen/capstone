@@ -58,7 +58,7 @@ export const createCourseThunk = (course) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(course)
     })
-    console.log('sending create course thunk', response)
+    // console.log('sending create course thunk', response)
 
     if (response.ok) {
         const newCourse = await response.json()

@@ -22,6 +22,7 @@ import { SingleDebate } from './components/SingleDebate'
 import { DebateForm } from './components/CreateDebate'
 import { Guidelines } from './components/Guidelines'
 import { Terms } from './components/Terms'
+import Footer from './components/Footer'
 
 function App() {
   const dispatch = useDispatch();
@@ -41,66 +42,82 @@ function App() {
         <Route path='/reviews/:reviewId/edit'>
           <Navigation isLoaded={isLoaded} />
           <UpdateReviewForm />
+          <Footer />
         </Route>
         <Route path='/reviews/new'>
           <Navigation isLoaded={isLoaded} />
           <ReviewForm />
+          <Footer />
         </Route>
         <Route path='/reviews/current'>
           <Navigation isLoaded={isLoaded} />
           <CurrentUserReviewList />
+          <Footer />
         </Route>
         <Route path='/reviews/:reviewId'>
           <Navigation isLoaded={isLoaded} />
           <SingleReview />
+          <Footer />
         </Route>
         <Route path='/reviews'>
           <Navigation isLoaded={isLoaded} />
           <ReviewList />
+          <Footer />
         </Route>
         <Route path='/profs/:profId/edit'>
           <Navigation isLoaded={isLoaded} />
           <UpdateProfForm />
+          <Footer />
         </Route>
         <Route path='/profs/new'>
           <Navigation isLoaded={isLoaded} />
           <ProfForm />
+          <Footer />
         </Route>
         <Route path='/profs/:profId'>
           <Navigation isLoaded={isLoaded} />
           <SingleProf />
+          <Footer />
         </Route>
         <Route path='/profs'>
           <Navigation isLoaded={isLoaded} />
           <ProfList />
+          <Footer />
         </Route>
         <Route path='/courses/:courseId/edit'>
           <Navigation isLoaded={isLoaded} />
           <UpdateCourseForm />
+          <Footer />
         </Route>
         <Route path='/courses/new'>
           <Navigation isLoaded={isLoaded} />
           <CourseForm />
+          <Footer />
         </Route>
         <Route path='/courses/:courseId'>
           <Navigation isLoaded={isLoaded} />
           <SingleCourse />
+          <Footer />
         </Route>
         <Route path='/courses'>
           <Navigation isLoaded={isLoaded} />
           <CourseList />
+          <Footer />
         </Route>
         <Route path='/debates/new'>
           <Navigation isLoaded={isLoaded} />
           <DebateForm />
+          <Footer />
         </Route>
         <Route path='/debates/:debateId'>
           <Navigation isLoaded={isLoaded} />
           <SingleDebate />
+          <Footer />
         </Route>
         <Route path='/debates'>
           <Navigation isLoaded={isLoaded} />
           <DebateList />
+          <Footer />
         </Route>
         <Route path='/guidelines'>
           <Navigation isLoaded={isLoaded} />
@@ -110,14 +127,7 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           <Terms />
         </Route>
-        {/* <Route path="/login" >
-            <LoginFormModal />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
       </Switch>
-
     </>
   );
 }

@@ -35,7 +35,7 @@ export const SingleProf = () => {
 
     const profReviews = useSelector(state => state.profs.singleProf.reviews)
 
-    console.log("prof reviews in single prof =========>", profReviews)
+    // console.log("prof reviews in single prof =========>", profReviews)
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj)
