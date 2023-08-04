@@ -64,10 +64,11 @@ export const LandingPage = () => {
             </div>
 
             <div className='landing-page'>
-                <div className='landing-title'>Debate My Professors</div>
+                {/* <div className='landing-title'>Debate My Professors</div> */}
                 <div className='get-started'>
 
-                    <p className='small-landing-header'>They test you. Now test them.</p>
+                    <img className='banner' src='/static/banner3.png' alt='banner with text Debate My Professors'></img>
+                    {/* <p className='small-landing-header'>They test you. Now test them.</p> */}
 
                     <div className='enter-a-prof'>
                         <NavLink to='/debates' className='landing-link'>
