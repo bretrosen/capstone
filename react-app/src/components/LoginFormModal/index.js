@@ -86,7 +86,7 @@ function LoginFormModal() {
             onClick={demoUserLogin}>
             Demo User
           </button>
-          <p className='login-small'>Debate My Professors is designed for and targeted to audiences in the Galactic Empire and is governed by and operated in accordance with laws of the Empire.</p>
+          <p className='login-small'>Debate My Professors is designed for and targeted to audiences in the Galactic Empire and is governed by and operated in accordance with laws of the Empire. We made a deal that'll keep the Empire here forever.</p>
         </div>
       </form>
 
