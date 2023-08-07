@@ -105,6 +105,7 @@ function SignupFormModal() {
 						/>
 
 					<button className='submit-signup-button' type="submit">Sign Up</button>
+					<p className='login-small'>Debate My Professors is designed for and targeted to audiences in the Galactic Empire and is governed by and operated in accordance with laws of the Empire. We made a deal that'll keep the Empire here forever.</p>
 				</div>
 			</form>
 		</div>

@@ -39,9 +39,9 @@ function LoginFormModal() {
   };
 
   return (
-    <div className='wrapper'>
+    <div className='login-wrapper'>
 
-      <h1>Log In</h1>
+      <h1>Login</h1>
       {/* {errors[0] && <p className='login-errors'>{errors[0]}</p>}
       {errors[1] && <p className='login-errors'>{errors[1]}</p>}
       {errors[2] && <p className='login-errors'>{errors[2]}</p>}
@@ -79,13 +79,14 @@ function LoginFormModal() {
           <button className='submit-login-button'
             type='submit'
           // disabled={!canSubmit}
-          >Log In
+          >Login
           </button>
           <button
             className='demo-user'
             onClick={demoUserLogin}>
             Demo User
           </button>
+          <p className='login-small'>Debate My Professors is designed for and targeted to audiences in the Galactic Empire and is governed by and operated in accordance with laws of the Empire. We made a deal that'll keep the Empire here forever.</p>
         </div>
       </form>
 
