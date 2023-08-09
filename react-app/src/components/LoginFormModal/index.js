@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -87,6 +89,12 @@ function LoginFormModal() {
             Demo User
           </button>
           <p className='login-small'>Debate My Professors is designed for and targeted to audiences in the Galactic Empire and is governed by and operated in accordance with laws of the Empire. We made a deal that'll keep the Empire here forever.</p>
+          <p className='bottom-login-modal'>Don't have an account?&nbsp;
+        <OpenModalButton
+              className='signup-button-login-modal'
+              buttonText="Sign Up"
+              modalComponent={<SignupFormModal />}/>
+              </p>
         </div>
       </form>
 
