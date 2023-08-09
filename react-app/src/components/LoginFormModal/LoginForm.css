@@ -3,6 +3,10 @@ input::placeholder {
     opacity: 0.5;
 }
 
+.bottom-login-modal {
+    margin-bottom: 2rem;
+}
+
 .demo-user {
     background: none;
     border: none;
@@ -23,7 +27,7 @@ input::placeholder {
 .login-form {
     display: flex;
     flex-direction: column;
-    height: 22rem;
+    height: 26rem;
     margin: 0 3rem;
 }
 
@@ -56,6 +60,11 @@ input::placeholder {
     color: black;
     background-color: white;
     box-shadow: 3px 4px grey;
+}
+
+.signup-button-login-modal {
+    color: blue;
+    font-weight: 700;
 }
 
 .submit-login-button {

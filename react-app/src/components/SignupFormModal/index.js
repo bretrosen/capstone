@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from '../LoginFormModal'
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -30,14 +32,14 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		// if (password === confirm_password) {
-			const data = await dispatch(signUp(username, email, password, confirm_password, first_name, last_name));
-			if (data) {
-				// console.log("data???", data)
-				setErrors(data);
-				// console.log("errors??", errors)
-			} else {
-				closeModal();
-			}
+		const data = await dispatch(signUp(username, email, password, confirm_password, first_name, last_name));
+		if (data) {
+			// console.log("data???", data)
+			setErrors(data);
+			// console.log("errors??", errors)
+		} else {
+			closeModal();
+		}
 		// } else {
 		// 	setErrors([
 		// 		"Confirm Password field must be the same as the Password field",
@@ -55,57 +57,63 @@ function SignupFormModal() {
 							<li key={idx}>{error}</li>
 						))}
 					</ul>
-						<input
-							className='signup-form-input'
-							type="text"
-							placeholder='First Name'
-							value={first_name}
-							onChange={(e) => setFirstName(e.target.value)}
-							required
-						/>
-						<input
-							className='signup-form-input'
-							type="text"
-							placeholder='Last Name'
-							value={last_name}
-							onChange={(e) => setLastName(e.target.value)}
-							required
-						/>
-						<input
-							className='signup-form-input'
-							type="text"
-							placeholder='Email'
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							required
-						/>
-						<input
-							className='signup-form-input'
-							type="text"
-							placeholder='Username'
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-							required
-						/>
-						<input
-							className='signup-form-input'
-							type="password"
-							placeholder='Password'
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							required
-						/>
-						<input
-							className='signup-form-input'
-							type="password"
-							placeholder='Confirm Password'
-							value={confirm_password}
-							onChange={(e) => setConfirmPassword(e.target.value)}
-							required
-						/>
+					<input
+						className='signup-form-input'
+						type="text"
+						placeholder='First Name'
+						value={first_name}
+						onChange={(e) => setFirstName(e.target.value)}
+						required
+					/>
+					<input
+						className='signup-form-input'
+						type="text"
+						placeholder='Last Name'
+						value={last_name}
+						onChange={(e) => setLastName(e.target.value)}
+						required
+					/>
+					<input
+						className='signup-form-input'
+						type="text"
+						placeholder='Email'
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+					<input
+						className='signup-form-input'
+						type="text"
+						placeholder='Username'
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
+						required
+					/>
+					<input
+						className='signup-form-input'
+						type="password"
+						placeholder='Password'
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+					<input
+						className='signup-form-input'
+						type="password"
+						placeholder='Confirm Password'
+						value={confirm_password}
+						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
+					/>
 
 					<button className='submit-signup-button' type="submit">Sign Up</button>
 					<p className='login-small'>Debate My Professors is designed for and targeted to audiences in the Galactic Empire and is governed by and operated in accordance with laws of the Empire. We made a deal that'll keep the Empire here forever.</p>
+					<p className='bottom-signup-modal'>Already have an account?&nbsp;
+						<OpenModalButton
+							className='signup-button-login-modal'
+							buttonText="Log In"
+							modalComponent={<LoginFormModal />} />
+					</p>
 				</div>
 			</form>
 		</div>
