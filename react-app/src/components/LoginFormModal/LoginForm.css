@@ -27,7 +27,7 @@ input::placeholder {
 .login-form {
     display: flex;
     flex-direction: column;
-    height: 25rem;
+    height: 26rem;
     margin: 0 3rem;
 }
 

@@ -43,7 +43,7 @@ function LoginFormModal() {
   return (
     <div className='login-wrapper'>
 
-      <h1>Login</h1>
+      <h1>Log In</h1>
       {/* {errors[0] && <p className='login-errors'>{errors[0]}</p>}
       {errors[1] && <p className='login-errors'>{errors[1]}</p>}
       {errors[2] && <p className='login-errors'>{errors[2]}</p>}
