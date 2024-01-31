@@ -298,16 +298,23 @@ export const ReviewForm = ({ review, formType }) => {
                         </label>
                     </div>
 
-                    <div className='create-review-errors'>
-                        {hasSubmitted && errors.text && (
-                            <p>{errors.text}</p>
-                        )}</div>
-                    <div className='create-review-input'>
-                        <textarea className='review-text'
-                            placeholder='What do you want other students to know about this professor?'
-                            value={reviewText}
-                            onChange={e => setReviewText(e.target.value)} />
+                <div className='create-review-errors'>
+                    {hasSubmitted && errors.text && (
+                        <p>{errors.text}</p>
+                    )}</div>
+                <div className='create-review-text'>
+                    <textarea
+                        maxLength = '350'
+                        className='review-text'
+                        placeholder='What do you want other students to know about this professor?'
+                        value={reviewText}
+                        onChange={e => setReviewText(e.target.value)} />
+
+                    <div className='review-characters-left'>
+                        {reviewText.length} / 350
                     </div>
+                </div>
+
 
                     <div className='create-review-input' id='review-box'>
                         <div className='create-review-errors'>

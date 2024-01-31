@@ -23,6 +23,21 @@
     box-shadow: 0 2px 3px grey;
 }
 
+.create-review-text {
+    margin: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
+    height: 12rem;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px grey;
+}
+
+.review-characters-left {
+    position: relative;
+    left: 93%;
+    bottom: 1rem;
+}
+
 .review-terms {
     width: 90%;
     font-size: 13px;
