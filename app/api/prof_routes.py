@@ -4,6 +4,7 @@ from datetime import datetime
 from statistics import mean
 from app.models import db, Review, Prof, Course
 from app.forms.post_prof_form import PostProfForm
+from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 prof_routes = Blueprint('profs', __name__)
 
@@ -105,11 +106,18 @@ def post_prof():
     form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
 
     if form.validate_on_submit():
+
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+
         new_prof = Prof(
             creator_id=creator_id,
             first_name=form.data['first_name'],
             last_name=form.data['last_name'],
-            field=form.data['field']
+            field=form.data['field'],
+            image=upload["url"]
         )
 
         # print('new prof to add to db =====>', new_prof)

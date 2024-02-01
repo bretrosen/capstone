@@ -26,6 +26,7 @@ greenlet = "==2.0.1"
 Mako = "==1.2.4"
 WTForms = {extras = ["email"], version = "*"}
 faker = "*"
+boto3 = "*"
 
 [dev-packages]
 

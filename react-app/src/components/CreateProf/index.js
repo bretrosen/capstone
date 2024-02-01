@@ -10,6 +10,7 @@ export const ProfForm = ({ prof, formType }) => {
 
     const [firstName, setFirstName] = useState(prof?.first_name || '')
     const [lastName, setLastName] = useState(prof?.last_name || '')
+    const [image, setImage] = useState('')
     const [field, setField] = useState(prof?.field || '')
     const [errors, setErrors] = useState({})
     const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -23,7 +24,7 @@ export const ProfForm = ({ prof, formType }) => {
         if (field.trim().length === 0 || field.length > 20) newErrors['field'] = 'Professor field of study be between 1 and 50 characters'
 
         setErrors(newErrors)
-    }, [firstName, lastName, field])
+    }, [firstName, lastName, field, image])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -34,7 +35,8 @@ export const ProfForm = ({ prof, formType }) => {
         const formInfo = {
             'first_name': firstName,
             'last_name': lastName,
-            'field': field
+            'field': field,
+            'image': image
         }
 
         // dispatch thunk if form has no errors
@@ -105,6 +107,19 @@ export const ProfForm = ({ prof, formType }) => {
                             value={field}
                             onChange={e => setField(e.target.value)} />
                     </label>
+                </div>
+
+                <div className='create-review-input'>
+                    <label htmlFor='image'>
+                        Post Image:
+                    </label>
+                    <input
+                        id='image'
+                        type='file'
+                        accept='image/*'
+                        onChange={e => setImage(e.target.files[0])}
+                        >
+                    </input>
                 </div>
 
                 <button className='regular-button' id='create-prof-button' type='submit'>
