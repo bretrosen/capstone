@@ -12,7 +12,7 @@ class Prof(db.Model):
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
     field = db.Column(db.String(50), nullable=False)
-    image = db.Column(db.String(255), nullable=False)
+    image = db.Column(db.String(255))
 
     reviews = db.relationship('Review', back_populates='prof', cascade='all, delete')
     user = db.relationship('User', back_populates='profs')
