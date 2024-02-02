@@ -120,13 +120,14 @@ def post_prof():
             image=upload["url"]
         )
 
-        # print('new prof to add to db =====>', new_prof)
+        print('new prof to add to db =====>', new_prof)
 
         db.session.add(new_prof)
         db.session.commit()
         return new_prof.to_dict()
 
     else:
+        print("form not validated, error!!!!!!!!!!!")
         return form.errors
 
 

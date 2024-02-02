@@ -61,14 +61,15 @@ export const getSingleProfThunk = (profId) => async (dispatch) => {
 export const createProfThunk = (prof) => async (dispatch) => {
     const response = await fetch('/api/profs/new', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(prof)
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify(prof)
+        body: prof
     })
-    // console.log('sending create prof thunk', response)
+    console.log('sending create prof thunk', response)
 
     if (response.ok) {
         const newProf = await response.json()
-        // console.log('returning create prof thunk', newProf)
+        console.log('returning create prof thunk', newProf)
         dispatch(createProf(newProf))
         return newProf
     }
