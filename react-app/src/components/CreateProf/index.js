@@ -10,6 +10,7 @@ export const ProfForm = ({ prof, formType }) => {
 
     const [firstName, setFirstName] = useState(prof?.first_name || '')
     const [lastName, setLastName] = useState(prof?.last_name || '')
+    const [image, setImage] = useState('')
     const [field, setField] = useState(prof?.field || '')
     const [errors, setErrors] = useState({})
     const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -31,11 +32,25 @@ export const ProfForm = ({ prof, formType }) => {
         setHasSubmitted(true)
 
         // object to match request to backend create prof route
-        const formInfo = {
-            'first_name': firstName,
-            'last_name': lastName,
-            'field': field
-        }
+        // const formInfo = {
+        //     'first_name': firstName,
+        //     'last_name': lastName,
+        //     'field': field,
+        //     'image': image
+        // }
+
+        // form data to allow for files
+
+        console.log("before form data!!!!!!!!!!!")
+
+        const formData = new FormData()
+        formData.append("first_name", firstName)
+        formData.append("last_name", lastName)
+        formData.append("field", field)
+        formData.append("image", image)
+
+        console.log("form data", formData)
+        console.log("first name in form data", formData.firstName)
 
         // dispatch thunk if form has no errors
         if (!Object.values(errors).length) {
@@ -43,13 +58,15 @@ export const ProfForm = ({ prof, formType }) => {
             if (formType === 'Update') {
                 // console.log('just before sending update prof thunk!!!!!')
                 // console.log('id to update', prof.id)
-                const updatedProf = await dispatch(updateProfThunk(prof.id, formInfo))
+                const updatedProf = await dispatch(updateProfThunk(prof.id, formData))
                 //redirect to updated spot
                 history.push(`/profs/${updatedProf.id}`)
             }
             else {
                 // dispatch create thunk for create form
-                const newProf = await dispatch(createProfThunk(formInfo))
+                console.log('just before sending create prof thunk')
+                const newProf = await dispatch(createProfThunk(formData))
+                console.log("newly created prof?", newProf)
                 // direct to newly created prof
                 history.push(`/profs/${newProf.id}`)
                 // history.push(`/profs`)
@@ -60,7 +77,8 @@ export const ProfForm = ({ prof, formType }) => {
     return (
         <div className='create-review-wrapper'>
             <div className='create-review-heading'>Create a Professor</div>
-            <form className='create-prof-form' onSubmit={handleSubmit}>
+            <form className='create-prof-form' onSubmit={handleSubmit}
+                encType='multipart/form-data'>
 
                 <div className='create-review-errors'>
                     {hasSubmitted && errors.firstName && (
@@ -105,6 +123,19 @@ export const ProfForm = ({ prof, formType }) => {
                             value={field}
                             onChange={e => setField(e.target.value)} />
                     </label>
+                </div>
+
+                <div className='create-review-input'>
+                    <label htmlFor='image'>
+                        Post Image:
+                    </label>
+                    <input
+                        id='image'
+                        type='file'
+                        accept='image/*'
+                        onChange={e => setImage(e.target.files[0])}
+                        >
+                    </input>
                 </div>
 
                 <button className='regular-button' id='create-prof-button' type='submit'>
