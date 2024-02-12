@@ -78,14 +78,15 @@ export const createProfThunk = (prof) => async (dispatch) => {
 export const updateProfThunk = (profId, prof) => async (dispatch) => {
     const response = await fetch(`/api/profs/${profId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(prof)
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify(prof)
+        body: prof
     })
-    // console.log('sending update prof thunk', response)
+    console.log('sending update prof thunk', response)
 
     if (response.ok) {
         const updatedProf = await response.json()
-        // console.log('returning update prof thunk', updatedProf)
+        console.log('returning update prof thunk', updatedProf)
         dispatch(createProf(updatedProf))
         return updatedProf
     }

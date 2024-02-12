@@ -104,6 +104,9 @@ export const SingleProf = () => {
                     </div>
                         <RatingDistribution />
                 </div>
+
+                    <img className='prof-pic' src={prof.image}></img>
+
             </div>
             <div className='single-prof-reviews'>
 
