@@ -30,6 +30,10 @@
     color: grey;
 }
 
+.prof-pic {
+    height: 25rem;
+}
+
 .recommends-number {
     font-size: 40px;
     font-weight: 700;
