@@ -138,12 +138,19 @@ def put_delete_prof(id):
     Queries for the prof to update or delete, performs the update/delte, updates the database, and returns the updated/deleted prof in a dictionary.
     '''
 
+    form = PostProfForm()
+
+    image = form.data["image"]
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+
     if request.method == 'PUT':
         updated_prof = Prof.query.get(id)
         data = request.get_json()
         updated_prof.first_name = data['first_name']
         updated_prof.last_name = data['last_name']
         updated_prof.field = data['field']
+        updated_prof.image=upload["url"]
         db.session.commit()
         return updated_prof.to_dict()
 
