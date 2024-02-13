@@ -77,10 +77,11 @@ export const createProfThunk = (prof) => async (dispatch) => {
 
 export const updateProfThunk = (profId, prof) => async (dispatch) => {
     const response = await fetch(`/api/profs/${profId}`, {
-        method: 'PUT',
+        method: 'POST',
+        headers: { 'Content-Type': 'multipart/form-data'},
         // headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify(prof)
-        body: prof
+        body: JSON.stringify(prof)
+        // body: prof
     })
     console.log('sending update prof thunk', response)
 
@@ -94,8 +95,8 @@ export const updateProfThunk = (profId, prof) => async (dispatch) => {
 
 export const deleteProfThunk = (profId) => async (dispatch) => {
     const response = await fetch(`/api/profs/${profId}`, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' }
+        method: 'DELETE'
+        // headers: { 'Content-Type': 'application/json' }
     })
     // console.log("sending delete prof thunk")
 
