@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { getSingleReviewThunk } from '../../store/reviews'
 import './SingleReview.css'
 import advancedFormat from 'dayjs/plugin/advancedFormat'

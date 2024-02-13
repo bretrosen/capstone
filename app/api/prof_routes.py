@@ -131,7 +131,7 @@ def post_prof():
         return form.errors
 
 
-@prof_routes.route('/<int:id>', methods = ['DELETE', 'POST'])
+@prof_routes.route('/<int:id>', methods = ['DELETE', 'PUT'])
 @login_required
 def put_delete_prof(id):
     '''
@@ -146,7 +146,7 @@ def put_delete_prof(id):
 
 
 
-    if request.method == 'POST':
+    if request.method == 'PUT':
 
 
         if form.validate_on_submit():

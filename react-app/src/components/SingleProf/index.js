@@ -27,7 +27,7 @@ export const SingleProf = () => {
     let profIdToKeyInto
     // find the right index in the profs array to access
     for (let i = 0; i <= profs.length; i++) {
-        if (profs[i]?.id == profId) {
+        if (profs[i]?.id === profId) {
             profIdToKeyInto = i
         }
     }
@@ -105,7 +105,7 @@ export const SingleProf = () => {
                         <RatingDistribution />
                 </div>
 
-                    <img className='prof-pic' src={prof.image}></img>
+                    <img className='prof-pic' src={prof.image} alt='a professor'></img>
 
             </div>
             <div className='single-prof-reviews'>

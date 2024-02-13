@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getSingleCourseThunk, getAllCoursesThunk } from '../../store/courses'
 import { getAllReviewsThunk } from '../../store/reviews'
-import OpenModalButton from '../OpenModalButton'
+// import OpenModalButton from '../OpenModalButton'
 import RatingDistribution from './RatingDistribution'
 import '../SingleProf/SingleProf.css'
 import './SingleCourse.css'
@@ -13,10 +13,10 @@ dayjs.extend(advancedFormat)
 
 export const SingleCourse = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
+    // const history = useHistory()
 
     const { courseId } = useParams()
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
     // console.log("course Id param in component ===========>", courseId)
 
     const course = useSelector(state => state.courses.singleCourse)
@@ -26,15 +26,15 @@ export const SingleCourse = () => {
     let courseIdToKeyInto
     // find the right index in the courses array to access
     for (let i = 0; i <= courses.length; i++) {
-        if (courses[i]?.id == courseId) {
+        if (courses[i]?.id === courseId) {
             courseIdToKeyInto = i
         }
     }
 
     const courseReviews = useSelector(state => state.courses.singleCourse.reviews)
 
-    const reviewsObj = useSelector(state => state.reviews.allReviews)
-    const reviews = Object.values(reviewsObj)
+    // const reviewsObj = useSelector(state => state.reviews.allReviews)
+    // const reviews = Object.values(reviewsObj)
 
     // ensure we start at the top of the screen
     window.scrollTo(0, 0)

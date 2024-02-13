@@ -77,9 +77,9 @@ export const createProfThunk = (prof) => async (dispatch) => {
 
 export const updateProfThunk = (profId, prof) => async (dispatch) => {
     const response = await fetch(`/api/profs/${profId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'multipart/form-data'},
-        // headers: { 'Content-Type': 'application/json' },
+        method: 'PUT',
+        // headers: { 'Content-Type': 'multipart/form-data'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(prof)
         // body: prof
     })

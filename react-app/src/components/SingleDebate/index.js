@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getSingleDebateThunk } from '../../store/debates'
 import OpenModalButton from '../OpenModalButton'
 import ResolveDebate from '../ResolveDebate'
@@ -9,10 +9,10 @@ import './SingleDebate.css'
 
 export const SingleDebate = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
+    // const history = useHistory()
 
     const { debateId } = useParams()
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
     const debate = useSelector(state => state.debates.singleDebate)
 
     useEffect(() => {
