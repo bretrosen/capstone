@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams, useHistory, Link } from 'react-router-dom'
@@ -33,12 +34,13 @@ export const SingleProf = () => {
     }
     // console.log("index of profs array to use ==========>", profIdToKeyInto)
 
-    const profReviews = useSelector(state => state.profs.singleProf.reviews)
+    // const profReviews = useSelector(state => state.profs.singleProf.reviews)
 
     // console.log("prof reviews in single prof =========>", profReviews)
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
-    const reviews = Object.values(reviewsObj)
+    // sort reviews by date
+    const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
 
     // console.log("reviews array in single prof =========>", reviews)
 
@@ -110,9 +112,9 @@ export const SingleProf = () => {
             </div>
             <div className='single-prof-reviews'>
 
-            {profReviews.map((review) => (
-                <>
-                    <Link to={`/reviews/${review.id}`} key={review.id}>
+            {reviews.map((review) => (
+                <React.Fragment key={review.id}>
+                    <Link to={`/reviews/${review.id}`}>
                         <div className='reviews-list-item' >
 
                             <div className='reviews-list-ratings'>
@@ -167,7 +169,7 @@ export const SingleProf = () => {
                         />
                     }
 
-                </>
+                </React.Fragment>
 
             ))}
 

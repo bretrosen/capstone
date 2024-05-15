@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -16,7 +17,8 @@ export const CurrentUserReviewList = () => {
     const history = useHistory()
 
     const reviewsObj = useSelector(state => state.reviews.userReviews)
-    const reviews = Object.values(reviewsObj).reverse()
+    const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
+
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
@@ -34,8 +36,8 @@ export const CurrentUserReviewList = () => {
                 You have {reviews.length} reviews of The University of Life
             </div>
             {reviews.map((review) => (
-                <>
-                    <Link to={`/reviews/${review.id}`} key={review.id}>
+                <React.Fragment key={review.id}>
+                    <Link to={`/reviews/${review.id}`}>
                         <div className='reviews-list-item' >
 
                             <div className='reviews-list-ratings'>
@@ -91,7 +93,7 @@ export const CurrentUserReviewList = () => {
                         />
                     }
 
-                </>
+                </React.Fragment>
 
             ))}
         </div>

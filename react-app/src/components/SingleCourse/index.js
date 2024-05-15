@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
@@ -31,10 +32,11 @@ export const SingleCourse = () => {
         }
     }
 
-    const courseReviews = useSelector(state => state.courses.singleCourse.reviews)
+    // const courseReviews = useSelector(state => state.courses.singleCourse.reviews)
 
-    // const reviewsObj = useSelector(state => state.reviews.allReviews)
-    // const reviews = Object.values(reviewsObj)
+    const reviewsObj = useSelector(state => state.reviews.allReviews)
+    const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
+
 
     // ensure we start at the top of the screen
     window.scrollTo(0, 0)
@@ -101,9 +103,9 @@ export const SingleCourse = () => {
             </div>
             <div className='single-prof-reviews'>
 
-                {courseReviews.map((review) => (
-                    <>
-                        <Link to={`/reviews/${review.id}`} key={review.id}>
+                {reviews.map((review) => (
+                    <React.Fragment key={review.id}>
+                        <Link to={`/reviews/${review.id}`} >
                             <div className='reviews-list-item' >
 
                                 <div className='reviews-list-ratings'>
@@ -119,7 +121,7 @@ export const SingleCourse = () => {
                                 </div>
                                 <div className='reviews-list-right'>
                                     <div className='reviews-right-top'>
-                                        <div className='review-course-name'>Professor {review.prof_name}</div>
+                                        <div className='review-course-name'>Professor {review.prof_last_name}</div>
 
                                         <div className='review-time'>{dayjs(review.time_stamp).format("MMMM Do, YYYY")}</div>
                                     </div>
@@ -158,7 +160,7 @@ export const SingleCourse = () => {
                     />
                 } */}
 
-                    </>
+                    </React.Fragment>
 
                 ))}
 
