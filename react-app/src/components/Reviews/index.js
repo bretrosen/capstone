@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -16,8 +17,10 @@ export const ReviewList = () => {
     const history = useHistory()
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
+    // sort reviews by date
+    const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
     // reverse the array so newest reviews are displayed first
-    const reviews = Object.values(reviewsObj).reverse()
+    // const reviews = Object.values(reviewsObj).reverse()
     const user = useSelector(state => state.session.user)
     // console.log("reviews object in get all reviews page =========>", reviewsObj)
     // console.log("reviews array in get all reviews page ==========>", reviews)
@@ -40,8 +43,8 @@ export const ReviewList = () => {
                 {reviews.length} Reviews of The University of Life
             </div>
             {reviews.map((review) => (
-                <>
-                    <Link to={`/reviews/${review.id}`} key={review.id}>
+                <React.Fragment key={review.id}>
+                    <Link to={`/reviews/${review.id}`}>
                         <div className='reviews-list-item' >
 
                             <div className='reviews-list-ratings'>
@@ -100,7 +103,7 @@ export const ReviewList = () => {
                         />
                     }
 
-                </>
+                </React.Fragment>
 
             ))}
         </div>

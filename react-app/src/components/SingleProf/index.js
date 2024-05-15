@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams, useHistory, Link } from 'react-router-dom'
@@ -27,18 +28,19 @@ export const SingleProf = () => {
     let profIdToKeyInto
     // find the right index in the profs array to access
     for (let i = 0; i <= profs.length; i++) {
-        if (profs[i]?.id == profId) {
+        if (profs[i]?.id === profId) {
             profIdToKeyInto = i
         }
     }
     // console.log("index of profs array to use ==========>", profIdToKeyInto)
 
-    const profReviews = useSelector(state => state.profs.singleProf.reviews)
+    // const profReviews = useSelector(state => state.profs.singleProf.reviews)
 
     // console.log("prof reviews in single prof =========>", profReviews)
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
-    const reviews = Object.values(reviewsObj)
+    // sort reviews by date
+    const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
 
     // console.log("reviews array in single prof =========>", reviews)
 
@@ -105,14 +107,14 @@ export const SingleProf = () => {
                         <RatingDistribution />
                 </div>
 
-                    <img className='prof-pic' src={prof.image}></img>
+                    <img className='prof-pic' src={prof.image} alt='a professor'></img>
 
             </div>
             <div className='single-prof-reviews'>
 
-            {profReviews.map((review) => (
-                <>
-                    <Link to={`/reviews/${review.id}`} key={review.id}>
+            {reviews.map((review) => (
+                <React.Fragment key={review.id}>
+                    <Link to={`/reviews/${review.id}`}>
                         <div className='reviews-list-item' >
 
                             <div className='reviews-list-ratings'>
@@ -167,7 +169,7 @@ export const SingleProf = () => {
                         />
                     }
 
-                </>
+                </React.Fragment>
 
             ))}
 

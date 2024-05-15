@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useModal } from "../../context/Modal"
+// import { useModal } from "../../context/Modal"
 import './ResolveDebate.css'
 
 const ResolveDebate = ({ prof1Id, prof2Id, prof1Intelligence, prof1Wisdom, prof1Knowledge, prof1Charisma, prof1Preparation, prof1Respect, prof2Intelligence, prof2Wisdom, prof2Knowledge, prof2Charisma, prof2Preparation, prof2Respect }) => {
-    const { closeModal } = useModal()
+   //  const { closeModal } = useModal()
     const prof1 = useSelector(state => state.debates.singleDebate.prof1_first_name)
     const prof2 = useSelector(state => state.debates.singleDebate.prof2_first_name)
     const prof1Field = useSelector(state => state.debates.singleDebate.prof1_field)

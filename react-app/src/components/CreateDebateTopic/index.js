@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useModal } from "../../context/Modal"
 import { createDebateTopicThunk } from '../../store/debate_topics'
 import './CreateDebateTopic.css'
@@ -33,7 +33,7 @@ export const DebateTopicForm = () => {
 
         // dispatch thunk if form has no errors
         if (!Object.values(errors).length) {
-            const newDebateTopic = await dispatch(createDebateTopicThunk(formInfo))
+            await dispatch(createDebateTopicThunk(formInfo))
             .then(closeModal)
         }
     }

@@ -41,16 +41,11 @@ export const ProfForm = ({ prof, formType }) => {
 
         // form data to allow for files
 
-        console.log("before form data!!!!!!!!!!!")
-
         const formData = new FormData()
         formData.append("first_name", firstName)
         formData.append("last_name", lastName)
         formData.append("field", field)
         formData.append("image", image)
-
-        console.log("form data", formData)
-        console.log("first name in form data", formData.firstName)
 
         // dispatch thunk if form has no errors
         if (!Object.values(errors).length) {

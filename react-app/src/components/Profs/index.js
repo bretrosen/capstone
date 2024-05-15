@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -33,9 +34,9 @@ export const ProfList = () => {
             {profs.length} Professors at The University of Life
             </div>
             {profs.map((prof) => (
-                <>
-                    <Link to={`/profs/${prof.id}`} key={prof.id}>
-                        <div className='profs-list-item' >
+                <React.Fragment key={prof.id}>
+                    <Link to={`/profs/${prof.id}`} >
+                        <div className='profs-list-item'>
 
                             <div className='reviews-list-ratings'>
                                 <div className='rating-heading'>Quality</div>
@@ -69,7 +70,7 @@ export const ProfList = () => {
                         modalComponent={<DeleteProf profId={prof.id} />}
                     />}
 
-                </>
+                </React.Fragment>
             ))}
         </div>
     )

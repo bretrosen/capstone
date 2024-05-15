@@ -33,13 +33,13 @@ export const LandingPage = () => {
         dispatch(getAllCoursesThunk())
         dispatch(getAllDebatesThunk())
         // console.log("useEffect on landing page ran")
-    }, [sessionUser])
+    }, [sessionUser, dispatch])
 
     // show search results for min 2 character searches
-    const showProfClass = 'prof-dropdown' + '-' + (search.length > 1 ? 'show' : 'hidden')
+    const showProfClass = 'prof-dropdown-' + (search.length > 1 ? 'show' : 'hidden')
 
     // show nothing found if first or last name doesn't match search string
-    const showNoItems = 'items' + '-' + ((!lastName.toLowerCase().startsWith(search.toLowerCase()) && !firstName.toLowerCase().startsWith(search.toLowerCase())) ? 'show' : 'hidden')
+    const showNoItems = 'items-' + ((!lastName.toLowerCase().startsWith(search.toLowerCase()) && !firstName.toLowerCase().startsWith(search.toLowerCase())) ? 'show' : 'hidden')
 
     return (
         <>
