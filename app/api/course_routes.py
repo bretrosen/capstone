@@ -39,7 +39,6 @@ def all_courses():
         course['difficulties'] = []
         course['recommendations'] = []
 
-    # copying logic from prof routes for now
     # let's see about refactoring
     for course in courses_dict:
         for review in reviews_dict:

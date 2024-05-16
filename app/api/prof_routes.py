@@ -37,12 +37,11 @@ def all_profs():
         prof['difficulties'] = []
         prof['recommendations'] = []
 
-    # nested for loop: let's refactor for more efficient querying
+    # nested for loop: refactor for more efficient querying?
     # iterate through prof then reviews
     # if a prof id in a review matches the prof's id:
     # append the quality, difficulty, and would_recommend field to the prof's list
 
-    # QUERY ON THE JOIN YOU DUMMY
     for prof in profs_dict:
         for review in reviews_dict:
             if (review['prof_id'] == prof['id']):
@@ -142,15 +141,9 @@ def put_delete_prof(id):
     creator_id = user.id
     form = PostProfForm()
 
-    form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
-
-
-
+    form['csrf_token'].data = request.cookies['csrf_token']
     if request.method == 'PUT':
-
-
         if form.validate_on_submit():
-
             updated_prof = Prof.query.get(id)
             updated_prof.creator_id = creator_id
             updated_prof.first_name = form.data['first_name']
@@ -159,7 +152,6 @@ def put_delete_prof(id):
             updated_prof.image=form.data["image"]
             db.session.commit()
             return updated_prof.to_dict()
-
         else:
             print("form not validated, error!!!!")
             return form.errors

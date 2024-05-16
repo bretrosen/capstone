@@ -8,22 +8,13 @@ from app.forms.post_review_form import PostReviewForm
 
 review_routes = Blueprint('reviews', __name__)
 
-# helper function for averages
-# def mean(*args):
-#     sum = 0
-#     for arg in args:
-#         sum += arg
-#     return sum / len(args)
-
 @review_routes.route('/')
 def all_reviews():
     '''
-    Query for all reviews for the display all review page. Order descending by datetime, so newest reviews appear first. Get the associated professor's name and the associated course for each review. Add an average of numeric ratings. Return results in a dictionary.
+    Query for all reviews for the display all review page. Get the associated professor's name and the associated course for each review. Add an average of numeric ratings. Return results in a dictionary.
     '''
 
     all_reviews = Review.query.all()
-
-    # all_reviews = Review.query.order_by(desc(Review.time_stamp)).all()
 
     reviews_dict = [review.to_dict() for review in all_reviews]
     for review in reviews_dict:
@@ -68,7 +59,7 @@ def post_review():
     creator_id = user.id
     form = PostReviewForm()
 
-    form['csrf_token'].data = request.cookies['csrf_token'] # Boilerplate code
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         new_review = Review(
