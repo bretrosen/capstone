@@ -65,11 +65,11 @@ export const createProfThunk = (prof) => async (dispatch) => {
         // body: JSON.stringify(prof)
         body: prof
     })
-    console.log('sending create prof thunk', response)
+    // console.log('sending create prof thunk', response)
 
     if (response.ok) {
         const newProf = await response.json()
-        console.log('returning create prof thunk', newProf)
+        // console.log('returning create prof thunk', newProf)
         dispatch(createProf(newProf))
         return newProf
     }
@@ -78,18 +78,15 @@ export const createProfThunk = (prof) => async (dispatch) => {
 export const updateProfThunk = (profId, prof) => async (dispatch) => {
     const response = await fetch(`/api/profs/${profId}`, {
         method: 'PUT',
-        // headers: { 'Content-Type': 'multipart/form-data'},
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(prof)
-        // body: prof
+        body: prof
     })
-    console.log('sending update prof thunk', response)
+    // console.log('sending update prof thunk', response);
 
     if (response.ok) {
-        const updatedProf = await response.json()
-        console.log('returning update prof thunk', updatedProf)
-        dispatch(createProf(updatedProf))
-        return updatedProf
+        const updatedProf = await response.json();
+        // console.log('returning update prof thunk', updatedProf);
+        dispatch(createProf(updatedProf));
+        return updatedProf;
     }
 }
 

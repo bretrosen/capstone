@@ -32,7 +32,7 @@ export const SingleCourse = () => {
         }
     }
 
-    // const courseReviews = useSelector(state => state.courses.singleCourse.reviews)
+    const courseReviews = Object.values(useSelector(state => state.courses.singleCourse.reviews ?? {})).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
@@ -103,7 +103,7 @@ export const SingleCourse = () => {
             </div>
             <div className='single-prof-reviews'>
 
-                {reviews.map((review) => (
+                {courseReviews.map((review) => (
                     <React.Fragment key={review.id}>
                         <Link to={`/reviews/${review.id}`} >
                             <div className='reviews-list-item' >
@@ -121,7 +121,7 @@ export const SingleCourse = () => {
                                 </div>
                                 <div className='reviews-list-right'>
                                     <div className='reviews-right-top'>
-                                        <div className='review-course-name'>Professor {review.prof_last_name}</div>
+                                        <div className='review-course-name'>Professor {review.prof_name}</div>
 
                                         <div className='review-time'>{dayjs(review.time_stamp).format("MMMM Do, YYYY")}</div>
                                     </div>

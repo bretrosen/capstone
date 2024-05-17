@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -30,8 +31,8 @@ export const DebateList = () => {
                 {debates.length} Debates to Simulate
             </div>
             {debates.map((debate) => (
-                <>
-                    <Link to={`/debates/${debate.id}`} key={debate.id}>
+                <React.Fragment key={debate.id}>
+                    <Link to={`/debates/${debate.id}`}>
                         <div className='debate-list-item' key={debate.id}>
                             <div className='debate-topic'>
                                 Debate Topic: {debate.topic}
@@ -49,7 +50,7 @@ export const DebateList = () => {
 
                         </div>
                     </Link>
-                </>
+                </React.Fragment>
             ))}
         </div>
     )
