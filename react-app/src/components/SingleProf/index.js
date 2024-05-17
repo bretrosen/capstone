@@ -34,7 +34,7 @@ export const SingleProf = () => {
     }
     // console.log("index of profs array to use ==========>", profIdToKeyInto)
 
-    // const profReviews = useSelector(state => state.profs.singleProf.reviews)
+    const profReviews = Object.values(useSelector(state => state.profs.singleProf.reviews ?? {})).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
 
     // console.log("prof reviews in single prof =========>", profReviews)
 
@@ -112,19 +112,19 @@ export const SingleProf = () => {
             </div>
             <div className='single-prof-reviews'>
 
-            {reviews.map((review) => (
+            {profReviews.map((review) => (
                 <React.Fragment key={review.id}>
                     <Link to={`/reviews/${review.id}`}>
                         <div className='reviews-list-item' >
 
                             <div className='reviews-list-ratings'>
                                 <div className='rating-heading'>Quality</div>
-                                {review.quality > 0 && review.quality < 6.7 &&
-                                    <div className='rating-number' id='low'>{review.quality.toFixed(1)}</div>}
-                                {review.quality >= 6.7 && review.quality < 13.4 &&
-                                    <div className='rating-number' id='medium'>{reviews[review.id - 1].quality?.toFixed(1)}</div>}
-                                {review.quality >= 13.4 && review.quality <= 20 &&
-                                    <div className='rating-number' id='high'>{review.quality.toFixed(1)}</div>}
+                                {review?.quality > 0 && review.quality < 6.7 &&
+                                    <div className='rating-number' id='low'>{review?.quality?.toFixed(1)}</div>}
+                                {review?.quality >= 6.7 && review.quality < 13.4 &&
+                                    <div className='rating-number' id='medium'>{reviews[review.id - 1]?.quality?.toFixed(1)}</div>}
+                                {review?.quality >= 13.4 && review.quality <= 20 &&
+                                    <div className='rating-number' id='high'>{review?.quality?.toFixed(1)}</div>}
                                 <div className='rating-heading'>Difficulty</div>
                                 <div className='rating-number-difficulty'>{review.difficulty.toFixed(1)}</div>
                             </div>

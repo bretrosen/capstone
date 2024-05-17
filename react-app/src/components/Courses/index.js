@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -33,8 +34,8 @@ export const CourseList = () => {
                 {courses.length} Courses at The University of Life
             </div>
             {courses.map((course) => (
-                <>
-                    <Link to={`/courses/${course.id}`} key={course.id}>
+                <React.Fragment key={course.id}>
+                    <Link to={`/courses/${course.id}`}>
                         <div className='profs-list-item'>
 
                             <div className='reviews-list-ratings'>
@@ -62,7 +63,7 @@ export const CourseList = () => {
                     {user && course.creator_id === user.id &&
                         <button className='regular-button' onClick={() => history.push(`/courses/${course.id}/edit`)}>Update Course</button>}
 
-                </>
+                </React.Fragment>
             ))}
 
         </div>
