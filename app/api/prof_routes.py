@@ -143,13 +143,24 @@ def put_delete_prof(id):
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if request.method == 'PUT':
+        print('Received data:', request.form)
+        print('Received files:', request.files)
         if form.validate_on_submit():
             updated_prof = Prof.query.get(id)
             updated_prof.creator_id = creator_id
             updated_prof.first_name = form.data['first_name']
             updated_prof.last_name = form.data['last_name']
             updated_prof.field = form.data['field']
-            updated_prof.image=form.data["image"]
+
+            image = form.data['image']
+            if image:
+                image.filename = get_unique_filename(image.filename)
+                upload = upload_file_to_s3(image)
+                updated_prof.image = upload["url"]
+
+            print("updated prof HERE ===========> ", updated_prof)
+
+            # updated_prof.image=form.data["image"]
             db.session.commit()
             return updated_prof.to_dict()
         else:

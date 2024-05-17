@@ -51,18 +51,18 @@ export const ProfForm = ({ prof, formType }) => {
         if (!Object.values(errors).length) {
             // dispatch update thunk for update form here
             if (formType === 'Update') {
-                console.log('just before sending update prof thunk!!!!!')
-                console.log('id to update', prof.id)
+                // console.log('just before sending update prof thunk!!!!!')
+                // console.log('id to update', prof.id)
                 const updatedProf = await dispatch(updateProfThunk(prof.id, formData))
-                console.log("response with id of: ", updatedProf.id)
-                //redirect to updated spot
+                // console.log("response with id of: ", updatedProf.id)
+                // redirect to updated spot
                 history.push(`/profs/${updatedProf.id}`)
             }
             else {
                 // dispatch create thunk for create form
-                console.log('just before sending create prof thunk')
+                // console.log('just before sending create prof thunk')
                 const newProf = await dispatch(createProfThunk(formData))
-                console.log("newly created prof?", newProf)
+                // console.log("newly created prof?", newProf)
                 // direct to newly created prof
                 history.push(`/profs/${newProf.id}`)
                 // history.push(`/profs`)

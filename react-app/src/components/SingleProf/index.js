@@ -107,7 +107,7 @@ export const SingleProf = () => {
                         <RatingDistribution />
                 </div>
 
-                    <img className='prof-pic' src={prof.image} alt='a professor'></img>
+                    {prof.image && <img className='prof-pic' src={prof.image} alt='a professor'></img>}
 
             </div>
             <div className='single-prof-reviews'>
