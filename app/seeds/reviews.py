@@ -65,15 +65,16 @@ def seed_reviews():
         "The professor was an old man who spoke to the back of the lecture hall and he once went eighty-four days without knowing the name of any student in the class."
     ]
 
-    count = 1
+    # count = 1
 
-    for _ in range(1, 788):
+    for _ in range(1, 12000):
 
         # could refactor this, currently making only the last 8 review seeds in time order
-        if count < 780:
-            oldest_date = '-30y'
-        else:
-            oldest_date = new_review.to_dict()['time_stamp']
+        # if count < 780:
+        #     oldest_date = '-30y'
+        # else:
+        #     oldest_date = new_review.to_dict()['time_stamp']
+        oldest_date = '-30y'
 
         new_review = Review(
             creator_id = randint(1, 6),
@@ -96,10 +97,8 @@ def seed_reviews():
 
         )
 
-        count += 1
+        # count += 1
         reviews.append(new_review)
-
-
 
 
     [db.session.add(review) for review in reviews]
