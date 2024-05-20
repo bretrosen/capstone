@@ -1,10 +1,11 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom';
-import { getAllReviewsThunk } from '../../store/reviews'
+import { getAllReviewsThunk } from '../../store/reviews';
 import OpenModalButton from '../OpenModalButton'
-import DeleteReview from '../DeleteReview'
-import './Reviews.css'
+import DeleteReview from '../DeleteReview';
+import Pagination from '../Pagination';
+import './Reviews.css';
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 const dayjs = require('dayjs')
 dayjs.extend(advancedFormat)
@@ -15,7 +16,7 @@ export const ReviewList = () => {
     const history = useHistory()
 
     const [currentPage, setCurrentPage] = useState(1);
-    const reviewsPerPage = 20;
+    const reviewsPerPage = 25;
 
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     // sort reviews by date
@@ -23,7 +24,7 @@ export const ReviewList = () => {
 
     const user = useSelector(state => state.session.user)
     // calculate number of pages
-    const numPages = Math.ceil(reviews.length / reviewsPerPage);
+    const totalPages = Math.ceil(reviews.length / reviewsPerPage);
     // get reviews for current page
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
@@ -110,17 +111,11 @@ export const ReviewList = () => {
                     }
                 </React.Fragment>
             ))}
-            <div className='pagination'>
-                {Array.from({ length: numPages }, (_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => handlePageChange(index + 1)}
-                        disabled={currentPage === index + 1}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-            </div>
+            <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}
+            />
         </div>
     )
 }
