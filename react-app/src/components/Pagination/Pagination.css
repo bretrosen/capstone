@@ -1,0 +1,39 @@
+.active-page-button {
+    border: 0.2px solid black;
+    margin: 0 0.1rem 0 0.1rem;
+    padding: 0.2rem;
+    background-color: blue;
+    color: white;
+}
+
+.go-to-page-button {
+    background-color: blue;
+    color: white;
+    padding: 0.2rem;
+    border-radius: 0.6rem;
+}
+
+.page-button {
+    border: 0.2px solid black;
+    margin: 0 0.1rem 0 0.1rem;
+    padding: 0.2rem;
+}
+
+.page-input {
+    width: 3rem;
+    margin: 0 0.5rem;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.pagination-input {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

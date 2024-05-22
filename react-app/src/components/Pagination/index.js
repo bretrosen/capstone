@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './Pagination.css';
 
 const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
     const [inputPage, setInputPage] = useState('');
@@ -44,7 +45,6 @@ const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
 
     const handleInputChange = (e) => {setInputPage(e.target.value)};
 
-
     const handleGoToPage = () => {
         const pageNumber = parseInt(inputPage, 10);
         if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
@@ -71,24 +71,29 @@ const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
                         <button
                             onClick={() => handlePageChange(page)}
                             disabled={page === currentPage}
-                            className={page === currentPage ? 'active' : ''}
+                            className={page === currentPage ? 'active-page-button' : 'page-button'}
                         >
-                            {page}&nbsp;
+                            {page}
                         </button>
                     )}
                 </React.Fragment>
             ))}
             <div className="pagination-input">
-                <input
+                <div className = 'go-to-page'>Go to Page
+                </div>
+                <input className = 'page-input'
                     type="number"
                     value={inputPage}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
-                    placeholder="Go to page"
                     min="1"
                     max={totalPages}
                 />
-                <button onClick={handleGoToPage}>Go</button>
+                <button
+                className = 'go-to-page-button'
+                onClick={handleGoToPage}>
+                    Go
+                    </button>
             </div>
         </div>
     );
