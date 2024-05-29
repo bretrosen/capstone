@@ -6,9 +6,9 @@ import OpenModalButton from '../OpenModalButton'
 import DeleteReview from '../DeleteReview';
 import Pagination from '../Pagination';
 import './Reviews.css';
-import advancedFormat from 'dayjs/plugin/advancedFormat'
-const dayjs = require('dayjs')
-dayjs.extend(advancedFormat)
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+const dayjs = require('dayjs');
+dayjs.extend(advancedFormat);
 
 
 export const ReviewList = () => {
