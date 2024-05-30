@@ -34,8 +34,8 @@ export const SingleCourse = () => {
 
     const courseReviews = Object.values(useSelector(state => state.courses.singleCourse.reviews ?? {})).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
 
-    const reviewsObj = useSelector(state => state.reviews.allReviews)
-    const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
+    // const reviewsObj = useSelector(state => state.reviews.allReviews)
+    // const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
 
 
     // ensure we start at the top of the screen
