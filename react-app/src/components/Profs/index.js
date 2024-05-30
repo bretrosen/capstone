@@ -1,23 +1,37 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import { getAllProfsThunk } from '../../store/profs'
 import OpenModalButton from '../OpenModalButton'
 import DeleteProf from '../DeleteProf'
+import Pagination from '../Pagination';
 import './Profs.css'
 import '../Reviews/Reviews.css'
 
 
 export const ProfList = () => {
-    const dispatch = useDispatch()
-    const history = useHistory()
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-    const profsObj = useSelector(state => state.profs.allProfs)
-    const profs = Object.values(profsObj)
+    const [currentPage, setCurrentPage] = useState(1);
+    const profsPerPage = 25;
+
+    const profsObj = useSelector(state => state.profs.allProfs);
+    const profs = Object.values(profsObj);
     // console.log("profs in all profs", profs)
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user);
+
+    const totalPages = Math.ceil(profs.length / profsPerPage);
+    // get profs for current page
+    const indexOfLastProf = currentPage * profsPerPage;
+    const indexOfFirstProf = indexOfLastProf - profsPerPage;
+    const currentProfs = profs.slice(indexOfFirstProf, indexOfLastProf);
+
+    // handle page change
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     useEffect(() => {
         dispatch(getAllProfsThunk())
@@ -33,7 +47,7 @@ export const ProfList = () => {
             <div className='profs-list-heading'>
             {profs.length} Professors at The University of Life
             </div>
-            {profs.map((prof) => (
+            {currentProfs.map((prof) => (
                 <React.Fragment key={prof.id}>
                     <Link to={`/profs/${prof.id}`} >
                         <div className='profs-list-item'>
@@ -72,6 +86,11 @@ export const ProfList = () => {
 
                 </React.Fragment>
             ))}
+            <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}
+            />
         </div>
     )
 }

@@ -1,35 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useHistory } from 'react-router-dom';
-import { getAllReviewsThunk } from '../../store/reviews'
+import { Link, useHistory } from 'react-router-dom';
+import { getAllReviewsThunk } from '../../store/reviews';
 import OpenModalButton from '../OpenModalButton'
-import DeleteReview from '../DeleteReview'
-import './Reviews.css'
-import advancedFormat from 'dayjs/plugin/advancedFormat'
-const dayjs = require('dayjs')
-dayjs.extend(advancedFormat)
+import DeleteReview from '../DeleteReview';
+import Pagination from '../Pagination';
+import './Reviews.css';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+const dayjs = require('dayjs');
+dayjs.extend(advancedFormat);
 
 
 export const ReviewList = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const reviewsPerPage = 25;
+
     const reviewsObj = useSelector(state => state.reviews.allReviews)
     // sort reviews by date
     const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
-    // reverse the array so newest reviews are displayed first
-    // const reviews = Object.values(reviewsObj).reverse()
-    const user = useSelector(state => state.session.user)
-    // console.log("reviews object in get all reviews page =========>", reviewsObj)
-    // console.log("reviews array in get all reviews page ==========>", reviews)
-    // console.log("review length in get all reviews page ==========>", reviews.length)
 
+    const user = useSelector(state => state.session.user)
+    // calculate number of pages
+    const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+    // get reviews for current page
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+    // Handle page change
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     useEffect(() => {
         dispatch(getAllReviewsThunk())
-        // console.log("useEffect in get all reviews ran")
     }, [dispatch])
 
 
@@ -42,7 +49,7 @@ export const ReviewList = () => {
             <div className='profs-list-heading'>
                 {reviews.length} Reviews of The University of Life
             </div>
-            {reviews.map((review) => (
+            {currentReviews.map((review) => (
                 <React.Fragment key={review.id}>
                     <Link to={`/reviews/${review.id}`}>
                         <div className='reviews-list-item' >
@@ -102,10 +109,13 @@ export const ReviewList = () => {
                             modalComponent={<DeleteReview reviewId={review.id} />}
                         />
                     }
-
                 </React.Fragment>
-
             ))}
+            <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}
+            />
         </div>
     )
 }

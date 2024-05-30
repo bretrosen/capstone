@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { getCurrentUserReviewsThunk } from '../../store/reviews'
-import OpenModalButton from '../OpenModalButton'
-import DeleteReview from '../DeleteReview'
-import './UserReviews.css'
-import advancedFormat from 'dayjs/plugin/advancedFormat'
-const dayjs = require('dayjs')
-dayjs.extend(advancedFormat)
+import { getCurrentUserReviewsThunk } from '../../store/reviews';
+import OpenModalButton from '../OpenModalButton';
+import DeleteReview from '../DeleteReview';
+import Pagination from '../Pagination';
+import './UserReviews.css';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+const dayjs = require('dayjs');
+dayjs.extend(advancedFormat);
 
 
 export const CurrentUserReviewList = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const reviewsPerPage = 25;
+
     const reviewsObj = useSelector(state => state.reviews.userReviews)
     const reviews = Object.values(reviewsObj).sort((a, b) => new Date(b.time_stamp) - new Date(a.time_stamp))
 
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user);
+
+    const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+    // get reviews for current page
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+    // Handle page change
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     useEffect(() => {
         dispatch(getCurrentUserReviewsThunk())
@@ -35,7 +49,7 @@ export const CurrentUserReviewList = () => {
             <div className='profs-list-heading'>
                 You have {reviews.length} reviews of The University of Life
             </div>
-            {reviews.map((review) => (
+            {currentReviews.map((review) => (
                 <React.Fragment key={review.id}>
                     <Link to={`/reviews/${review.id}`}>
                         <div className='reviews-list-item' >
@@ -79,7 +93,6 @@ export const CurrentUserReviewList = () => {
                                 <div className='reviews-right-bottom'>{review.review}</div>
                             </div>
                         </div>
-
                     </Link>
 
                     {user && review.creator_id === user.id &&
@@ -92,10 +105,13 @@ export const CurrentUserReviewList = () => {
                             modalComponent={<DeleteReview reviewId={review.id} />}
                         />
                     }
-
                 </React.Fragment>
-
             ))}
+            <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}
+            />
         </div>
     )
 }
